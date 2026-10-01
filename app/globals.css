@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+:root {
+  /* Deep navy — widened tonal range for richer gradients: near-black base
+     up through a noticeably lighter glow tone, instead of one flat shade. */
+  --ink: #060d15;
+  --ink-2: #0f1e30;
+  --ink-3: #1c3554;
+  --ink-4: #2c4d78;
+  --line-on-ink: rgba(208, 167, 81, 0.25);
+
+  /* Gold — sampled from the logo mark */
+  --gold: #d0a751;
+  --gold-soft: #e6c988;
+  --gold-deep: #a9843c;
+  /* Same hue, darkened for text set directly on light surfaces — #d0a751 and
+     #a9843c both fail WCAG AA contrast on paper/white at eyebrow-label sizes. */
+  --gold-text: #806223;
+
+  /* Light surfaces — now the dominant tone: body copy, most section fills */
+  --cream: #f7f4ec;
+  --paper: #fbf9f3;
+  --background: #f7f4ec;
+  --foreground: #101a26;
+  --ink-soft: #2a3849;
+  --line: #e3ddcb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-ink-soft: var(--ink-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-text: var(--gold-text);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-line-on-ink: var(--line-on-ink);
+  --font-sans: var(--font-brand-raw);
+  --font-display: var(--font-brand-raw);
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Large translucent section numerals — the signature motif of the brand profile */
+
+.gold-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-text);
+  text-transform: uppercase;
+}
+
+.diagonal-panel {
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+}
+
+/* Hero glass panel (frosted, iOS-style) and engraved type */
+.glass-panel {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.22) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(210%) brightness(1.04);
+  backdrop-filter: blur(22px) saturate(210%) brightness(1.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(169, 132, 60, 0.22),
+    inset 0 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 0 rgba(169, 132, 60, 0.22),
+    inset 0 0 70px rgba(255, 255, 255, 0.35),
+    0 45px 100px -30px rgba(120, 90, 30, 0.5),
+    0 4px 14px rgba(10, 20, 32, 0.08);
+}
+.glass-sheen {
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.35) 100%);
+}
+.engraved {
+  color: #0a1420;
+  background-image: linear-gradient(180deg, #050b13 0%, #1b2b3f 100%);
+  text-shadow:
+    0 3px 1px rgba(255, 255, 255, 0.95),
+    0 -1.5px 1px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0;
+}
+.engraved-soft {
+  color: #34404e;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95), 0 -0.5px 0 rgba(10, 20, 32, 0.18);
+}
+.engraved-mark {
+  filter: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.95)) drop-shadow(0 -1px 0 rgba(10, 20, 32, 0.28));
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.36) 100%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(169, 132, 60, 0.18), inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(169, 132, 60, 0.18), 0 20px 44px -20px rgba(120, 90, 30, 0.32);
+}
+.glass-card-dark {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.1) 100%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 30px 70px -28px rgba(0, 0, 0, 0.7);
+}
+
+.glass-number-light,
+.glass-number-dark {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.glass-number-light {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 216, 148, 0.55) 55%, rgba(208, 167, 81, 0.22) 100%);
+  -webkit-text-stroke: 1.5px rgba(208, 167, 81, 0.55);
+  filter: drop-shadow(0 12px 16px rgba(169, 132, 60, 0.28));
+}
+.glass-number-dark {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 100%);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.35));
+}
+
+/* Home hero — the mark rises from the bottom edge, text settles in above it */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14%) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-rise { animation: hero-rise 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-in { animation: hero-fade-up 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise, .hero-in { animation: none; }
+}
+
+/* The sitewide scroll-reveal wrapper (Reveal.tsx) — content appears in place,
+   with no transform/opacity animation, for users who asked for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-el { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+/* Smooth scroll (Lenis) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Hero over photography: large, clear glass pane and light engraved type */
+@keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+.hero-zoom { animation: hero-zoom 14s ease-out both; }
+.glass-clear {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0.1) 100%);
+  -webkit-backdrop-filter: blur(7px) saturate(140%) brightness(0.96);
+  backdrop-filter: blur(7px) saturate(140%) brightness(0.96);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 60px rgba(255, 255, 255, 0.06),
+    0 40px 90px -40px rgba(0, 0, 0, 0.6);
+}
+.engraved-light {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.28), 0 10px 36px rgba(6, 14, 26, 0.5);
+}
+@media (prefers-reduced-motion: reduce) { .hero-zoom { animation: none; } }
+
+@keyframes hero-progress { from { width: 0; } to { width: 100%; } }
+@keyframes hero-ping { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.9); opacity: 0; } }
+.hero-progress { animation-name: hero-progress; animation-timing-function: linear; animation-fill-mode: forwards; }
+.hero-ping { animation: hero-ping 1.6s ease-out 1; }
+@media (prefers-reduced-motion: reduce) { .hero-ping, .hero-progress { animation: none; } .hero-progress { width: 100%; } }
+
+@keyframes hero-spin { to { transform: rotate(360deg); } }
+@keyframes hero-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.hero-spin { animation: hero-spin 70s linear infinite; }
+.hero-float { animation: hero-float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .hero-spin, .hero-float { animation: none; } }
+
+/* Creative glass: prismatic rim + a slow band of light crossing the pane */
+.glass-prism::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 200deg, rgba(255, 255, 255, 0.95), rgba(240, 216, 148, 0.95) 22%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.8) 62%, rgba(240, 216, 148, 0.85) 82%, rgba(255, 255, 255, 0.95));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+@keyframes glass-sweep { 0% { transform: translateX(-140%) skewX(-18deg); } 55%, 100% { transform: translateX(420%) skewX(-18deg); } }
+.glass-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: glass-sweep 10s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .glass-sweep::after { animation: none; opacity: 0; } }
+
+/* Seal glint: once every ten seconds */
+@keyframes seal-glint { 0% { transform: translateX(-160%) skewX(-20deg); } 14%, 100% { transform: translateX(260%) skewX(-20deg); } }
+@keyframes seal-mark { 0%, 100% { filter: brightness(1.35) drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55)) drop-shadow(0 -1px 0 rgba(60, 40, 5, 0.45)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45)); } 7% { filter: brightness(2) drop-shadow(0 0 10px rgba(255, 236, 170, 0.95)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45)); } 16% { filter: brightness(1.35) drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55)) drop-shadow(0 -1px 0 rgba(60, 40, 5, 0.45)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45)); } }
+.seal-glint::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 42%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent); animation: seal-glint 10s ease-in-out infinite; }
+.seal-mark { animation: seal-mark 10s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .seal-glint::before, .seal-mark { animation: none; } }
+
+/* Hero pane: larger, with a softer navy-tinted body, a warm rim glow and a double gold inner line */
+.glass-hero {
+  background:
+    radial-gradient(ellipse 65% 50% at 15% 0%, rgba(255, 255, 255, 0.3), transparent 68%),
+    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(240, 216, 148, 0.16), transparent 70%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.14) 0%, rgba(20, 44, 80, 0.16) 45%, rgba(255, 255, 255, 0.08) 100%);
+  /* no backdrop-filter on the frame itself: the graded blur lives in two child layers (.glass-hero-blur) */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 70px rgba(255, 255, 255, 0.05),
+    0 0 0 1px rgba(240, 216, 148, 0.28),
+    0 40px 90px -42px rgba(0, 0, 0, 0.65);
+}
+/* graded blur: 1.5px at the base of the pane rising to 3px at the top */
+.glass-hero-blur {
+  -webkit-backdrop-filter: blur(1.5px) saturate(135%) brightness(0.97);
+  backdrop-filter: blur(1.5px) saturate(135%) brightness(0.97);
+}
+.glass-hero-blur-top {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 100%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 100%);
+}
+.glass-hero-glow {
+  background: radial-gradient(ellipse 55% 30% at 50% 100%, rgba(240, 216, 148, 0.18), transparent 70%);
+}
+
+/* Stacked sections meet without hairlines: neighbouring paper/white bands melt into each other. */
+main section.border-y,
+main section.border-t {
+  border-color: transparent;
+}
