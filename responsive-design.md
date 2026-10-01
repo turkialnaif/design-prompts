@@ -11,7 +11,7 @@ Act as a responsive design expert. Review the design or layout for adaptability 
 - layout stacking and rearrangement
 - touch-friendly interactions
 - mobile-first strategy
-- performance considerations for smaller screens
+- performance on smaller screens
 
 ## Output Format
 

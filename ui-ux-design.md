@@ -8,7 +8,7 @@ Act as a senior product designer and UX strategist. Evaluate the interface and i
 - information hierarchy
 - consistency and alignment
 - visual balance
-- call-to-action clarity
+- CTA clarity
 - friction reduction
 - mobile-first optimization
 - accessibility and inclusive design
