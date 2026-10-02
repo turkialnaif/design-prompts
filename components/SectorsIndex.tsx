@@ -38,7 +38,7 @@ export default function SectorsIndex({ locale }: { locale: "ar" | "en" }) {
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <PageHero photo="/brand/riyadh-skyline.jpg" focus="center 55%">
+      <PageHero>
         <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
           <SectionHeading as="h1" eyebrow={t.eyebrow} title={t.title} tone="onDark" />
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-8 text-white/85">{t.lead}</p>
@@ -52,10 +52,10 @@ export default function SectorsIndex({ locale }: { locale: "ar" | "en" }) {
               <li key={s.slug} className="h-full list-none">
                 <Reveal delay={(i % 3) * 70} className="h-full">
                   <Link href={`${t.base}/${s.slug}`} className="group glass-card block h-full rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1">
-                    <span className="font-display text-sm tracking-widest text-[#806223]" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-sm tracking-widest text-[#012696]" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
                     <h2 className="font-display mt-3 !text-2xl !font-normal text-[#00124a]">{s[locale].title}</h2>
                     <p className="mt-3 text-[15px] font-light leading-8 text-ink-soft">{s[locale].short}</p>
-                    <span className="mt-5 inline-block text-sm text-[#806223] opacity-70 transition-opacity group-hover:opacity-100">{t.open} {locale === "ar" ? "←" : "→"}</span>
+                    <span className="mt-5 inline-block text-sm text-[#012696] opacity-70 transition-opacity group-hover:opacity-100">{t.open} {locale === "ar" ? "←" : "→"}</span>
                   </Link>
                 </Reveal>
               </li>

@@ -92,7 +92,7 @@ export default function LogoShowcase({ locale }: { locale: "ar" | "en" }) {
   return (
     <section ref={section} data-glow aria-label={t.title} className="relative h-[330vh] motion-reduce:h-auto">
       <div className="sticky top-0 h-screen overflow-hidden motion-reduce:static motion-reduce:h-auto">
-        <div aria-hidden className="absolute inset-0 -z-0 bg-[linear-gradient(180deg,rgba(0,6,29,0.86)_0%,rgba(0,18,74,0.7)_50%,rgba(0,6,29,0.9)_100%)]" />
+        <div aria-hidden className="absolute inset-0 -z-0 bg-[linear-gradient(180deg,#00061d_0%,#00124a_50%,#00061d_100%)]" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_50%_55%_at_50%_50%,rgba(155,136,215,0.22),transparent_70%)]" />
         <div className="motion-reduce:hidden">
           <LogoShowcaseStage rig={rig} />

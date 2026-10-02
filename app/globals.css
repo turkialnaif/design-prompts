@@ -7,23 +7,23 @@
   --ink-2: #0f1e30;
   --ink-3: #1c3554;
   --ink-4: #2c4d78;
-  --line-on-ink: rgba(208, 167, 81, 0.25);
+  --line-on-ink: rgba(155, 136, 215, 0.3);
 
   /* Gold — sampled from the logo mark */
-  --gold: #d0a751;
-  --gold-soft: #e6c988;
-  --gold-deep: #a9843c;
+  --gold: #9b88d7;
+  --gold-soft: #f6e2b3;
+  --gold-deep: #012696;
   /* Same hue, darkened for text set directly on light surfaces — #d0a751 and
      #a9843c both fail WCAG AA contrast on paper/white at eyebrow-label sizes. */
-  --gold-text: #806223;
+  --gold-text: #012696;
 
   /* Light surfaces — now the dominant tone: body copy, most section fills */
-  --cream: #f7f4ec;
-  --paper: #fbf9f3;
-  --background: #f7f4ec;
-  --foreground: #101a26;
-  --ink-soft: #2a3849;
-  --line: #e3ddcb;
+  --cream: #f4f5fe;
+  --paper: #f4f5fe;
+  --background: #ffffff;
+  --foreground: #0b1633;
+  --ink-soft: #33415f;
+  --line: #dfe3f5;
 }
 
 @theme inline {
@@ -66,50 +66,15 @@ body {
   text-transform: uppercase;
 }
 
-.diagonal-panel {
-  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
-}
 
-/* Hero glass panel (frosted, iOS-style) and engraved type */
-.glass-panel {
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.22) 100%);
-  -webkit-backdrop-filter: blur(22px) saturate(210%) brightness(1.04);
-  backdrop-filter: blur(22px) saturate(210%) brightness(1.04);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  box-shadow:
-    0 0 0 1px rgba(169, 132, 60, 0.22),
-    inset 0 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -2px 0 rgba(169, 132, 60, 0.22),
-    inset 0 0 70px rgba(255, 255, 255, 0.35),
-    0 45px 100px -30px rgba(120, 90, 30, 0.5),
-    0 4px 14px rgba(10, 20, 32, 0.08);
-}
-.glass-sheen {
-  background: linear-gradient(115deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.35) 100%);
-}
-.engraved {
-  color: #0a1420;
-  background-image: linear-gradient(180deg, #050b13 0%, #1b2b3f 100%);
-  text-shadow:
-    0 3px 1px rgba(255, 255, 255, 0.95),
-    0 -1.5px 1px rgba(0, 0, 0, 0.5);
-  letter-spacing: 0;
-}
-.engraved-soft {
-  color: #34404e;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95), 0 -0.5px 0 rgba(10, 20, 32, 0.18);
-}
-.engraved-mark {
-  filter: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.95)) drop-shadow(0 -1px 0 rgba(10, 20, 32, 0.28));
-}
-
+/* The one light card: white, a hairline of navy, nothing else. Its corners come from the asymmetric chamfer. */
 .glass-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.36) 100%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 1px rgba(169, 132, 60, 0.18), inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(169, 132, 60, 0.18), 0 20px 44px -20px rgba(120, 90, 30, 0.32);
+  background: #fff;
+  border: 1px solid rgba(0, 18, 74, 0.12);
+  box-shadow: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
+.glass-card:hover { border-color: rgba(155, 136, 215, 0.7); }
 .glass-card-dark {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.1) 100%);
   -webkit-backdrop-filter: blur(20px) saturate(170%);
@@ -125,9 +90,8 @@ body {
   background-clip: text;
 }
 .glass-number-light {
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 216, 148, 0.55) 55%, rgba(208, 167, 81, 0.22) 100%);
-  -webkit-text-stroke: 1.5px rgba(208, 167, 81, 0.55);
-  filter: drop-shadow(0 12px 16px rgba(169, 132, 60, 0.28));
+  background-image: linear-gradient(to left, #9b88d7 0%, #f3a6b6 55%, #f4932c 100%);
+  filter: none;
 }
 .glass-number-dark {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 100%);
@@ -161,26 +125,6 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Hero over photography: large, clear glass pane and light engraved type */
-@keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.08); } }
-.hero-zoom { animation: hero-zoom 14s ease-out both; }
-.glass-clear {
-  position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0.1) 100%);
-  -webkit-backdrop-filter: blur(7px) saturate(140%) brightness(0.96);
-  backdrop-filter: blur(7px) saturate(140%) brightness(0.96);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -1.5px 0 rgba(255, 255, 255, 0.18),
-    inset 0 0 60px rgba(255, 255, 255, 0.06),
-    0 40px 90px -40px rgba(0, 0, 0, 0.6);
-}
-.engraved-light {
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.28), 0 10px 36px rgba(6, 14, 26, 0.5);
-}
-@media (prefers-reduced-motion: reduce) { .hero-zoom { animation: none; } }
 
 @keyframes hero-progress { from { width: 0; } to { width: 100%; } }
 @keyframes hero-ping { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.9); opacity: 0; } }
@@ -195,28 +139,6 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) { .hero-spin, .hero-float { animation: none; } }
 
 /* Creative glass: prismatic rim + a slow band of light crossing the pane */
-.glass-prism::before {
-  content: "";
-  position: absolute;
-  inset: -1.5px;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: conic-gradient(from 200deg, rgba(255, 255, 255, 0.95), rgba(240, 216, 148, 0.95) 22%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.8) 62%, rgba(240, 216, 148, 0.85) 82%, rgba(255, 255, 255, 0.95));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-@keyframes glass-sweep { 0% { transform: translateX(-140%) skewX(-18deg); } 55%, 100% { transform: translateX(420%) skewX(-18deg); } }
-.glass-sweep::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 22%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
-  animation: glass-sweep 10s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) { .glass-sweep::after { animation: none; opacity: 0; } }
 
 /* Seal glint: once every ten seconds */
 @keyframes seal-glint { 0% { transform: translateX(-160%) skewX(-20deg); } 14%, 100% { transform: translateX(260%) skewX(-20deg); } }
@@ -226,35 +148,8 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) { .seal-glint::before, .seal-mark { animation: none; } }
 
 /* Hero pane: larger, with a softer navy-tinted body, a warm rim glow and a double gold inner line */
-.glass-hero {
-  background:
-    radial-gradient(ellipse 65% 50% at 15% 0%, rgba(255, 255, 255, 0.3), transparent 68%),
-    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(240, 216, 148, 0.16), transparent 70%),
-    linear-gradient(150deg, rgba(255, 255, 255, 0.14) 0%, rgba(20, 44, 80, 0.16) 45%, rgba(255, 255, 255, 0.08) 100%);
-  /* no backdrop-filter on the frame itself: the graded blur lives in two child layers (.glass-hero-blur) */
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -2px 0 rgba(255, 255, 255, 0.2),
-    inset 0 0 70px rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(240, 216, 148, 0.28),
-    0 40px 90px -42px rgba(0, 0, 0, 0.65);
-}
+
 /* graded blur: 1.5px at the base of the pane rising to 3px at the top */
-.glass-hero-blur {
-  -webkit-backdrop-filter: blur(1.5px) saturate(135%) brightness(0.97);
-  backdrop-filter: blur(1.5px) saturate(135%) brightness(0.97);
-}
-.glass-hero-blur-top {
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 100%);
-  mask-image: linear-gradient(to top, transparent 0%, #000 100%);
-}
-.glass-hero-glow {
-  background: radial-gradient(ellipse 55% 30% at 50% 100%, rgba(240, 216, 148, 0.18), transparent 70%);
-}
 
 /* Stacked sections meet without hairlines: neighbouring paper/white bands melt into each other. */
 main section.border-y,
@@ -363,3 +258,11 @@ h2.font-display {
   clip-path: polygon(34px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 34px);
 }
 .bar-bg:dir(rtl)::before { clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+
+/* Inner-page hero: slanted lower edge, mirrored for RTL (deep cut at the start side). */
+.hero-cut { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 44px)); }
+.hero-cut:dir(rtl) { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 44px), 0 100%); }
+
+/* The hero lets go as --hp (0..1, set by HeroPin) rises. */
+.hero-pin { opacity: calc(1 - var(--hp, 0) * 1.05); transform: translate3d(0, calc(var(--hp, 0) * -5svh), 0) scale(calc(1 - var(--hp, 0) * 0.09)); transform-origin: 50% 40%; will-change: opacity, transform; }
+@media (prefers-reduced-motion: reduce) { .hero-pin { opacity: 1; transform: none; } }

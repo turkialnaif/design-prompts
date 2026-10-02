@@ -46,11 +46,11 @@ export default function Marquee({
           caps ? (
             <span key={i} className="mx-4 inline-flex shrink-0 items-center gap-8 whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
               {item}
-              <span aria-hidden className="h-1 w-1 rounded-full bg-[#e6c988]/80" />
+              <span aria-hidden className="h-1 w-1 rounded-full bg-[#f6e2b3]/80" />
             </span>
           ) : ornate ? (
             <span key={i} className="mx-5 inline-flex shrink-0 items-center gap-10 whitespace-nowrap">
-              <span className={`font-ruqaa text-xl font-bold md:text-2xl ${tone === "onLight" ? "text-gold-deep" : "text-[#f0d894]"}`}>{item}</span>
+              <span className={`font-ruqaa text-xl font-bold md:text-2xl ${tone === "onLight" ? "text-gold-deep" : "text-[#f6e2b3]"}`}>{item}</span>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-gold" />
             </span>
           ) : (

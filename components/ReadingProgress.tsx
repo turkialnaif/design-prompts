@@ -18,7 +18,7 @@ export default function ReadingProgress() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-1 bg-transparent">
       <div
-        className="h-full bg-gradient-to-l from-[#f0d894] to-[#cfa64e] shadow-[0_0_10px_rgba(208,167,81,0.7)]"
+        className="h-full bg-gradient-to-l from-[#f6e2b3] to-[#e0b35a] shadow-[0_0_10px_rgba(155,136,215,0.7)]"
         style={{ width: `${pct}%` }}
       />
     </div>

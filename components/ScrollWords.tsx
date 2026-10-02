@@ -38,8 +38,8 @@ export default function ScrollWords({ text, eyebrow }: { text: string; eyebrow: 
   }, [text]);
 
   return (
-    <section data-glow className="relative isolate overflow-hidden py-28 md:py-44">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,6,29,0.88)_0%,rgba(0,18,74,0.55)_55%,rgba(0,6,29,0.5)_100%)]" />
+    <section data-glow className="relative isolate overflow-hidden bg-[#00061d] py-28 md:py-44">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_55%_at_50%_30%,rgba(155,136,215,0.22),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_70%,#00061d_100%)]" />
       <div className="mx-auto max-w-5xl px-5 text-center">
         <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{eyebrow}</p>
         <p ref={host} className="font-display mt-8 text-3xl font-light leading-[1.7] text-white sm:text-4xl md:text-6xl md:leading-[1.55]">

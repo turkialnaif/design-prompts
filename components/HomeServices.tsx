@@ -24,8 +24,8 @@ const copy = {
 export default function HomeServices({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   return (
-    <section data-glow className="relative isolate overflow-hidden py-28 md:py-40">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,6,29,0.4)_0%,rgba(0,18,74,0.66)_30%,rgba(0,6,29,0.84)_100%)]" />
+    <section data-glow className="relative isolate overflow-hidden bg-[#00061d] py-28 md:py-40">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_40%_at_100%_0%,rgba(244,147,44,0.14),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_45%,#00061d_100%)]" />
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
           <SectionHeading title={t.title} eyebrow={t.eyebrow} tone="onDark" size="xl" />

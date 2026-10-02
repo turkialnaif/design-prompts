@@ -91,7 +91,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
       {ld.map((o, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(o) }} />
       ))}
-      <PageHero photo="/brand/riyadh-skyline.jpg" focus="center 55%">
+      <PageHero>
         <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
           <SectionHeading as="h1" eyebrow={t.heroEyebrow} title={c.title} tone="onDark" />
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-8 text-white/85">{c.short}</p>
@@ -128,7 +128,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
             {c.issues.map((it, i) => (
               <Reveal key={it.t} delay={(i % 2) * 90}>
                 <div className="glass-card h-full rounded-2xl p-7">
-                  <span className="font-display text-sm tracking-widest text-[#806223]" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-sm tracking-widest text-[#012696]" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
                   <h2 className="font-display mt-3 !text-2xl !font-normal text-[#00124a]">{it.t}</h2>
                   <p className="mt-3 text-[15px] font-light leading-8 text-ink-soft">{it.d}</p>
                 </div>
@@ -153,7 +153,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
                     className="group flex h-full items-center justify-between gap-3 border border-[#00124a]/15 bg-white px-5 py-5 transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe] chamfer-btn"
                   >
                     <span className="font-display text-lg font-normal text-[#00124a]">{ar ? s.title : `${s.titleEn}${t.arLabel}`}</span>
-                    <span aria-hidden className="text-[#806223] transition-transform group-hover:-translate-x-1 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1">{ar ? "←" : "→"}</span>
+                    <span aria-hidden className="text-[#012696] transition-transform group-hover:-translate-x-1 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1">{ar ? "←" : "→"}</span>
                   </Link>
                 </li>
               ))}

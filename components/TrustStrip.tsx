@@ -43,64 +43,60 @@ const copy = {
 };
 
 /**
- * Under the hero: one navy panel that now carries everything the old headline and stat band
- * used to — licence, register, office and contact; the firm's own figures; who it serves; and
- * the profile download — organised in clear bands instead of scattered across the page.
+ * The facts band: the firm's own three figures set huge in the identity's gradient, then licence,
+ * register, office and contact as four chamfered tiles that each link to where the fact can be checked,
+ * then the profile download.
  */
 export default function TrustStrip({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
-  // Wide letter-spacing reads as elegant small-caps on Latin text, but at small sizes it
-  // breaks Arabic script's letter connections — so it's Latin-only.
-  const label = locale === "en" ? "text-[10px] font-bold uppercase tracking-[0.18em] text-[#e6c988]" : "text-[11px] font-bold text-[#e6c988]";
+  const ar = locale === "ar";
   return (
-    <div className="relative pb-16 pt-14 md:pt-16">
-      <div className="relative z-[3] mx-auto max-w-6xl px-5">
+    <section className="relative isolate overflow-hidden bg-[#f4f5fe] py-20 md:py-28">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_0%,rgba(155,136,215,0.16),transparent_70%)]" />
+      <div className="mx-auto max-w-6xl px-5">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_90%_140%_at_50%_0%,var(--ink-3),var(--ink)_80%)] shadow-[0_30px_70px_-30px_rgba(6,13,21,0.75)] ring-1 ring-gold/50">
-            {/* Facts */}
-            <div className="grid grid-cols-2 lg:grid-cols-4">
-              {t.items.map((i) => {
-                const Icon = i.icon;
-                return (
-                  <a
-                    key={i.label}
-                    href={i.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex flex-col items-center justify-center gap-1.5 border-white/10 px-3 py-6 text-center transition-colors hover:bg-white/[0.06] max-lg:border-b max-lg:odd:border-e lg:border-e md:px-5"
-                  >
-                    <Icon className="h-4 w-4 text-[#e6c988]/80" strokeWidth={1.6} />
-                    <span className={label}>{i.label}</span>
-                    <span className="font-display text-base font-bold leading-6 text-white md:text-lg md:leading-7" dir={i.ltr ? "ltr" : undefined}>{i.value}</span>
-                    <span className="text-[11px] text-white/60 transition-colors group-hover:text-white">{i.hint} ↗</span>
-                  </a>
-                );
-              })}
-            </div>
+          <dl className="grid divide-[#00124a]/12 border-y border-[#00124a]/12 sm:grid-cols-3 sm:divide-x rtl:sm:divide-x-reverse">
+            {t.stats.map((s) => (
+              <div key={s.label} className="px-4 py-10 text-center md:py-14">
+                <dd className="font-display grad-text text-7xl font-light leading-none md:text-8xl">
+                  <CountUp to={s.value} />
+                </dd>
+                <dt className="mt-4 text-base font-light text-[#00124a]">{s.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
 
-            {/* Figures */}
-            <div className="grid grid-cols-3 border-t border-white/10">
-              {t.stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center justify-center gap-1 border-white/10 px-3 py-7 text-center last:border-e-0 md:border-e">
-                  <dd className="font-display bg-gradient-to-b from-[#fbeec6] to-[#c99a45] bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
-                    <CountUp to={s.value} />
-                  </dd>
-                  <dt className="text-[11px] font-semibold tracking-wide text-white/70 md:text-xs">{s.label}</dt>
-                </div>
-              ))}
-            </div>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {t.items.map((i, k) => {
+            const Icon = i.icon;
+            return (
+              <Reveal key={i.label} delay={k * 70} className="h-full">
+                <a
+                  href={i.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group glass-card flex h-full flex-col gap-2 rounded-2xl p-6"
+                >
+                  <Icon className="h-5 w-5 text-[#012696]" strokeWidth={1.5} />
+                  <span className={ar ? "mt-2 text-sm text-ink-soft" : "mt-2 text-[11px] uppercase tracking-[0.18em] text-ink-soft"}>{i.label}</span>
+                  <span className="font-display text-2xl font-light leading-8 text-[#00124a]" dir={i.ltr ? "ltr" : undefined}>{i.value}</span>
+                  <span className="mt-auto pt-2 text-xs text-[#012696] opacity-70 transition-opacity group-hover:opacity-100">{i.hint} ↗</span>
+                </a>
+              </Reveal>
+            );
+          })}
+        </div>
 
-            <a
-              href={t.file}
-              download
-              className="flex items-center justify-center gap-3 border-t border-white/10 bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-8 py-6 text-sm font-bold text-[#08121f] transition-[filter] hover:brightness-105"
-            >
+        <Reveal>
+          <div className="mt-10 text-center">
+            <a href={t.file} download className="chamfer-btn inline-flex items-center gap-3 bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] px-8 py-4 text-sm text-[#00124a] transition-[filter] hover:brightness-105">
               <Download className="h-4 w-4" />
               {t.download}
             </a>
           </div>
         </Reveal>
       </div>
-    </div>
+    </section>
   );
 }

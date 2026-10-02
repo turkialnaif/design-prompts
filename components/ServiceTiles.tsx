@@ -27,10 +27,10 @@ export default function ServiceTiles({ items, cta }: { items: ServiceTile[]; cta
 
             <span className="absolute end-6 top-5 font-display text-4xl font-light tracking-wider text-white/85">{String(i + 1).padStart(2, "0")}</span>
             <div className="text-start">
-              <span className="text-xs font-semibold text-[#e6c988]">{s.label}</span>
+              <span className="text-xs font-semibold text-[#f6e2b3]">{s.label}</span>
               <h3 className="font-display mt-1 text-2xl font-normal leading-9">{s.title}</h3>
               <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60">{s.titleEn}</p>
-              <span className="mt-3 inline-block translate-y-1 text-sm font-semibold text-[#f0d894] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">{cta}</span>
+              <span className="mt-3 inline-block translate-y-1 text-sm font-semibold text-[#f6e2b3] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">{cta}</span>
             </div>
           </Link>
         </Reveal>

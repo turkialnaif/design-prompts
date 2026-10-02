@@ -23,7 +23,7 @@ function Card({ a, locale, index }: { a: Accreditation; locale: "ar" | "en"; ind
     <Reveal delay={(index % 5) * 60} className="h-full">
       <div
         title={c.body}
-        className="group flex h-full flex-col items-center rounded-2xl border border-white/35 bg-[linear-gradient(140deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] px-3.5 pb-4 pt-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#f0d894]/70 hover:bg-white/20"
+        className="group flex h-full flex-col items-center rounded-2xl border border-white/35 bg-[linear-gradient(140deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] px-3.5 pb-4 pt-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#f6e2b3]/70 hover:bg-white/20"
       >
         <div className="flex h-14 w-full items-center justify-center rounded-xl bg-white/90 px-3">
           {a.logos?.map((l) => (
@@ -44,14 +44,14 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
   const arbitration = accreditations.find((a) => a.key === "arbitration");
   const rest = accreditations.filter((a) => a.key !== "arbitration");
   return (
-    <section data-glow className="relative isolate overflow-hidden pb-40 pt-36 md:pb-52 md:pt-44">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,6,29,0.82)_0%,rgba(0,18,74,0.62)_50%,rgba(0,6,29,0.86)_100%)]" />
+    <section data-glow className="relative isolate overflow-hidden bg-[#00061d] pb-40 pt-36 md:pb-52 md:pt-44">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_40%_at_50%_0%,rgba(155,136,215,0.24),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_50%,#00061d_100%)]" />
 
       <div className="relative mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
           <SectionHeading title={t.title} eyebrow="Accreditations" tone="onDark" size="xl" />
           <p className="mx-auto mt-5 max-w-xl text-sm leading-8 text-white/75">{t.intro}</p>
-          <p className="mx-auto mt-5 inline-block chamfer-btn border border-[#e6c988]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
+          <p className="mx-auto mt-5 inline-block chamfer-btn border border-[#f6e2b3]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
             {accreditations.length} {en ? "accreditations and licences held" : "اعتمادًا وترخيصًا رسميًا"}
           </p>
         </Reveal>
@@ -73,17 +73,17 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
         <Reveal delay={80}>
           <Link
             href={en ? `/en/team/${lead.slug}` : `/team/${lead.slug}`}
-            className="group mx-auto mt-3.5 grid max-w-[58rem] items-center gap-6 rounded-3xl border border-white/35 bg-[linear-gradient(140deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] p-6 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#f0d894]/70 md:grid-cols-[11rem_1fr] md:p-7"
+            className="group mx-auto mt-3.5 grid max-w-[58rem] items-center gap-6 rounded-3xl border border-white/35 bg-[linear-gradient(140deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] p-6 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#f6e2b3]/70 md:grid-cols-[11rem_1fr] md:p-7"
           >
             <div className="relative mx-auto aspect-[4/5] w-36 overflow-hidden rounded-2xl ring-1 ring-white/60 md:w-full">
               <Image src="/brand/attorney-turki.jpg" alt={lead.name} fill sizes="176px" className="object-cover object-top" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#e6c988]">{en ? "Leadership" : "القيادة المهنية"}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f6e2b3]">{en ? "Leadership" : "القيادة المهنية"}</p>
               <h3 className="font-display mt-2 text-2xl font-bold text-white">{lead.name}</h3>
-              <p className="mt-1 text-sm font-medium text-[#e6c988]">{lead.role}</p>
+              <p className="mt-1 text-sm font-medium text-[#f6e2b3]">{lead.role}</p>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-8 text-white/80">{lead.bio[0]}</p>
-              <span className="mt-4 inline-block text-sm font-semibold text-[#e6c988] opacity-0 transition-opacity group-hover:opacity-100">
+              <span className="mt-4 inline-block text-sm font-semibold text-[#f6e2b3] opacity-0 transition-opacity group-hover:opacity-100">
                 {en ? "View profile →" : "الملف الشخصي ←"}
               </span>
             </div>

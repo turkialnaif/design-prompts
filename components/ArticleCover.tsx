@@ -20,21 +20,21 @@ export default function ArticleCover({
   const photo = slug ? articlePhoto(slug) : undefined;
   if (photo) {
     return (
-      <div className={`relative isolate w-full overflow-hidden rounded-2xl bg-[#0f1e30] ${className}`}>
+      <div className={`relative isolate w-full overflow-hidden rounded-2xl bg-[#00124a] ${className}`}>
         <Image src={photo.src} {...blurProps(photo.src)} alt={photo.alt} fill sizes="(min-width: 1024px) 400px, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" style={{ objectPosition: photo.focus }} />
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,18,32,0.05)_40%,rgba(8,18,32,0.45)_100%)]" />
         {badge && (
-          <div className="absolute start-3 top-3 rounded-lg bg-[#0a1420]/85 px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#d0a751]/60 backdrop-blur-sm">
+          <div className="absolute start-3 top-3 rounded-lg bg-[#00124a]/85 px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#9b88d7]/60 backdrop-blur-sm">
             <div className="font-display text-lg font-bold">{badge.day}</div>
-            <div className="text-[10px] text-[#e6c988]">{badge.month}</div>
+            <div className="text-[10px] text-[#f6e2b3]">{badge.month}</div>
           </div>
         )}
       </div>
     );
   }
   return (
-    <div className={`relative w-full overflow-hidden rounded-2xl bg-[#0f1e30] ${className}`} aria-hidden>
-      <svg viewBox="0 0 320 120" className="absolute inset-0 h-full w-full" fill="none" stroke="#d0a751" preserveAspectRatio="xMidYMid slice">
+    <div className={`relative w-full overflow-hidden rounded-2xl bg-[#00124a] ${className}`} aria-hidden>
+      <svg viewBox="0 0 320 120" className="absolute inset-0 h-full w-full" fill="none" stroke="#9b88d7" preserveAspectRatio="xMidYMid slice">
         <rect x="6" y="6" width="308" height="108" rx="10" strokeWidth="0.6" opacity="0.5" />
         {c === "corporate" && (
           <g>
@@ -70,9 +70,9 @@ export default function ArticleCover({
         <path d="M22 100h30M268 20h30" strokeWidth="0.6" opacity="0.6" />
       </svg>
       {badge && (
-        <div className="absolute start-3 top-3 rounded-lg bg-[#0a1420]/90 px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#d0a751]/60">
+        <div className="absolute start-3 top-3 rounded-lg bg-[#00124a]/90 px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#9b88d7]/60">
           <div className="font-display text-lg font-bold">{badge.day}</div>
-          <div className="text-[10px] text-[#e6c988]">{badge.month}</div>
+          <div className="text-[10px] text-[#f6e2b3]">{badge.month}</div>
         </div>
       )}
     </div>

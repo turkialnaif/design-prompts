@@ -49,9 +49,6 @@ export default async function ServicePage({
   const { slug } = await params;
   const pillar = corePillars.find((s) => s.slug === slug);
   const line = specializedLines.find((s) => s.slug === slug);
-  const servicePhoto = ["legal-advisory", "corporate-contracts", "disputes-arbitration", "compliance-governance", "technology-data", "enforcement-recovery", "real-estate-construction", "intellectual-property"].includes(slug)
-    ? `/services/${slug}.jpg`
-    : "/brand/riyadh-skyline.jpg";
   const entry = pillar ?? line;
 
   if (!entry) notFound();
@@ -98,17 +95,17 @@ export default async function ServicePage({
   return (
     <div>
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
-            <PageHero photo={servicePhoto} focus="center 50%">
+            <PageHero>
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
             {pillar && (
-              <span className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f0d894]">
+              <span className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f6e2b3]">
                 {pillar.stage}
               </span>
             )}
             {axis && (
               <Link
                 href={`/services/${axis.slug}`}
-                className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f0d894]"
+                className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f6e2b3]"
               >
                 ضمن محور: {axis.title}
               </Link>
@@ -125,8 +122,8 @@ export default async function ServicePage({
                         href={`/services/${p.slug}`}
                         className={`inline-block chamfer-btn px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                           active
-                            ? "bg-gradient-to-b from-[#f0d894] to-[#cfa64e] text-white shadow-[inset_0_1.5px_0_rgba(255,255,255,0.8)]"
-                            : "border border-white/25 bg-white/10 text-white/75 hover:text-[#f0d894]"
+                            ? "bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-white shadow-[inset_0_1.5px_0_rgba(255,255,255,0.8)]"
+                            : "border border-white/25 bg-white/10 text-white/75 hover:text-[#f6e2b3]"
                         }`}
                       >
                         {p.stage}

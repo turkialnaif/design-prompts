@@ -29,10 +29,6 @@ export default function HeroStage({
       <div aria-hidden className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_70%_60%_at_50%_38%,rgba(155,136,215,0.28),transparent_70%)]" />
       <div aria-hidden className="absolute inset-x-0 bottom-0 z-[1] h-44 bg-[linear-gradient(to_bottom,transparent,#00061d)]" />
 
-      <span aria-hidden className="pointer-events-none absolute inset-x-0 top-[22%] z-[1] select-none text-center font-display text-[26vw] font-extralight leading-none tracking-[0.12em] text-white/[0.045] md:text-[18vw]" dir="ltr">
-        TAAP
-      </span>
-
       <div className="absolute inset-0 z-[2]">
         <Logo3DHero />
       </div>

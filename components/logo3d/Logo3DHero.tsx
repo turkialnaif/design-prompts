@@ -33,8 +33,11 @@ export default function Logo3DHero() {
     const onScroll = () => {
       if (reduce) return;
       const s = window.scrollY / window.innerHeight;
-      r.y = baseY + s * 1.4;
-      r.scale = Math.max(0.4, baseScale - s * 0.3);
+      const leave = Math.min(1, s / 0.75);
+      r.explode = leave * 1.6;
+      r.y = baseY + leave * 1.1;
+      r.scale = baseScale + leave * 0.18;
+      r.spin = 0.16 + leave * 0.5;
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });

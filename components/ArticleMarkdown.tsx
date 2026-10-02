@@ -96,7 +96,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
       {blocks.map((block, i) => {
         if (block.kind === "h2") {
           return (
-            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#d0a751]/40 pt-10 text-2xl font-bold leading-[1.5] text-ink md:text-[2rem]">
+            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#9b88d7]/40 pt-10 text-2xl font-bold leading-[1.5] text-ink md:text-[2rem]">
               {block.text}
             </h2>
           );
@@ -141,14 +141,14 @@ export default function ArticleMarkdown({ content }: { content: string }) {
         }
         if (block.kind === "quote") {
           return (
-            <aside key={i} className="rounded-2xl border-r-4 border-r-[#e6c988] bg-[#0a1626] px-6 py-6 text-white shadow-[0_24px_50px_-30px_rgba(6,13,21,0.7)] md:px-8">
+            <aside key={i} className="rounded-2xl border-r-4 border-r-[#f6e2b3] bg-[#00124a] px-6 py-6 text-white shadow-[0_24px_50px_-30px_rgba(6,13,21,0.7)] md:px-8">
               {block.lines.map((line, j) =>
                 line.startsWith("- ") ? (
                   <ul key={j} className="list-disc space-y-1.5 pr-5 text-[0.98rem] leading-8 text-white/85">
                     <li>{renderInline(line.slice(2))}</li>
                   </ul>
                 ) : (
-                  <p key={j} className="text-[1.02rem] leading-[2] text-white/90 [&_strong]:text-[#e6c988]">
+                  <p key={j} className="text-[1.02rem] leading-[2] text-white/90 [&_strong]:text-[#f6e2b3]">
                     {renderInline(line)}
                   </p>
                 )
@@ -159,10 +159,10 @@ export default function ArticleMarkdown({ content }: { content: string }) {
         if (block.kind === "table") {
           const [header, ...rows] = block.rows;
           return (
-            <div key={i} className="overflow-x-auto rounded-2xl ring-1 ring-[#d0a751]/40" data-lenis-prevent>
+            <div key={i} className="overflow-x-auto rounded-2xl ring-1 ring-[#9b88d7]/40" data-lenis-prevent>
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-[#0a1626] text-[#e6c988]">
+                  <tr className="bg-[#00124a] text-[#f6e2b3]">
                     {header.map((cell, j) => (
                       <th key={j} className="p-4 text-right font-bold">
                         {cell}
@@ -172,7 +172,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
                 </thead>
                 <tbody>
                   {rows.map((row, j) => (
-                    <tr key={j} className="border-t border-line odd:bg-white even:bg-[#f4efe2]/60">
+                    <tr key={j} className="border-t border-line odd:bg-white even:bg-[#eef0fd]/60">
                       {row.map((cell, k) => (
                         <td key={k} className="p-4 align-top leading-7 text-ink-soft">
                           {renderInline(cell)}

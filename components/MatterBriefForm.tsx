@@ -92,13 +92,13 @@ export default function MatterBriefForm({
     return (
       <div className="py-6 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/15">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#a9843c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#012696" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
         <p className="mt-4 text-sm leading-6 text-ink">{t.success}</p>
         {onClose && (
-          <button type="button" onClick={onClose} className="mt-6 chamfer-btn bg-gold px-6 py-2.5 text-sm font-semibold text-ink hover:bg-gold-soft">
+          <button type="button" onClick={onClose} className="mt-6 chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-[#00124a] hover:brightness-105 px-6 py-2.5 text-sm font-normal">
             {t.close}
           </button>
         )}
@@ -148,7 +148,7 @@ export default function MatterBriefForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className="chamfer-btn bg-gold px-6 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-gold-soft disabled:opacity-60"
+          className="chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-[#00124a] hover:brightness-105 px-6 py-2.5 text-sm font-normal transition-[filter] disabled:opacity-60"
         >
           {status === "sending" ? t.sending : t.submit}
         </button>

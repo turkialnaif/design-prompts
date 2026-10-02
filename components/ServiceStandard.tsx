@@ -31,7 +31,7 @@ export default function ServiceStandard({ locale }: { locale: "ar" | "en" }) {
               <Reveal key={item.title} delay={(i % 3) * 90}>
                 <div className="group glass-card relative flex h-full flex-col overflow-hidden rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
                   <div className="flex items-start justify-between">
-                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#0a1626] text-[#e6c988] ring-1 ring-gold/60 transition-colors duration-300 group-hover:bg-gold group-hover:text-[#08121f]">
+                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#00124a] text-[#f6e2b3] ring-1 ring-gold/60 transition-colors duration-300 group-hover:bg-gold group-hover:text-[#08121f]">
                       <Icon className="h-6 w-6" strokeWidth={1.6} />
                     </span>
                     <span className="font-display text-xs font-bold tracking-[0.2em] text-gold-deep" dir="ltr">
@@ -40,7 +40,7 @@ export default function ServiceStandard({ locale }: { locale: "ar" | "en" }) {
                   </div>
                   <h3 className="font-display mt-6 text-2xl font-bold leading-8 text-ink">{item.title}</h3>
                   <p className="mt-3 text-[15px] leading-8 text-ink-soft/85">{item.description}</p>
-                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-1 origin-right scale-x-0 bg-gradient-to-l from-[#f0d894] to-[#cfa64e] transition-transform duration-500 group-hover:scale-x-100" />
+                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-1 origin-right scale-x-0 bg-gradient-to-l from-[#9b88d7] via-[#f3a6b6] to-[#f4932c] transition-transform duration-500 group-hover:scale-x-100" />
                 </div>
               </Reveal>
             );

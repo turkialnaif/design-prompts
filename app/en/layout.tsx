@@ -7,7 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
-import { homeDescription, siteJsonLd } from "@/lib/seo";
+import { siteJsonLd } from "@/lib/seo";
 import { firmEn } from "@/lib/site.en";
 
 const brandFont = Zain({

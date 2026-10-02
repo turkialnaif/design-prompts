@@ -1,4 +1,5 @@
 import ArrowButton from "@/components/ArrowButton";
+import HeroPin from "@/components/HeroPin";
 import HeroStage from "@/components/HeroStage";
 import HeroRail from "@/components/HeroRail";
 import { homeServiceTiles } from "@/lib/service-tiles";
@@ -27,7 +28,8 @@ export default function HomeHero({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
   return (
-    <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+    <HeroPin>
+    <section className="relative isolate flex h-[100svh] min-h-[34rem] flex-col overflow-hidden">
       <HeroStage
         photo={PHOTO}
         blurDataURL={"blurDataURL" in blurProps(PHOTO) ? blurProps(PHOTO).blurDataURL : undefined}
@@ -47,5 +49,6 @@ export default function HomeHero({ locale }: { locale: "ar" | "en" }) {
         <HeroRail locale={locale} tiles={homeServiceTiles(locale)} />
       </div>
     </section>
+    </HeroPin>
   );
 }

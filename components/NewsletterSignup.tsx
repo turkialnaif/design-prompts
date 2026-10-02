@@ -135,7 +135,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
             <button
               type="submit"
               disabled={status === "sending"}
-              className="chamfer-btn bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-7 py-3 text-sm font-semibold text-ink ring-1 ring-white/80 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+              className="chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] px-7 py-3 text-sm font-semibold text-ink ring-1 ring-white/80 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
             >
               {status === "sending" ? "جارٍ الإرسال…" : "اشترك"}
             </button>

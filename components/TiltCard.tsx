@@ -34,7 +34,7 @@ export default function TiltCard({
 
     setGlareStyle({
       opacity: 1,
-      background: `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(208,167,81,0.16), transparent 60%)`,
+      background: `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(155,136,215,0.16), transparent 60%)`,
     });
   }
 

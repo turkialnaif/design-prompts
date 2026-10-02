@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
 import type { Metadata } from "next";
-import SectionHeading from "@/components/SectionHeading";
+import { Band, HeroHead, Wrap } from "@/components/ui";
 import { firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
@@ -89,24 +89,19 @@ const sections: { title: string; body: string[] }[] = [
 export default function PrivacyPageEn() {
   return (
     <div>
-      <PageHero photo="/brand/riyadh-skyline.jpg">
-        <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-          <SectionHeading as="h1" eyebrow="Privacy & Terms" title="Privacy Policy & Terms of Use" tone="onDark" />
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">
-            How we collect, use, and protect website visitor data, and your rights over it under the Saudi Personal Data Protection Law.
-          </p>
-        </div>
+      <PageHero>
+        <HeroHead eyebrow="Privacy &amp; Terms" title="Privacy Policy & Terms of Use" lead="How we collect, use, and protect website visitor data, and your rights over it under the Saudi Personal Data Protection Law." />
       </PageHero>
 
-      <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-3xl px-5">
-          <div className="glass-card space-y-10 rounded-3xl p-7 md:p-12">
+      <Band tone="tint">
+        <Wrap max="3xl">
+          <div className="glass-card rounded-3xl p-7 md:p-12">
             {sections.map((s) => (
-              <div key={s.title} className="border-t border-[#d0a751]/40 pt-8 first:border-t-0 first:pt-0">
-                <h2 className="font-display text-xl font-bold leading-[1.5] text-ink md:text-2xl">{s.title}</h2>
+              <div key={s.title} className="border-t border-[#00124a]/12 pt-8 first:border-t-0 first:pt-0 [&:not(:first-child)]:mt-10">
+                <h2 className="font-display text-2xl font-light text-[#00124a] md:text-3xl">{s.title}</h2>
                 <div className="mt-4 space-y-4">
-                  {s.body.map((p, i) => (
-                    <p key={i} className="text-[1.02rem] leading-[2.1] text-ink-soft">
+                  {s.body.map((p, k) => (
+                    <p key={k} className="text-[1.02rem] font-light leading-[2.1] text-ink-soft">
                       {p}
                     </p>
                   ))}
@@ -114,8 +109,8 @@ export default function PrivacyPageEn() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </Wrap>
+      </Band>
     </div>
   );
 }

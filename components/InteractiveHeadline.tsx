@@ -36,7 +36,7 @@ export default function InteractiveHeadline({
       className={className}
       style={{
         ...style,
-        backgroundImage: `radial-gradient(circle at ${pos.x}% ${pos.y}%, #f6e2b3 0%, #d0a751 38%, #a9843c 75%)`,
+        backgroundImage: `radial-gradient(circle at ${pos.x}% ${pos.y}%, #f6e2b3 0%, #9b88d7 38%, #012696 75%)`,
         backgroundSize: "180% 180%",
         WebkitBackgroundClip: "text",
         backgroundClip: "text",

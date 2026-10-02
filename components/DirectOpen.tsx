@@ -42,7 +42,7 @@ export default function DirectOpen({ api }: { api: string }) {
   }, [api]);
 
   return (
-    <div className="mx-auto max-w-md rounded-2xl border border-[#e3ddcb] bg-white p-8 text-center">
+    <div className="mx-auto max-w-md rounded-2xl border border-[#dfe3f5] bg-white p-8 text-center">
       <p className={`text-sm font-semibold ${state === "error" ? "text-red-700" : "text-[#12233a]"}`}>{state === "ready" ? "تم فكّ التشفير." : msg}</p>
       {state === "ready" && blobUrl && (
         <a href={blobUrl} download={file.name} className="mt-4 inline-block rounded-xl bg-[#12233a] px-5 py-2.5 text-sm font-semibold text-white">
