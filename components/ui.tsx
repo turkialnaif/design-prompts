@@ -8,8 +8,8 @@ export function HeroHead({ eyebrow, title, lead, children }: { eyebrow: string; 
   return (
     <div className="px-2 text-center md:px-8">
       <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{eyebrow}</p>
-      <h1 className="font-display grad-text mt-4 text-4xl leading-[1.25] sm:text-5xl md:text-7xl">{title}</h1>
-      {lead && <p className="mx-auto mt-7 max-w-2xl text-lg font-light leading-9 text-white/85 md:text-xl md:leading-10">{lead}</p>}
+      <h1 className="font-display grad-text mt-4 text-5xl leading-[1.25] md:text-7xl">{title}</h1>
+      {lead && <p className="mx-auto mt-6 max-w-2xl text-lg font-light leading-9 text-white/85 md:text-xl md:leading-10">{lead}</p>}
       {children}
     </div>
   );
@@ -20,7 +20,7 @@ export function NavyField() {
   return (
     <>
       <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#00061d_0%,#00124a_62%,#00061d_100%)]" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_60%_at_50%_0%,rgba(155,136,215,0.34),transparent_72%),radial-gradient(ellipse_35%_40%_at_100%_100%,rgba(244,147,44,0.16),transparent_70%)]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_60%_at_50%_0%,rgba(30,70,200,0.34),transparent_72%),radial-gradient(ellipse_35%_40%_at_100%_100%,rgba(224,179,90,0.16),transparent_70%)]" />
       <div aria-hidden className="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1.2px)] [background-size:30px_30px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_30%,#000,transparent_75%)]" />
     </>
   );
@@ -39,7 +39,7 @@ export function Band({ tone = "white", children, className = "", id }: { tone?: 
       {tone === "dark" && (
         <>
           <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#00061d_0%,#00124a_55%,#00061d_100%)]" />
-          <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_50%_at_50%_0%,rgba(155,136,215,0.26),transparent_70%),radial-gradient(ellipse_30%_35%_at_0%_100%,rgba(244,147,44,0.12),transparent_70%)]" />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_50%_at_50%_0%,rgba(30,70,200,0.26),transparent_70%),radial-gradient(ellipse_30%_35%_at_0%_100%,rgba(224,179,90,0.12),transparent_70%)]" />
         </>
       )}
       {children}
@@ -53,11 +53,10 @@ export function Wrap({ children, max = "6xl", className = "" }: { children: Reac
 }
 
 /** Centered section heading with optional lead, revealed on scroll. */
-export function BandHead({ number, eyebrow, title, lead, tone = "onLight", size = "md" }: { number?: string; eyebrow: string; title: string; lead?: string; tone?: "onLight" | "onDark"; size?: "md" | "xl" }) {
+export function BandHead({ number, eyebrow, title, lead, tone = "onLight" }: { number?: string; eyebrow: string; title: string; lead?: string; tone?: "onLight" | "onDark" }) {
   return (
     <Reveal>
-      <SectionHeading number={number} eyebrow={eyebrow} title={title} tone={tone} size={size} />
-      {lead && <p className={`mx-auto mt-6 max-w-2xl text-center text-base font-light leading-8 ${tone === "onDark" ? "text-white/75" : "text-ink-soft"}`}>{lead}</p>}
+      <SectionHeading number={number} eyebrow={eyebrow} title={title} lead={lead} tone={tone} />
     </Reveal>
   );
 }
@@ -80,7 +79,7 @@ export function RowList({ items, tone = "light", cols = 1 }: { items: { title: s
       {items.map((it, i) => {
         const inner = (
           <div className="group relative flex items-start gap-5 overflow-hidden px-3 py-6 md:py-7">
-            <span aria-hidden className="absolute inset-0 origin-[100%_50%] scale-x-0 bg-[linear-gradient(to_left,rgba(155,136,215,0.18),rgba(243,166,182,0.14),rgba(244,147,44,0.12))] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+            <span aria-hidden className="absolute inset-0 origin-[100%_50%] scale-x-0 bg-[linear-gradient(to_left,rgba(224,179,90,0.18),rgba(246,226,179,0.14),rgba(224,179,90,0.12))] transition-transform duration-500 ease-out group-hover:scale-x-100" />
             <span className={`relative pt-2 font-display text-xs tracking-widest ${dark ? "text-white/50" : "text-[#00124a]/45"}`} dir="ltr">{String(i + 1).padStart(2, "0")}</span>
             <div className="relative flex-1">
               {it.tag && <span className={`mb-1 block text-xs ${dark ? "text-[#f6e2b3]" : "text-[#012696]"}`}>{it.tag}</span>}
@@ -107,7 +106,7 @@ export function Numbered({ items, tone = "light" }: { items: { title?: string; t
       {items.map((it, i) => (
         <Reveal key={i} delay={i * 90}>
           <div className={`h-full p-8 md:p-10 ${dark ? "border-white/12 md:border-s" : "border-[#00124a]/12 md:border-s"} first:border-s-0`}>
-            <span className="font-display grad-text block text-7xl font-light leading-none md:text-8xl" dir="ltr">{i + 1}</span>
+            <span className={`font-display ${dark ? "grad-text" : "grad-text-light"} block text-7xl font-light leading-none md:text-8xl`} dir="ltr">{i + 1}</span>
             {it.title && <h3 className={`font-display mt-6 text-2xl font-light ${dark ? "text-white" : "text-[#00124a]"}`}>{it.title}</h3>}
             <p className={`mt-3 text-[15px] font-light leading-8 ${dark ? "text-white/75" : "text-ink-soft"}`}>{it.text}</p>
           </div>

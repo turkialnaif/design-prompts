@@ -18,9 +18,9 @@ export default function PartnersTicker({ locale }: { locale: "ar" | "en" }) {
   return (
     <section aria-label={t.label} className="relative bg-[#f4f5fe] py-9 md:py-12">
       <div className="mx-auto mb-6 flex max-w-6xl items-center gap-4 px-5">
-        <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-[#9b88d7]/50" />
+        <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-[#e0b35a]/50" />
         <h2 className="font-display !text-lg !font-normal text-[#00124a] md:!text-2xl">{t.label}</h2>
-        <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-[#9b88d7]/50" />
+        <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-[#e0b35a]/50" />
       </div>
       <div dir="ltr" className="ticker overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
         <ul className="ticker-track">

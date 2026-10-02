@@ -7,7 +7,6 @@ import WhoWeServe from "@/components/WhoWeServe";
 import HomeServices from "@/components/HomeServices";
 import Preloader from "@/components/Preloader";
 import PartnersTicker from "@/components/PartnersTicker";
-import ServiceStandard from "@/components/ServiceStandard";
 import { newestFirst } from "@/lib/article-index";
 import BlogBand from "@/components/BlogBand";
 
@@ -25,25 +24,24 @@ export default function Home() {
     <div>
       <Preloader locale="ar" />
       <HomeHero locale="ar" />
-      <div id="content" />
 
-      <ScrollWords eyebrow="فلسفتنا" text={`نخدم الأفراد والشركات والمؤسسات، ونؤمن بأن القيمة القانونية الحقيقية هي التي تُبنى قبل القرار لا بعده.`} />
+      <div id="content" className="relative z-10">
+        <ScrollWords eyebrow="فلسفتنا" text={`نخدم الأفراد والشركات والمؤسسات، ونؤمن بأن القيمة القانونية الحقيقية هي التي تُبنى قبل القرار لا بعده.`} />
 
-      <HomeServices locale="ar" />
+        <HomeServices locale="ar" />
 
-      <LogoShowcase locale="ar" />
+        <LogoShowcase locale="ar" />
 
-      <TrustStrip locale="ar" />
+        <TrustStrip locale="ar" />
 
-      <WhoWeServe locale="ar" />
+        <WhoWeServe locale="ar" />
 
-      <PartnersTicker locale="ar" />
+        <Accreditations locale="ar" />
 
-      <Accreditations locale="ar" />
+        <PartnersTicker locale="ar" />
 
-      <ServiceStandard locale="ar" />
-
-      <BlogBand items={bandItems} />
+        <BlogBand items={bandItems} />
+      </div>
     </div>
   );
 }

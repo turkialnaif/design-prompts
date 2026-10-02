@@ -178,7 +178,7 @@ export default async function ArticlePage({
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
             <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-[#f6e2b3]">FAQ</p>
-            <h2 className="font-display mt-3 text-center text-3xl font-bold md:text-5xl">أسئلة شائعة</h2>
+            <h2 className="font-display mt-3 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">أسئلة شائعة</h2>
           </Reveal>
           <div className="mt-12 divide-y divide-white/12 border-y border-white/12">
             {article.faq.map((item) => (
@@ -196,7 +196,7 @@ export default async function ArticlePage({
         <div className="mx-auto mt-24 max-w-[92rem] px-4 md:px-8">
           <Reveal>
             <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-[#f6e2b3]">Keep Reading</p>
-            <h2 className="font-display mt-3 text-center text-3xl font-bold md:text-5xl">تابع القراءة</h2>
+            <h2 className="font-display mt-3 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">تابع القراءة</h2>
           </Reveal>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {related.map((a) => (

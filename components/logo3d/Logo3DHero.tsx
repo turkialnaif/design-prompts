@@ -7,7 +7,6 @@ import { Mark, detectWebGL, newRig } from "./Mark";
 /** The hero's mark: it flies together once the intro is out of the way, then turns to follow the pointer and drifts with the scroll. */
 export default function Logo3DHero() {
   const rig = useRef(newRig());
-  const host = useRef<HTMLDivElement>(null);
   const [run, setRun] = useState(true);
   const [webgl] = useState(detectWebGL);
 
@@ -16,7 +15,7 @@ export default function Logo3DHero() {
     const r = rig.current;
     const wide = window.matchMedia("(min-width: 768px)").matches;
     const baseY = wide ? 0.7 : 0.95;
-    const baseScale = wide ? 0.92 : 0.6;
+    const baseScale = wide ? 1.0 : 0.62;
     r.y = baseY;
     r.scale = baseScale;
     if (reduce) {
@@ -33,26 +32,22 @@ export default function Logo3DHero() {
     const onScroll = () => {
       if (reduce) return;
       const s = window.scrollY / window.innerHeight;
-      const leave = Math.min(1, s / 0.75);
-      r.explode = leave * 1.6;
-      r.y = baseY + leave * 1.1;
-      r.scale = baseScale + leave * 0.18;
-      r.spin = 0.16 + leave * 0.5;
+      const leave = Math.min(1, s);
+      r.y = baseY + leave * 0.8;
+      r.scale = baseScale + leave * 0.12;
+      setRun(s < 1.15);
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
-    const io = new IntersectionObserver(([e]) => setRun(e.isIntersecting));
-    if (host.current) io.observe(host.current);
     return () => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("scroll", onScroll);
-      io.disconnect();
     };
   }, []);
 
   if (!webgl) return null;
   return (
-    <div ref={host} aria-hidden className="pointer-events-none absolute inset-0">
+    <div aria-hidden className="pointer-events-none absolute inset-0">
       <Canvas
         frameloop={run ? "always" : "never"}
         camera={{ position: [0, 0, 10.5], fov: 36 }}

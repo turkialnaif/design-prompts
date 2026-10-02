@@ -96,7 +96,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
       {blocks.map((block, i) => {
         if (block.kind === "h2") {
           return (
-            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#9b88d7]/40 pt-10 text-2xl font-bold leading-[1.5] text-ink md:text-[2rem]">
+            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#e0b35a]/40 pt-10 text-2xl font-bold leading-[1.5] text-ink md:text-[2rem]">
               {block.text}
             </h2>
           );
@@ -159,7 +159,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
         if (block.kind === "table") {
           const [header, ...rows] = block.rows;
           return (
-            <div key={i} className="overflow-x-auto rounded-2xl ring-1 ring-[#9b88d7]/40" data-lenis-prevent>
+            <div key={i} className="overflow-x-auto rounded-2xl ring-1 ring-[#e0b35a]/40" data-lenis-prevent>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-[#00124a] text-[#f6e2b3]">

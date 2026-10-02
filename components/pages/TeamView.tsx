@@ -146,13 +146,13 @@ export default function TeamView({ attorney, locale }: { attorney: Attorney; loc
             <ul className="mt-12 flex flex-wrap justify-center gap-3">
               {attorney.practiceAreas.map((p) => (
                 <li key={p.label}>
-                  <Link href={p.href} className="chamfer-btn inline-block border border-[#00124a]/20 px-5 py-2.5 text-sm font-light text-[#00124a] transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe]">
+                  <Link href={p.href} className="chamfer-btn inline-block border border-[#00124a]/20 px-5 py-2.5 text-sm font-light text-[#00124a] transition-colors hover:border-[#e0b35a] hover:bg-[#f4f5fe]">
                     {p.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href={t.servicesHref} className="chamfer-btn inline-block border border-dashed border-[#9b88d7]/60 px-5 py-2.5 text-sm font-light text-ink-soft/70 transition-colors hover:text-[#012696]">
+                <Link href={t.servicesHref} className="chamfer-btn inline-block border border-dashed border-[#e0b35a]/60 px-5 py-2.5 text-sm font-light text-ink-soft/70 transition-colors hover:text-[#012696]">
                   {t.others}
                 </Link>
               </li>

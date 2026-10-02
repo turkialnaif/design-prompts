@@ -45,12 +45,11 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
   const rest = accreditations.filter((a) => a.key !== "arbitration");
   return (
     <section data-glow className="relative isolate overflow-hidden bg-[#00061d] pb-40 pt-36 md:pb-52 md:pt-44">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_40%_at_50%_0%,rgba(155,136,215,0.24),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_50%,#00061d_100%)]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_40%_at_50%_0%,rgba(30,70,200,0.24),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_50%,#00061d_100%)]" />
 
       <div className="relative mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
-          <SectionHeading title={t.title} eyebrow="Accreditations" tone="onDark" size="xl" />
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-8 text-white/75">{t.intro}</p>
+          <SectionHeading title={t.title} eyebrow="Accreditations" lead={t.intro} tone="onDark" />
           <p className="mx-auto mt-5 inline-block chamfer-btn border border-[#f6e2b3]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
             {accreditations.length} {en ? "accreditations and licences held" : "اعتمادًا وترخيصًا رسميًا"}
           </p>

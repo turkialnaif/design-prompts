@@ -52,13 +52,13 @@ export default function TrustStrip({ locale }: { locale: "ar" | "en" }) {
   const ar = locale === "ar";
   return (
     <section className="relative isolate overflow-hidden bg-[#f4f5fe] py-20 md:py-28">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_0%,rgba(155,136,215,0.16),transparent_70%)]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_0%,rgba(30,70,200,0.16),transparent_70%)]" />
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <dl className="grid divide-[#00124a]/12 border-y border-[#00124a]/12 sm:grid-cols-3 sm:divide-x rtl:sm:divide-x-reverse">
             {t.stats.map((s) => (
               <div key={s.label} className="px-4 py-10 text-center md:py-14">
-                <dd className="font-display grad-text text-7xl font-light leading-none md:text-8xl">
+                <dd className="font-display grad-text-light text-7xl font-light leading-none md:text-8xl">
                   <CountUp to={s.value} />
                 </dd>
                 <dt className="mt-4 text-base font-light text-[#00124a]">{s.label}</dt>

@@ -30,8 +30,7 @@ export default function WhoWeServe({ locale }: { locale: "ar" | "en" }) {
       <div className="mx-auto max-w-7xl px-5">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <SectionHeading title={t.title} eyebrow={t.eyebrow} tone="onLight" size="xl" />
-            <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-8 text-ink-soft">{t.lead}</p>
+            <SectionHeading title={t.title} eyebrow={t.eyebrow} lead={t.lead} tone="onLight" />
           </div>
         </Reveal>
         <ul className="mt-16 grid border-t border-[#00124a]/15 md:grid-cols-2 md:gap-x-16">
@@ -39,7 +38,7 @@ export default function WhoWeServe({ locale }: { locale: "ar" | "en" }) {
             <li key={s.slug} className="border-b border-[#00124a]/15">
               <Reveal delay={(i % 2) * 60}>
                 <Link href={`${t.base}/${s.slug}`} className="group relative flex items-center gap-4 overflow-hidden px-3 py-5 md:py-6">
-                  <span aria-hidden className="absolute inset-0 origin-[100%_50%] scale-x-0 bg-[linear-gradient(to_left,rgba(155,136,215,0.16),rgba(243,166,182,0.14),rgba(244,147,44,0.12))] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  <span aria-hidden className="absolute inset-0 origin-[100%_50%] scale-x-0 bg-[linear-gradient(to_left,rgba(224,179,90,0.16),rgba(246,226,179,0.14),rgba(224,179,90,0.12))] transition-transform duration-500 ease-out group-hover:scale-x-100" />
                   <span className="relative font-display text-xs tracking-widest text-[#00124a]/45" dir="ltr">{String(i + 1).padStart(2, "0")}</span>
                   <span className="relative font-display flex-1 text-2xl font-light text-[#00124a] transition-transform duration-500 group-hover:translate-x-[var(--nudge)] md:text-3xl" style={{ ["--nudge" as string]: locale === "ar" ? "-12px" : "12px" }}>
                     {s[locale].title}

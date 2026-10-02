@@ -135,7 +135,7 @@ export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
       if (m) {
         c.hl[p.group] = MathUtils.damp(c.hl[p.group], r.hl[p.group], 5, dt);
         const lit = 1 - r.dim * (1 - c.hl[p.group]);
-        m.color.copy(BASE).multiplyScalar(0.4 + 0.6 * lit);
+        m.color.copy(BASE).multiplyScalar(0.55 + 0.45 * lit);
         m.emissiveIntensity = 0.1 + (r.dim > 0 ? 0.85 * c.hl[p.group] * r.dim : 0);
       }
     });

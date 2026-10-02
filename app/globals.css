@@ -7,10 +7,10 @@
   --ink-2: #0f1e30;
   --ink-3: #1c3554;
   --ink-4: #2c4d78;
-  --line-on-ink: rgba(155, 136, 215, 0.3);
+  --line-on-ink: rgba(224,179,90, 0.3);
 
   /* Gold — sampled from the logo mark */
-  --gold: #9b88d7;
+  --gold: #e0b35a;
   --gold-soft: #f6e2b3;
   --gold-deep: #012696;
   /* Same hue, darkened for text set directly on light surfaces — #d0a751 and
@@ -74,7 +74,7 @@ body {
   box-shadow: none;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
-.glass-card:hover { border-color: rgba(155, 136, 215, 0.7); }
+.glass-card:hover { border-color: rgba(224,179,90, 0.7); }
 .glass-card-dark {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.1) 100%);
   -webkit-backdrop-filter: blur(20px) saturate(170%);
@@ -90,7 +90,7 @@ body {
   background-clip: text;
 }
 .glass-number-light {
-  background-image: linear-gradient(to left, #9b88d7 0%, #f3a6b6 55%, #f4932c 100%);
+  background-image: linear-gradient(to left, #012696 0%, #3a54b8 50%, #c99a3c 100%);
   filter: none;
 }
 .glass-number-dark {
@@ -205,7 +205,16 @@ main section.border-t {
 [class*="rounded-[1."] { border-radius: 0 !important; }
 
 .grad-text {
-  background-image: linear-gradient(to left, #9b88d7 0%, #f3a6b6 52%, #f4932c 100%);
+  background-image: linear-gradient(to left, #dbe4ff 0%, #f6e2b3 52%, #e0b35a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Light surfaces: the same gradient family, deep enough to read on white. */
+.grad-text-light {
+  background-image: linear-gradient(to left, #012696 0%, #3a54b8 50%, #c99a3c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -241,7 +250,7 @@ h2.font-display {
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } .ticker { overflow-x: auto; } }
 
 /* Soft glow that follows the pointer over dark sections (desktop only; see CursorGlow). */
-.cursor-glow { position: fixed; left: 0; top: 0; width: 460px; height: 460px; margin: -230px 0 0 -230px; border-radius: 50%; pointer-events: none; z-index: 40; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(circle, rgba(155, 136, 215, 0.3) 0%, rgba(244, 147, 44, 0.12) 38%, transparent 68%); will-change: transform; }
+.cursor-glow { position: fixed; left: 0; top: 0; width: 460px; height: 460px; margin: -230px 0 0 -230px; border-radius: 50%; pointer-events: none; z-index: 40; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(circle, rgba(224,179,90, 0.2) 0%, rgba(224,179,90, 0.07) 38%, transparent 68%); will-change: transform; }
 .cursor-glow[data-on="1"] { opacity: 1; }
 @media (hover: none), (prefers-reduced-motion: reduce) { .cursor-glow { display: none; } }
 
@@ -263,6 +272,24 @@ h2.font-display {
 .hero-cut { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 44px)); }
 .hero-cut:dir(rtl) { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 44px), 0 100%); }
 
-/* The hero lets go as --hp (0..1, set by HeroPin) rises. */
-.hero-pin { opacity: calc(1 - var(--hp, 0) * 1.05); transform: translate3d(0, calc(var(--hp, 0) * -5svh), 0) scale(calc(1 - var(--hp, 0) * 0.09)); transform-origin: 50% 40%; will-change: opacity, transform; }
-@media (prefers-reduced-motion: reduce) { .hero-pin { opacity: 1; transform: none; } }
+
+/* Home hero: pinned under the page that slides over it. --hp (0..1) is set by HeroScroll. */
+.hero-curtain > :not(.hero-dim) { transform: scale(calc(1 - var(--hp, 0) * 0.07)); transform-origin: 50% 35%; }
+.hero-dim { opacity: calc(var(--hp, 0) * 0.85); }
+@media (prefers-reduced-motion: reduce) { .hero-curtain > :not(.hero-dim) { transform: none; } .hero-dim { display: none; } }
+
+/* The next section meets the hero on a slanted edge — deep cut at the start side, mirrored for RTL. */
+.curtain-top { --cut: 64px; margin-top: calc(var(--cut) * -1); padding-top: calc(var(--cut) + 7rem); clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%); }
+.curtain-top:dir(rtl) { clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%); }
+@media (min-width: 768px) { .curtain-top { padding-top: calc(var(--cut) + 11rem); } }
+
+/* Hero rings: two thin gold orbits turning slowly around the mark. */
+@keyframes ring-cw { to { transform: rotate(360deg); } }
+@keyframes ring-ccw { to { transform: rotate(-360deg); } }
+.hero-ring-a { animation: ring-cw 80s linear infinite; }
+.hero-ring-b { animation: ring-ccw 120s linear infinite; }
+@keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.hero-cue { animation: cue 2.4s ease-in-out infinite; }
+@keyframes hero-kenburns { from { transform: scale(1.04); } to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); } }
+.hero-kenburns { animation: hero-kenburns 28s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .hero-ring-a, .hero-ring-b, .hero-cue, .hero-kenburns { animation: none; } }

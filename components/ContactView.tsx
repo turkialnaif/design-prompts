@@ -140,7 +140,7 @@ export default function ContactView({ locale }: { locale: "ar" | "en" }) {
 
             <Reveal delay={160}>
               <div data-glow className="relative isolate overflow-hidden rounded-3xl bg-[#00061d] p-7 text-white md:p-9">
-                <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_0%_0%,rgba(155,136,215,0.3),transparent_70%),linear-gradient(180deg,#00124a,#00061d)]" />
+                <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_0%_0%,rgba(30,70,200,0.3),transparent_70%),linear-gradient(180deg,#00124a,#00061d)]" />
                 <span className="chamfer-btn flex h-12 w-12 items-center justify-center bg-white/10">
                   <MapPin className="h-5 w-5 text-[#f6e2b3]" />
                 </span>

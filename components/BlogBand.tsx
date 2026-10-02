@@ -13,7 +13,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
       href={`/blog/${a.slug}`}
       aria-hidden={hidden}
       tabIndex={hidden ? -1 : undefined}
-      className="group block w-[15.5rem] shrink-0 overflow-hidden rounded-2xl bg-[#f4f5fe] shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55)] ring-1 ring-[#9b88d7]/40 transition-transform duration-300 hover:-translate-y-1 md:w-[16.5rem]"
+      className="group block w-[15.5rem] shrink-0 overflow-hidden rounded-2xl bg-[#f4f5fe] shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55)] ring-1 ring-[#e0b35a]/40 transition-transform duration-300 hover:-translate-y-1 md:w-[16.5rem]"
     >
       <div className="relative h-40 overflow-hidden bg-[#00124a]">
         {photo && (
@@ -28,7 +28,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
             style={{ objectPosition: photo.focus }}
           />
         )}
-        <div className="absolute start-3 top-3 rounded-md bg-[#00124a] px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#9b88d7]/60">
+        <div className="absolute start-3 top-3 rounded-md bg-[#00124a] px-3 py-1.5 text-center leading-tight text-white ring-1 ring-[#e0b35a]/60">
           <div className="font-display text-lg font-bold">{a.day}</div>
           <div className="text-[10px] text-[#f6e2b3]">{a.month}</div>
         </div>
@@ -61,11 +61,11 @@ export default function BlogBand({ items }: { items: BandItem[] }) {
   const b = items.slice(half);
   return (
     <section data-glow className="relative isolate overflow-hidden bg-[linear-gradient(105deg,#00061d_0%,#00124a_55%,#012696_135%)]">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_70%_at_0%_100%,rgba(155,136,215,0.3),transparent_70%),radial-gradient(ellipse_30%_50%_at_100%_0%,rgba(244,147,44,0.14),transparent_70%)]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_70%_at_0%_100%,rgba(30,70,200,0.3),transparent_70%),radial-gradient(ellipse_30%_50%_at_100%_0%,rgba(224,179,90,0.14),transparent_70%)]" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:min-h-[40rem] lg:grid-cols-[1fr_1.1fr] lg:gap-6">
         <div className="pt-20 text-center lg:py-20 lg:text-start">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#f6e2b3]">Legal Insights</p>
-          <h2 className="font-display grad-text mt-3 text-5xl md:text-6xl">مدونتنا القانونية</h2>
+          <h2 className="font-display grad-text mt-4 text-4xl leading-[1.25] sm:text-5xl md:text-6xl">مدونتنا القانونية</h2>
           <p className="mx-auto mt-4 max-w-md text-lg leading-9 text-white/80 lg:mx-0">بحوث ومقالات نظامية في مختلف المواضيع القانونية، في مكان واحد.</p>
           <div className="mt-9 flex justify-center lg:justify-start">
             <ArrowButton href="/blog">زيارة المدونة</ArrowButton>

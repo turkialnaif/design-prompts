@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
-import { Mark, detectWebGL, startIntro, type RigState } from "./Mark";
+import { Mark, detectWebGL, type RigState } from "./Mark";
 
 /** The WebGL half of the scroll-pinned showcase; the section component writes targets into `rig`. */
 export default function ShowcaseStage({ rig }: { rig: MutableRefObject<RigState> }) {
@@ -24,9 +24,6 @@ export default function ShowcaseStage({ rig }: { rig: MutableRefObject<RigState>
           camera={{ position: [0, 0, 10.5], fov: 36 }}
           gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
           dpr={[1, 1.75]}
-          onCreated={({ clock }) => {
-            startIntro(rig, clock.elapsedTime, 0.1);
-          }}
         >
           <Mark rig={rig} />
         </Canvas>

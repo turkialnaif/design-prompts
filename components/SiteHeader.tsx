@@ -92,7 +92,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative whitespace-nowrap py-1 text-[14px] font-normal transition-colors xl:text-[15px] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:bg-[#f4932c] after:transition-transform ${
+                  className={`relative whitespace-nowrap py-1 text-[14px] font-normal transition-colors xl:text-[15px] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:bg-[#e0b35a] after:transition-transform ${
                     active ? "text-[#f6e2b3] after:scale-x-100" : "text-white/85 after:scale-x-0 hover:text-white hover:after:scale-x-100"
                   }`}
                 >

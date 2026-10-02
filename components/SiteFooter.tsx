@@ -104,11 +104,11 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
       >
         <Image src="/brand/riyadh-skyline.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.28] [filter:saturate(0.7)_hue-rotate(8deg)]" />
       </div>
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(155,136,215,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(244,147,44,0.14),transparent_70%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(30,70,200,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(224,179,90,0.14),transparent_70%)]" />
 
       <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-28 md:pt-36">
         <div data-footer-cta className="text-center">
-          <h2 className="font-display grad-text mx-auto max-w-4xl text-4xl leading-[1.3] md:text-7xl">{t.ctaTitle}</h2>
+          <h2 className="font-display grad-text mx-auto max-w-4xl text-4xl leading-[1.3] sm:text-5xl md:text-6xl">{t.ctaTitle}</h2>
           <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75 md:text-lg">{t.ctaBody}</p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <ArrowButton href={firm.whatsapp} external ltr={!ar}>{t.ctaWhatsapp}</ArrowButton>

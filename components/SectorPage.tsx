@@ -150,7 +150,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
                   <Link
                     href={`/services/${s.slug}`}
                     hrefLang={ar ? undefined : "ar"}
-                    className="group flex h-full items-center justify-between gap-3 border border-[#00124a]/15 bg-white px-5 py-5 transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe] chamfer-btn"
+                    className="group flex h-full items-center justify-between gap-3 border border-[#00124a]/15 bg-white px-5 py-5 transition-colors hover:border-[#e0b35a] hover:bg-[#f4f5fe] chamfer-btn"
                   >
                     <span className="font-display text-lg font-normal text-[#00124a]">{ar ? s.title : `${s.titleEn}${t.arLabel}`}</span>
                     <span aria-hidden className="text-[#012696] transition-transform group-hover:-translate-x-1 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1">{ar ? "←" : "→"}</span>
@@ -203,9 +203,9 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
       )}
 
       <section data-glow className="relative isolate overflow-hidden bg-[#00061d] py-24 text-center text-white md:py-32">
-        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,rgba(155,136,215,0.3),transparent_70%)]" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,rgba(30,70,200,0.3),transparent_70%)]" />
         <div className="mx-auto max-w-3xl px-5">
-          <h2 className="font-display grad-text text-4xl leading-[1.3] md:text-6xl">{t.ctaTitle}</h2>
+          <h2 className="font-display grad-text text-4xl leading-[1.3] sm:text-5xl md:text-6xl">{t.ctaTitle}</h2>
           <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75">{t.ctaBody}</p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <ArrowButton href={firm.whatsapp} external ltr={!ar}>{t.wa}</ArrowButton>
@@ -220,7 +220,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
           <ul className="flex flex-wrap justify-center gap-2.5">
             {others.map((s) => (
               <li key={s.slug}>
-                <Link href={`${t.base}/${s.slug}`} className="chamfer-btn inline-block border border-[#00124a]/20 px-4 py-2 text-sm font-light text-[#00124a] transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe]">
+                <Link href={`${t.base}/${s.slug}`} className="chamfer-btn inline-block border border-[#00124a]/20 px-4 py-2 text-sm font-light text-[#00124a] transition-colors hover:border-[#e0b35a] hover:bg-[#f4f5fe]">
                   {s[locale].title}
                 </Link>
               </li>

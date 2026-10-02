@@ -73,7 +73,7 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
 
       <Band tone="white">
         <Wrap>
-          <BandHead {...t.core} size="xl" />
+          <BandHead {...t.core} />
           <div className="mt-14">
             <ServiceTiles items={pillarTiles(locale)} cta={t.cta} />
           </div>
@@ -82,7 +82,7 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
 
       <Band tone="tint">
         <Wrap>
-          <BandHead {...t.lines} size="xl" />
+          <BandHead {...t.lines} />
           <div className="mt-14">
             <SpecializedExplorer
               locale={locale}
@@ -103,7 +103,7 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
             <ul className="mt-12 flex flex-wrap justify-center gap-2.5">
               {sectors.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`${t.base}/${s.slug}`} className="chamfer-btn inline-block border border-white/20 px-4 py-2 text-sm font-light text-white/85 transition-colors hover:border-[#9b88d7] hover:bg-white/10 hover:text-white">
+                  <Link href={`${t.base}/${s.slug}`} className="chamfer-btn inline-block border border-white/20 px-4 py-2 text-sm font-light text-white/85 transition-colors hover:border-[#e0b35a] hover:bg-white/10 hover:text-white">
                     {s[locale].title}
                   </Link>
                 </li>

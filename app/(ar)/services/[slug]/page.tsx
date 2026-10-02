@@ -335,7 +335,7 @@ export default async function ServicePage({
             <ul className="mt-8 flex flex-wrap justify-center gap-2.5">
               {relatedSectors.map((x) => (
                 <li key={x.slug}>
-                  <Link href={`/sectors/${x.slug}`} className="chamfer-btn inline-block border border-[#00124a]/20 px-4 py-2 text-sm font-light text-[#00124a] transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe]">
+                  <Link href={`/sectors/${x.slug}`} className="chamfer-btn inline-block border border-[#00124a]/20 px-4 py-2 text-sm font-light text-[#00124a] transition-colors hover:border-[#e0b35a] hover:bg-[#f4f5fe]">
                     {x.ar.title}
                   </Link>
                 </li>

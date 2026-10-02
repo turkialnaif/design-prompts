@@ -25,11 +25,10 @@ export default function HomeServices({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   return (
     <section data-glow className="relative isolate overflow-hidden bg-[#00061d] py-28 md:py-40">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_40%_at_100%_0%,rgba(244,147,44,0.14),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_45%,#00061d_100%)]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_40%_at_100%_0%,rgba(224,179,90,0.14),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_45%,#00061d_100%)]" />
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
-          <SectionHeading title={t.title} eyebrow={t.eyebrow} tone="onDark" size="xl" />
-          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-8 text-white/80">{t.lead}</p>
+          <SectionHeading title={t.title} eyebrow={t.eyebrow} lead={t.lead} tone="onDark" />
           <p className="chamfer-btn mx-auto mt-6 inline-block border border-[#f6e2b3]/40 bg-white/10 px-5 py-2 text-xs font-normal text-[#f6e2b3] backdrop-blur-md">{t.badge}</p>
         </Reveal>
         <div className="mt-14">

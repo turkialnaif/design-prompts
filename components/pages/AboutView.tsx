@@ -4,7 +4,7 @@ import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import ServiceStandard from "@/components/ServiceStandard";
+import LogoShowcase from "@/components/LogoShowcase";
 import { Band, BandHead, HeroHead, Numbered, Wrap } from "@/components/ui";
 import { attorneys, corePillars, firm, matterMethod } from "@/lib/site";
 import { attorneyEn, firmEn } from "@/lib/site.en";
@@ -117,16 +117,18 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
-      <Band tone="dark">
+      <Band tone="tint">
         <Wrap max="6xl">
-          <BandHead {...t.principlesHead} tone="onDark" />
+          <BandHead {...t.principlesHead} />
           <div className="mt-14">
-            <Numbered items={t.principles} tone="dark" />
+            <Numbered items={t.principles} />
           </div>
         </Wrap>
       </Band>
 
-      <Band tone="tint">
+      <LogoShowcase locale={locale} variant="standard" />
+
+      <Band tone="white">
         <Wrap max="6xl">
           <BandHead {...t.methodHead} />
           <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +147,7 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
-      <Band tone="white">
+      <Band tone="tint">
         <Wrap max="5xl">
           <BandHead {...t.leaderHead} />
           <Reveal>
@@ -163,8 +165,6 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
           </Reveal>
         </Wrap>
       </Band>
-
-      <ServiceStandard locale={locale} />
     </div>
   );
 }

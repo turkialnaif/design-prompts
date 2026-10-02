@@ -112,11 +112,11 @@ function Sheet({ children, dark = false, num, locale, last = false }: { children
           className="absolute bottom-[8mm] start-0 end-0 flex items-center justify-center gap-3 text-[9px] tracking-[0.2em]"
           style={{ color: dark ? "rgba(255,255,255,0.4)" : "rgba(51,65,95,0.5)" }}
         >
-          <span style={{ width: "10mm", height: 1, background: "#9b88d7", opacity: 0.6 }} />
+          <span style={{ width: "10mm", height: 1, background: "#e0b35a", opacity: 0.6 }} />
           <span>
             {T[locale].page} {num}
           </span>
-          <span style={{ width: "10mm", height: 1, background: "#9b88d7", opacity: 0.6 }} />
+          <span style={{ width: "10mm", height: 1, background: "#e0b35a", opacity: 0.6 }} />
         </div>
       )}
     </section>
@@ -125,7 +125,7 @@ function Sheet({ children, dark = false, num, locale, last = false }: { children
 
 function PageHead({ e, h, locale }: { e: string; h: string; locale: Locale }) {
   return (
-    <div className="flex items-center justify-between gap-6 border-b pb-4" style={{ borderColor: "rgba(155,136,215,0.45)" }}>
+    <div className="flex items-center justify-between gap-6 border-b pb-4" style={{ borderColor: "rgba(224,179,90,0.45)" }}>
       <div>
         <h2 className="font-display text-[26px] font-bold leading-[1.4] text-[#00124a]">{h}</h2>
         <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-gold-text">{e}</p>
@@ -143,7 +143,7 @@ const regulatorLogos: { src: string; h: string }[] = [
 ];
 
 const card = "rounded-[14px] border";
-const cardStyle = { borderColor: "rgba(155,136,215,0.5)", background: "#fffdf8" } as const;
+const cardStyle = { borderColor: "rgba(224,179,90,0.5)", background: "#fffdf8" } as const;
 
 export default async function ProfileDocument({ locale }: { locale: Locale }) {
   const en = locale === "en";
@@ -231,7 +231,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               <div key={p.n} className={`${card} px-5 py-7 text-center`} style={cardStyle}>
                 <span
                   className="font-display text-[40px] font-extrabold leading-none"
-                  style={{ color: "rgba(155,136,215,0.55)" }}
+                  style={{ color: "rgba(224,179,90,0.55)" }}
                 >
                   {p.n}
                 </span>
@@ -251,7 +251,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               <div key={x.l} className={`${card} px-3 py-6 text-center`} style={cardStyle}>
                 <span
                   className="font-display text-[42px] font-extrabold leading-none"
-                  style={{ color: "rgba(155,136,215,0.55)" }}
+                  style={{ color: "rgba(224,179,90,0.55)" }}
                 >
                   {x.v}
                 </span>
@@ -263,7 +263,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
           <h3 className={`font-display ${en ? "mt-[8mm]" : "mt-[14mm]"} text-[15px] font-bold text-gold-text`}>{en ? "The client journey" : "رحلة العميل"}</h3>
           <div className="mt-4 flex items-stretch gap-2">
             {corePillars.map((p, i) => (
-              <div key={p.slug} className="flex-1 rounded-[12px] px-2 py-4 text-center" style={{ background: i % 2 ? "#00124a" : "#9b88d7", color: i % 2 ? "#fff" : "#00124a" }}>
+              <div key={p.slug} className="flex-1 rounded-[12px] px-2 py-4 text-center" style={{ background: i % 2 ? "#00124a" : "#e0b35a", color: i % 2 ? "#fff" : "#00124a" }}>
                 <p className="text-[8.5px] font-bold opacity-80">0{i + 1}</p>
                 <p className="font-display mt-1 text-[10.5px] font-bold leading-[1.5]">{p.stage}</p>
               </div>
@@ -354,7 +354,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               <div key={s.step} className={`${card} px-3 py-6 text-center`} style={cardStyle}>
                 <span
                   className="font-display text-[36px] font-extrabold leading-none"
-                  style={{ color: "rgba(155,136,215,0.55)" }}
+                  style={{ color: "rgba(224,179,90,0.55)" }}
                 >
                   {s.step}
                 </span>
@@ -395,7 +395,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               <img
                 src="/brand/attorney-turki.jpg"
                 alt=""
-                style={{ width: "56mm", height: "70mm", objectFit: "cover", objectPosition: "top", borderRadius: 14, border: "1px solid rgba(155,136,215,0.6)" }}
+                style={{ width: "56mm", height: "70mm", objectFit: "cover", objectPosition: "top", borderRadius: 14, border: "1px solid rgba(224,179,90,0.6)" }}
               />
               <h3 className="font-display mt-4 text-[17px] font-bold text-[#00124a]">{attorney.name}</h3>
               <p className="mt-1 text-[10px] font-bold leading-[1.7] text-gold-text">{attorney.role}</p>
@@ -422,7 +422,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
           <h3 className="font-display mt-[6mm] text-[15px] font-bold text-gold-text">{en ? "Practice areas" : "مجالات الممارسة"}</h3>
           <div className="mt-3 flex flex-wrap gap-2">
             {attorney.practiceAreas.map((a) => (
-              <span key={a.label} className="rounded-full border px-4 py-1.5 text-[11px] font-bold text-[#33415f]" style={{ borderColor: "rgba(155,136,215,0.55)", background: "rgba(255,255,255,0.7)" }}>
+              <span key={a.label} className="rounded-full border px-4 py-1.5 text-[11px] font-bold text-[#33415f]" style={{ borderColor: "rgba(224,179,90,0.55)", background: "rgba(255,255,255,0.7)" }}>
                 {a.label}
               </span>
             ))}
@@ -448,7 +448,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
                     <img key={l.src} src={l.src} alt="" style={{ height: "12mm", maxWidth: "100%", width: "auto", objectFit: "contain" }} />
                   ))}
                 </div>
-                <span className="mt-3 block h-px w-[8mm]" style={{ background: "#9b88d7" }} />
+                <span className="mt-3 block h-px w-[8mm]" style={{ background: "#e0b35a" }} />
                 <h3 className="font-display mt-3 text-[10.5px] font-bold leading-[1.75] text-[#00124a]">{a[locale].title}</h3>
               </div>
             ))}
@@ -460,10 +460,10 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
       <Sheet dark num={8} locale={locale} last>
         <img src="/brand/riyadh-kafd.jpg" alt="" className="absolute inset-0" style={{ width: "210mm", height: "296.5mm", objectFit: "cover", objectPosition: "50% 40%" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,6,29,0.78) 0%, rgba(0,6,29,0.9) 60%, rgba(0,6,29,0.96) 100%)" }} />
-        <div className="absolute inset-[9mm] rounded-[6px] border" style={{ borderColor: "rgba(155,136,215,0.45)" }} />
+        <div className="absolute inset-[9mm] rounded-[6px] border" style={{ borderColor: "rgba(224,179,90,0.45)" }} />
         <div className="relative px-[20mm] pt-[20mm] text-center">
           <img src="/brand/logo-lockup.png" alt="" style={{ width: "62mm", margin: "0 auto" }} />
-          <p className="mt-[12mm] text-[10px] font-bold uppercase tracking-[0.3em] text-[#9b88d7]">{t.contactE}</p>
+          <p className="mt-[12mm] text-[10px] font-bold uppercase tracking-[0.3em] text-[#e0b35a]">{t.contactE}</p>
           <h2 className="font-display mt-2 text-[34px] font-bold leading-[1.5] text-white">{t.contactH}</h2>
           <p className="mx-auto mt-3 text-[12px] leading-[2] text-white/65" style={{ maxWidth: "130mm" }}>
             {t.contactP}
