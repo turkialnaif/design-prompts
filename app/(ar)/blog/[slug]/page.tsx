@@ -16,6 +16,7 @@ import { audienceLabels, audiencesOf, readLabel } from "@/lib/article-meta";
 import AuthorBox from "@/components/AuthorBox";
 import Reveal from "@/components/Reveal";
 import { NavyField } from "@/components/ui";
+import { Logo3DReader } from "@/components/logo3d/lazy";
 import { articlePhoto } from "@/lib/article-photos";
 import ArticlePoster from "@/components/ArticlePoster";
 import ArticleToc from "@/components/ArticleToc";
@@ -123,6 +124,7 @@ export default async function ArticlePage({
   return (
     <div>
       <ReadingProgress minutes={readMinutes} />
+      <Logo3DReader />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 

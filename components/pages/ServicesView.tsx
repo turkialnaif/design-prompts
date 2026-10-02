@@ -85,7 +85,7 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
-      <WhoWeServe locale={locale} hideAll />
+      <WhoWeServe locale={locale} />
     </div>
   );
 }

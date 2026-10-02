@@ -12,7 +12,14 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // standalone Node scripts that build the printed brand kit, not site code
+    "brand-kit/**",
   ]),
+  {
+    // the printed profile is rendered by headless Chrome from plain <img>; next/image adds nothing there
+    files: ["components/print/**"],
+    rules: { "@next/next/no-img-element": "off" },
+  },
 ]);
 
 export default eslintConfig;

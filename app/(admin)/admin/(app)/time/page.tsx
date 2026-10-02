@@ -17,7 +17,7 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
   const team = manager && sp.team === "1";
   const d = await db();
   const scope = await matterScope(user);
-  const since = new Date(Date.now() - 60 * 864e5).toISOString().slice(0, 10);
+  const since = new Date(new Date().getTime() - 60 * 864e5).toISOString().slice(0, 10);
   const monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().slice(0, 10);
 
   const myMatters = await d.select({ id: matters.id, number: matters.number, title: matters.title }).from(matters).where(and(eq(matters.status, "open"), scope)).limit(300);

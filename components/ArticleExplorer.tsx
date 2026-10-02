@@ -27,6 +27,13 @@ export type ClusterOption = { key: string; label: string; count: number };
 
 const PAGE = 9;
 
+const topicNote: Record<string, string> = {
+  corporate: "حوكمة الشركات ومسؤولية المديرين واتفاقيات الشركاء وفضّ نزاعاتهم.",
+  contracts: "صياغة العقود التجارية وإنهاؤها والتعويضات والقوة القاهرة.",
+  disputes: "الإثبات، والتسوية مقابل التقاضي، وتحصيل المديونيات التجارية.",
+  individuals: "العمل والميراث والإيجار والوكالات وحقوق الأفراد.",
+};
+
 const tab = (on: boolean) =>
   `shrink-0 border-b px-1 pb-2 pt-1 text-sm transition-colors duration-200 ${on ? "border-[#e0b35a] text-[#f6e2b3]" : "border-transparent text-white/60 hover:text-white"}`;
 
@@ -94,8 +101,40 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
         </div>
       )}
 
+      {!filtering && view === "grid" && (
+        <div className="mx-auto mt-16 max-w-[92rem] px-4 md:px-8">
+          <p className="mb-5 flex items-center gap-3 text-sm text-[#f6e2b3]">
+            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-[#e0b35a]" /> تصفّح بحسب المحور
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {clusters.map((c) => (
+              <button
+                key={c.key}
+                type="button"
+                onClick={() => {
+                  setCluster(c.key);
+                  setShown(PAGE);
+                  document.getElementById("archive")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group frame relative bg-[#00124a] p-6 text-start ring-1 ring-white/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(224,179,90,0.35)]"
+              >
+                <span className="font-display block text-7xl font-extralight leading-none text-transparent [-webkit-text-stroke:1px_rgba(246,226,179,0.8)] transition-[-webkit-text-stroke] duration-500 group-hover:[-webkit-text-stroke:1px_#f6e2b3]" dir="ltr">
+                  {String(c.count).padStart(2, "0")}
+                </span>
+                <span className="font-display mt-5 block text-2xl font-light text-white">{c.label}</span>
+                <span className="mt-2 block text-sm font-light leading-7 text-white/60">{topicNote[c.key]}</span>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f6e2b3]">
+                  <span className="h-px w-6 bg-[#e0b35a] transition-all duration-300 group-hover:w-12" />
+                  تصفّح المحور
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Filter rail — stays under the header while the archive scrolls */}
-      <div className="z-30 mt-16 border-y border-white/10 bg-[#00061d]/90 backdrop-blur-xl md:sticky md:top-[4.9rem]">
+      <div id="archive" className="z-30 mt-16 scroll-mt-24 border-y border-white/10 bg-[#00061d]/90 backdrop-blur-xl md:sticky md:top-[4.9rem]">
         <div className="mx-auto flex max-w-[92rem] flex-col gap-4 px-4 py-4 md:px-8">
           <div className="flex items-center gap-4">
             <div data-lenis-prevent className="flex min-w-0 flex-1 gap-6 overflow-x-auto [scrollbar-width:none]">

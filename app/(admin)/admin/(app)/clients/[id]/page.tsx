@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { clientContacts, clientUsers, clients, invoices, matters, payments } from "@/lib/db/schema";
 import { requireStaff } from "@/lib/auth/session";
 import { can } from "@/lib/auth/perms";
-import { Badge, Card, Empty, Field, Flash, Input, LinkButton, PageHeader, SubmitButton, Table, Td, Th, fmtDate, money } from "@/components/admin/ui";
+import { Badge, Card, Empty, Flash, Input, LinkButton, PageHeader, SubmitButton, Table, Td, Th, fmtDate, money } from "@/components/admin/ui";
 import ClientForm from "@/components/admin/ClientForm";
 import PortalUserForm from "@/components/admin/PortalUserForm";
 import { addContactAction, deleteContactAction, togglePortalUser, toggleArchiveClient, updateClientAction } from "@/lib/erp/client-actions";

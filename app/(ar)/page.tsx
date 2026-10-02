@@ -2,8 +2,7 @@ import HomeHero from "@/components/HomeHero";
 import TrustStrip from "@/components/TrustStrip";
 import ScrollWords from "@/components/ScrollWords";
 import LogoShowcase from "@/components/LogoShowcase";
-import WhoWeServe from "@/components/WhoWeServe";
-import HomeServices from "@/components/HomeServices";
+import ServicesSectors from "@/components/ServicesSectors";
 import Preloader from "@/components/Preloader";
 import { newestFirst } from "@/lib/article-index";
 import BlogBand from "@/components/BlogBand";
@@ -26,13 +25,11 @@ export default function Home() {
       <div id="content" className="relative z-10">
         <ScrollWords eyebrow="فلسفتنا" text={`نخدم الأفراد والشركات والمؤسسات، ونؤمن بأن القيمة القانونية الحقيقية هي التي تُبنى قبل القرار لا بعده.`} />
 
-        <HomeServices locale="ar" />
+        <ServicesSectors locale="ar" />
 
         <LogoShowcase locale="ar" />
 
         <TrustStrip locale="ar" />
-
-        <WhoWeServe locale="ar" />
 
         <BlogBand items={bandItems} />
       </div>

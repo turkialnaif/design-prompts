@@ -102,6 +102,8 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
           </div>
         </div>
 
+        <PartnersCurtain locale={locale} />
+
         <div className="chamfer-lg mt-20 grid gap-12 border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl md:mt-28 md:grid-cols-[1.3fr_1fr_1.2fr] md:p-12">
           <div className="flex flex-col items-center text-center md:items-start md:text-start">
             <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-12 w-auto" />
@@ -156,8 +158,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
           <p>{t.license}</p>
         </div>
       </div>
-
-      <PartnersCurtain locale={locale} />
     </footer>
   );
 }

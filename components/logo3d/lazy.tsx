@@ -33,3 +33,5 @@ function afterIdle<P extends object>(load: () => Promise<{ default: ComponentTyp
 export const Logo3DHero = afterIdle(() => import("./Logo3DHero"));
 export const Logo3DMini = afterIdle(() => import("./Logo3DMini"), 768);
 export const LogoShowcaseStage = afterIdle(() => import("./ShowcaseStage"));
+export const Logo3DFollow = afterIdle(() => import("./Logo3DFollow"));
+export const Logo3DReader = afterIdle(() => import("./Logo3DReader"), 768);

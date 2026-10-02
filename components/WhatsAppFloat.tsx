@@ -17,9 +17,7 @@ export default function WhatsAppFloat({ label, topLabel = "العودة إلى �
           {label}
         </span>
       </a>
-      <div className="hidden md:block">
-        <HeroSeal label={topLabel} />
-      </div>
+      <HeroSeal label={topLabel} />
     </div>
   );
 }

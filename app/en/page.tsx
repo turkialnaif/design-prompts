@@ -2,8 +2,7 @@ import HomeHero from "@/components/HomeHero";
 import TrustStrip from "@/components/TrustStrip";
 import ScrollWords from "@/components/ScrollWords";
 import LogoShowcase from "@/components/LogoShowcase";
-import WhoWeServe from "@/components/WhoWeServe";
-import HomeServices from "@/components/HomeServices";
+import ServicesSectors from "@/components/ServicesSectors";
 import Preloader from "@/components/Preloader";
 
 export default function HomeEn() {
@@ -15,13 +14,11 @@ export default function HomeEn() {
       <div id="content" className="relative z-10">
         <ScrollWords eyebrow="Our belief" text={`We serve individuals, companies and institutions, and believe that real legal value is built before a decision, not after it.`} />
 
-        <HomeServices locale="en" />
+        <ServicesSectors locale="en" />
 
         <LogoShowcase locale="en" />
 
         <TrustStrip locale="en" />
-
-        <WhoWeServe locale="en" />
 
       </div>
     </div>

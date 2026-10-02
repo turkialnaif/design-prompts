@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireStaff } from "@/lib/auth/session";
 import { findConflicts } from "@/lib/erp/conflicts";
-import { Badge, Card, Empty, Field, Input, PageHeader, SubmitButton, Textarea } from "@/components/admin/ui";
+import { Badge, Card, Empty, Field, PageHeader, SubmitButton, Textarea } from "@/components/admin/ui";
 import { partyRoleLabel } from "@/lib/erp/labels";
 
 export const metadata = { title: "فحص تعارض المصالح" };

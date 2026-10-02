@@ -28,7 +28,7 @@ export default async function ReportsPage() {
   const firmWide = can(user.role, "reports:firm");
   const d = await db();
   const yearAgo = new Date(new Date().getFullYear(), new Date().getMonth() - 11, 1).toISOString().slice(0, 10);
-  const ninety = new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10);
+  const ninety = new Date(new Date().getTime() - 90 * 864e5).toISOString().slice(0, 10);
 
   const byStatus = firmWide
     ? await d.select({ k: matters.status, n: sql<number>`count(*)::int` }).from(matters).groupBy(matters.status)
