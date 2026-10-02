@@ -1,7 +1,7 @@
-import { blurProps } from "@/lib/blur";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { attorneys } from "@/lib/site";
 import { attorneyEn } from "@/lib/site.en";
 import { accreditations, type Accreditation } from "@/lib/accreditations";
@@ -44,14 +44,12 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
   const arbitration = accreditations.find((a) => a.key === "arbitration");
   const rest = accreditations.filter((a) => a.key !== "arbitration");
   return (
-    <section className="relative isolate overflow-hidden pb-40 pt-36 md:pb-52 md:pt-44">
-      <Image src="/brand/riyadh-kafd.jpg" {...blurProps("/brand/riyadh-kafd.jpg")} alt="" fill sizes="100vw" className="-z-20 object-cover" style={{ objectPosition: "center 45%" }} />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,18,32,0.72)_0%,rgba(8,18,32,0.5)_45%,rgba(8,18,32,0.78)_100%)]" />
+    <section data-glow className="relative isolate overflow-hidden pb-40 pt-36 md:pb-52 md:pt-44">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,6,29,0.82)_0%,rgba(0,18,74,0.62)_50%,rgba(0,6,29,0.86)_100%)]" />
 
       <div className="relative mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
-          <span aria-hidden className="mx-auto block h-2 w-20 rounded-full bg-gradient-to-l from-[#f0d894] to-[#cfa64e]" />
-          <h2 className="font-display mt-8 text-5xl font-extrabold leading-[1.15] text-white sm:text-6xl md:text-7xl lg:text-8xl">{t.title}</h2>
+          <SectionHeading title={t.title} eyebrow="Accreditations" tone="onDark" size="xl" />
           <p className="mx-auto mt-5 max-w-xl text-sm leading-8 text-white/75">{t.intro}</p>
           <p className="mx-auto mt-5 inline-block rounded-full border border-[#e6c988]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
             {accreditations.length} {en ? "accreditations and licences held" : "اعتمادًا وترخيصًا رسميًا"}

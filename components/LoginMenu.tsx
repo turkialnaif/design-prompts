@@ -52,8 +52,8 @@ export default function LoginMenu({ locale = "ar", floating = false }: { locale?
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-xs font-semibold transition-colors hover:text-gold-deep ${
-          floating ? "border-ink/20 text-ink/70" : "border-white/40 text-white/90 hover:text-[#f0d894]"
+        className={`chamfer-btn flex items-center gap-1.5 whitespace-nowrap border px-3.5 py-2 text-xs font-normal transition-colors ${
+          floating ? "border-ink/20 text-ink/70 hover:text-gold-deep" : "border-white/30 text-white/90 hover:bg-white/10 hover:text-white"
         }`}
       >
         <Lock className="h-3.5 w-3.5" />

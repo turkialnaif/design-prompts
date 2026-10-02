@@ -19,7 +19,7 @@ export default function PageHero({
     <section className="relative isolate overflow-hidden px-5 pb-14 pt-32 md:px-10 md:pb-24 md:pt-44">
       <Image src={photo} {...blurProps(photo)} alt="" fill priority sizes="100vw" className="-z-20 object-cover" style={{ objectPosition: focus }} />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,18,32,0.62)_0%,rgba(8,18,32,0.4)_50%,rgba(8,18,32,0.72)_100%)]" />
-      <GlassFrame tint pattern="br" className={`mx-auto ${wide ? "max-w-6xl" : "max-w-4xl"}`}>
+      <GlassFrame tint className={`mx-auto ${wide ? "max-w-6xl" : "max-w-4xl"}`}>
         {children}
       </GlassFrame>
     </section>

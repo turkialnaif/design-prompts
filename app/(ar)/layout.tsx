@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alexandria, Aref_Ruqaa } from "next/font/google";
+import { Zain, Aref_Ruqaa } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -7,14 +7,11 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
 import { firm } from "@/lib/site";
 
-// One geometric multi-weight family for the whole site — the closest
-// license-free match to the "Tanseek"-style corporate identity type
-// referenced by the firm (Tanseek itself is a proprietary commercial
-// font and can't be legally embedded).
-const brandFont = Alexandria({
+// One display family for the whole site: light, lively Arabic letterforms with a calligraphic touch.
+const brandFont = Zain({
   variable: "--font-brand-raw",
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "700", "800", "900"],
 });
 
 const ruqaaFont = Aref_Ruqaa({

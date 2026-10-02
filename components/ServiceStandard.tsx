@@ -1,5 +1,6 @@
 import { EyeOff, FileCheck2, MessageCircle, PenLine, Scaling, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { serviceStandard } from "@/lib/site";
 import { serviceStandardEn } from "@/lib/site.en";
 
@@ -16,12 +17,10 @@ export default function ServiceStandard({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const items = locale === "ar" ? serviceStandard : serviceStandardEn;
   return (
-    <section className="bg-white py-28 md:py-40">
+    <section className="relative bg-white py-28 md:py-40">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="text-center">
-          <span aria-hidden className="mx-auto block h-2 w-20 rounded-full bg-gradient-to-l from-[#f0d894] to-[#cfa64e]" />
-          <h2 className="font-display mt-8 text-5xl font-extrabold leading-[1.15] text-ink sm:text-6xl md:text-7xl lg:text-8xl">{t.title}</h2>
-          <p className="gold-eyebrow mt-5 text-sm md:text-base">{t.eyebrow}</p>
+          <SectionHeading title={t.title} eyebrow={t.eyebrow} tone="onLight" size="xl" />
           <p className="mx-auto mt-6 max-w-xl text-sm leading-8 text-ink-soft/80">{t.lead}</p>
         </Reveal>
 

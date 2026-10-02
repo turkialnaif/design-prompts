@@ -5,7 +5,6 @@ import MatterBriefCTA from "@/components/MatterBriefCTA";
 import ServiceTiles from "@/components/ServiceTiles";
 import { pillarTiles } from "@/lib/service-tiles";
 import Reveal from "@/components/Reveal";
-import CornerField from "@/components/CornerField";
 import SectionHeading from "@/components/SectionHeading";
 import SpecializedExplorer from "@/components/SpecializedExplorer";
 import { corePillars, firm, specializedLines } from "@/lib/site";
@@ -56,8 +55,6 @@ export default function ServicesPage() {
       </PageHero>
 
       <div className="relative isolate overflow-hidden">
-        <CornerField tone="gold" corner="tr" opacity={0.12} size={150} className="absolute -top-6 -right-6 h-[26rem] w-[34rem] md:h-[30rem] md:w-[40rem]" />
-
       <section className="bg-paper py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>

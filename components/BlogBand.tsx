@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
-import CornerField from "@/components/CornerField";
 import { articlePhoto } from "@/lib/article-photos";
 import { blurProps } from "@/lib/blur";
 
@@ -63,9 +62,6 @@ export default function BlogBand({ items }: { items: BandItem[] }) {
   return (
     <section className="relative isolate overflow-hidden bg-[linear-gradient(105deg,#0a1626_0%,#12233a_52%,#1c3554_78%,#3b4a3f_100%)]">
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_70%_at_0%_100%,rgba(208,167,81,0.28),transparent_70%)]" />
-      {/* The same lattice motif, marking this band's own top and bottom edges — where it meets the section above and the footer below. */}
-      <CornerField tone="gold" corner="tr" opacity={0.14} size={150} className="absolute -top-8 -right-8 h-[22rem] w-[28rem] md:h-[26rem] md:w-[32rem]" />
-      <CornerField tone="cream" corner="bl" opacity={0.12} size={150} className="absolute -bottom-8 -left-8 h-[20rem] w-[26rem] md:h-[24rem] md:w-[30rem]" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:min-h-[40rem] lg:grid-cols-[1fr_1.1fr] lg:gap-6">
         <div className="pt-20 text-center lg:py-20 lg:text-start">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#e6c988]">Legal Insights</p>

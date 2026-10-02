@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alexandria, Aref_Ruqaa } from "next/font/google";
+import { Zain, Aref_Ruqaa } from "next/font/google";
 import "../globals.css";
 import HeaderEn from "@/components/HeaderEn";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -8,10 +8,10 @@ import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
-const brandFont = Alexandria({
+const brandFont = Zain({
   variable: "--font-brand-raw",
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "700", "800", "900"],
 });
 
 const ruqaaFont = Aref_Ruqaa({

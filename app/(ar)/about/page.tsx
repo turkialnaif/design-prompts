@@ -5,7 +5,6 @@ import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import Reveal from "@/components/Reveal";
-import CornerField from "@/components/CornerField";
 import SectionHeading from "@/components/SectionHeading";
 import TiltCard from "@/components/TiltCard";
 import { attorneys, corePillars, firm, matterMethod, serviceStandard } from "@/lib/site";
@@ -67,9 +66,6 @@ export default function AboutPage() {
       </PageHero>
 
       <div className="relative isolate overflow-hidden">
-        <CornerField tone="gold" corner="tr" opacity={0.1} size={150} className="absolute -top-6 -right-6 h-[24rem] w-[30rem] md:h-[28rem] md:w-[36rem]" />
-        <CornerField tone="gold" corner="bl" opacity={0.08} size={150} className="absolute -bottom-6 -left-6 h-[22rem] w-[28rem] md:h-[26rem] md:w-[32rem]" />
-
       <section className="bg-paper py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>

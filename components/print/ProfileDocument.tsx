@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import QRCode from "qrcode";
-import CornerField from "@/components/CornerField";
 import {
   attorneys,
   corePillars,
@@ -177,7 +176,6 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
           style={{ top: "66mm", insetInlineStart: "17mm", insetInlineEnd: "17mm", height: "116mm", borderRadius: "9mm", border: "0.5mm solid rgba(255,255,255,0.7)", background: "rgba(255,255,255,0.13)" }}
         >
           <div className="absolute" style={{ inset: "3mm", borderRadius: "6.5mm", border: "0.25mm solid rgba(240,216,148,0.5)" }} />
-          <CornerField tone="cream" corner="tr" opacity={0.16} size={70} className="absolute" style={{ top: 0, insetInlineEnd: 0, width: "60mm", height: "60mm", borderStartEndRadius: "9mm" }} />
           <div className="relative flex h-full flex-col items-center justify-center px-[14mm]">
             <h1 className={`font-display ${en ? "text-[31px]" : "text-[54px]"} font-bold leading-[1.45] text-white`} style={{ maxWidth: en ? "120mm" : undefined }}>
               {en ? "Understanding that runs ahead of opinion" : "فهمٌ يُسابق الرأْي"}

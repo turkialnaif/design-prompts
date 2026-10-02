@@ -1,6 +1,5 @@
 import Image from "next/image";
 import ArrowButton from "@/components/ArrowButton";
-import CornerField from "@/components/CornerField";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import SocialIcons from "@/components/SocialIcons";
@@ -105,9 +104,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
       >
         <Image src="/brand/riyadh-skyline.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.5] mix-blend-multiply [filter:sepia(0.55)_saturate(0.9)]" />
       </div>
-
-      {/* The lattice rises out of the very foot of the site — a soft fade, not a cut edge, closing the page. */}
-      <CornerField tone="gold" corner="none" fade="bottom" opacity={0.16} size={150} className="absolute inset-x-0 bottom-0 -z-10 h-64 w-full md:h-80" />
 
       <div className="relative mx-auto max-w-6xl px-5 pb-12 pt-32">
         <div className="glass-card rounded-3xl px-6 py-10 md:px-10">

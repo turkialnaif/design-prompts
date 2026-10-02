@@ -15,23 +15,24 @@ export default function SectionHeading({
   tone?: "onDark" | "onLight";
   size?: "md" | "xl";
 }) {
+  const dark = tone === "onDark";
   return (
     <div className={align === "center" ? "text-center" : "text-start"}>
       {number && (
         <div className={`mb-4 flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`} aria-hidden>
-          <span className="h-px w-10 bg-gold/70" />
-          <span className={`font-display text-sm font-bold tracking-[0.3em] ${tone === "onDark" ? "text-[#e6c988]" : "text-gold-deep"}`}>{number}</span>
-          <span className="h-px w-10 bg-gold/70" />
+          <span className="h-px w-10 bg-[#f4932c]/70" />
+          <span className={`font-display text-sm tracking-[0.3em] ${dark ? "text-[#f6e2b3]" : "text-[#00124a]"}`}>{number}</span>
+          <span className="h-px w-10 bg-[#9b88d7]/70" />
         </div>
       )}
       <Heading
-        className={`font-display font-bold leading-[1.3] ${size === "xl" ? "text-4xl md:text-6xl lg:text-7xl" : "text-2xl md:text-4xl"} ${
-          tone === "onDark" ? "text-white" : "text-ink"
+        className={`font-display leading-[1.25] ${size === "xl" ? "text-5xl sm:text-6xl md:text-7xl lg:text-8xl" : "text-3xl md:text-5xl"} ${
+          dark ? "grad-text" : "text-[#00124a]"
         }`}
       >
         {title}
       </Heading>
-      <p className={`gold-eyebrow ${size === "xl" ? "mt-4 text-sm md:text-base" : "mt-2 text-xs md:text-sm"}`}>{eyebrow}</p>
+      <p className={`gold-eyebrow ${dark ? "!text-[#f6e2b3]" : ""} ${size === "xl" ? "mt-5 text-sm md:text-base" : "mt-3 text-xs md:text-sm"}`}>{eyebrow}</p>
     </div>
   );
 }

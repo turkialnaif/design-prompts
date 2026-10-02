@@ -103,7 +103,7 @@ export default function TrustStrip({ locale }: { locale: "ar" | "en" }) {
               </p>
               <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-2">
                 {t.categories.map((c) => (
-                  <span key={c} className="rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white/85">
+                  <span key={c} className="chamfer-btn border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-normal text-white/85">
                     {c}
                   </span>
                 ))}

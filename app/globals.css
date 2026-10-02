@@ -261,3 +261,95 @@ main section.border-y,
 main section.border-t {
   border-color: transparent;
 }
+
+/* ======================================================================
+   Chamfered design language: cut corners instead of round ones, a warm
+   gradient on large dark-section headings, light-weight display type.
+   Declared unlayered on purpose so it wins over Tailwind's layered utilities.
+   ====================================================================== */
+:root {
+  --chamfer: 14px;
+  --navy: #00124a;
+  --navy-deep: #00061d;
+  --royal: #012696;
+}
+
+.chamfer,
+[class*="rounded-2xl"],
+[class*="rounded-3xl"] {
+  --c: var(--chamfer);
+  border-radius: 0 !important;
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+}
+.chamfer-lg,
+[class*="rounded-[2"],
+[class*="rounded-[3"] {
+  --c: 28px;
+  border-radius: 0 !important;
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+}
+[class*="rounded-[1."] { border-radius: 0 !important; }
+.chamfer-btn {
+  --c: 10px;
+  border-radius: 0 !important;
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+}
+.chamfer-tab {
+  --c: 14px;
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)));
+}
+
+.grad-text {
+  background-image: linear-gradient(to left, #9b88d7 0%, #f3a6b6 52%, #f4932c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+h1.font-display,
+h2.font-display {
+  font-weight: 300 !important;
+  letter-spacing: 0;
+}
+
+/* Fixed Riyadh backdrop behind the home page; --p (0..1) is the scroll progress, set by HomeBackdrop. */
+.home-backdrop { position: fixed; inset: 0; z-index: -10; overflow: hidden; background: var(--navy-deep); }
+.home-backdrop img { transform: translate3d(calc(var(--p, 0) * -3%), calc(var(--p, 0) * -5%), 0) scale(calc(1.06 + var(--p, 0) * 0.28)); will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .home-backdrop img { transform: scale(1.06); } }
+
+/* Short branded preloader — pure CSS, hides itself; no content is ever blocked from the DOM. */
+@property --n { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@keyframes pre-count { to { --n: 100; } }
+@keyframes pre-out { to { opacity: 0; visibility: hidden; } }
+@keyframes pre-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.preloader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: var(--navy-deep); color: #fff; animation: pre-out 0.6s ease 1.8s forwards; }
+.preloader-inner { text-align: center; animation: pre-rise 0.7s ease both; }
+.preloader-count { display: block; margin-top: 1.5rem; font-size: 0.95rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.7); font-variant-numeric: tabular-nums; }
+.preloader-count::after { counter-reset: n var(--n); content: counter(n) "%"; animation: pre-count 1.7s cubic-bezier(0.6, 0, 0.3, 1) forwards; }
+@media (prefers-reduced-motion: reduce) { .preloader { display: none; } }
+
+/* Partners ticker */
+@keyframes ticker { to { transform: translateX(-50%); } }
+.ticker-track { display: flex; width: max-content; animation: ticker 70s linear infinite; }
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } .ticker { overflow-x: auto; } }
+
+/* Soft glow that follows the pointer over dark sections (desktop only; see CursorGlow). */
+.cursor-glow { position: fixed; left: 0; top: 0; width: 460px; height: 460px; margin: -230px 0 0 -230px; border-radius: 50%; pointer-events: none; z-index: 40; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(circle, rgba(155, 136, 215, 0.3) 0%, rgba(244, 147, 44, 0.12) 38%, transparent 68%); will-change: transform; }
+.cursor-glow[data-on="1"] { opacity: 1; }
+@media (hover: none), (prefers-reduced-motion: reduce) { .cursor-glow { display: none; } }
+
+/* Header bar: the chamfered glass is a clipped background layer so dropdowns can overflow it. */
+.bar-bg { position: relative; isolation: isolate; }
+.bar-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 18, 74, 0.88);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+}
