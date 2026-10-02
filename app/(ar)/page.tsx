@@ -2,9 +2,11 @@ import Accreditations from "@/components/Accreditations";
 import HomeHero from "@/components/HomeHero";
 import Overview from "@/components/Overview";
 import TrustStrip from "@/components/TrustStrip";
+import ScrollWords from "@/components/ScrollWords";
+import LogoShowcase from "@/components/LogoShowcase";
+import WhoWeServe from "@/components/WhoWeServe";
 import HomeServices from "@/components/HomeServices";
 import HomeBackdrop from "@/components/HomeBackdrop";
-import CursorGlow from "@/components/CursorGlow";
 import Preloader from "@/components/Preloader";
 import PartnersTicker from "@/components/PartnersTicker";
 import ServiceStandard from "@/components/ServiceStandard";
@@ -25,11 +27,16 @@ export default function Home() {
     <div>
       <Preloader locale="ar" />
       <HomeBackdrop />
-      <CursorGlow />
       <HomeHero locale="ar" />
       <div id="content" />
 
+      <ScrollWords eyebrow="فلسفتنا" text="نخدم الأفراد والشركات والمؤسسات، ونؤمن بأن القيمة القانونية الحقيقية هي التي تُبنى قبل القرار لا بعده." />
+
       <HomeServices locale="ar" />
+
+      <LogoShowcase locale="ar" />
+
+      <WhoWeServe locale="ar" />
 
       <PartnersTicker locale="ar" />
 

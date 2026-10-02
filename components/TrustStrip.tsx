@@ -1,4 +1,4 @@
-import { Award, Building2, Download, Hash, MapPin, Phone } from "lucide-react";
+import { Award, Download, Hash, MapPin, Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { accreditations } from "@/lib/accreditations";
@@ -22,8 +22,6 @@ const copy = {
       { value: accreditations.length, label: "اعتمادًا وترخيصًا" },
       { value: articles.length, label: "مقالة قانونية" },
     ],
-    categoriesLabel: "الفئات التي نخدمها",
-    categories: ["الأفراد", "الشركات", "المؤسسات", "الجهات الحكومية", "الجمعيات الخيرية", "الأوقاف"],
     download: "تحميل الملف التعريفي",
     file: "/downloads/company-profile-ar.pdf",
   },
@@ -39,8 +37,6 @@ const copy = {
       { value: accreditations.length, label: "licences & accreditations" },
       { value: articles.length, label: "legal articles" },
     ],
-    categoriesLabel: "Who we serve",
-    categories: ["Individuals", "Companies", "Institutions", "Government entities", "Charitable associations", "Endowments (Awqaf)"],
     download: "Download Company Profile",
     file: "/downloads/company-profile-en.pdf",
   },
@@ -56,7 +52,6 @@ export default function TrustStrip({ locale }: { locale: "ar" | "en" }) {
   // Wide letter-spacing reads as elegant small-caps on Latin text, but at small sizes it
   // breaks Arabic script's letter connections — so it's Latin-only.
   const label = locale === "en" ? "text-[10px] font-bold uppercase tracking-[0.18em] text-[#e6c988]" : "text-[11px] font-bold text-[#e6c988]";
-  const bandLabel = locale === "en" ? "text-[10px] font-bold uppercase tracking-[0.24em] text-[#e6c988]" : "text-xs font-bold text-[#e6c988]";
   return (
     <div className="relative pb-16 pt-14 md:pt-16">
       <div className="relative z-[3] mx-auto max-w-6xl px-5">
@@ -93,21 +88,6 @@ export default function TrustStrip({ locale }: { locale: "ar" | "en" }) {
                   <dt className="text-[11px] font-semibold tracking-wide text-white/70 md:text-xs">{s.label}</dt>
                 </div>
               ))}
-            </div>
-
-            {/* Who we serve */}
-            <div className="border-t border-white/10 px-6 py-7 text-center">
-              <p className={`flex items-center justify-center gap-2 ${bandLabel}`}>
-                <Building2 className="h-3.5 w-3.5" strokeWidth={1.8} />
-                {t.categoriesLabel}
-              </p>
-              <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-2">
-                {t.categories.map((c) => (
-                  <span key={c} className="chamfer-btn border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-normal text-white/85">
-                    {c}
-                  </span>
-                ))}
-              </div>
             </div>
 
             <a

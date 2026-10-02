@@ -73,7 +73,7 @@ export default async function AttorneyPage({
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-            <PageHero photo="/brand/riyadh-kafd.jpg" focus="center 45%" wide>
+            <PageHero photo="/brand/riyadh-kafd.jpg" focus="center 45%" wide mark={false}>
           <div className="relative grid items-center gap-10 p-6 md:grid-cols-[0.8fr_1.2fr] md:p-12">
             <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl shadow-[0_30px_60px_-25px_rgba(120,90,30,0.55)] ring-1 ring-white/90">
               {attorneyPhotos[attorney.slug] ? (

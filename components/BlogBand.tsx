@@ -60,7 +60,7 @@ export default function BlogBand({ items }: { items: BandItem[] }) {
   const a = items.slice(0, half);
   const b = items.slice(half);
   return (
-    <section className="relative isolate overflow-hidden bg-[linear-gradient(105deg,#0a1626_0%,#12233a_52%,#1c3554_78%,#3b4a3f_100%)]">
+    <section data-glow className="relative isolate overflow-hidden bg-[linear-gradient(105deg,#0a1626_0%,#12233a_52%,#1c3554_78%,#3b4a3f_100%)]">
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_70%_at_0%_100%,rgba(208,167,81,0.28),transparent_70%)]" />
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:min-h-[40rem] lg:grid-cols-[1fr_1.1fr] lg:gap-6">
         <div className="pt-20 text-center lg:py-20 lg:text-start">

@@ -3,6 +3,7 @@ import { Zain, Aref_Ruqaa } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
 import SmoothScroll from "@/components/SmoothScroll";
+import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
 import { firm } from "@/lib/site";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SmoothScroll />
+        <CursorGlow />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -1,5 +1,4 @@
 import Reveal from "@/components/Reveal";
-import { Eye, Route, Target } from "lucide-react";
 import { firm } from "@/lib/site";
 
 const copy = {
@@ -10,11 +9,6 @@ const copy = {
       "يقود المكتب المحامي تركي النايف الشمري، وهو محامٍ ومدرب قانوني مرخّص، ومحكّم معتمد لدى مركز هيئة المحامين للتسوية والتحكيم، وخبير معتمد لدى منصة «خبرة»، ووسيط امتياز تجاري معتمد من «منشآت».",
       "نضع تجربة العميل أولًا: نتفق منذ البداية على نطاق العمل والمخرجات، ونُبقيه مطّلعًا على سير ملفه عبر بوابة العملاء، ونُسلّم ما يُقرأ ويُراجع ويُطبّق. ونعمل بما يتوافق مع أنظمة المملكة ومستهدفات رؤية 2030 في بيئة أعمال أوضح وأكثر شفافية.",
     ],
-    pillars: [
-      { k: "دقة", v: "في التحليل والصياغة" },
-      { k: "وضوح", v: "في النطاق والمخرجات" },
-      { k: "متابعة", v: "حتى يكتمل الأثر" },
-    ],
   },
   en: {
     paragraphs: [
@@ -23,17 +17,10 @@ const copy = {
       "The firm is led by Turki AlNaif, a licensed lawyer and legal trainer, an accredited arbitrator at the Saudi Bar Association Settlement and Arbitration Centre, an accredited expert on the Ministry of Justice's Khebra platform, and an accredited franchise broker with Monsha'at.",
       "We put the client experience first: agreeing the scope and deliverables at the outset, keeping you informed on your file through the client portal, and delivering work that can be read, reviewed and applied. We work within the Kingdom's laws and in line with Vision 2030's aim of a clearer, more transparent business environment.",
     ],
-    pillars: [
-      { k: "Precision", v: "in analysis and drafting" },
-      { k: "Clarity", v: "in scope and deliverables" },
-      { k: "Follow-through", v: "until the effect is complete" },
-    ],
   },
 };
 
-const icons = [Target, Eye, Route];
-
-/** The reading text — who the firm is, how it works, who leads it — and three working principles. No headline of its own: it reads straight on from the facts panel above it. */
+/** The reading text — who the firm is, how it works, who leads it — No headline of its own: it reads straight on from the facts panel above it. */
 export default function Overview({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const [first, ...rest] = t.paragraphs;
@@ -53,22 +40,6 @@ export default function Overview({ locale }: { locale: "ar" | "en" }) {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {t.pillars.map((p, i) => {
-            const Icon = icons[i];
-            return (
-              <Reveal key={p.k} delay={i * 90}>
-                <div className="glass-card flex h-full flex-col items-center rounded-3xl px-6 py-8 text-center">
-                  <span className="grid h-14 w-14 place-items-center rounded-full bg-[#0a1626] text-[#e6c988] ring-1 ring-gold/60">
-                    <Icon className="h-6 w-6" strokeWidth={1.6} />
-                  </span>
-                  <h3 className="font-display mt-4 text-2xl font-bold text-ink">{p.k}</h3>
-                  <p className="mt-1 text-sm text-ink-soft/80">{p.v}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
       </div>
     </div>
   );

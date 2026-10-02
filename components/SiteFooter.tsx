@@ -86,95 +86,92 @@ const copy = {
   },
 };
 
-const linkCls = "transition-colors hover:text-gold-deep";
+const linkCls = "text-white/75 transition-colors hover:text-[#f6e2b3]";
 
 export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
+  // Wide tracking and capitals suit Latin small-caps but break Arabic letter joins at small sizes.
+  const label = ar ? "text-sm font-normal text-[#f6e2b3]" : "text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f6e2b3]";
   return (
-    <footer className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#fbf9f3_0%,#f1e9d3_100%)] text-ink-soft">
-      {/* The Riyadh skyline rises out of the page colour behind the glass card */}
+    <footer data-glow className="relative isolate overflow-hidden bg-[#00061d] text-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[26rem]"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 45%, black 70%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 45%, black 70%, transparent 100%)",
-        }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[34rem]"
+        style={{ maskImage: "linear-gradient(to top, black 0%, black 35%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, black 35%, transparent 100%)" }}
       >
-        <Image src="/brand/riyadh-skyline.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.5] mix-blend-multiply [filter:sepia(0.55)_saturate(0.9)]" />
+        <Image src="/brand/riyadh-skyline.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.28] [filter:saturate(0.7)_hue-rotate(8deg)]" />
       </div>
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(155,136,215,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(244,147,44,0.14),transparent_70%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-5 pb-12 pt-32">
-        <div className="glass-card rounded-3xl px-6 py-10 md:px-10">
-          <div data-footer-cta className="mb-10 flex flex-col items-center justify-between gap-6 rounded-2xl border border-gold/35 bg-white/60 px-6 py-7 text-center md:flex-row md:px-9 md:text-start">
-            <div>
-              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">{t.ctaTitle}</h2>
-              <p className="mt-1.5 text-sm leading-7 text-ink-soft/80">{t.ctaBody}</p>
-            </div>
-            <div className="flex shrink-0 flex-wrap items-center justify-center gap-3">
-              <ArrowButton href={firm.whatsapp} external ltr={!ar}>{t.ctaWhatsapp}</ArrowButton>
-              <MatterBriefCTA locale={locale} matterTypes={t.matterTypes} tone="onLight" />
-            </div>
+      <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-28 md:pt-36">
+        <div data-footer-cta className="text-center">
+          <h2 className="font-display grad-text mx-auto max-w-4xl text-4xl leading-[1.3] md:text-7xl">{t.ctaTitle}</h2>
+          <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75 md:text-lg">{t.ctaBody}</p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <ArrowButton href={firm.whatsapp} external ltr={!ar}>{t.ctaWhatsapp}</ArrowButton>
+            <MatterBriefCTA locale={locale} matterTypes={t.matterTypes} tone="onDark" />
           </div>
-          <div className="grid gap-10 text-center md:grid-cols-[1.3fr_1fr_1.2fr] md:text-start">
-            <div className="flex flex-col items-center md:items-start">
-              <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-11 w-auto" />
-              <p className="mt-3 max-w-xs text-sm leading-7">{t.tagline}</p>
-              <a href={firm.mapsUrl} target="_blank" rel="noopener noreferrer" className={`mt-2 text-xs text-ink-soft/70 ${linkCls}`}>
-                {t.address}
-              </a>
-              <div className="mt-4 flex flex-col items-center gap-3 md:items-start">
-                <SocialIcons tone="onLight" className="justify-center md:justify-start" />
-                <p className="text-xs text-ink-soft/70" dir="ltr">
-                  <a href={`tel:${firm.phone}`} className={linkCls}>{firm.phoneDisplay}</a>
-                  <span className="mx-2 text-ink/20">|</span>
-                  <a href={`mailto:${firm.email}`} className={linkCls}>{firm.email}</a>
-                </p>
-              </div>
-            </div>
+        </div>
 
-            <nav className="grid grid-cols-2 gap-6 text-sm">
-              <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-deep">{t.exploreTitle}</p>
-                <ul className="space-y-2.5">
-                  {t.explore.map((l) => (
-                    <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-deep">{t.firmTitle}</p>
-                <ul className="space-y-2.5">
-                  {t.firmLinks.map((l) => (
-                    <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
-                  ))}
-                </ul>
-              </div>
-            </nav>
-
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-deep">{t.subscribeTitle}</p>
-              <p className="mb-4 mt-2 text-xs leading-6 text-ink-soft/80">{t.subscribeBody}</p>
-              <NewsletterSignup source={t.source} compact locale={locale} />
-
+        <div className="chamfer-lg mt-20 grid gap-12 border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl md:mt-28 md:grid-cols-[1.3fr_1fr_1.2fr] md:p-12">
+          <div className="flex flex-col items-center text-center md:items-start md:text-start">
+            <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-12 w-auto" />
+            <p className="mt-4 max-w-xs text-base font-light leading-8 text-white/80">{t.tagline}</p>
+            <a href={firm.mapsUrl} target="_blank" rel="noopener noreferrer" className={`mt-3 text-sm ${linkCls}`}>
+              {t.address}
+            </a>
+            <div className="mt-5 flex flex-col items-center gap-4 md:items-start">
+              <SocialIcons tone="onDark" className="justify-center md:justify-start" />
+              <p className="text-sm text-white/70" dir="ltr">
+                <a href={`tel:${firm.phone}`} className={linkCls}>{firm.phoneDisplay}</a>
+                <span className="mx-2 text-white/25">|</span>
+                <a href={`mailto:${firm.email}`} className={linkCls}>{firm.email}</a>
+              </p>
             </div>
           </div>
 
-          <div className="mt-9 border-t border-gold/25 pt-6">
-            <p className="text-center text-[11px] uppercase tracking-[0.22em] text-ink-soft/50">{t.regulators}</p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+          <nav className="grid grid-cols-2 gap-6 text-center md:text-start">
+            <div>
+              <p className={`mb-4 ${label}`}>{t.exploreTitle}</p>
+              <ul className="space-y-3 text-[15px] font-light">
+                {t.explore.map((l) => (
+                  <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className={`mb-4 ${label}`}>{t.firmTitle}</p>
+              <ul className="space-y-3 text-[15px] font-light">
+                {t.firmLinks.map((l) => (
+                  <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+
+          <div className="text-center md:text-start">
+            <p className={label}>{t.subscribeTitle}</p>
+            <p className="mb-5 mt-3 text-sm font-light leading-7 text-white/70">{t.subscribeBody}</p>
+            <NewsletterSignup source={t.source} compact locale={locale} onDark />
+          </div>
+
+          <div className="border-t border-white/10 pt-8 md:col-span-3">
+            <p className={`text-center ${ar ? "text-sm text-white/55" : "text-[11px] uppercase tracking-[0.22em] text-white/55"}`}>{t.regulators}</p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               {regulators[locale].map((r) => (
-                <Image key={r.src} src={r.src} alt={r.alt} width={r.width} height={r.height} className={`${r.cls} w-auto`} />
+                <span key={r.src} className="chamfer-btn flex h-16 items-center bg-white/95 px-6">
+                  <Image src={r.src} alt={r.alt} width={r.width} height={r.height} className={`${r.cls} w-auto`} />
+                </span>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-5 text-center text-[11px] leading-5 text-ink-soft/60">
+        <div className="mt-8 text-center text-xs leading-6 text-white/55">
           <p className="mb-1">
             <a href="/admin/login" className={linkCls}>{t.admin}</a>
-            <span className="mx-2 text-ink/20">|</span>
+            <span className="mx-2 text-white/25">|</span>
             <a href="/portal/login" className={linkCls}>{t.portal}</a>
           </p>
           <p>{t.rights}</p>

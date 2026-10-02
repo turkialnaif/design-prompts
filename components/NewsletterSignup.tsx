@@ -25,7 +25,7 @@ const en = {
   who: "I am",
 };
 
-export default function NewsletterSignup({ source, compact = false, locale = "ar" }: { source: string; compact?: boolean; locale?: "ar" | "en" }) {
+export default function NewsletterSignup({ source, compact = false, locale = "ar", onDark = false }: { source: string; compact?: boolean; locale?: "ar" | "en"; onDark?: boolean }) {
   const isEn = locale === "en";
   const opts = isEn ? en.options : options;
   const [email, setEmail] = useState("");
@@ -49,7 +49,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
 
   if (compact) {
     return status === "success" ? (
-      <p className="text-sm font-semibold text-gold-deep">{isEn ? en.success : "تم تسجيل اشتراكك. شكرًا لك."}</p>
+      <p className={`text-sm font-semibold ${onDark ? "text-[#f6e2b3]" : "text-gold-deep"}`}>{isEn ? en.success : "تم تسجيل اشتراكك. شكرًا لك."}</p>
     ) : (
       <form onSubmit={onSubmit} className="space-y-3">
         <div className="flex flex-wrap justify-center gap-1.5 md:justify-start" role="radiogroup" aria-label={isEn ? en.who : "أنا"}>
@@ -60,7 +60,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
               role="radio"
               aria-checked={audience === o.key}
               onClick={() => setAudience(o.key)}
-              className={`rounded-full px-3 py-1 text-[11px] font-semibold transition-colors ${audience === o.key ? "bg-ink text-white" : "border border-ink/15 text-ink-soft hover:border-gold-deep"}`}
+              className={`chamfer-btn px-3 py-1 text-[11px] font-normal transition-colors ${onDark ? (audience === o.key ? "bg-white text-[#00124a]" : "border border-white/25 text-white/80 hover:border-white/60") : audience === o.key ? "bg-ink text-white" : "border border-ink/15 text-ink-soft hover:border-gold-deep"}`}
             >
               {o.label}
             </button>
@@ -75,18 +75,18 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
             onChange={(e) => setEmail(e.target.value)}
             placeholder="name@company.com"
             aria-label={isEn ? en.email : "البريد الإلكتروني"}
-            className="min-w-0 flex-1 rounded-full border border-line bg-white/80 px-4 py-2.5 text-sm text-ink outline-none focus:border-gold-deep"
+            className={`chamfer-btn min-w-0 flex-1 border px-4 py-2.5 text-sm outline-none ${onDark ? "border-white/25 bg-white/10 text-white placeholder:text-white/40 focus:border-[#f6e2b3]" : "border-line bg-white/80 text-ink focus:border-gold-deep"}`}
           />
-          <button type="submit" disabled={status === "sending"} className="shrink-0 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gold-deep disabled:opacity-60">
+          <button type="submit" disabled={status === "sending"} className={`chamfer-btn shrink-0 px-5 py-2.5 text-sm font-normal transition-colors disabled:opacity-60 ${onDark ? "bg-white text-[#00124a] hover:bg-[#f6e2b3]" : "bg-ink text-white hover:bg-gold-deep"}`}>
             {status === "sending" ? (isEn ? en.sending : "جارٍ الإرسال…") : isEn ? en.submit : "اشترك"}
           </button>
         </div>
         {status === "error" && <p className="text-xs text-red-700">{isEn ? en.error : "تعذّر الاشتراك، حاول مرة أخرى أو راسلنا مباشرة."}</p>}
-        <p className="text-[11px] text-ink-soft/50">
+        <p className={`text-[11px] ${onDark ? "text-white/50" : "text-ink-soft/50"}`}>
           {isEn ? (
-            <>By subscribing you agree to our <Link href="/en/privacy" className="underline hover:text-gold-deep">privacy policy</Link>.</>
+            <>By subscribing you agree to our <Link href="/en/privacy" className="underline hover:text-[#f6e2b3]">privacy policy</Link>.</>
           ) : (
-            <>بالاشتراك فإنك توافق على <Link href="/privacy" className="underline hover:text-gold-deep">سياسة الخصوصية</Link>.</>
+            <>بالاشتراك فإنك توافق على <Link href="/privacy" className="underline hover:text-[#f6e2b3]">سياسة الخصوصية</Link>.</>
           )}
         </p>
       </form>
