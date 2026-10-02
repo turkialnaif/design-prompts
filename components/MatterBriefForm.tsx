@@ -98,7 +98,7 @@ export default function MatterBriefForm({
         </div>
         <p className="mt-4 text-sm leading-6 text-ink">{t.success}</p>
         {onClose && (
-          <button type="button" onClick={onClose} className="mt-6 chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-[#00124a] hover:brightness-105 px-6 py-2.5 text-sm font-normal">
+          <button type="button" onClick={onClose} className="mt-6 btn btn-gold chamfer-btn px-6 py-2.5 text-sm font-normal">
             {t.close}
           </button>
         )}
@@ -148,7 +148,7 @@ export default function MatterBriefForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className="chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-[#00124a] hover:brightness-105 px-6 py-2.5 text-sm font-normal transition-[filter] disabled:opacity-60"
+          className="btn btn-gold chamfer-btn px-6 py-2.5 text-sm font-normal transition-[filter] disabled:opacity-60"
         >
           {status === "sending" ? t.sending : t.submit}
         </button>

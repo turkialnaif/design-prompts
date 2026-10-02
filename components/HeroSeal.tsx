@@ -13,7 +13,7 @@ export default function HeroSeal({ label }: { label: string }) {
       aria-label={label}
       title={label}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="hero-float relative flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-white/80 bg-[linear-gradient(140deg,rgba(14,28,46,0.72),rgba(14,28,46,0.5))] shadow-[inset_0_1.5px_0_rgba(255,255,255,0.55),0_12px_26px_-10px_rgba(0,0,0,0.6)] backdrop-blur-md md:h-16 md:w-16"
+      className="hero-float round-keep relative flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-white/80 bg-[linear-gradient(140deg,rgba(14,28,46,0.72),rgba(14,28,46,0.5))] shadow-[inset_0_1.5px_0_rgba(255,255,255,0.55),0_12px_26px_-10px_rgba(0,0,0,0.6)] backdrop-blur-md md:h-16 md:w-16"
     >
       <span aria-hidden className="seal-glint pointer-events-none absolute inset-0" />
       <Image

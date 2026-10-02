@@ -162,7 +162,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
             </div>
             {rest.length > shown && (
               <div className="mt-14 text-center">
-                <button type="button" onClick={() => setShown((n) => n + PAGE)} className="chamfer-btn border border-[#e0b35a]/60 px-10 py-3.5 text-base text-[#f6e2b3] transition-colors hover:bg-[#e0b35a]/10">
+                <button type="button" onClick={() => setShown((n) => n + PAGE)} className="btn btn-ghost chamfer-btn px-10 py-3.5 text-base">
                   عرض المزيد · {rest.length - shown}
                 </button>
               </div>

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 function renderInline(text: string) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
@@ -87,18 +88,28 @@ export function getArticleHeadings(content: string) {
   return parse(content).flatMap((b, i) => (b.kind === "h2" ? [{ id: `section-${i}`, text: b.text }] : []));
 }
 
-export default function ArticleMarkdown({ content }: { content: string }) {
+export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }: { content: string; inline?: ReactNode; inlineBeforeH2?: number }) {
   const blocks = parse(content);
   const firstP = blocks.findIndex((b) => b.kind === "p");
+  const h2Order = blocks.reduce<number[]>((acc, b, idx) => (b.kind === "h2" ? [...acc, idx] : acc), []);
 
   return (
     <div className="space-y-6">
       {blocks.map((block, i) => {
         if (block.kind === "h2") {
+          const h2n = h2Order.indexOf(i) + 1;
           return (
-            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#e0b35a]/50 pt-10 text-3xl font-light leading-[1.45] text-[#00124a] md:text-[2.5rem]">
-              {block.text}
-            </h2>
+            <div key={i}>
+              {inline && h2n === inlineBeforeH2 && <div className="mb-14">{inline}</div>}
+              <div className="border-t border-[#e0b35a]/50 pt-10">
+                <span aria-hidden className="font-display block text-6xl font-extralight leading-none text-transparent [-webkit-text-stroke:1px_rgba(201,154,60,0.9)] md:text-7xl" dir="ltr">
+                  {String(h2n).padStart(2, "0")}
+                </span>
+                <h2 id={`section-${i}`} className="font-display mt-4 scroll-mt-28 text-3xl font-light leading-[1.45] text-[#00124a] md:text-[2.5rem]">
+                  {block.text}
+                </h2>
+              </div>
+            </div>
           );
         }
         if (block.kind === "h3") {

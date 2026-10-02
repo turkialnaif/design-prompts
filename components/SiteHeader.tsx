@@ -115,7 +115,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
               href={firm.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="chamfer-btn flex items-center gap-2.5 whitespace-nowrap bg-white px-4 py-2.5 text-[14px] font-normal text-[#00124a] transition-colors hover:bg-[#f6e2b3] xl:px-5"
+              className="btn btn-white chamfer-btn flex items-center gap-2.5 whitespace-nowrap px-4 py-2.5 text-[14px] font-normal xl:px-5"
             >
               <span aria-hidden className="grid h-3.5 w-3.5 grid-cols-3 gap-px">
                 {Array.from({ length: 9 }).map((_, i) => (
@@ -130,7 +130,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
             aria-label={t.menu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className={`chamfer-btn grid h-10 w-10 place-items-center bg-white text-[#00124a] transition-colors hover:bg-[#f6e2b3] ${scrolled ? "" : "lg:hidden"}`}
+            className={`btn btn-white chamfer-btn grid h-10 w-10 place-items-center ${scrolled ? "" : "lg:hidden"}`}
           >
             <span aria-hidden className="grid h-4 w-4 grid-cols-3 gap-[2px]">
               {Array.from({ length: 9 }).map((_, i) => (
@@ -157,7 +157,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
             href={firm.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="chamfer-btn mt-2 bg-white px-5 py-3 text-center text-sm font-normal text-[#00124a]"
+            className="btn btn-white chamfer-btn mt-2 px-5 py-3 text-center text-sm font-normal"
           >
             {t.book}
           </a>

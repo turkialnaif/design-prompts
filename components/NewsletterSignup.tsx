@@ -77,7 +77,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
             aria-label={isEn ? en.email : "البريد الإلكتروني"}
             className={`chamfer-btn min-w-0 flex-1 border px-4 py-2.5 text-sm outline-none ${onDark ? "border-white/25 bg-white/10 text-white placeholder:text-white/40 focus:border-[#f6e2b3]" : "border-line bg-white/80 text-ink focus:border-gold-deep"}`}
           />
-          <button type="submit" disabled={status === "sending"} className={`chamfer-btn shrink-0 px-5 py-2.5 text-sm font-normal transition-colors disabled:opacity-60 ${onDark ? "bg-white text-[#00124a] hover:bg-[#f6e2b3]" : "bg-ink text-white hover:bg-gold-deep"}`}>
+          <button type="submit" disabled={status === "sending"} className={`chamfer-btn shrink-0 px-5 py-2.5 text-sm font-normal transition-colors disabled:opacity-60 ${onDark ? "btn btn-white" : "btn btn-navy"}`}>
             {status === "sending" ? (isEn ? en.sending : "جارٍ الإرسال…") : isEn ? en.submit : "اشترك"}
           </button>
         </div>

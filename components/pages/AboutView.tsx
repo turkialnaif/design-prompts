@@ -4,6 +4,7 @@ import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import Accreditations from "@/components/Accreditations";
 import LogoShowcase from "@/components/LogoShowcase";
 import { Band, BandHead, HeroHead, Wrap } from "@/components/ui";
 import { attorneys, corePillars, firm, matterMethod } from "@/lib/site";
@@ -125,6 +126,8 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
           </ol>
         </Wrap>
       </Band>
+
+      <Accreditations locale={locale} />
 
       <Band tone="tint">
         <Wrap max="5xl">

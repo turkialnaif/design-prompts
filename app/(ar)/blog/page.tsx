@@ -75,7 +75,7 @@ export default function BlogPage() {
       <PageHero mark={false}>
         <div className="px-2 text-center">
           <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">Legal Research &amp; Insights</p>
-          <h1 className="font-display grad-text mt-2 leading-[1.15]" style={{ fontSize: "clamp(5.5rem, 22vw, 17rem)" }}>
+          <h1 className="grad-text mt-2 font-bold leading-[1.2]" style={{ fontFamily: "var(--font-ruqaa), serif", fontSize: "clamp(6rem, 24vw, 19rem)" }}>
             المدونة
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg font-light leading-9 text-white/80">

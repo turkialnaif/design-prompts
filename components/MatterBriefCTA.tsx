@@ -18,14 +18,14 @@ export default function MatterBriefCTA({
   const t = briefCopy[locale];
   const dir = locale === "ar" ? "rtl" : "ltr";
 
-  const triggerClasses = tone === "onDark" ? "glass-card-dark text-white hover:text-gold" : "glass-card text-ink hover:text-gold-deep";
+  const triggerClasses = tone === "onDark" ? "btn-ghost" : "btn-line";
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`chamfer-btn font-normal ${small ? "px-5 py-2 text-sm" : "px-7 py-3.5 text-base"} transition-all duration-200 hover:-translate-y-0.5 ${triggerClasses}`}
+        className={`btn chamfer-btn font-normal ${small ? "px-5 py-2 text-sm" : "px-7 py-3.5 text-base"} ${triggerClasses}`}
       >
         {t.trigger}
       </button>

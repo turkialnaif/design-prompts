@@ -1,4 +1,3 @@
-import Accreditations from "@/components/Accreditations";
 import HomeHero from "@/components/HomeHero";
 import TrustStrip from "@/components/TrustStrip";
 import ScrollWords from "@/components/ScrollWords";
@@ -6,7 +5,6 @@ import LogoShowcase from "@/components/LogoShowcase";
 import WhoWeServe from "@/components/WhoWeServe";
 import HomeServices from "@/components/HomeServices";
 import Preloader from "@/components/Preloader";
-import PartnersTicker from "@/components/PartnersTicker";
 import { newestFirst } from "@/lib/article-index";
 import BlogBand from "@/components/BlogBand";
 
@@ -35,10 +33,6 @@ export default function Home() {
         <TrustStrip locale="ar" />
 
         <WhoWeServe locale="ar" />
-
-        <Accreditations locale="ar" />
-
-        <PartnersTicker locale="ar" />
 
         <BlogBand items={bandItems} />
       </div>

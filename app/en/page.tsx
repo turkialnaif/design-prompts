@@ -1,4 +1,3 @@
-import Accreditations from "@/components/Accreditations";
 import HomeHero from "@/components/HomeHero";
 import TrustStrip from "@/components/TrustStrip";
 import ScrollWords from "@/components/ScrollWords";
@@ -6,7 +5,6 @@ import LogoShowcase from "@/components/LogoShowcase";
 import WhoWeServe from "@/components/WhoWeServe";
 import HomeServices from "@/components/HomeServices";
 import Preloader from "@/components/Preloader";
-import PartnersTicker from "@/components/PartnersTicker";
 
 export default function HomeEn() {
   return (
@@ -25,9 +23,6 @@ export default function HomeEn() {
 
         <WhoWeServe locale="en" />
 
-        <Accreditations locale="en" />
-
-        <PartnersTicker locale="en" />
       </div>
     </div>
   );

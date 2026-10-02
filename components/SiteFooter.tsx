@@ -2,6 +2,7 @@ import Image from "next/image";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import PartnersCurtain from "@/components/PartnersCurtain";
 import SocialIcons from "@/components/SocialIcons";
 import { corePillars, firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
@@ -155,6 +156,8 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
           <p>{t.license}</p>
         </div>
       </div>
+
+      <PartnersCurtain locale={locale} />
     </footer>
   );
 }

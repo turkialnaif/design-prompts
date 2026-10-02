@@ -15,8 +15,8 @@ type Props = {
 export default function ArrowButton({ href, children, external, variant = "gold", ltr = false, small = false }: Props) {
   const classes =
     variant === "gold"
-      ? "bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] text-ink hover:brightness-105"
-      : "glass-card-dark text-white hover:text-gold";
+      ? "btn-gold"
+      : "btn-ghost";
 
   const Icon = ltr ? ArrowRight : ArrowLeft;
   const iconSpan = (
@@ -31,7 +31,7 @@ export default function ArrowButton({ href, children, external, variant = "gold"
 
   const content = (
     <span
-      className={`chamfer-btn inline-flex items-center font-normal transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
+      className={`btn chamfer-btn inline-flex items-center font-normal ${
         small ? "gap-2 py-1.5 text-sm" : "gap-3 py-2 text-base"
       } ${small ? (ltr ? "pr-2 pl-5" : "pl-2 pr-5") : ltr ? "pr-3 pl-7" : "pl-3 pr-7"} ${classes}`}
     >

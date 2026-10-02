@@ -44,7 +44,7 @@ export default function HeroStage({
           <div className="hero-ring-b round-keep h-[min(60vw,27rem)] w-[min(60vw,27rem)] border border-[#f6e2b3]/15" />
         </div>
       </div>
-      <div aria-hidden className="frame pointer-events-none absolute inset-3 z-[2] md:inset-6" style={{ ["--bl" as string]: "44px", ["--bs" as string]: "18px" }} />
+      <div aria-hidden className="frame pointer-events-none absolute inset-3 z-[2] border border-[#e0b35a]/30 md:inset-6" />
 
       <div className="absolute inset-0 z-[2]">
         <Logo3DHero />
