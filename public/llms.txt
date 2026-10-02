@@ -1,0 +1,39 @@
+# Turki AlNaif & Partners — تركي النايف وشركاؤه للمحاماة والاستشارات القانونية
+
+> Riyadh-based law firm and legal consultancy (licence no. 4477). Bilingual Arabic/English website. Services: advisory and legal opinions, contracts and transactions, litigation/arbitration/settlement, compliance and governance, digital/data law, enforcement and recovery.
+
+## Key pages
+- [Home (Arabic)](https://taap.sa/)
+- [Home (English)](https://taap.sa/en)
+- [Services](https://taap.sa/services) / [English](https://taap.sa/en/services)
+- [Sectors we serve](https://taap.sa/sectors) / [English](https://taap.sa/en/sectors)
+- [About](https://taap.sa/about) / [English](https://taap.sa/en/about)
+- [Legal articles (Arabic)](https://taap.sa/blog)
+- [Contact](https://taap.sa/contact) / [English](https://taap.sa/en/contact)
+- [Privacy and terms](https://taap.sa/privacy)
+
+## Sectors
+- [الإنشاءات والمقاولات](https://taap.sa/sectors/construction) / [Construction & Contracting](https://taap.sa/en/sectors/construction)
+- [التقنية والتحول الرقمي](https://taap.sa/sectors/technology) / [Technology & Digital Transformation](https://taap.sa/en/sectors/technology)
+- [التعليم](https://taap.sa/sectors/education) / [Education](https://taap.sa/en/sectors/education)
+- [الرعاية الصحية](https://taap.sa/sectors/healthcare) / [Healthcare](https://taap.sa/en/sectors/healthcare)
+- [الرياضة والترفيه](https://taap.sa/sectors/sports-entertainment) / [Sports & Entertainment](https://taap.sa/en/sectors/sports-entertainment)
+- [الضيافة والسياحة](https://taap.sa/sectors/hospitality-tourism) / [Hospitality & Tourism](https://taap.sa/en/sectors/hospitality-tourism)
+- [النقل والخدمات اللوجستية](https://taap.sa/sectors/transport-logistics) / [Transport & Logistics](https://taap.sa/en/sectors/transport-logistics)
+- [الخدمات المصرفية والمالية](https://taap.sa/sectors/banking-finance) / [Banking & Finance](https://taap.sa/en/sectors/banking-finance)
+- [الاتصالات وتقنية المعلومات](https://taap.sa/sectors/telecommunications) / [Telecommunications & IT](https://taap.sa/en/sectors/telecommunications)
+- [التجزئة والتجارة](https://taap.sa/sectors/retail-trade) / [Retail & Trade](https://taap.sa/en/sectors/retail-trade)
+- [العقارات](https://taap.sa/sectors/real-estate) / [Real Estate](https://taap.sa/en/sectors/real-estate)
+- [الأمن والدفاع](https://taap.sa/sectors/security-defense) / [Security & Defence](https://taap.sa/en/sectors/security-defense)
+- [البيئة والموارد المائية](https://taap.sa/sectors/environment-water) / [Environment & Water](https://taap.sa/en/sectors/environment-water)
+- [البلديات والإسكان](https://taap.sa/sectors/municipal-housing) / [Municipal & Housing](https://taap.sa/en/sectors/municipal-housing)
+- [الثقافة والإعلام](https://taap.sa/sectors/culture-media) / [Culture & Media](https://taap.sa/en/sectors/culture-media)
+- [الزراعة والأمن الغذائي](https://taap.sa/sectors/agriculture) / [Agriculture & Food Security](https://taap.sa/en/sectors/agriculture)
+- [الطاقة والتعدين](https://taap.sa/sectors/energy-mining) / [Energy & Mining](https://taap.sa/en/sectors/energy-mining)
+- [القطاع الحكومي](https://taap.sa/sectors/government) / [Government Sector](https://taap.sa/en/sectors/government)
+- [الشركات العائلية](https://taap.sa/sectors/family-businesses) / [Family Businesses](https://taap.sa/en/sectors/family-businesses)
+- [القطاع غير الربحي والأوقاف](https://taap.sa/sectors/nonprofit-endowments) / [Non-Profit & Endowments (Awqaf)](https://taap.sa/en/sectors/nonprofit-endowments)
+
+## Notes
+- Content is general information, not legal advice. Contact the firm to open a matter.
+- Sitemap: https://taap.sa/sitemap.xml

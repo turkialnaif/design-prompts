@@ -201,7 +201,7 @@ export default async function AttorneyPage({
               <li key={p.label}>
                 <Link
                   href={p.href}
-                  className="glass-card inline-block rounded-full px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
+                  className="glass-card inline-block chamfer-btn px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
                 >
                   {p.label}
                 </Link>
@@ -210,7 +210,7 @@ export default async function AttorneyPage({
             <li>
               <Link
                 href="/services"
-                className="inline-block rounded-full border border-dashed border-gold/50 px-5 py-2.5 text-sm font-semibold text-ink-soft/60 transition-colors hover:text-gold-deep"
+                className="inline-block chamfer-btn border border-dashed border-gold/50 px-5 py-2.5 text-sm font-semibold text-ink-soft/60 transition-colors hover:text-gold-deep"
               >
                 مجالات أخرى بحسب طبيعة التكليف
               </Link>

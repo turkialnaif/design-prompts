@@ -52,6 +52,11 @@ export async function generateMetadata({
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       type: "article",
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      authors: [firm.nameAr],
+      section: article.primaryKeyword,
+      tags: [article.primaryKeyword, ...article.secondaryKeywords],
       title: article.seoTitle,
       description: article.metaDescription,
       images: articlePhoto(slug) ? [{ url: articlePhoto(slug)!.src }] : undefined,
@@ -124,7 +129,7 @@ export default async function ArticlePage({
               <span>{readLabel(readMinutes)}</span>
               <span className="flex flex-wrap gap-2">
                 {audiencesOf(article.slug).map((k) => (
-                  <span key={k} className="rounded-full px-3.5 py-1 text-xs font-semibold text-[#e6c988] ring-1 ring-[#e6c988]/60">
+                  <span key={k} className="chamfer-btn px-3.5 py-1 text-xs font-semibold text-[#e6c988] ring-1 ring-[#e6c988]/60">
                     {audienceLabels[k]}
                   </span>
                 ))}
@@ -212,7 +217,7 @@ export default async function ArticlePage({
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="inline-block rounded-full px-5 py-2.5 text-sm font-semibold text-white/80 ring-1 ring-white/20 transition-colors duration-300 hover:text-[#e6c988] hover:ring-[#e6c988]/60"
+                    className="inline-block chamfer-btn px-5 py-2.5 text-sm font-semibold text-white/80 ring-1 ring-white/20 transition-colors duration-300 hover:text-[#e6c988] hover:ring-[#e6c988]/60"
                   >
                     {link.label}
                   </Link>

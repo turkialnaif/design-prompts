@@ -30,6 +30,7 @@ const copy = {
       { href: "/", label: "الرئيسية" },
       { href: "/about", label: "من نحن" },
       { href: "/services", label: "الخدمات" },
+      { href: "/sectors", label: "القطاعات" },
       { href: "/corporate-clients", label: "للشركات" },
     ],
     firmLinks: [
@@ -62,6 +63,7 @@ const copy = {
       { href: "/en", label: "Home" },
       { href: "/en/about", label: "About" },
       { href: "/en/services", label: "Services" },
+      { href: "/en/sectors", label: "Sectors" },
       { href: "/en/corporate-clients", label: "Corporate Clients" },
     ],
     firmLinks: [

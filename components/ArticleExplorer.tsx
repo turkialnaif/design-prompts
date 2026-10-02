@@ -25,7 +25,7 @@ export type ArticleSummary = {
 export type ClusterOption = { key: string; label: string; count: number };
 
 const pill = (on: boolean) =>
-  `shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${
+  `shrink-0 chamfer-btn px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${
     on ? "bg-[#e6c988] text-[#08121f]" : "text-white/70 ring-1 ring-white/15 hover:text-[#e6c988] hover:ring-[#e6c988]/60"
   }`;
 
@@ -91,14 +91,14 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
                 </button>
               ))}
             </div>
-            <div className="hidden shrink-0 items-center gap-1 rounded-full p-1 ring-1 ring-white/15 sm:flex" role="group" aria-label="طريقة العرض">
+            <div className="hidden shrink-0 items-center gap-1 chamfer-btn p-1 ring-1 ring-white/15 sm:flex" role="group" aria-label="طريقة العرض">
               {(["grid", "index"] as const).map((v) => (
                 <button
                   key={v}
                   type="button"
                   onClick={() => setView(v)}
                   aria-pressed={view === v}
-                  className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${view === v ? "bg-white/15 text-white" : "text-white/55 hover:text-white"}`}
+                  className={`chamfer-btn px-4 py-1.5 text-xs font-bold transition-colors ${view === v ? "bg-white/15 text-white" : "text-white/55 hover:text-white"}`}
                 >
                   {v === "grid" ? "معرض" : "فهرس"}
                 </button>
@@ -124,7 +124,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
               onChange={(e) => setQuery(e.target.value)}
               placeholder="ابحث في الأبحاث"
               aria-label="ابحث في الأبحاث"
-              className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#e6c988] sm:w-64"
+              className="w-full chamfer-btn border border-white/15 bg-white/5 px-5 py-2 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#e6c988] sm:w-64"
             />
           </div>
         </div>

@@ -36,7 +36,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
       <div className="p-4">
         <h3 className="font-display line-clamp-3 text-[15px] font-bold leading-snug text-ink">{a.title}</h3>
         <p className="mt-2 line-clamp-2 text-xs leading-6 text-ink-soft/80">{a.description}</p>
-        <span className="mt-4 inline-block rounded-full bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-5 py-1.5 text-xs font-bold text-ink ring-1 ring-white/70">اقرأ المزيد</span>
+        <span className="mt-4 inline-block chamfer-btn bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-5 py-1.5 text-xs font-bold text-ink ring-1 ring-white/70">اقرأ المزيد</span>
       </div>
     </Link>
   );
@@ -65,7 +65,7 @@ export default function BlogBand({ items }: { items: BandItem[] }) {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:min-h-[40rem] lg:grid-cols-[1fr_1.1fr] lg:gap-6">
         <div className="pt-20 text-center lg:py-20 lg:text-start">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#e6c988]">Legal Insights</p>
-          <h2 className="font-display mt-3 text-5xl font-bold text-white md:text-6xl">مدونتنا القانونية</h2>
+          <h2 className="font-display grad-text mt-3 text-5xl md:text-6xl">مدونتنا القانونية</h2>
           <p className="mx-auto mt-4 max-w-md text-lg leading-9 text-white/80 lg:mx-0">بحوث ومقالات نظامية في مختلف المواضيع القانونية، في مكان واحد.</p>
           <div className="mt-9 flex justify-center lg:justify-start">
             <ArrowButton href="/blog">زيارة المدونة</ArrowButton>

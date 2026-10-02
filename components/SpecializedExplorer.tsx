@@ -32,7 +32,7 @@ export default function SpecializedExplorer({ items, locale }: { items: LineItem
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t.search}
           aria-label={t.search}
-          className="glass-card w-full rounded-full px-6 py-3 text-center text-sm text-ink outline-none focus:ring-2 focus:ring-gold/50"
+          className="glass-card w-full chamfer-btn px-6 py-3 text-center text-sm text-ink outline-none focus:ring-2 focus:ring-gold/50"
         />
       </div>
 
@@ -71,7 +71,7 @@ export default function SpecializedExplorer({ items, locale }: { items: LineItem
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="glass-card rounded-full px-8 py-3 text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:text-gold-deep"
+            className="glass-card chamfer-btn px-8 py-3 text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:text-gold-deep"
           >
             {expanded ? t.less : `${t.more} (${filtered.length})`}
           </button>

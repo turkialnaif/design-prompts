@@ -113,7 +113,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
                 role="radio"
                 aria-checked={audience === o.key}
                 onClick={() => setAudience(o.key)}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
+                className={`chamfer-btn px-4 py-1.5 text-xs font-semibold transition-colors ${
                   audience === o.key ? "bg-[#12233a] text-white" : "glass-card text-ink-soft"
                 }`}
               >
@@ -130,12 +130,12 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@company.com"
               aria-label="البريد الإلكتروني"
-              className="w-full flex-1 rounded-full border border-line bg-white/80 px-5 py-3 text-center text-sm text-ink outline-none focus:border-gold-deep"
+              className="w-full flex-1 chamfer-btn border border-line bg-white/80 px-5 py-3 text-center text-sm text-ink outline-none focus:border-gold-deep"
             />
             <button
               type="submit"
               disabled={status === "sending"}
-              className="rounded-full bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-7 py-3 text-sm font-semibold text-ink ring-1 ring-white/80 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+              className="chamfer-btn bg-gradient-to-b from-[#f0d894] to-[#cfa64e] px-7 py-3 text-sm font-semibold text-ink ring-1 ring-white/80 transition-transform hover:-translate-y-0.5 disabled:opacity-60"
             >
               {status === "sending" ? "جارٍ الإرسال…" : "اشترك"}
             </button>

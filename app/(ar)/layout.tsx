@@ -7,6 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
 import { firm } from "@/lib/site";
+import { homeDescription, siteJsonLd } from "@/lib/seo";
 
 // One display family for the whole site: light, lively Arabic letterforms with a calligraphic touch.
 const brandFont = Zain({
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
     default: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
     template: `%s | ${firm.nameShortAr}`,
   },
-  description: firm.tagline,
-  alternates: { canonical: "/", languages: { ar: "/", en: "/en" } },
+  description: homeDescription.ar,
+  alternates: { canonical: "/", languages: { ar: "/", en: "/en", "x-default": "/" } },
   icons: {
     icon: "/favicon.ico",
     apple: "/brand/apple-touch-icon.png",
@@ -38,34 +39,19 @@ export const metadata: Metadata = {
     locale: "ar_SA",
     siteName: firm.nameShortAr,
     title: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
-    description: firm.tagline,
+    description: homeDescription.ar,
     url: firm.website,
     images: [{ url: "/brand/riyadh-kafd.jpg", width: 1920, height: 1080, alt: firm.nameAr }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
-    description: firm.tagline,
+    description: homeDescription.ar,
     images: ["/brand/riyadh-kafd.jpg"],
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  name: firm.nameAr,
-  alternateName: firm.nameEn,
-  description: firm.tagline,
-  url: firm.website,
-  email: firm.email,
-  telephone: firm.phone,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "الرياض",
-    addressCountry: "SA",
-  },
-  areaServed: "SA",
-};
+const jsonLd = siteJsonLd("ar");
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

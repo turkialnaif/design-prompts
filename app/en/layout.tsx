@@ -7,6 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
+import { homeDescription, siteJsonLd } from "@/lib/seo";
 import { firmEn } from "@/lib/site.en";
 
 const brandFont = Zain({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s | ${firmEn.nameShort}`,
   },
   description: firmEn.description,
-  alternates: { canonical: "/en", languages: { ar: "/", en: "/en" } },
+  alternates: { canonical: "/en", languages: { ar: "/", en: "/en", "x-default": "/" } },
   icons: {
     icon: "/favicon.ico",
     apple: "/brand/apple-touch-icon.png",
@@ -50,22 +51,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  name: firmEn.nameShort,
-  alternateName: firm.nameAr,
-  description: firmEn.tagline,
-  url: `${firm.website}/en`,
-  email: firm.email,
-  telephone: firm.phone,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Riyadh",
-    addressCountry: "SA",
-  },
-  areaServed: "SA",
-};
+const jsonLd = siteJsonLd("en");
 
 export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
   return (

@@ -51,7 +51,7 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
         <Reveal className="text-center">
           <SectionHeading title={t.title} eyebrow="Accreditations" tone="onDark" size="xl" />
           <p className="mx-auto mt-5 max-w-xl text-sm leading-8 text-white/75">{t.intro}</p>
-          <p className="mx-auto mt-5 inline-block rounded-full border border-[#e6c988]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
+          <p className="mx-auto mt-5 inline-block chamfer-btn border border-[#e6c988]/50 bg-white/10 px-5 py-2 text-xs font-bold text-[#f6e2b3]">
             {accreditations.length} {en ? "accreditations and licences held" : "اعتمادًا وترخيصًا رسميًا"}
           </p>
         </Reveal>

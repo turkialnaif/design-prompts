@@ -11,7 +11,7 @@ export default function HeroRail({ locale, tiles }: { locale: "ar" | "en"; tiles
   const t = copy[locale];
   const track = [...tiles, ...tiles];
   return (
-    <div className="glass-clear mx-auto flex w-full max-w-3xl items-stretch overflow-hidden rounded-full">
+    <div className="glass-clear mx-auto flex w-full max-w-3xl items-stretch overflow-hidden chamfer-btn">
       <div className="flex shrink-0 items-center gap-2 border-e border-white/25 bg-[#0a1626]/55 px-4 text-[11px] font-bold text-[#f0d894]">
         <span aria-hidden className="h-1 w-1 rotate-45 bg-[#e6c988]" />
         {t.label}

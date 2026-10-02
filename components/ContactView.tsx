@@ -61,7 +61,7 @@ const copy = {
   },
 };
 
-const pill = "inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/20";
+const pill = "inline-flex items-center gap-2 chamfer-btn border border-white/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/20";
 
 export default function ContactView({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];

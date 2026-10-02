@@ -59,7 +59,7 @@ export default function CorporateClientsPage() {
               <Reveal key={m.tag} delay={i * 90}>
                 <TiltCard className="h-full rounded-2xl" maxTilt={6}>
                   <div className="glass-card flex h-full flex-col items-center rounded-2xl p-8 text-center">
-                    <span className="glass-card rounded-full px-4 py-1 text-xs font-semibold text-gold-deep">{m.tag}</span>
+                    <span className="glass-card chamfer-btn px-4 py-1 text-xs font-semibold text-gold-deep">{m.tag}</span>
                     <h3 className="font-display mt-4 text-lg font-bold text-ink">{m.title}</h3>
                     <p className="mt-3 text-sm leading-8 text-ink-soft/85">{m.body}</p>
                   </div>

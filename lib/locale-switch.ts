@@ -1,9 +1,10 @@
+const SAME = ["/about", "/services", "/contact", "/corporate-clients", "/privacy", "/sectors"];
+
+/** Arabic path -> its English counterpart when one exists, otherwise the English home. */
 export function arToEnHref(pathname: string): string {
   if (pathname === "/") return "/en";
-  if (pathname === "/about") return "/en/about";
-  if (pathname === "/services") return "/en/services";
-  if (pathname === "/contact") return "/en/contact";
-  if (pathname.startsWith("/team/")) return `/en${pathname}`;
+  if (SAME.includes(pathname)) return `/en${pathname}`;
+  if (pathname.startsWith("/team/") || pathname.startsWith("/sectors/")) return `/en${pathname}`;
   return "/en";
 }
 

@@ -10,6 +10,7 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import TiltCard from "@/components/TiltCard";
 import { articles } from "@/lib/articles";
+import { sectors } from "@/lib/sectors";
 import { lineDetails } from "@/lib/line-content";
 import { corePillars, deliverables, firm, lineAxis, matterMethod, specializedLines } from "@/lib/site";
 
@@ -66,6 +67,7 @@ export default async function ServicePage({
   const relatedArticles = articles
     .filter((a) => keywords.some((k) => `${a.h1} ${a.primaryKeyword}`.includes(k)))
     .slice(0, 3);
+  const relatedSectors = sectors.filter((x) => x.services.includes(slug));
   const detail = line ? lineDetails[line.slug] : undefined;
   const order = [
     pillar ? "scope" : null,
@@ -99,14 +101,14 @@ export default async function ServicePage({
             <PageHero photo={servicePhoto} focus="center 50%">
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
             {pillar && (
-              <span className="border border-white/25 bg-white/10 mb-5 inline-block rounded-full px-4 py-1 text-xs font-semibold text-[#f0d894]">
+              <span className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f0d894]">
                 {pillar.stage}
               </span>
             )}
             {axis && (
               <Link
                 href={`/services/${axis.slug}`}
-                className="border border-white/25 bg-white/10 mb-5 inline-block rounded-full px-4 py-1 text-xs font-semibold text-[#f0d894]"
+                className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f0d894]"
               >
                 ضمن محور: {axis.title}
               </Link>
@@ -121,7 +123,7 @@ export default async function ServicePage({
                     <li key={p.slug}>
                       <Link
                         href={`/services/${p.slug}`}
-                        className={`inline-block rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                        className={`inline-block chamfer-btn px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                           active
                             ? "bg-gradient-to-b from-[#f0d894] to-[#cfa64e] text-white shadow-[inset_0_1.5px_0_rgba(255,255,255,0.8)]"
                             : "border border-white/25 bg-white/10 text-white/75 hover:text-[#f0d894]"
@@ -193,7 +195,7 @@ export default async function ServicePage({
             </Reveal>
             <ul className="mt-12 flex flex-wrap justify-center gap-3">
               {detail.deliverables.map((d) => (
-                <li key={d} className="glass-card rounded-full px-6 py-2.5 text-sm font-semibold text-ink-soft">
+                <li key={d} className="glass-card chamfer-btn px-6 py-2.5 text-sm font-semibold text-ink-soft">
                   {d}
                 </li>
               ))}
@@ -237,7 +239,7 @@ export default async function ServicePage({
                 <li key={l.slug}>
                   <Link
                     href={`/services/${l.slug}`}
-                    className="glass-card inline-block rounded-full px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
+                    className="glass-card inline-block chamfer-btn px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
                   >
                     {l.title}
                   </Link>
@@ -266,7 +268,7 @@ export default async function ServicePage({
           </div>
           <ul className="mt-12 flex flex-wrap justify-center gap-3">
             {deliverables.map((d) => (
-              <li key={d.title} className="glass-card rounded-full px-5 py-2 text-xs font-semibold text-ink-soft">
+              <li key={d.title} className="glass-card chamfer-btn px-5 py-2 text-xs font-semibold text-ink-soft">
                 {d.title}
               </li>
             ))}
@@ -289,7 +291,7 @@ export default async function ServicePage({
               <li key={r.slug}>
                 <Link
                   href={`/services/${r.slug}`}
-                  className="glass-card inline-block rounded-full px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
+                  className="glass-card inline-block chamfer-btn px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep"
                 >
                   {r.title}
                 </Link>
@@ -329,17 +331,34 @@ export default async function ServicePage({
         </section>
       )}
 
+      {relatedSectors.length > 0 && (
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-5xl px-5 text-center">
+            <h2 className="font-display !text-3xl !font-light text-[#00124a] md:!text-4xl">القطاعات التي نقدّم لها هذه الخدمة</h2>
+            <ul className="mt-8 flex flex-wrap justify-center gap-2.5">
+              {relatedSectors.map((x) => (
+                <li key={x.slug}>
+                  <Link href={`/sectors/${x.slug}`} className="chamfer-btn inline-block border border-[#00124a]/20 px-4 py-2 text-sm font-light text-[#00124a] transition-colors hover:border-[#9b88d7] hover:bg-[#f4f5fe]">
+                    {x.ar.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <nav aria-label="التنقل بين الخدمات" className="bg-paper py-10">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 text-sm font-semibold">
           {prev ? (
-            <Link href={`/services/${prev.slug}`} className="glass-card rounded-full px-5 py-2.5 text-ink-soft hover:text-gold-deep">
+            <Link href={`/services/${prev.slug}`} className="glass-card chamfer-btn px-5 py-2.5 text-ink-soft hover:text-gold-deep">
               → {prev.title}
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link href={`/services/${next.slug}`} className="glass-card rounded-full px-5 py-2.5 text-ink-soft hover:text-gold-deep">
+            <Link href={`/services/${next.slug}`} className="glass-card chamfer-btn px-5 py-2.5 text-ink-soft hover:text-gold-deep">
               {next.title} ←
             </Link>
           ) : (
