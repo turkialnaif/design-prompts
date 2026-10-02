@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pair("/", "/en", 1),
     pair("/about", "/en/about", 0.8),
     pair("/services", "/en/services", 0.9),
-    pair("/sectors", "/en/sectors", 0.9),
     pair("/corporate-clients", "/en/corporate-clients", 0.6),
     pair("/contact", "/en/contact", 0.7),
     pair("/privacy", "/en/privacy", 0.3),

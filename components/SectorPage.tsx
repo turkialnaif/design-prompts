@@ -13,7 +13,7 @@ const ui = {
   ar: {
     home: "الرئيسية",
     sectors: "القطاعات",
-    sectorsHref: "/sectors",
+    sectorsHref: "/services#sectors",
     base: "/sectors",
     heroEyebrow: "Sector Expertise",
     issuesTitle: "أبرز المسائل القانونية في القطاع",
@@ -35,7 +35,7 @@ const ui = {
   en: {
     home: "Home",
     sectors: "Sectors",
-    sectorsHref: "/en/sectors",
+    sectorsHref: "/en/services#sectors",
     base: "/en/sectors",
     heroEyebrow: "Sector Expertise",
     issuesTitle: "Key legal matters in the sector",
@@ -106,7 +106,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
         locale={locale}
         items={[
           { label: t.home, href: ar ? "/" : "/en" },
-          { label: t.sectors, href: t.sectorsHref },
+          { label: ar ? "الخدمات والقطاعات" : "Services & Sectors", href: ar ? "/services" : "/en/services" },
           { label: c.title, href: `${t.base}/${sector.slug}` },
         ]}
       />

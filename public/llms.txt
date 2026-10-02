@@ -5,8 +5,7 @@
 ## Key pages
 - [Home (Arabic)](https://taap.sa/)
 - [Home (English)](https://taap.sa/en)
-- [Services](https://taap.sa/services) / [English](https://taap.sa/en/services)
-- [Sectors we serve](https://taap.sa/sectors) / [English](https://taap.sa/en/sectors)
+- [Services and sectors](https://taap.sa/services) / [English](https://taap.sa/en/services)
 - [About](https://taap.sa/about) / [English](https://taap.sa/en/about)
 - [Legal articles (Arabic)](https://taap.sa/blog)
 - [Contact](https://taap.sa/contact) / [English](https://taap.sa/en/contact)

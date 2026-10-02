@@ -14,8 +14,7 @@ const copy = {
     nav: [
       { href: "/", label: "الرئيسية" },
       { href: "/about", label: "من نحن" },
-      { href: "/services", label: "الخدمات" },
-      { href: "/sectors", label: "القطاعات" },
+      { href: "/services", label: "الخدمات والقطاعات" },
       { href: "/blog", label: "مقالات قانونية" },
       { href: "/contact", label: "تواصل معنا" },
     ],
@@ -32,8 +31,7 @@ const copy = {
     nav: [
       { href: "/en", label: "Home" },
       { href: "/en/about", label: "About" },
-      { href: "/en/services", label: "Services" },
-      { href: "/en/sectors", label: "Sectors" },
+      { href: "/en/services", label: "Services & Sectors" },
       { href: "/blog", label: "Legal Insights (Arabic)" },
       { href: "/en/contact", label: "Contact" },
     ],

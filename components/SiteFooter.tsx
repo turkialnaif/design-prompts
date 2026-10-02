@@ -6,19 +6,6 @@ import SocialIcons from "@/components/SocialIcons";
 import { corePillars, firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
-const regulators = {
-  ar: [
-    { src: "/brand/vision2030-logo.png", alt: "رؤية السعودية 2030", width: 524, height: 354, cls: "h-11" },
-    { src: "/brand/bar-association-logo.png", alt: "الهيئة السعودية للمحامين", width: 671, height: 188, cls: "h-7" },
-    { src: "/brand/moj-logo.png", alt: "وزارة العدل", width: 492, height: 598, cls: "h-11" },
-  ],
-  en: [
-    { src: "/brand/vision2030-logo.png", alt: "Saudi Vision 2030", width: 524, height: 354, cls: "h-11" },
-    { src: "/brand/bar-association-logo.png", alt: "Saudi Bar Association", width: 671, height: 188, cls: "h-7" },
-    { src: "/brand/moj-logo.png", alt: "Ministry of Justice", width: 492, height: 598, cls: "h-11" },
-  ],
-};
-
 const copy = {
   ar: {
     alt: `${firm.nameShortAr} — ${firm.nameEn}`,
@@ -30,7 +17,7 @@ const copy = {
       { href: "/", label: "الرئيسية" },
       { href: "/about", label: "من نحن" },
       { href: "/services", label: "الخدمات" },
-      { href: "/sectors", label: "القطاعات" },
+      { href: "/services#sectors", label: "القطاعات" },
       { href: "/corporate-clients", label: "للشركات" },
     ],
     firmLinks: [
@@ -46,7 +33,6 @@ const copy = {
     ctaBody: "تواصل معنا وسنحدد معك نطاق العمل والمخرجات منذ البداية.",
     ctaWhatsapp: "تواصل عبر واتساب",
     matterTypes: corePillars.map((s) => s.title),
-    regulators: "جهات نظامية",
     rights: `© ${new Date().getFullYear()} ${firm.nameAr}. جميع الحقوق محفوظة.`,
     license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber} · السجل الموحد ${firm.unifiedNumber} · المملكة العربية السعودية`,
     admin: "دخول إدارة المكتب",
@@ -63,7 +49,7 @@ const copy = {
       { href: "/en", label: "Home" },
       { href: "/en/about", label: "About" },
       { href: "/en/services", label: "Services" },
-      { href: "/en/sectors", label: "Sectors" },
+      { href: "/en/services#sectors", label: "Sectors" },
       { href: "/en/corporate-clients", label: "Corporate Clients" },
     ],
     firmLinks: [
@@ -79,7 +65,6 @@ const copy = {
     ctaBody: "Get in touch and we'll scope the work and the deliverables from day one.",
     ctaWhatsapp: "Message on WhatsApp",
     matterTypes: corePillars.map((s) => s.titleEn),
-    regulators: "Regulators",
     rights: `© ${new Date().getFullYear()} ${firmEn.nameFull}. All rights reserved.`,
     license: `Law Practice Licence No. ${firm.licenseNumber} · Unified No. ${firm.unifiedNumber} · Kingdom of Saudi Arabia`,
     admin: "Firm sign-in",
@@ -158,16 +143,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
             <NewsletterSignup source={t.source} compact locale={locale} onDark />
           </div>
 
-          <div className="border-t border-white/10 pt-8 md:col-span-3">
-            <p className={`text-center ${ar ? "text-sm text-white/55" : "text-[11px] uppercase tracking-[0.22em] text-white/55"}`}>{t.regulators}</p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              {regulators[locale].map((r) => (
-                <span key={r.src} className="chamfer-btn flex h-16 items-center bg-white/95 px-6">
-                  <Image src={r.src} alt={r.alt} width={r.width} height={r.height} className={`${r.cls} w-auto`} />
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="mt-8 text-center text-xs leading-6 text-white/55">

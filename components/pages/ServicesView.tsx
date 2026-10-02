@@ -1,11 +1,10 @@
-import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
-import Reveal from "@/components/Reveal";
 import ServiceTiles from "@/components/ServiceTiles";
 import SpecializedExplorer from "@/components/SpecializedExplorer";
 import { Band, BandHead, HeroHead, StatTile, Wrap } from "@/components/ui";
+import WhoWeServe from "@/components/WhoWeServe";
 import { pillarTiles, totalServices } from "@/lib/service-tiles";
 import { sectors } from "@/lib/sectors";
 import { corePillars, firm, specializedLines } from "@/lib/site";
@@ -13,42 +12,32 @@ import { specializedLineSummaryEn } from "@/lib/site.en";
 
 const ui = {
   ar: {
-    eyebrow: "Service Architecture",
-    title: "منظومة الخدمات القانونية",
-    lead: "نعرض الخدمات بوصفها رحلة عمل متصلة، من المشورة قبل القرار إلى اكتمال الأثر.",
+    eyebrow: "Services & Sectors",
+    title: "الخدمات والقطاعات",
+    lead: "منظومة خدماتنا القانونية بوصفها رحلة عمل متصلة، ثم القطاعات العشرون التي نخدمها.",
     stats: [
       { value: totalServices, label: "خدمة قانونية" },
       { value: corePillars.length, label: "محاور أساسية" },
-      { value: specializedLines.length, label: "خط ممارسة متخصص" },
+      { value: sectors.length, label: "قطاعًا" },
     ],
     book: "احجز استشارة أولية",
     core: { number: "01", eyebrow: "Core Pillars", title: "المحاور الأساسية" },
     lines: { number: "02", eyebrow: "Specialized Practice Lines", title: "خطوط ممارسة متخصصة" },
     cta: "تفاصيل الخدمة ←",
-    sectorsTitle: "خدماتنا في عشرين قطاعًا",
-    sectorsLead: "لكل قطاع صفحة تشرح مسائله القانونية وكيف نخدمه.",
-    all: "كل القطاعات",
-    allHref: "/sectors",
-    base: "/sectors",
   },
   en: {
-    eyebrow: "Service Architecture",
-    title: "Legal Service System",
-    lead: "We present our services as a connected engagement journey — from advice before a decision through to a completed practical effect.",
+    eyebrow: "Services & Sectors",
+    title: "Services & Sectors",
+    lead: "Our legal services as one connected engagement journey, then the twenty sectors we serve.",
     stats: [
       { value: totalServices, label: "legal services" },
       { value: corePillars.length, label: "core pillars" },
-      { value: specializedLines.length, label: "specialised practice lines" },
+      { value: sectors.length, label: "sectors" },
     ],
     book: "Book an Initial Consultation",
     core: { number: "01", eyebrow: "Core Pillars", title: "Core Pillars" },
     lines: { number: "02", eyebrow: "Specialized Practice Lines", title: "Specialised Practice Lines" },
     cta: "Service details →",
-    sectorsTitle: "Our services across twenty sectors",
-    sectorsLead: "Each sector has a page on its legal matters and how we serve it.",
-    all: "All sectors",
-    allHref: "/en/sectors",
-    base: "/en/sectors",
   },
 };
 
@@ -96,25 +85,7 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
-      <Band tone="dark">
-        <Wrap max="5xl">
-          <BandHead eyebrow="Sectors" title={t.sectorsTitle} lead={t.sectorsLead} tone="onDark" />
-          <Reveal>
-            <ul className="mt-12 flex flex-wrap justify-center gap-2.5">
-              {sectors.map((s) => (
-                <li key={s.slug}>
-                  <Link href={`${t.base}/${s.slug}`} className="chamfer-btn inline-block border border-white/20 px-4 py-2 text-sm font-light text-white/85 transition-colors hover:border-[#e0b35a] hover:bg-white/10 hover:text-white">
-                    {s[locale].title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 text-center">
-              <Link href={t.allHref} className="chamfer-btn inline-block bg-white px-8 py-3.5 text-base text-[#00124a] transition-colors hover:bg-[#f6e2b3]">{t.all}</Link>
-            </div>
-          </Reveal>
-        </Wrap>
-      </Band>
+      <WhoWeServe locale={locale} hideAll />
     </div>
   );
 }

@@ -96,21 +96,21 @@ export default function ArticleMarkdown({ content }: { content: string }) {
       {blocks.map((block, i) => {
         if (block.kind === "h2") {
           return (
-            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#e0b35a]/40 pt-10 text-2xl font-bold leading-[1.5] text-ink md:text-[2rem]">
+            <h2 key={i} id={`section-${i}`} className="font-display scroll-mt-28 border-t border-[#e0b35a]/50 pt-10 text-3xl font-light leading-[1.45] text-[#00124a] md:text-[2.5rem]">
               {block.text}
             </h2>
           );
         }
         if (block.kind === "h3") {
           return (
-            <h3 key={i} className="font-display pt-3 text-xl font-bold text-ink">
+            <h3 key={i} className="font-display pt-3 text-2xl font-light text-[#00124a]">
               {block.text}
             </h3>
           );
         }
         if (block.kind === "p") {
           return (
-            <p key={i} className={i === firstP ? "text-xl font-medium leading-[2.1] text-ink md:text-[1.4rem]" : "text-[1.06rem] leading-[2.15] text-ink-soft md:text-[1.12rem]"}>
+            <p key={i} className={i === firstP ? "text-2xl font-light leading-[2.05] text-[#00124a] md:text-[1.7rem]" : "text-[1.08rem] font-light leading-[2.2] text-ink-soft md:text-[1.16rem]"}>
               {renderInline(block.text)}
             </p>
           );
@@ -141,7 +141,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
         }
         if (block.kind === "quote") {
           return (
-            <aside key={i} className="rounded-2xl border-r-4 border-r-[#f6e2b3] bg-[#00124a] px-6 py-6 text-white shadow-[0_24px_50px_-30px_rgba(6,13,21,0.7)] md:px-8">
+            <aside key={i} className="frame bg-[#00124a] px-6 py-7 text-white md:px-9">
               {block.lines.map((line, j) =>
                 line.startsWith("- ") ? (
                   <ul key={j} className="list-disc space-y-1.5 pr-5 text-[0.98rem] leading-8 text-white/85">
@@ -159,7 +159,7 @@ export default function ArticleMarkdown({ content }: { content: string }) {
         if (block.kind === "table") {
           const [header, ...rows] = block.rows;
           return (
-            <div key={i} className="overflow-x-auto rounded-2xl ring-1 ring-[#e0b35a]/40" data-lenis-prevent>
+            <div key={i} className="frame overflow-x-auto" data-lenis-prevent>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-[#00124a] text-[#f6e2b3]">

@@ -9,7 +9,7 @@ const copy = {
     eyebrow: "Sectors We Serve",
     lead: "نخدم الأفراد والشركات والمؤسسات والجهات الحكومية والجمعيات الخيرية والأوقاف في عشرين قطاعًا، ولكل قطاع صفحة تشرح مسائله القانونية وكيف نخدمه.",
     all: "كل القطاعات",
-    allHref: "/sectors",
+    allHref: "/services#sectors",
     base: "/sectors",
   },
   en: {
@@ -17,16 +17,16 @@ const copy = {
     eyebrow: "Clients",
     lead: "We serve individuals, companies, institutions, government entities, charities and endowments across twenty sectors; each has its own page on its legal matters and how we help.",
     all: "All sectors",
-    allHref: "/en/sectors",
+    allHref: "/en/services#sectors",
     base: "/en/sectors",
   },
 };
 
 /** The twenty sectors as a two-column list of links: a hairline between rows, the row filling with colour and nudging on hover. Each row is a real page. */
-export default function WhoWeServe({ locale }: { locale: "ar" | "en" }) {
+export default function WhoWeServe({ locale, hideAll = false }: { locale: "ar" | "en"; hideAll?: boolean }) {
   const t = copy[locale];
   return (
-    <section className="relative bg-white py-24 md:py-36">
+    <section id="sectors" className="relative scroll-mt-24 bg-white py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -53,9 +53,9 @@ export default function WhoWeServe({ locale }: { locale: "ar" | "en" }) {
             </li>
           ))}
         </ul>
-        <div className="mt-12 text-center">
+        {!hideAll && <div className="mt-12 text-center">
           <Link href={t.allHref} className="chamfer-btn inline-block bg-[#00124a] px-8 py-3.5 text-base font-normal text-white transition-colors hover:bg-[#012696]">{t.all}</Link>
-        </div>
+        </div>}
       </div>
     </section>
   );

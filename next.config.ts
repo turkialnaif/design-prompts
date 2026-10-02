@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   experimental: { serverActions: { bodySizeLimit: "5mb" } },
   async redirects() {
     return [
+      { source: "/sectors", destination: "/services#sectors", permanent: true },
+      { source: "/en/sectors", destination: "/en/services#sectors", permanent: true },
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.taap.sa" }],

@@ -1,8 +1,6 @@
 import ArrowButton from "@/components/ArrowButton";
 import HeroScroll from "@/components/HeroScroll";
 import HeroStage from "@/components/HeroStage";
-import HeroRail from "@/components/HeroRail";
-import { homeServiceTiles } from "@/lib/service-tiles";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import { blurProps } from "@/lib/blur";
 import { corePillars, firm } from "@/lib/site";
@@ -25,7 +23,7 @@ const copy: Record<"ar" | "en", { body: string; book: string; h1: string; cue: s
   },
 };
 
-/** The hero: Riyadh photograph, the 3D gold mark, one sentence and two actions; the service rail runs along the foot. */
+/** The hero: Riyadh photograph, the 3D gold mark, one sentence and two actions; and a scroll cue. */
 export default function HomeHero({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
@@ -47,9 +45,6 @@ export default function HomeHero({ locale }: { locale: "ar" | "en" }) {
         }
       />
 
-      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-5 md:px-10">
-        <HeroRail locale={locale} tiles={homeServiceTiles(locale)} />
-      </div>
     </HeroScroll>
   );
 }

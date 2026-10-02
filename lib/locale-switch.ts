@@ -1,4 +1,4 @@
-const SAME = ["/about", "/services", "/contact", "/corporate-clients", "/privacy", "/sectors"];
+const SAME = ["/about", "/services", "/contact", "/corporate-clients", "/privacy"];
 
 /** Arabic path -> its English counterpart when one exists, otherwise the English home. */
 export function arToEnHref(pathname: string): string {

@@ -44,7 +44,6 @@ const T = {
     address: "المقر",
     license: "رخصة مزاولة المحاماة",
     unified: "السجل الموحد",
-    regulators: "الجهات النظامية",
     scan: "امسح للتواصل عبر واتساب",
     page: "صفحة",
   },
@@ -76,7 +75,6 @@ const T = {
     address: "Office",
     license: "Law Practice License No.",
     unified: "Unified Number",
-    regulators: "Regulatory Affiliations",
     scan: "Scan to reach us on WhatsApp",
     page: "Page",
   },
@@ -136,14 +134,8 @@ function PageHead({ e, h, locale }: { e: string; h: string; locale: Locale }) {
   );
 }
 
-const regulatorLogos: { src: string; h: string }[] = [
-  { src: "/brand/vision2030-logo.png", h: "12mm" },
-  { src: "/brand/moj-logo.png", h: "12mm" },
-  { src: "/brand/bar-association-logo.png", h: "8mm" },
-];
-
-const card = "rounded-[14px] border";
-const cardStyle = { borderColor: "rgba(224,179,90,0.5)", background: "#fffdf8" } as const;
+const card = "frame border";
+const cardStyle = { borderColor: "rgba(224,179,90,0.5)", background: "#ffffff" } as const;
 
 export default async function ProfileDocument({ locale }: { locale: Locale }) {
   const en = locale === "en";
@@ -276,7 +268,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               { l: t.unified, v: firm.unifiedNumber },
               { l: t.address, v: en ? firm.addressEn : firm.address },
             ].map((f) => (
-              <div key={f.l} className="rounded-[14px] px-4 py-5 text-center" style={{ background: "#00124a" }}>
+              <div key={f.l} className="frame px-4 py-5 text-center" style={{ background: "#00124a" }}>
                 <p className="text-[9px] tracking-wide text-[#f6e2b3]">{f.l}</p>
                 <p className="font-display mt-1 text-[14px] font-bold text-white">{f.v}</p>
               </div>
@@ -476,7 +468,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
               { l: t.email, v: firm.email, ltr: true },
               { l: t.web, v: firm.domain, ltr: true },
             ].map((c) => (
-              <div key={c.l} className="rounded-[14px] border px-5 py-4" style={{ borderColor: "rgba(255,255,255,0.22)", background: "rgba(255,255,255,0.07)" }}>
+              <div key={c.l} className="frame border px-5 py-4" style={{ borderColor: "rgba(255,255,255,0.22)", background: "rgba(255,255,255,0.07)" }}>
                 <p className="text-[9px] uppercase tracking-wide text-[#f6e2b3]">{c.l}</p>
                 <p className="font-display mt-1 text-[13px] font-bold text-white" dir="ltr" style={{ textAlign: en ? "left" : "right" }}>
                   {c.v}
@@ -499,13 +491,6 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
             <p className="text-[10.5px] leading-[1.9] text-white/70" style={{ maxWidth: "50mm", textAlign: en ? "left" : "right" }}>
               {t.scan}
             </p>
-          </div>
-
-          <p className="mt-[9mm] text-[9px] uppercase tracking-[0.22em] text-white/50">{t.regulators}</p>
-          <div className="mx-auto mt-3 flex items-center justify-center gap-10 rounded-[14px] bg-white px-8 py-4" style={{ width: "fit-content" }}>
-            {regulatorLogos.map((l) => (
-              <img key={l.src} src={l.src} alt="" style={{ height: l.h, maxWidth: "40mm", width: "auto", objectFit: "contain" }} />
-            ))}
           </div>
 
           <p className="mt-[8mm] whitespace-nowrap text-[9.5px] leading-[1.9] text-white/50">

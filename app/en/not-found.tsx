@@ -9,7 +9,7 @@ export default function NotFound() {
       <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75">The link may have changed or the page was removed. Go back home or browse the sectors we serve.</p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link href="/en" className="chamfer-btn bg-white px-6 py-3 text-[#00124a]">Home</Link>
-        <Link href="/en/sectors" className="chamfer-btn border border-white/30 px-6 py-3 text-white">Sectors</Link>
+        <Link href="/en/services#sectors" className="chamfer-btn border border-white/30 px-6 py-3 text-white">Sectors</Link>
       </div>
       <ul className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-2">
         {sectors.slice(0, 10).map((x) => (

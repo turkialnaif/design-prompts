@@ -5,7 +5,7 @@ import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import LogoShowcase from "@/components/LogoShowcase";
-import { Band, BandHead, HeroHead, Numbered, Wrap } from "@/components/ui";
+import { Band, BandHead, HeroHead, Wrap } from "@/components/ui";
 import { attorneys, corePillars, firm, matterMethod } from "@/lib/site";
 import { attorneyEn, firmEn } from "@/lib/site.en";
 
@@ -39,12 +39,6 @@ const ui = {
       { label: "السجل الموحد", value: firm.unifiedNumber },
     ],
     book: "احجز استشارة أولية",
-    principlesHead: { number: "01", eyebrow: "Principles", title: "كيف نفكّر" },
-    principles: [
-      { title: "نفهم السياق وتفاصيل العمل", text: "يبدأ العمل من قراءة الوقائع والمخاطر والهدف التجاري." },
-      { title: "نبني الموقف القانوني", text: "نربط النص النظامي بالحجة والدليل والنتيجة المتوقعة." },
-      { title: "نواصل إلى ما بعد التنفيذ", text: "نهتم بما بعد: الرأي أو الحكم أو الإجراء أو المدد أو المخاطر." },
-    ],
     methodHead: { number: "02", eyebrow: "The Matter Method", title: "منهجنا في إدارة المسألة", lead: "نظام عمل مختصر وقابل للتكرار يمنح العميل رؤية واضحة لمسار التكليف." },
     leaderHead: { number: "03", eyebrow: "Leadership", title: "القيادة المهنية" },
     profile: "الملف الشخصي",
@@ -61,12 +55,6 @@ const ui = {
       { label: "Unified Number", value: firm.unifiedNumber },
     ],
     book: "Book an Initial Consultation",
-    principlesHead: { number: "01", eyebrow: "Principles", title: "How We Think" },
-    principles: [
-      { title: "We understand the context and the business detail", text: "The engagement starts by reading the facts, the risks, and the commercial objective." },
-      { title: "We build the legal position", text: "Connecting the statutory text to the argument, the evidence, and the expected outcome." },
-      { title: "We follow through past execution", text: "We stay engaged with what follows: the opinion, the judgment, the procedure, deadlines, and risks." },
-    ],
     methodHead: { number: "02", eyebrow: "The Matter Method", title: "How We Manage a Matter", lead: "A short, repeatable way of working that gives the client a clear view of the engagement's path." },
     leaderHead: { number: "03", eyebrow: "Leadership", title: "Leadership" },
     profile: "View profile",
@@ -117,16 +105,7 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
-      <Band tone="tint">
-        <Wrap max="6xl">
-          <BandHead {...t.principlesHead} />
-          <div className="mt-14">
-            <Numbered items={t.principles} />
-          </div>
-        </Wrap>
-      </Band>
-
-      <LogoShowcase locale={locale} variant="standard" />
+      <LogoShowcase locale={locale} variant="think" />
 
       <Band tone="white">
         <Wrap max="6xl">

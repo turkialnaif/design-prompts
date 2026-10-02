@@ -1,9 +1,9 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { Environment, Lightformer, Sparkles } from "@react-three/drei";
+import { Environment, Lightformer } from "@react-three/drei";
 import { useMemo, useRef, type MutableRefObject } from "react";
-import { Color, ExtrudeGeometry, MathUtils, Shape, type Group, type MeshPhysicalMaterial } from "three";
+import { AdditiveBlending, BufferAttribute, BufferGeometry, Color, ExtrudeGeometry, MathUtils, Shape, ShaderMaterial, type Group, type MeshPhysicalMaterial } from "three";
 
 /**
  * The firm's mark (public/brand/logo-mark.png) rebuilt as real 3D gold: a wide top slab, a narrower
@@ -91,6 +91,73 @@ const PARTS: Part[] = [
 const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
 const BASE = new Color("#e2b04a");
 
+
+/**
+ * A field of stars that is dense around the mark and thins out with distance, so the mark seems to
+ * pull light towards itself. Each star twinkles on its own phase; the whole field turns slowly and
+ * leans with the pointer (through `rig.yaw`) for parallax.
+ */
+function Stars({ rig, count = 340, radius = 7.5 }: { rig: MutableRefObject<RigState>; count?: number; radius?: number }) {
+  const group = useRef<Group>(null);
+  const mat = useRef<ShaderMaterial>(null);
+  const geometry = useMemo(() => {
+    // seeded, so the field is the same on every render and every visit
+    let seed = 1337;
+    const rnd = () => {
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    const g = new BufferGeometry();
+    const pos = new Float32Array(count * 3);
+    const size = new Float32Array(count);
+    const phase = new Float32Array(count);
+    for (let i = 0; i < count; i++) {
+      const r = Math.pow(rnd(), 1.7) * radius + 0.9;
+      const a = rnd() * Math.PI * 2;
+      pos[i * 3] = Math.cos(a) * r * 1.35;
+      pos[i * 3 + 1] = Math.sin(a) * r * 0.85;
+      pos[i * 3 + 2] = (rnd() - 0.5) * 6 - 1.5;
+      size[i] = 0.35 + Math.pow(rnd(), 3) * 1.6;
+      phase[i] = rnd() * 6.283;
+    }
+    g.setAttribute("position", new BufferAttribute(pos, 3));
+    g.setAttribute("aSize", new BufferAttribute(size, 1));
+    g.setAttribute("aPhase", new BufferAttribute(phase, 1));
+    return g;
+  }, [count, radius]);
+  const uniforms = useMemo(() => ({ uTime: { value: 0 }, uColor: { value: new Color("#f6e2b3") } }), []);
+
+  useFrame((st, dt) => {
+    if (mat.current) mat.current.uniforms.uTime.value = st.clock.elapsedTime;
+    if (group.current) {
+      group.current.rotation.z += dt * 0.012;
+      group.current.rotation.y = MathUtils.damp(group.current.rotation.y, (rig.current.yaw - 0.35) * 0.18, 2.5, dt);
+    }
+  });
+  return (
+    <group ref={group}>
+      <points geometry={geometry}>
+        <shaderMaterial
+          ref={mat}
+          transparent
+          depthWrite={false}
+          blending={AdditiveBlending}
+          uniforms={uniforms}
+          vertexShader={`attribute float aSize; attribute float aPhase; uniform float uTime; varying float vA;
+            void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0); gl_Position = projectionMatrix * mv;
+              float tw = 0.45 + 0.55 * sin(uTime * (0.6 + aSize * 0.5) + aPhase);
+              vA = tw * (0.6 + aSize * 0.5);
+              gl_PointSize = aSize * 9.0 * (9.0 / -mv.z); }`}
+          fragmentShader={`uniform vec3 uColor; varying float vA;
+            void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d); gl_FragColor = vec4(uColor, a * a * vA); }`}
+        />
+      </points>
+    </group>
+  );
+}
+
 export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
   const root = useRef<Group>(null);
   const groups = useRef<(Group | null)[]>([]);
@@ -173,7 +240,7 @@ export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
           </group>
         ))}
       </group>
-      <Sparkles count={70} scale={[8, 5.5, 3.5]} size={3.2} speed={0.3} opacity={0.75} color="#f6e2b3" />
+      <Stars rig={rig} />
     </>
   );
 }

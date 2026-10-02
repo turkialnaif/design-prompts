@@ -9,6 +9,8 @@ import ArrowButton from "@/components/ArrowButton";
 import ArticleMarkdown, { getArticleHeadings } from "@/components/ArticleMarkdown";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import ReadingProgress from "@/components/ReadingProgress";
+import ShareBar from "@/components/ShareBar";
+import { newestFirst } from "@/lib/article-index";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { audienceLabels, audiencesOf, readLabel } from "@/lib/article-meta";
 import AuthorBox from "@/components/AuthorBox";
@@ -77,6 +79,9 @@ export default async function ArticlePage({
   const photo = articlePhoto(article.slug);
   const headings = getArticleHeadings(article.body);
   const readMinutes = Math.max(1, Math.ceil(article.body.split(/\s+/).length / 180));
+  const idx = newestFirst.findIndex((a) => a.slug === article.slug);
+  const newer = idx > 0 ? newestFirst[idx - 1] : null;
+  const older = idx >= 0 && idx < newestFirst.length - 1 ? newestFirst[idx + 1] : null;
   const related = articles
     .filter((a) => a.slug !== article.slug)
     .sort((a, b) => Number(b.cluster === article.cluster) - Number(a.cluster === article.cluster))
@@ -110,12 +115,13 @@ export default async function ArticlePage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <section className="hero-cut relative isolate overflow-hidden bg-[#00061d] px-5 pb-20 pt-40 md:px-12 md:pb-28 md:pt-48">
+      <section className="relative isolate overflow-hidden bg-[#00061d] px-5 pb-24 pt-36 md:px-12 md:pb-32 md:pt-48">
         <NavyField />
+        <div aria-hidden className="orn absolute inset-x-0 bottom-0" />
 
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1fr_22rem] lg:gap-14">
           <div>
-            <nav aria-label="مسار التصفح" className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#f6e2b3]">
+            <nav aria-label="مسار التصفح" className="flex items-center gap-3 text-sm text-[#f6e2b3]">
               <Link href="/blog" className="transition-colors hover:text-white">المدونة</Link>
               <span aria-hidden className="h-px w-8 bg-[#f6e2b3]/70" />
               <span>{clusterLabels[article.cluster]}</span>
@@ -137,7 +143,7 @@ export default async function ArticlePage({
           </div>
 
           {photo && (
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-[22rem] overflow-hidden rounded-3xl bg-[#00124a] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] ring-1 ring-[#f6e2b3]/50">
+            <div className="frame relative mx-auto aspect-[4/3] w-full max-w-[22rem] overflow-hidden bg-[#00124a] md:aspect-[4/5] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
               <Image src={photo.src} {...blurProps(photo.src)} alt={photo.alt} fill priority quality={90} sizes="352px" className="object-cover" style={{ objectPosition: photo.focus }} />
             </div>
           )}
@@ -153,16 +159,24 @@ export default async function ArticlePage({
           )}
 
           <div className="mx-auto w-full max-w-[44rem]">
-            <article>
+            <ShareBar url={`${firm.website}/blog/${article.slug}`} title={article.h1} />
+
+            <article className="mt-10">
               <ArticleMarkdown content={article.body} />
             </article>
+
+            <ul className="mt-12 flex flex-wrap gap-2.5" aria-label="الوسوم">
+              {[article.primaryKeyword, ...article.secondaryKeywords.slice(0, 4)].map((k) => (
+                <li key={k} className="border border-[#00124a]/15 px-3.5 py-1.5 text-xs text-ink-soft">{k}</li>
+              ))}
+            </ul>
 
             <div className="mt-14">
               <AuthorBox attorneySlug="turki-alnayef" variant={article.authorVariant} />
             </div>
 
-            <div className="mt-8 rounded-2xl border border-line bg-white/60 p-6">
-              <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gold-deep">مصادر نظامية</h2>
+            <div className="frame glass-card mt-8 p-6">
+              <h2 className="font-display text-xl font-light text-[#00124a]">مصادر نظامية</h2>
               <ul className="mt-3 space-y-1.5 text-sm leading-7 text-ink-soft/80">
                 {article.sources.map((source) => (
                   <li key={source}>{source}</li>
@@ -174,16 +188,35 @@ export default async function ArticlePage({
         </div>
       </section>
 
+      <section className="bg-[#f4f5fe] py-14">
+        <div className="mx-auto grid max-w-6xl gap-5 px-5 md:grid-cols-2">
+          {[
+            { a: newer, label: "الأحدث" },
+            { a: older, label: "الأقدم" },
+          ].map(({ a, label }) =>
+            a ? (
+              <Link key={a.slug} href={`/blog/${a.slug}`} className="group glass-card block p-7 transition-transform duration-300 hover:-translate-y-1">
+                <span className="text-xs text-[#012696]">{label}</span>
+                <h3 className="font-display mt-2 text-2xl font-light leading-[1.5] text-[#00124a]">{a.h1}</h3>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm text-[#012696]"><span className="h-px w-6 bg-[#e0b35a] transition-all duration-300 group-hover:w-12" />اقرأ</span>
+              </Link>
+            ) : (
+              <span key={label} />
+            ),
+          )}
+        </div>
+      </section>
+
       <section className="bg-[#00061d] py-20 text-white md:py-28">
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
-            <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-[#f6e2b3]">FAQ</p>
-            <h2 className="font-display mt-3 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">أسئلة شائعة</h2>
+            <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">FAQ</p>
+            <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">أسئلة شائعة</h2>
           </Reveal>
           <div className="mt-12 divide-y divide-white/12 border-y border-white/12">
             {article.faq.map((item) => (
               <details key={item.question} className="group py-6">
-                <summary className="flex cursor-pointer list-none items-start gap-5 text-lg font-bold leading-8">
+                <summary className="flex cursor-pointer list-none items-start gap-5 font-display text-xl font-light leading-8 md:text-2xl">
                   <span className="flex-1">{item.question}</span>
                   <span aria-hidden className="text-2xl leading-none text-[#f6e2b3] transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
@@ -195,8 +228,8 @@ export default async function ArticlePage({
 
         <div className="mx-auto mt-24 max-w-[92rem] px-4 md:px-8">
           <Reveal>
-            <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-[#f6e2b3]">Keep Reading</p>
-            <h2 className="font-display mt-3 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">تابع القراءة</h2>
+            <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">Keep Reading</p>
+            <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">تابع القراءة</h2>
           </Reveal>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {related.map((a) => (

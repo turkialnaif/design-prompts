@@ -29,6 +29,27 @@ const principles = {
   },
 };
 
+const think = {
+  ar: {
+    eyebrow: "Principles",
+    title: "كيف نفكّر",
+    steps: [
+      { k: "نفهم السياق", v: "وتفاصيل العمل", text: "يبدأ العمل من قراءة الوقائع والمخاطر والهدف التجاري." },
+      { k: "نبني الموقف القانوني", text: "نربط النص النظامي بالحجة والدليل والنتيجة المتوقعة." },
+      { k: "نواصل إلى ما بعد التنفيذ", text: "نهتم بما بعد: الرأي أو الحكم أو الإجراء أو المدد أو المخاطر." },
+    ] as Step[],
+  },
+  en: {
+    eyebrow: "Principles",
+    title: "How We Think",
+    steps: [
+      { k: "We understand the context", v: "and the business detail", text: "The engagement starts by reading the facts, the risks, and the commercial objective." },
+      { k: "We build the legal position", text: "Connecting the statutory text to the argument, the evidence, and the expected outcome." },
+      { k: "We follow through past execution", text: "We stay engaged with what follows: the opinion, the judgment, the procedure, deadlines, and risks." },
+    ] as Step[],
+  },
+};
+
 const standard = {
   ar: { eyebrow: "Service Standard", title: "معيار الخدمة", steps: serviceStandard.map((s) => ({ k: s.title, text: s.description })) as Step[] },
   en: { eyebrow: "Service Standard", title: "Our Service Standard", steps: serviceStandardEn.map((s) => ({ k: s.title, text: s.description })) as Step[] },
@@ -47,8 +68,8 @@ const groupOf = (i: number, n: number) => Math.min(2, Math.floor((i / n) * 3));
  * stays whole and turns to follow the pointer; each step lights one part of it. With reduced motion the
  * stage is replaced by plain cards.
  */
-export default function LogoShowcase({ locale, variant = "principles" }: { locale: "ar" | "en"; variant?: "principles" | "standard" }) {
-  const t = (variant === "principles" ? principles : standard)[locale];
+export default function LogoShowcase({ locale, variant = "principles" }: { locale: "ar" | "en"; variant?: "principles" | "think" | "standard" }) {
+  const t = ({ principles, think, standard }[variant])[locale];
   const rtl = locale === "ar";
   const n = t.steps.length;
   const section = useRef<HTMLElement>(null);

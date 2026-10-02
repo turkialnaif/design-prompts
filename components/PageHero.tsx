@@ -19,8 +19,9 @@ export default function PageHero({
   panel?: boolean;
 }) {
   return (
-    <section data-glow className="hero-cut relative isolate overflow-hidden bg-[#00061d] px-5 pb-20 pt-32 md:px-10 md:pb-32 md:pt-44">
+    <section data-glow className="relative isolate overflow-hidden bg-[#00061d] px-5 pb-20 pt-32 md:px-10 md:pb-32 md:pt-44">
       <NavyField />
+      <div aria-hidden className="orn absolute inset-x-0 bottom-0" />
       {mark && (
         <div aria-hidden className="pointer-events-none absolute -top-4 end-0 -z-0 hidden h-60 w-60 sm:block md:end-10 md:top-10 md:h-80 md:w-80">
           <Logo3DMini />

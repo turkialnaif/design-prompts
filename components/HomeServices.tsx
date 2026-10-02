@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import ServiceTiles from "@/components/ServiceTiles";
+import ServiceAccordion from "@/components/ServiceAccordion";
 import { homeServiceTiles, totalServices } from "@/lib/service-tiles";
 
 const copy = {
@@ -32,7 +32,7 @@ export default function HomeServices({ locale }: { locale: "ar" | "en" }) {
           <p className="chamfer-btn mx-auto mt-6 inline-block border border-[#f6e2b3]/40 bg-white/10 px-5 py-2 text-xs font-normal text-[#f6e2b3] backdrop-blur-md">{t.badge}</p>
         </Reveal>
         <div className="mt-14">
-          <ServiceTiles items={homeServiceTiles(locale)} cta={t.cta} />
+          <ServiceAccordion items={homeServiceTiles(locale)} cta={t.cta} />
         </div>
       </div>
     </section>

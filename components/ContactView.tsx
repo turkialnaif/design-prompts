@@ -1,5 +1,6 @@
 import { Clock, Globe, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 import ArrowButton from "@/components/ArrowButton";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import MatterBriefForm from "@/components/MatterBriefForm";
 import Reveal from "@/components/Reveal";
@@ -139,8 +140,9 @@ export default function ContactView({ locale }: { locale: "ar" | "en" }) {
             </Reveal>
 
             <Reveal delay={160}>
-              <div data-glow className="relative isolate overflow-hidden rounded-3xl bg-[#00061d] p-7 text-white md:p-9">
-                <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_0%_0%,rgba(30,70,200,0.3),transparent_70%),linear-gradient(180deg,#00124a,#00061d)]" />
+              <div data-glow className="frame relative isolate overflow-hidden bg-[#00061d] p-7 text-white md:p-9">
+                <Image src="/brand/riyadh-kafd.jpg" alt="" fill sizes="(min-width: 1024px) 40vw, 100vw" className="-z-20 object-cover" style={{ objectPosition: "60% 40%" }} />
+                <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,18,74,0.55)_0%,rgba(0,6,29,0.92)_100%)]" />
                 <span className="chamfer-btn flex h-12 w-12 items-center justify-center bg-white/10">
                   <MapPin className="h-5 w-5 text-[#f6e2b3]" />
                 </span>

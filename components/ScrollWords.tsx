@@ -39,6 +39,7 @@ export default function ScrollWords({ text, eyebrow }: { text: string; eyebrow: 
 
   return (
     <section data-glow className="curtain-top relative isolate overflow-hidden bg-[#00061d] pb-28 md:pb-44">
+      <div aria-hidden className="orn absolute inset-x-0 top-0" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_55%_at_50%_30%,rgba(30,70,200,0.22),transparent_70%),linear-gradient(180deg,#00061d_0%,#00124a_70%,#00061d_100%)]" />
       <div className="mx-auto max-w-5xl px-5 text-center">
         <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{eyebrow}</p>
