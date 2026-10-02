@@ -92,7 +92,7 @@ export default async function AttorneyPageEn({
             </div>
 
             <div className="text-center">
-              <SectionHeading eyebrow={attorney.role} title={attorney.name} tone="onDark" />
+              <SectionHeading as="h1" eyebrow={attorney.role} title={attorney.name} tone="onDark" />
               <p className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-9 text-white">{lead}</p>
               <div className="mx-auto mt-5 max-w-2xl space-y-4">
                 {restBio.map((paragraph, i) => (

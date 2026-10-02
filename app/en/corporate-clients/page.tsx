@@ -41,7 +41,7 @@ export default function CorporateClientsPageEn() {
     <div>
             <PageHero photo="/brand/riyadh-kafd.jpg" focus="center 30%">
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-            <SectionHeading eyebrow="Corporate Clients" title="Working With Corporate Clients" tone="onDark" />
+            <SectionHeading as="h1" eyebrow="Corporate Clients" title="Working With Corporate Clients" tone="onDark" />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">Two clear engagement models and commitments we state upfront, so your legal team and management know what to expect from the first contact.</p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <MatterBriefCTA locale="en" matterTypes={corePillars.map((s) => s.titleEn)} tone="onDark" />

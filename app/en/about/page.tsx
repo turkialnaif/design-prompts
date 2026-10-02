@@ -45,7 +45,7 @@ export default function AboutPageEn() {
             <PageHero photo="/brand/riyadh-kafd.jpg" focus="center 40%">
           <div className="relative flex flex-col items-center px-6 py-14 text-center md:px-16 md:py-20">
             <Image src="/brand/logo-mark.png" alt="" width={44} height={35} className="mb-4" />
-            <SectionHeading eyebrow="Who We Are" title="About Us" tone="onDark" />
+            <SectionHeading as="h1" eyebrow="Who We Are" title="About Us" tone="onDark" />
             <p className="font-display mt-8 max-w-2xl text-xl font-bold leading-10 text-white md:text-2xl">A legal partner connecting professional judgment with business context</p>
             <p className="mt-4 max-w-2xl text-base leading-8 text-white/85">{firmEn.description}</p>
 

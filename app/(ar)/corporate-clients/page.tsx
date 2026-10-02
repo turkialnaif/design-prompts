@@ -41,7 +41,7 @@ export default function CorporateClientsPage() {
     <div>
             <PageHero photo="/brand/riyadh-kafd.jpg" focus="center 30%">
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-            <SectionHeading eyebrow="Corporate Clients" title="العمل مع الشركات" tone="onDark" />
+            <SectionHeading as="h1" eyebrow="Corporate Clients" title="العمل مع الشركات" tone="onDark" />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">نموذجان واضحان للتعاقد والتزامات نعلنها منذ البداية، ليعرف فريقكم القانوني وإدارتكم ما يتوقعونه من أول تواصل.</p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <MatterBriefCTA locale="ar" matterTypes={corePillars.map((s) => s.title)} tone="onDark" />

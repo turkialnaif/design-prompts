@@ -91,7 +91,7 @@ export default function PrivacyPageEn() {
     <div>
       <PageHero photo="/brand/riyadh-skyline.jpg">
         <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-          <SectionHeading eyebrow="Privacy & Terms" title="Privacy Policy & Terms of Use" tone="onDark" />
+          <SectionHeading as="h1" eyebrow="Privacy & Terms" title="Privacy Policy & Terms of Use" tone="onDark" />
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">
             How we collect, use, and protect website visitor data, and your rights over it under the Saudi Personal Data Protection Law.
           </p>

@@ -34,7 +34,7 @@ export default function ServicesPageEn() {
     <div>
             <PageHero photo="/brand/riyadh-skyline.jpg" focus="center 55%">
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-            <SectionHeading eyebrow="Service Architecture" title="Legal Service System" tone="onDark" />
+            <SectionHeading as="h1" eyebrow="Service Architecture" title="Legal Service System" tone="onDark" />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">We present our services as a connected engagement journey — from advice before a decision through to a completed practical effect.</p>
 
             <div className="mx-auto mt-8 grid max-w-md grid-cols-2 gap-3">

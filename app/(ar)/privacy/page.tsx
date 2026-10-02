@@ -90,7 +90,7 @@ export default function PrivacyPage() {
     <div>
       <PageHero photo="/brand/riyadh-skyline.jpg">
         <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
-          <SectionHeading eyebrow="Privacy & Terms" title="سياسة الخصوصية وشروط الاستخدام" tone="onDark" />
+          <SectionHeading as="h1" eyebrow="Privacy & Terms" title="سياسة الخصوصية وشروط الاستخدام" tone="onDark" />
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">
             كيف نجمع بيانات زوار الموقع ونستخدمها ونحميها، وحقوقكم تجاهها بموجب نظام حماية البيانات الشخصية السعودي.
           </p>

@@ -1,4 +1,5 @@
 export default function SectionHeading({
+  as: Heading = "h2",
   number,
   eyebrow,
   title,
@@ -6,6 +7,7 @@ export default function SectionHeading({
   tone = "onDark",
   size = "md",
 }: {
+  as?: "h1" | "h2";
   number?: string;
   eyebrow: string;
   title: string;
@@ -22,13 +24,13 @@ export default function SectionHeading({
           <span className="h-px w-10 bg-gold/70" />
         </div>
       )}
-      <h2
+      <Heading
         className={`font-display font-bold leading-[1.3] ${size === "xl" ? "text-4xl md:text-6xl lg:text-7xl" : "text-2xl md:text-4xl"} ${
           tone === "onDark" ? "text-white" : "text-ink"
         }`}
       >
         {title}
-      </h2>
+      </Heading>
       <p className={`gold-eyebrow ${size === "xl" ? "mt-4 text-sm md:text-base" : "mt-2 text-xs md:text-sm"}`}>{eyebrow}</p>
     </div>
   );

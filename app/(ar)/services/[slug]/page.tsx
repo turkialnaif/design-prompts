@@ -111,7 +111,7 @@ export default async function ServicePage({
                 ضمن محور: {axis.title}
               </Link>
             )}
-            <SectionHeading eyebrow={entry.titleEn} title={entry.title} tone="onDark" />
+            <SectionHeading as="h1" eyebrow={entry.titleEn} title={entry.title} tone="onDark" />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">{entry.summary}</p>
             {(pillar || axis) && (
               <ol className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2" aria-label="رحلة العميل">
