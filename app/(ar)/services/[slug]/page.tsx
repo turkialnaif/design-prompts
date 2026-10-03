@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHero from "@/components/PageHero";
 import type { Metadata } from "next";
 import { existsSync } from "node:fs";
@@ -7,11 +8,14 @@ import { notFound } from "next/navigation";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import Reveal from "@/components/Reveal";
+import ServiceLongform from "@/components/ServiceLongform";
 import SectionHeading from "@/components/SectionHeading";
 import TiltCard from "@/components/TiltCard";
 import { articles } from "@/lib/articles";
 import { sectors } from "@/lib/sectors";
 import { lineDetails } from "@/lib/line-content";
+import { serviceCopy } from "@/lib/service-copy";
+import { serviceExtra } from "@/lib/service-extra";
 import { corePillars, deliverables, firm, lineAxis, matterMethod, specializedLines } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -32,11 +36,15 @@ export async function generateMetadata({
   const hasPhoto = existsSync(path.join(process.cwd(), "public", "services", `${slug}.jpg`));
   const image = hasPhoto ? `/services/${slug}.jpg` : "/brand/riyadh-kafd.jpg";
 
+  const copy = serviceCopy[slug];
+  const title = copy?.title ?? entry.title;
+  const description = copy?.description ?? entry.summary;
+
   return {
-    title: entry.title,
-    description: entry.summary,
+    title: { absolute: title },
+    description,
     alternates: { canonical: `/services/${slug}` },
-    openGraph: { title: entry.title, description: entry.summary, images: [{ url: image }] },
+    openGraph: { title, description, images: [{ url: image }] },
     twitter: { card: "summary_large_image" },
   };
 }
@@ -76,17 +84,40 @@ export default async function ServicePage({
     "related",
   ].filter(Boolean) as string[];
   const no = (k: string) => String(order.indexOf(k) + 1).padStart(2, "0");
-  const faqJsonLd = detail
+  const faqItems = detail ? detail.faq.map((f) => ({ q: f.question, a: f.answer })) : undefined;
+  const faqJsonLd = (faqItems ?? serviceExtra[slug]?.faq)
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: detail.faq.map((f) => ({
+        mainEntity: (faqItems ?? serviceExtra[slug].faq).map((f) => ({
           "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
         })),
       }
     : null;
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: entry.title,
+    alternateName: entry.titleEn,
+    description: entry.summary,
+    url: `${firm.website}/services/${slug}`,
+    serviceType: "Legal services",
+    provider: { "@id": `${firm.website}/#firm` },
+    areaServed: { "@type": "Country", name: "Saudi Arabia" },
+  };
+  const copy = serviceCopy[slug];
+  const extra = serviceExtra[slug];
+  const labelFor = (href: string) => {
+    const [, kind, key] = href.split("/");
+    if (kind === "blog") return articles.find((a) => a.slug === key)?.h1;
+    return [...corePillars, ...specializedLines].find((x) => x.slug === key)?.title;
+  };
+  const readMore = (copy?.links ?? []).flatMap((href) => {
+    const label = labelFor(href);
+    return label ? [{ href, label }] : [];
+  });
   const all = [...corePillars, ...specializedLines];
   const idx = all.findIndex((x) => x.slug === slug);
   const prev = idx > 0 ? all[idx - 1] : null;
@@ -94,6 +125,7 @@ export default async function ServicePage({
 
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
             <PageHero>
           <div className="relative px-6 py-14 text-center md:px-16 md:py-20">
@@ -110,7 +142,7 @@ export default async function ServicePage({
                 ضمن محور: {axis.title}
               </Link>
             )}
-            <SectionHeading as="h1" eyebrow={entry.titleEn} title={entry.title} tone="onDark" />
+            <SectionHeading as="h1" eyebrow={entry.titleEn} title={copy?.h1 ?? entry.title} tone="onDark" />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/85">{entry.summary}</p>
             {(pillar || axis) && (
               <ol className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2" aria-label="رحلة العميل">
@@ -141,6 +173,17 @@ export default async function ServicePage({
             </div>
           </div>
       </PageHero>
+
+      <Breadcrumbs
+        locale="ar"
+        items={[
+          { label: "الرئيسية", href: "/" },
+          { label: "الخدمات والقطاعات", href: "/services" },
+          { label: entry.title, href: `/services/${slug}` },
+        ]}
+      />
+
+      {copy && extra && <ServiceLongform copy={copy} extra={extra} links={readMore} skipFaq={!!detail} />}
 
       {pillar && (
         <section className="bg-paper py-24 md:py-32">

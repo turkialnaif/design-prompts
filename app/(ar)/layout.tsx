@@ -7,7 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
 import { firm } from "@/lib/site";
-import { homeDescription, siteJsonLd } from "@/lib/seo";
+import { homeDescription, homeTitle, siteJsonLd } from "@/lib/seo";
 
 // One display family for the whole site: light, lively Arabic letterforms with a calligraphic touch.
 const brandFont = Zain({
@@ -25,7 +25,7 @@ const ruqaaFont = Aref_Ruqaa({
 export const metadata: Metadata = {
   metadataBase: new URL(firm.website),
   title: {
-    default: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
+    default: homeTitle.ar,
     template: `%s | ${firm.nameShortAr}`,
   },
   description: homeDescription.ar,
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_SA",
     siteName: firm.nameShortAr,
-    title: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
+    title: homeTitle.ar,
     description: homeDescription.ar,
     url: firm.website,
     images: [{ url: "/brand/riyadh-kafd.jpg", width: 1920, height: 1080, alt: firm.nameAr }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${firm.nameAr} | محاماة واستشارات قانونية في الرياض`,
+    title: homeTitle.ar,
     description: homeDescription.ar,
     images: ["/brand/riyadh-kafd.jpg"],
   },

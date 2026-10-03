@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
       { source: "/en/sectors", destination: "/en/services#sectors", permanent: true },
       {
         source: "/:path*",
+        has: [{ type: "host", value: "tnz-law-website.vercel.app" }],
+        destination: "https://taap.sa/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
         has: [{ type: "host", value: "www.taap.sa" }],
         destination: "https://taap.sa/:path*",
         permanent: true,
