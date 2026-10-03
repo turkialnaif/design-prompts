@@ -215,6 +215,8 @@ export const serviceCopy: Record<string, ServiceCopy> = {
       }
     ],
     "links": [
+      "/blog/scca-arbitration-guide",
+      "/blog/pre-litigation-commercial-strategy",
       "/blog/evidence-commercial-cases-saudi-arabia",
       "/services/corporate-contracts",
       "/services/enforcement-recovery",
@@ -386,6 +388,7 @@ export const serviceCopy: Record<string, ServiceCopy> = {
       }
     ],
     "links": [
+      "/blog/financial-reorganization-saudi-arabia",
       "/services/enforcement-recovery",
       "/services/disputes-arbitration"
     ]
@@ -442,6 +445,7 @@ export const serviceCopy: Record<string, ServiceCopy> = {
       }
     ],
     "links": [
+      "/blog/investment-registration-saudi-arabia",
       "/services/mergers-acquisitions",
       "/services/corporate-contracts"
     ]
