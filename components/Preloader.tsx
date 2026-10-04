@@ -28,8 +28,8 @@ export default function Preloader({ locale }: { locale: "ar" | "en" }) {
     <div ref={ref} aria-hidden className="preloader">
       <div className="preloader-inner px-6">
         <Image src="/brand/logo-lockup.png" alt="" width={326} height={96} priority className="mx-auto h-16 w-auto md:h-20" />
-        <p className="font-blog mx-auto mt-7 max-w-3xl text-xl font-light leading-[1.7] text-white/95 md:text-4xl">{tagline[locale].quote}</p>
-        <p className="font-blog mt-4 text-base font-light text-[#f6e2b3] md:text-xl">{tagline[locale].by}</p>
+        <p className="mx-auto mt-7 max-w-3xl text-xl font-light leading-[1.7] text-white/95 md:text-4xl">{tagline[locale].quote}</p>
+        <p className="mt-4 text-base font-light text-[#f6e2b3] md:text-xl">{tagline[locale].by}</p>
         <span className="preloader-count" dir="ltr" />
       </div>
     </div>
