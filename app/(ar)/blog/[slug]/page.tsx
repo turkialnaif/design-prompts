@@ -135,7 +135,7 @@ export default async function ArticlePage({
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1fr_24rem] lg:gap-16">
           <div>
             <nav aria-label="مسار التصفح" className="flex items-center gap-3 text-sm text-[#f6e2b3]">
-              <Link href="/blog" className="transition-colors hover:text-white">المدونة</Link>
+              <Link href="/blog" className="-my-2 inline-block py-2 transition-colors hover:text-white">المدونة</Link>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-[#e0b35a]" />
               <span>{clusterLabels[article.cluster]}</span>
             </nav>
@@ -189,7 +189,7 @@ export default async function ArticlePage({
                 <ol className="mt-4 space-y-3 text-sm">
                   {headings.map((h, n) => (
                     <li key={h.id}>
-                      <a href={`#${h.id}`} className="flex gap-3 text-ink-soft">
+                      <a href={`#${h.id}`} className="flex gap-3 py-1.5 text-ink-soft">
                         <span className="text-[#012696]" dir="ltr">{String(n + 1).padStart(2, "0")}</span>
                         {h.text}
                       </a>

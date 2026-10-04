@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   const photo = attorneyPhotos[slug];
   return {
-    title: attorney.seoTitle,
+    title: { absolute: attorney.seoTitle },
     description: attorney.metaDescription,
     alternates: { canonical: `/en/team/${slug}`, languages: { ar: `/team/${slug}`, en: `/en/team/${slug}` } },
     openGraph: {

@@ -74,7 +74,7 @@ const copy = {
   },
 };
 
-const linkCls = "text-white/75 transition-colors hover:text-[#f6e2b3]";
+const linkCls = "inline-block py-1 text-white/75 transition-colors hover:text-[#f6e2b3]";
 
 export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
@@ -104,58 +104,56 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
 
         <PartnersCurtain locale={locale} />
 
-        <div className="chamfer-lg mt-20 grid gap-12 border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl md:mt-28 md:grid-cols-[1.3fr_1fr_1.2fr] md:p-12">
-          <div className="flex flex-col items-center text-center md:items-start md:text-start">
-            <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-12 w-auto" />
-            <p className="mt-4 max-w-xs text-base font-light leading-8 text-white/80">{t.tagline}</p>
-            <a href={firm.mapsUrl} target="_blank" rel="noopener noreferrer" className={`mt-3 text-sm ${linkCls}`}>
-              {t.address}
-            </a>
-            <div className="mt-5 flex flex-col items-center gap-4 md:items-start">
-              <SocialIcons tone="onDark" className="justify-center md:justify-start" />
-              <p className="text-sm text-white/70" dir="ltr">
+        <div className="chamfer-lg mt-14 border border-white/10 bg-white/[0.05] p-7 backdrop-blur-xl md:mt-20 md:p-12">
+          <div className="grid items-start gap-10 md:grid-cols-12 md:gap-x-10 md:gap-y-12">
+            <div className="flex flex-col items-center text-center md:col-span-4 md:items-start md:text-start">
+              <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-12 w-auto" />
+              <p className="mt-5 max-w-xs text-base font-light leading-8 text-white/80">{t.tagline}</p>
+              <a href={firm.mapsUrl} target="_blank" rel="noopener noreferrer" className={`mt-2 text-sm ${linkCls}`}>
+                {t.address}
+              </a>
+              <SocialIcons tone="onDark" className="mt-5 justify-center md:justify-start" />
+              <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-white/70 md:justify-start" dir="ltr">
                 <a href={`tel:${firm.phone}`} className={linkCls}>{firm.phoneDisplay}</a>
-                <span className="mx-2 text-white/25">|</span>
+                <span aria-hidden className="text-white/25">|</span>
                 <a href={`mailto:${firm.email}`} className={linkCls}>{firm.email}</a>
               </p>
             </div>
-          </div>
 
-          <nav className="grid grid-cols-2 gap-6 text-center md:text-start">
-            <div>
-              <p className={`mb-4 ${label}`}>{t.exploreTitle}</p>
-              <ul className="space-y-3 text-[15px] font-light">
-                {t.explore.map((l) => (
-                  <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
-                ))}
-              </ul>
+            <nav className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-10 md:col-span-4 md:border-t-0 md:pt-0">
+              {[
+                { title: t.exploreTitle, items: t.explore },
+                { title: t.firmTitle, items: t.firmLinks },
+              ].map((col) => (
+                <div key={col.title} className="text-start">
+                  <p className={`mb-5 ${label}`}>{col.title}</p>
+                  <ul className="space-y-1.5 text-sm font-light">
+                    {col.items.map((l) => (
+                      <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </nav>
+
+            <div className="border-t border-white/10 pt-10 text-center md:col-span-4 md:border-t-0 md:pt-0 md:text-start">
+              <p className={label}>{t.subscribeTitle}</p>
+              <p className="mb-5 mt-3 text-sm font-light leading-7 text-white/70">{t.subscribeBody}</p>
+              <NewsletterSignup source={t.source} compact locale={locale} onDark />
             </div>
-            <div>
-              <p className={`mb-4 ${label}`}>{t.firmTitle}</p>
-              <ul className="space-y-3 text-[15px] font-light">
-                {t.firmLinks.map((l) => (
-                  <li key={l.href}><a href={l.href} className={linkCls}>{l.label}</a></li>
-                ))}
-              </ul>
-            </div>
-          </nav>
-
-          <div className="text-center md:text-start">
-            <p className={label}>{t.subscribeTitle}</p>
-            <p className="mb-5 mt-3 text-sm font-light leading-7 text-white/70">{t.subscribeBody}</p>
-            <NewsletterSignup source={t.source} compact locale={locale} onDark />
           </div>
-
         </div>
 
-        <div className="mt-8 text-center text-xs leading-6 text-white/55">
-          <p className="mb-1">
+        <div className="mt-8 flex flex-col items-center gap-3 pb-24 text-center text-xs leading-6 text-white/55 md:flex-row md:items-start md:justify-between md:pb-4 md:pe-40 md:text-start">
+          <div>
+            <p>{t.rights}</p>
+            <p>{t.license}</p>
+          </div>
+          <p className="shrink-0">
             <a href="/admin/login" className={linkCls}>{t.admin}</a>
             <span className="mx-2 text-white/25">|</span>
             <a href="/portal/login" className={linkCls}>{t.portal}</a>
           </p>
-          <p>{t.rights}</p>
-          <p>{t.license}</p>
         </div>
       </div>
     </footer>

@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items, locale }: { items: Crumb[]; locale:
         {items.map((c, i) => (
           <li key={c.href} className="flex items-center gap-2">
             {i < items.length - 1 ? (
-              <Link href={c.href} className="transition-colors hover:text-[#00124a]">{c.label}</Link>
+              <Link href={c.href} className="-my-2 inline-block py-2 transition-colors hover:text-[#00124a]">{c.label}</Link>
             ) : (
               <span aria-current="page" className="text-[#00124a]">{c.label}</span>
             )}

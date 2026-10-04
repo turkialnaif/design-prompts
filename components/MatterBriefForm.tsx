@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 
 export type BriefLocale = "ar" | "en";
 type Status = "idle" | "sending" | "success" | "error";
@@ -58,6 +58,7 @@ export default function MatterBriefForm({
   matterTypes: string[];
   onClose?: () => void;
 }) {
+  const uid = useId();
   const [status, setStatus] = useState<Status>("idle");
   const t = briefCopy[locale];
 
@@ -109,20 +110,20 @@ export default function MatterBriefForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="text-xs font-semibold text-ink-soft/70">{t.name} *</label>
-        <input name="name" type="text" required className={field} />
+        <label htmlFor={`${uid}-name`} className="text-xs font-semibold text-ink-soft/70">{t.name} *</label>
+        <input id={`${uid}-name`} name="name" type="text" required className={field} />
       </div>
       <div>
-        <label className="text-xs font-semibold text-ink-soft/70">{t.org}</label>
-        <input name="org" type="text" className={field} />
+        <label htmlFor={`${uid}-org`} className="text-xs font-semibold text-ink-soft/70">{t.org}</label>
+        <input id={`${uid}-org`} name="org" type="text" className={field} />
       </div>
       <div>
-        <label className="text-xs font-semibold text-ink-soft/70">{t.email} *</label>
-        <input name="email" type="email" required dir="ltr" className={`${field} text-end`} />
+        <label htmlFor={`${uid}-email`} className="text-xs font-semibold text-ink-soft/70">{t.email} *</label>
+        <input id={`${uid}-email`} name="email" type="email" required dir="ltr" className={`${field} text-end`} />
       </div>
       <div>
-        <label className="text-xs font-semibold text-ink-soft/70">{t.matterType} *</label>
-        <select name="matterType" required defaultValue="" className={field}>
+        <label htmlFor={`${uid}-matterType`} className="text-xs font-semibold text-ink-soft/70">{t.matterType} *</label>
+        <select id={`${uid}-matterType`} name="matterType" required defaultValue="" className={field}>
           <option value="" disabled>
             —
           </option>
@@ -135,8 +136,8 @@ export default function MatterBriefForm({
         </select>
       </div>
       <div>
-        <label className="text-xs font-semibold text-ink-soft/70">{t.description} *</label>
-        <textarea name="description" required rows={4} className={field} />
+        <label htmlFor={`${uid}-description`} className="text-xs font-semibold text-ink-soft/70">{t.description} *</label>
+        <textarea id={`${uid}-description`} name="description" required rows={4} className={field} />
         <p className="mt-1.5 text-xs leading-5 text-ink-soft/50">{t.docsNote}</p>
       </div>
 

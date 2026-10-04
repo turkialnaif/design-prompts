@@ -19,7 +19,7 @@ export default function AuthorBox({
         <p className="text-xs font-semibold text-gold-deep">راجع المحتوى</p>
         <Link
           href={`/team/${attorney.slug}`}
-          className="font-display mt-1 block text-sm font-bold text-ink hover:text-gold-deep"
+          className="font-display -my-1 mt-1 block py-2 text-sm font-bold text-ink hover:text-gold-deep"
         >
           {copy.role}
         </Link>

@@ -60,7 +60,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
               role="radio"
               aria-checked={audience === o.key}
               onClick={() => setAudience(o.key)}
-              className={`chamfer-btn px-3 py-1 text-[11px] font-normal transition-colors ${onDark ? (audience === o.key ? "bg-white text-[#00124a]" : "border border-white/25 text-white/80 hover:border-white/60") : audience === o.key ? "bg-ink text-white" : "border border-ink/15 text-ink-soft hover:border-gold-deep"}`}
+              className={`chamfer-btn px-3.5 py-2 text-xs font-normal transition-colors ${onDark ? (audience === o.key ? "bg-white text-[#00124a]" : "border border-white/25 text-white/80 hover:border-white/60") : audience === o.key ? "bg-ink text-white" : "border border-ink/15 text-ink-soft hover:border-gold-deep"}`}
             >
               {o.label}
             </button>
@@ -84,9 +84,9 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
         {status === "error" && <p className="text-xs text-red-700">{isEn ? en.error : "تعذّر الاشتراك، حاول مرة أخرى أو راسلنا مباشرة."}</p>}
         <p className={`text-[11px] ${onDark ? "text-white/50" : "text-ink-soft/50"}`}>
           {isEn ? (
-            <>By subscribing you agree to our <Link href="/en/privacy" className="underline hover:text-[#f6e2b3]">privacy policy</Link>.</>
+            <>By subscribing you agree to our <Link href="/en/privacy" className="inline-block py-1.5 underline hover:text-[#f6e2b3]">privacy policy</Link>.</>
           ) : (
-            <>بالاشتراك فإنك توافق على <Link href="/privacy" className="underline hover:text-[#f6e2b3]">سياسة الخصوصية</Link>.</>
+            <>بالاشتراك فإنك توافق على <Link href="/privacy" className="inline-block py-1.5 underline hover:text-[#f6e2b3]">سياسة الخصوصية</Link>.</>
           )}
         </p>
       </form>
@@ -142,7 +142,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
           </div>
           {status === "error" && <p className="text-xs text-red-700">تعذّر الاشتراك، حاول مرة أخرى أو راسلنا مباشرة.</p>}
           <p className="text-[11px] text-ink-soft/50">
-            بالاشتراك فإنك توافق على <Link href="/privacy" className="underline hover:text-gold-deep">سياسة الخصوصية</Link>.
+            بالاشتراك فإنك توافق على <Link href="/privacy" className="inline-block py-1.5 underline hover:text-gold-deep">سياسة الخصوصية</Link>.
           </p>
         </form>
       )}

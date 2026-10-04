@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const sector = sectorBySlug(slug);
   if (!sector) return {};
   const c = sector.en;
-  const title = `${c.title} — Legal Services in Saudi Arabia`;
+  const title = `${c.title} — Legal Services`;
   const description = `${c.short} Turki AlNaif & Partners, Riyadh.`;
   return {
     title,

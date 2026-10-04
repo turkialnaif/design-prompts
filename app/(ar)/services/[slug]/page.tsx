@@ -137,7 +137,7 @@ export default async function ServicePage({
             {axis && (
               <Link
                 href={`/services/${axis.slug}`}
-                className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f6e2b3]"
+                className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-2 text-xs font-semibold text-[#f6e2b3]"
               >
                 ضمن محور: {axis.title}
               </Link>
@@ -301,7 +301,7 @@ export default async function ServicePage({
                 <div className="glass-card flex h-full flex-col items-center justify-center rounded-2xl p-6 text-center">
                   <span className="glass-number-light font-display text-4xl font-extrabold leading-none">{step.step}</span>
                   <h3 className="font-display mt-3 text-sm font-bold text-ink">{step.titleAr}</h3>
-                  <p className="gold-eyebrow mt-1 text-[10px]">{step.title}</p>
+                  <p className="gold-eyebrow mt-1 text-xs">{step.title}</p>
                 </div>
               </Reveal>
             ))}
@@ -339,7 +339,7 @@ export default async function ServicePage({
             ))}
           </ul>
           <div className="mt-10 text-center">
-            <Link href="/services" className="text-sm font-semibold text-gold-deep hover:underline">
+            <Link href="/services" className="inline-block py-2.5 text-sm font-semibold text-gold-deep hover:underline">
               ← عودة لجميع الخدمات
             </Link>
           </div>
