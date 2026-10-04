@@ -79,7 +79,7 @@ export default function BlogPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-6 md:grid-cols-[1.25fr_1fr] md:gap-4">
           <div className="text-center md:text-start">
             <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">Legal Research &amp; Insights</p>
-            <h1 className="grad-text mt-2 font-bold leading-[1.15]" style={{ fontFamily: "var(--font-ruqaa), serif", fontSize: "clamp(6.5rem, 22vw, 16rem)" }}>
+            <h1 className="grad-text mt-2 font-bold leading-[1.15]" style={{ fontFamily: "var(--font-blog-stack)", fontSize: "clamp(6.5rem, 22vw, 16rem)" }}>
               المدونة
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg font-light leading-9 text-white/80 md:mx-0 md:text-xl md:leading-10">

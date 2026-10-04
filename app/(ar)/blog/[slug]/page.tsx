@@ -10,7 +10,7 @@ import ArticleMarkdown, { getArticleHeadings } from "@/components/ArticleMarkdow
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import ReadingProgress from "@/components/ReadingProgress";
 import ShareBar from "@/components/ShareBar";
-import { entryNumber, newestFirst } from "@/lib/article-index";
+import { newestFirst } from "@/lib/article-index";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { audienceLabels, audiencesOf, readLabel } from "@/lib/article-meta";
 import AuthorBox from "@/components/AuthorBox";
@@ -139,17 +139,16 @@ export default async function ArticlePage({
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-[#e0b35a]" />
               <span>{clusterLabels[article.cluster]}</span>
             </nav>
-            <h1 className="grad-text mt-6 text-5xl font-bold leading-[1.45] md:text-6xl lg:text-7xl lg:leading-[1.4]" style={{ fontFamily: "var(--font-ruqaa), serif" }}>
+            <h1 className="grad-text mt-6 text-5xl font-bold leading-[1.45] md:text-6xl lg:text-7xl lg:leading-[1.4]" style={{ fontFamily: "var(--font-blog-stack)" }}>
               {article.h1}
             </h1>
             <p className="mt-7 max-w-2xl text-lg font-light leading-9 text-white/80 md:text-xl md:leading-10">{article.metaDescription}</p>
 
-            <dl className="mt-9 grid max-w-2xl grid-cols-2 gap-px border border-white/12 bg-white/12 text-sm sm:grid-cols-4">
+            <dl className="mt-9 grid max-w-2xl grid-cols-3 gap-px border border-white/12 bg-white/12 text-sm">
               {[
                 { k: "نُشر", v: dateFormat.format(new Date(article.publishedAt)) },
                 { k: "حُدّث", v: dateFormat.format(new Date(article.updatedAt)) },
                 { k: "القراءة", v: readLabel(readMinutes) },
-                { k: "المقال", v: `رقم ${entryNumber(article.slug)}` },
               ].map((m) => (
                 <div key={m.k} className="bg-[#00124a]/80 px-4 py-3">
                   <dt className="text-xs text-white/55">{m.k}</dt>
@@ -169,9 +168,6 @@ export default async function ArticlePage({
             <div className="frame relative mx-auto aspect-[4/3] w-full max-w-[24rem] overflow-hidden bg-[#00124a] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] lg:aspect-[4/5]">
               <Image src={photo.src} {...blurProps(photo.src)} alt={photo.alt} fill priority quality={90} sizes="384px" className="object-cover" style={{ objectPosition: photo.focus }} />
               <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(0,18,74,0.8)_100%)]" />
-              <span aria-hidden className="font-display absolute bottom-3 start-4 text-7xl font-extralight leading-none text-transparent [-webkit-text-stroke:1px_rgba(246,226,179,0.9)]" dir="ltr">
-                {entryNumber(article.slug)}
-              </span>
             </div>
           )}
         </div>
@@ -280,7 +276,7 @@ export default async function ArticlePage({
               {related.map((a) => (
                 <ArticlePoster
                   key={a.slug}
-                  a={{ slug: a.slug, cluster: a.cluster, clusterLabel: clusterLabels[a.cluster], title: a.h1, index: entryNumber(a.slug) }}
+                  a={{ slug: a.slug, cluster: a.cluster, clusterLabel: clusterLabels[a.cluster], title: a.h1 }}
                   size="md"
                   className="min-h-[24rem]"
                   sizesAttr="(min-width: 768px) 33vw, 100vw"

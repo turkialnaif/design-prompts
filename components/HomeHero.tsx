@@ -7,7 +7,7 @@ import { firmEn } from "@/lib/site.en";
 
 const copy: Record<"ar" | "en", { body: string; book: string; h1: string; lead: string; tail: string; cue: string; cueTouch: string }> = {
   ar: {
-    body: `${firm.nameAr}: خدمات قانونية مركّزة للمسائل التي تتطلب دقة في التحليل وجودة في الصياغة وانضباطًا في إدارة الملف حتى الوصول إلى أثر عملي.`,
+    body: `خدمات قانونية مركّزة للمسائل التي تتطلب دقة في التحليل وجودة في الصياغة وانضباطًا في إدارة الملف حتى الوصول إلى أثر عملي.`,
     book: "احجز استشارة أولية",
     cue: "حرّك الماوس إلى الأسفل… لتُضيء الصفحة",
     cueTouch: "مرّر للأسفل… لتُضيء الصفحة",
@@ -16,7 +16,7 @@ const copy: Record<"ar" | "en", { body: string; book: string; h1: string; lead: 
     tail: "للمحاماة والاستشارات القانونية",
   },
   en: {
-    body: `${firmEn.nameFull}: Focused legal services for matters that demand precision in analysis, quality in drafting, and discipline in managing every file through to a practical outcome.`,
+    body: `Focused legal services for matters that demand precision in analysis, quality in drafting, and discipline in managing every file through to a practical outcome.`,
     book: "Book an Initial Consultation",
     cue: "Move your mouse down to light the page",
     cueTouch: "Scroll down to light the page",

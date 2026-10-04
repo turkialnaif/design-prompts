@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from "react";
 import ArticlePoster from "@/components/ArticlePoster";
 import { articlePhoto } from "@/lib/article-photos";
 import { readLabel } from "@/lib/article-meta";
-import { entryNumber } from "@/lib/article-index";
 
 export type ArticleSummary = {
   slug: string;
@@ -45,7 +44,6 @@ const poster = (a: ArticleSummary) => ({
   description: a.description,
   date: a.date,
   meta: readLabel(a.readMinutes),
-  index: entryNumber(a.slug),
 });
 
 export default function ArticleExplorer({ articles, clusters }: { articles: ArticleSummary[]; clusters: ClusterOption[] }) {
@@ -118,10 +116,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
                 }}
                 className="group frame relative bg-[#00124a] p-6 text-start ring-1 ring-white/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(224,179,90,0.35)]"
               >
-                <span className="font-display block text-7xl font-extralight leading-none text-transparent [-webkit-text-stroke:1px_rgba(246,226,179,0.8)] transition-[-webkit-text-stroke] duration-500 group-hover:[-webkit-text-stroke:1px_#f6e2b3]" dir="ltr">
-                  {String(c.count).padStart(2, "0")}
-                </span>
-                <span className="font-display mt-5 block text-2xl font-light text-white">{c.label}</span>
+                <span className="font-display block text-2xl font-light text-white">{c.label}</span>
                 <span className="mt-2 block text-sm font-light leading-7 text-white/60">{topicNote[c.key]}</span>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f6e2b3]">
                   <span className="h-px w-6 bg-[#e0b35a] transition-all duration-300 group-hover:w-12" />
@@ -214,10 +209,9 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
               return (
                 <li key={a.slug}>
                   <Link href={`/blog/${a.slug}`} className="group flex items-center gap-5 py-6 transition-colors hover:bg-white/[0.04] md:gap-8 md:px-4">
-                    <span className="font-display w-12 shrink-0 text-3xl font-extralight text-[#f6e2b3]/70" dir="ltr">{entryNumber(a.slug)}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-xs text-[#f6e2b3]">{a.clusterLabel}</span>
-                      <span className="font-display mt-1 block text-xl font-light leading-snug text-white transition-colors group-hover:text-[#f6e2b3] md:text-3xl">{a.title}</span>
+                      <span className="font-blog mt-1 block text-xl font-light leading-snug text-white transition-colors group-hover:text-[#f6e2b3] md:text-3xl">{a.title}</span>
                     </span>
                     <span className="hidden shrink-0 text-xs text-white/50 md:block">{a.date}</span>
                     <span className="relative hidden h-16 w-0 shrink-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:w-32 group-hover:opacity-100 md:block">

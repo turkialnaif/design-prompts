@@ -34,7 +34,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
         </div>
       </div>
       <div className="p-4">
-        <h3 className="font-display line-clamp-3 text-[15px] font-bold leading-snug text-ink">{a.title}</h3>
+        <h3 className="font-blog line-clamp-3 text-[15px] font-bold leading-snug text-ink">{a.title}</h3>
         <p className="mt-2 line-clamp-2 text-xs leading-6 text-ink-soft/80">{a.description}</p>
         <span className="mt-4 inline-block chamfer-btn bg-gradient-to-b from-[#f6e2b3] to-[#e0b35a] px-5 py-1.5 text-xs font-bold text-ink ring-1 ring-white/70">اقرأ المزيد</span>
       </div>

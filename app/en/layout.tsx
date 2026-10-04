@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Zain, Aref_Ruqaa } from "next/font/google";
 import "../globals.css";
+import { brandFont, fallbackFont } from "../fonts";
 import HeaderEn from "@/components/HeaderEn";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
@@ -9,18 +9,6 @@ import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
 import { siteJsonLd } from "@/lib/seo";
 import { firmEn } from "@/lib/site.en";
-
-const brandFont = Zain({
-  variable: "--font-brand-raw",
-  subsets: ["arabic", "latin"],
-  weight: ["200", "300", "400", "700", "800", "900"],
-});
-
-const ruqaaFont = Aref_Ruqaa({
-  variable: "--font-ruqaa",
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.website),
@@ -58,7 +46,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
     <html
       lang="en"
       dir="ltr"
-      className={`${brandFont.variable} ${ruqaaFont.variable} h-full antialiased`}
+      className={`${brandFont.variable} ${fallbackFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <script

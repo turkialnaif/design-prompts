@@ -48,7 +48,7 @@ export default function HeroStage({
               <span aria-hidden className="hero-tail">{h1Tail}</span>
             </h1>
             <span aria-hidden className="hero-rule mx-auto mt-7 block h-px w-24 lg:mx-0" />
-            <p className="hero-copy mt-5 text-base font-light leading-8 text-white/90 md:mt-6 md:text-xl md:leading-[2.4rem]">{body}</p>
+            <p className="hero-copy mx-auto mt-5 max-w-[34rem] text-base font-light leading-8 text-white/90 [text-wrap:balance] md:mt-6 md:text-xl lg:mx-0 md:leading-[2.4rem]">{body}</p>
             <div className="hero-copy mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">{actions}</div>
            </div>
           </div>
