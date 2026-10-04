@@ -64,6 +64,20 @@ const hints = {
 const groupOf = (i: number, n: number) => Math.min(2, Math.floor((i / n) * 3));
 
 /**
+ * Each card has its own entrance. They alternate between the right and left of the screen (physical sides,
+ * whatever the language): the first from the right, the second from the left, the third from the right again
+ * but dropping in from above. The 3D mark moves to the opposite side each time, so the pair trade places.
+ * `x` is the card's side (1 = right), `from` its offset when it is not on stage yet; once passed it leaves
+ * the other way.
+ */
+const stagger = [
+  { side: 1, from: "translate3d(110px,0,0) rotate(1.5deg)", leave: "translate3d(-110px,0,0) rotate(-1.5deg)" },
+  { side: -1, from: "translate3d(-110px,0,0) rotate(-1.5deg)", leave: "translate3d(110px,0,0) rotate(1.5deg)" },
+  { side: 1, from: "translate3d(70px,-130px,0) rotate(3deg)", leave: "translate3d(0,120px,0) rotate(-2deg)" },
+];
+const sideOf = (i: number) => stagger[i % stagger.length].side;
+
+/**
  * A pinned stage: the section holds still while the visitor scrolls through its steps. The 3D mark
  * stays whole and turns to follow the pointer; each step lights one part of it. With reduced motion the
  * stage is replaced by plain cards.
@@ -87,9 +101,10 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     let raf = 0;
     let last = -1;
+    let cur = 0;
     const place = () => {
       const wide = window.matchMedia("(min-width: 768px)").matches;
-      r.x = wide ? (rtl ? -2.25 : 2.25) : 0;
+      r.x = wide ? -sideOf(cur) * 2.25 : 0;
       r.y = wide ? -0.1 : 1.0;
       r.scale = wide ? 0.82 : 0.55;
     };
@@ -102,6 +117,7 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
       const done = p > 0.985;
       r.hl = [0.1, 0.1, 0.1];
       r.hl[groupOf(s, n)] = 1;
+      cur = s;
       r.dim = done ? 0 : 1;
       if (!fine) r.yaw = 0.35 + (p - 0.5) * 1.4;
       place();
@@ -110,6 +126,10 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
         setStep(s);
       }
       setProgress(p);
+      // while the stage is pinned the site bar steps out of the way
+      const pinned = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
+      if (pinned) document.documentElement.dataset.hideHeader = "1";
+      else delete document.documentElement.dataset.hideHeader;
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -129,6 +149,7 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("pointermove", onMove);
+      delete document.documentElement.dataset.hideHeader;
       if (raf) cancelAnimationFrame(raf);
     };
   }, [rtl, n]);
@@ -154,14 +175,18 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
             <h2 className="font-display grad-text mt-4 text-4xl leading-[1.25] sm:text-5xl md:text-6xl">{t.title}</h2>
           </div>
 
-          <div className="relative mb-16 mt-auto h-64 md:absolute md:inset-y-0 md:mb-0 md:mt-0 md:flex md:h-auto md:w-[26rem] md:items-center motion-reduce:hidden md:[inset-inline-start:2%]">
-            {t.steps.map((s, i) => (
+          <div className="relative mb-16 mt-auto h-64 md:absolute md:inset-x-[2%] md:inset-y-0 md:mb-0 md:mt-0 md:flex md:h-auto md:items-center motion-reduce:hidden">
+            {t.steps.map((s, i) => {
+              const st = stagger[i % stagger.length];
+              const away = i === step ? "none" : i < step ? st.leave : st.from;
+              return (
               <div
                 key={s.k}
                 aria-hidden={i !== step}
-                className={`absolute inset-x-0 bottom-0 transition-[opacity,transform] duration-700 ease-out md:bottom-auto ${
-                  i === step ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
-                }`}
+                style={{ transform: away }}
+                className={`absolute inset-x-0 bottom-0 transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] md:bottom-auto md:w-[26rem] ${
+                  st.side === 1 ? "md:right-0 md:left-auto" : "md:left-0 md:right-auto"
+                } ${i === step ? "opacity-100" : "pointer-events-none opacity-0"}`}
               >
                 <div className="chamfer-lg border border-white/15 bg-white/[0.07] p-6 backdrop-blur-xl md:p-8">
                   <span className="font-display text-sm tracking-[0.3em] text-[#f6e2b3]" dir="ltr">{`${String(i + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}`}</span>
@@ -170,7 +195,8 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
                   <p className="mt-4 text-[15px] font-light leading-8 text-white/85">{s.text}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="hidden motion-reduce:grid motion-reduce:gap-5 motion-reduce:md:grid-cols-3">

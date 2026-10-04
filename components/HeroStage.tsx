@@ -10,12 +10,17 @@ export default function HeroStage({
   body,
   actions,
   h1,
+  h1Lead,
+  h1Tail,
   cue,
   cueTouch,
 }: {
   body: string;
   actions: ReactNode;
+  /** The full name, for assistive tech and search; the two parts below are what is drawn. */
   h1: string;
+  h1Lead: string;
+  h1Tail: string;
   cue: string;
   cueTouch: string;
 }) {
@@ -38,8 +43,11 @@ export default function HeroStage({
         <div className="mx-auto w-full max-w-7xl">
           <div className="hero-lean w-full text-center lg:w-[46%] lg:text-start">
            <div className="hero-in">
-            <h1 className="font-display grad-text text-[1.75rem] font-light leading-[1.35] sm:text-4xl lg:text-5xl xl:text-[3.4rem]">{h1}</h1>
-            <span aria-hidden className="mx-auto mt-6 block h-px w-20 bg-gradient-to-r from-transparent via-[#e0b35a] to-transparent lg:mx-0 lg:bg-gradient-to-l lg:from-[#e0b35a] lg:via-[#e0b35a]/50 lg:to-transparent" />
+            <h1 aria-label={h1} className="hero-title">
+              <span aria-hidden className="hero-lead">{h1Lead}</span>
+              <span aria-hidden className="hero-tail">{h1Tail}</span>
+            </h1>
+            <span aria-hidden className="hero-rule mx-auto mt-7 block h-px w-24 lg:mx-0" />
             <p className="hero-copy mt-5 text-base font-light leading-8 text-white/90 md:mt-6 md:text-xl md:leading-[2.4rem]">{body}</p>
             <div className="hero-copy mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">{actions}</div>
            </div>

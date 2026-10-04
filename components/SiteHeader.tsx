@@ -73,7 +73,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
   const switchHref = locale === "ar" ? arToEnHref(pathname) : enToArHref(pathname);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
+    <header className="site-header fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       <div
         className={`bar-bg ${clear ? "bar-clear" : ""} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 text-white transition-[padding] duration-300 md:px-6 ${
           scrolled ? "py-2 md:py-2.5" : "py-3 md:py-4"

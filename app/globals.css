@@ -281,6 +281,10 @@ h2.font-display {
 .cursor-glow[data-on="1"] { opacity: 1; }
 @media (hover: none), (prefers-reduced-motion: reduce) { .cursor-glow { display: none; } }
 
+/* The pinned "principles" stages take the whole screen: the site bar slides out while they are on. */
+.site-header { transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease; }
+html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity: 0; pointer-events: none; }
+
 /* Header bar: the chamfered glass is a clipped background layer so dropdowns can overflow it. */
 .bar-bg { position: relative; isolation: isolate; --c: 26px; }
 .bar-bg::before {
@@ -319,13 +323,45 @@ h2.font-display {
 /* Home hero: dark and still until it wakes (data-awake, set by HeroScroll); the copy leans with the pointer (--px/--py). */
 .hero-glow { opacity: 0; transition: opacity 1.8s ease; }
 [data-awake="1"] .hero-glow { opacity: 1; }
-.hero-copy { opacity: 0.62; transition: opacity 1.4s ease; }
+.hero-copy { opacity: 0.4; transition: opacity 1.6s ease; }
+/* The headline is drawn in outline while the page sleeps, then fills with gold from the baseline up. */
+.hero-title { display: block; margin: 0; font-weight: 400; }
+.hero-title > span { display: block; }
+.hero-lead {
+  font-family: var(--font-ruqaa), serif;
+  font-weight: 700;
+  font-size: clamp(2.7rem, 9vw, 5.9rem);
+  line-height: 1.25;
+  -webkit-text-stroke: 1.2px rgba(246, 226, 179, 0.55);
+  color: transparent;
+  background: linear-gradient(180deg, #fff7de 0%, #f6e2b3 38%, #e0b35a 100%) no-repeat bottom / 100% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-size 2.2s cubic-bezier(0.6, 0, 0.2, 1), -webkit-text-stroke-color 1.6s ease;
+}
+.hero-tail {
+  margin-top: 0.9rem;
+  font-size: clamp(0.8rem, 1.7vw, 1.05rem);
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  color: rgba(246, 226, 179, 0.38);
+  transition: color 1.6s ease 0.6s, letter-spacing 2.2s ease 0.4s;
+}
+[dir="ltr"] .hero-lead { font-family: var(--font-display), serif; font-weight: 300; font-size: clamp(2.3rem, 7vw, 4.6rem); line-height: 1.1; letter-spacing: -0.01em; }
+[dir="ltr"] .hero-tail { text-transform: uppercase; letter-spacing: 0.3em; }
+[data-awake="1"] .hero-lead { background-size: 100% 100%; -webkit-text-stroke-color: rgba(246, 226, 179, 0); }
+[data-awake="1"] .hero-tail { color: rgba(246, 226, 179, 0.9); letter-spacing: 0.5em; }
+[dir="ltr"] [data-awake="1"] .hero-tail { letter-spacing: 0.38em; }
+.hero-rule { background: linear-gradient(90deg, rgba(224, 179, 90, 0.25), rgba(224, 179, 90, 0.25)); transform: scaleX(0.35); transform-origin: right; transition: transform 1.8s ease 0.5s, background 1.8s ease; }
+[dir="ltr"] .hero-rule { transform-origin: left; }
+[data-awake="1"] .hero-rule { transform: scaleX(1); background: linear-gradient(90deg, #e0b35a, rgba(224, 179, 90, 0)); }
+[dir="rtl"] [data-awake="1"] .hero-rule { background: linear-gradient(270deg, #e0b35a, rgba(224, 179, 90, 0)); }
 [data-awake="1"] .hero-copy { opacity: 1; }
 .hero-hint { transition: opacity 0.8s ease; animation: hint-pulse 3s ease-in-out infinite; }
 [data-awake="1"] .hero-hint { opacity: 0; animation: none; }
 @keyframes hint-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
 .hero-lean { transform: translate3d(calc(var(--px, 0) * 16px), calc(var(--py, 0) * 10px), 0); will-change: transform; }
-@media (prefers-reduced-motion: reduce) { .hero-lean { transform: none; } .hero-hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-lean { transform: none; } .hero-hint { display: none; } .hero-lead, .hero-tail, .hero-rule { transition: none; } }
 
 /* Home hero: pinned under the page that slides over it. --hp (0..1) is set by HeroScroll. */
 .hero-curtain > :not(.hero-dim) { transform: scale(calc(1 - var(--hp, 0) * 0.07)); transform-origin: 50% 35%; }
