@@ -50,7 +50,10 @@
 html,
 body {
   overflow-x: clip;
+  max-width: 100%;
 }
+/* Safari (iOS) ignores `clip` on the root in some versions, so the footer, which sits last and holds a full-width ticker, also clips itself. */
+footer { overflow-x: clip; max-width: 100%; }
 
 body {
   background: var(--background);
@@ -244,6 +247,9 @@ main section.border-t {
 
 /* The Latin in the brand face sets very tight word spaces; the English pages open them a little. */
 [dir="ltr"] body { word-spacing: 0.14em; }
+
+/* Article body text: the same official face, without the stretched joins (rlig/calt) so long reading stays plain and even. */
+.article-prose { font-feature-settings: "rlig" 0, "calt" 0; }
 
 .font-blog { font-family: var(--font-blog-stack); }
 

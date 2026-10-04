@@ -32,7 +32,7 @@ function Lane({ items, reverse, dur }: { items: Partner[]; reverse: boolean; dur
 }
 
 /**
- * Sits under the footer's call-to-action buttons, full width like a news ticker: two rows of partner
+ * Sits under the footer's call-to-action buttons, full width like a news ticker (it is placed outside the footer's centred column, so it needs no viewport-width tricks, which widen the page on iOS): two rows of partner
  * logos sliding in opposite directions. Every logo is quiet and monochrome except while it crosses the
  * "lens", a band down the middle where it lights in full colour and gains a gold edge, so partners are read
  * one after another. The colour layer is a second copy of each row, clipped to the lens and moving in lock-step.
@@ -42,10 +42,10 @@ export default function PartnersCurtain({ locale }: { locale: "ar" | "en" }) {
   const second = [...partners].reverse();
   return (
     <div role="group" aria-label={`${t.label} — ${partners.length}`} className="mt-14 md:mt-16">
-      <p className="text-center text-sm font-light text-[#f6e2b3]">
+      <p className="px-5 text-center text-sm font-light text-[#f6e2b3]">
         {t.label} <span className="mx-2 text-white/30">·</span> <span dir="ltr" className="font-display text-base">{partners.length}</span> <span className="text-white/60">{t.note}</span>
       </p>
-      <div dir="ltr" className="curtain relative mx-[calc(50%-50vw)] mt-5 flex w-screen flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
+      <div dir="ltr" className="curtain relative mt-5 flex w-full flex-col gap-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
         <Lane items={partners} reverse={false} dur={70} />
         <Lane items={second} reverse dur={85} />
       </div>

@@ -201,7 +201,7 @@ export default async function ArticlePage({
 
             <ShareBar url={`${firm.website}/blog/${article.slug}`} title={article.h1} />
 
-            <article className="mt-10">
+            <article className="article-prose mt-10">
               <ArticleMarkdown content={article.body} inline={cta} />
             </article>
 

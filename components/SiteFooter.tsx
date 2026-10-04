@@ -92,8 +92,8 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(30,70,200,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(224,179,90,0.14),transparent_70%)]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-28 md:pt-36">
-        <div data-footer-cta className="text-center">
+      <div className="relative pb-10 pt-28 md:pt-36">
+        <div data-footer-cta className="mx-auto max-w-7xl px-5 text-center">
           <h2 className="font-display grad-text mx-auto max-w-4xl text-4xl leading-[1.3] sm:text-5xl md:text-6xl">{t.ctaTitle}</h2>
           <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75 md:text-lg">{t.ctaBody}</p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
@@ -104,8 +104,9 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
 
         <PartnersCurtain locale={locale} />
 
+        <div className="mx-auto max-w-7xl px-5">
         <div className="chamfer-lg mt-14 border border-white/10 bg-white/[0.05] p-7 backdrop-blur-xl md:mt-20 md:p-12">
-          <div className="grid items-start gap-10 md:grid-cols-12 md:gap-x-10 md:gap-y-12">
+          <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 md:grid-cols-12 md:gap-x-10 md:gap-y-12 [&>*]:min-w-0 [overflow-wrap:anywhere]">
             <div className="flex flex-col items-center text-center md:col-span-4 md:items-start md:text-start">
               <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-12 w-auto" />
               <p className="mt-5 max-w-xs text-base font-light leading-8 text-white/80">{t.tagline}</p>
@@ -120,7 +121,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
               </p>
             </div>
 
-            <nav className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-10 md:col-span-4 md:border-t-0 md:pt-0">
+            <nav className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-8 border-t border-white/10 pt-10 md:col-span-4 md:border-t-0 md:pt-0">
               {[
                 { title: t.exploreTitle, items: t.explore },
                 { title: t.firmTitle, items: t.firmLinks },
@@ -154,6 +155,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
             <span className="mx-2 text-white/25">|</span>
             <a href="/portal/login" className={linkCls}>{t.portal}</a>
           </p>
+        </div>
         </div>
       </div>
     </footer>
