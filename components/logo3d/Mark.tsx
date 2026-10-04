@@ -25,6 +25,13 @@ export type RigState = {
   scale: number;
   x: number;
   y: number;
+  /** 0 = the mark sits dark and the stars are out, 1 = lit with its stars; eased every frame. */
+  awake: number;
+  /** Seconds the fly-in takes. */
+  introDur: number;
+  /** Where the star field is centred (world units). */
+  sx: number;
+  sy: number;
 };
 
 /** True when this browser can create a WebGL context. Client-only: call it from a lazy state initialiser. */
@@ -42,7 +49,7 @@ export function startIntro(rig: MutableRefObject<RigState>, now: number, delay: 
   rig.current.introAt = now + delay;
 }
 
-export const newRig = (): RigState => ({ introAt: Infinity, explode: 0, hl: [1, 1, 1], dim: 0, yaw: 0.5, pitch: 0.12, spin: 0.16, scale: 1, x: 0, y: 0 });
+export const newRig = (): RigState => ({ introAt: Infinity, explode: 0, hl: [1, 1, 1], dim: 0, yaw: 0.5, pitch: 0.12, spin: 0.16, scale: 1, x: 0, y: 0, awake: 1, introDur: 2.6, sx: 0, sy: 0 });
 
 const D = 0.5;
 const GAP = 0.077;
@@ -127,11 +134,15 @@ function Stars({ rig, count = 340, radius = 7.5 }: { rig: MutableRefObject<RigSt
     g.setAttribute("aPhase", new BufferAttribute(phase, 1));
     return g;
   }, [count, radius]);
-  const uniforms = useMemo(() => ({ uTime: { value: 0 }, uColor: { value: new Color("#f6e2b3") } }), []);
+  const uniforms = useMemo(() => ({ uTime: { value: 0 }, uGlow: { value: 0 }, uColor: { value: new Color("#f6e2b3") } }), []);
 
   useFrame((st, dt) => {
-    if (mat.current) mat.current.uniforms.uTime.value = st.clock.elapsedTime;
+    if (mat.current) {
+      mat.current.uniforms.uTime.value = st.clock.elapsedTime;
+      mat.current.uniforms.uGlow.value = MathUtils.damp(mat.current.uniforms.uGlow.value, rig.current.awake, 1.4, dt);
+    }
     if (group.current) {
+      group.current.position.set(rig.current.sx, rig.current.sy, 0);
       group.current.rotation.z += dt * 0.012;
       group.current.rotation.y = MathUtils.damp(group.current.rotation.y, (rig.current.yaw - 0.35) * 0.18, 2.5, dt);
     }
@@ -150,8 +161,8 @@ function Stars({ rig, count = 340, radius = 7.5 }: { rig: MutableRefObject<RigSt
               float tw = 0.45 + 0.55 * sin(uTime * (0.6 + aSize * 0.5) + aPhase);
               vA = tw * (0.6 + aSize * 0.5);
               gl_PointSize = aSize * 9.0 * (9.0 / -mv.z); }`}
-          fragmentShader={`uniform vec3 uColor; varying float vA;
-            void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d); gl_FragColor = vec4(uColor, a * a * vA); }`}
+          fragmentShader={`uniform vec3 uColor; uniform float uGlow; varying float vA;
+            void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d); gl_FragColor = vec4(uColor, a * a * vA * uGlow); }`}
         />
       </points>
     </group>
@@ -162,20 +173,22 @@ export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
   const root = useRef<Group>(null);
   const groups = useRef<(Group | null)[]>([]);
   const mats = useRef<(MeshPhysicalMaterial | null)[]>([]);
-  const state = useRef({ explode: 0, hl: [1, 1, 1], spin: 0, scale: 1, x: 0, y: 0, pitch: 0.12 });
+  const state = useRef({ explode: 0, hl: [1, 1, 1], spin: 0, scale: 1, x: 0, y: 0, pitch: 0.12, awake: -1 });
   const geoms = useMemo(() => PARTS.map((p) => (p.leg ? new ExtrudeGeometry(legShape(p.leg[0], p.leg[1], LEGS_TOP, p.leg[2], p.leg[3]), EXTRUDE) : null)), []);
 
   useFrame((st, dt) => {
     const r = rig.current;
     const c = state.current;
     const t = st.clock.elapsedTime;
-    const ia = r.introAt === Infinity ? 0 : Math.min(1, Math.max(0, (t - r.introAt) / 2.6));
+    const ia = r.introAt === Infinity ? 0 : Math.min(1, Math.max(0, (t - r.introAt) / r.introDur));
 
     c.explode = MathUtils.damp(c.explode, r.explode, 3.2, dt);
     c.scale = MathUtils.damp(c.scale, r.scale, 4, dt);
     c.x = MathUtils.damp(c.x, r.x, 3.5, dt);
     c.y = MathUtils.damp(c.y, r.y, 3.5, dt);
     c.pitch = MathUtils.damp(c.pitch, r.pitch, 5, dt);
+    st.scene.environmentIntensity = 1.15 * (0.03 + 0.97 * Math.max(0, c.awake));
+    c.awake = c.awake < 0 ? r.awake : MathUtils.damp(c.awake, r.awake, 2.2, dt);
     c.spin += dt * r.spin * ia;
 
     if (root.current) {
@@ -202,8 +215,8 @@ export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
       if (m) {
         c.hl[p.group] = MathUtils.damp(c.hl[p.group], r.hl[p.group], 5, dt);
         const lit = 1 - r.dim * (1 - c.hl[p.group]);
-        m.color.copy(BASE).multiplyScalar(0.55 + 0.45 * lit);
-        m.emissiveIntensity = 0.1 + (r.dim > 0 ? 0.85 * c.hl[p.group] * r.dim : 0);
+        m.color.copy(BASE).multiplyScalar((0.55 + 0.45 * lit) * (0.16 + 0.84 * c.awake));
+        m.emissiveIntensity = (0.1 + (r.dim > 0 ? 0.85 * c.hl[p.group] * r.dim : 0)) * c.awake;
       }
     });
   });
@@ -219,6 +232,8 @@ export function Mark({ rig }: { rig: MutableRefObject<RigState> }) {
         <Lightformer form="rect" intensity={4} position={[6, 0, 1]} rotation-y={-Math.PI / 2} scale={[1.4, 9, 1]} color="#ffb347" />
         <Lightformer form="rect" intensity={1.4} position={[5, -3, 4]} rotation-y={-Math.PI / 2} scale={[3, 3, 1]} color="#8f7cf0" />
         <Lightformer form="rect" intensity={3} position={[0, -5, 2]} rotation-x={Math.PI / 2} scale={[8, 2, 1]} color="#ffd98a" />
+        {/* behind the camera, so the faces that look at the viewer have something warm to reflect */}
+        <Lightformer form="rect" intensity={2.4} position={[0, 0.5, 9]} rotation-y={Math.PI} scale={[11, 7, 1]} color="#ffd98a" />
       </Environment>
       <group ref={root}>
         {PARTS.map((p, i) => (

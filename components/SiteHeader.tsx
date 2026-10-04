@@ -47,29 +47,35 @@ const copy = {
 
 /**
  * One chamfered navy glass bar, fixed to the top on every page. At the top of a page it carries the
- * logo, the links and the actions; once scrolled it shrinks and the links fold away into a menu
- * button that opens the same links as a panel. "For companies" and "Leadership" live in the footer only.
+ * logo, the links and the actions; once scrolled it shrinks but keeps the links. Narrow screens get a menu
+ * button that opens the same links as a panel. On the home page it starts with no background (see `clear`). "For companies" and "Leadership" live in the footer only.
  */
 export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [lifted, setLifted] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 120);
+      setLifted(window.scrollY > 24);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const isActive = (href: string) => (href === t.home ? pathname === href : pathname.startsWith(href));
+  // On the home page the bar is bare glass over the dark hero and gains its background once the page moves.
+  const clear = pathname === t.home && !lifted;
   const switchHref = locale === "ar" ? arToEnHref(pathname) : enToArHref(pathname);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       <div
-        className={`bar-bg mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 text-white transition-[padding] duration-300 md:px-6 ${
+        className={`bar-bg ${clear ? "bar-clear" : ""} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 text-white transition-[padding] duration-300 md:px-6 ${
           scrolled ? "py-2 md:py-2.5" : "py-3 md:py-4"
         }`}
       >
@@ -82,24 +88,22 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
           </span>
         </Link>
 
-        {!scrolled && (
-          <nav className="hidden items-center gap-5 whitespace-nowrap xl:gap-8 lg:flex">
-            {t.nav.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative whitespace-nowrap py-1 text-[14px] font-normal transition-colors xl:text-[15px] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:bg-[#e0b35a] after:transition-transform ${
-                    active ? "text-[#f6e2b3] after:scale-x-100" : "text-white/85 after:scale-x-0 hover:text-white hover:after:scale-x-100"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-        )}
+        <nav className="hidden items-center gap-5 whitespace-nowrap xl:gap-8 lg:flex">
+          {t.nav.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative whitespace-nowrap py-1 text-[14px] font-normal transition-colors xl:text-[15px] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:bg-[#e0b35a] after:transition-transform ${
+                  active ? "text-[#f6e2b3] after:scale-x-100" : "text-white/85 after:scale-x-0 hover:text-white hover:after:scale-x-100"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
 
         <div className="flex items-center gap-2 xl:gap-3">
           <div className="hidden items-center gap-2 lg:flex xl:gap-3">
@@ -130,7 +134,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
             aria-label={t.menu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className={`btn btn-white chamfer-btn grid h-10 w-10 place-items-center ${scrolled ? "" : "lg:hidden"}`}
+            className="btn btn-white chamfer-btn grid h-10 w-10 place-items-center lg:hidden"
           >
             <span aria-hidden className="grid h-4 w-4 grid-cols-3 gap-[2px]">
               {Array.from({ length: 9 }).map((_, i) => (

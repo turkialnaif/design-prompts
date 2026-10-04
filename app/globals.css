@@ -257,26 +257,24 @@ h2.font-display {
 @keyframes pre-count { to { --n: 100; } }
 @keyframes pre-out { to { opacity: 0; visibility: hidden; } }
 @keyframes pre-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.preloader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: var(--navy-deep); color: #fff; animation: pre-out 0.6s ease 1.8s forwards; }
+.preloader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: var(--navy-deep); color: #fff; animation: pre-out 0.5s ease 1.2s forwards; }
 .preloader-inner { text-align: center; animation: pre-rise 0.7s ease both; }
 .preloader-count { display: block; margin-top: 1.5rem; font-size: 0.95rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.7); font-variant-numeric: tabular-nums; }
-.preloader-count::after { counter-reset: n var(--n); content: counter(n) "%"; animation: pre-count 1.7s cubic-bezier(0.6, 0, 0.3, 1) forwards; }
+.preloader-count::after { counter-reset: n var(--n); content: counter(n) "%"; animation: pre-count 1.15s cubic-bezier(0.6, 0, 0.3, 1) forwards; }
 @media (prefers-reduced-motion: reduce) { .preloader { display: none; } }
 
-/* Partners curtain: vertical lanes, a colour lens across the middle */
-@keyframes vup { to { transform: translateY(-50%); } }
-@keyframes vdown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
-.vtrack { animation-timing-function: linear; animation-iteration-count: infinite; padding-top: 0.75rem; }
-.vtrack-up { animation-name: vup; }
-.vtrack-down { animation-name: vdown; }
-.curtain:hover .vtrack { animation-play-state: paused; }
-.vtile { width: 2.6rem; height: 2.6rem; flex: none; background: #fff; border: 1px solid rgba(224, 179, 90, 0.3); }
-@media (min-width: 768px) { .vtile { width: 3.1rem; height: 3.1rem; } }
+/* Partners ticker: two full-width rows sliding in opposite directions, a colour lens down the middle */
+@keyframes hslide { to { transform: translateX(-50%); } }
+.htrack { animation: hslide linear infinite; padding: 0.15rem 0; }
+.htrack-rev { animation-direction: reverse; }
+.curtain:hover .htrack { animation-play-state: paused; }
+.vtile { width: 2.1rem; height: 2.1rem; flex: none; background: #fff; border: 1px solid rgba(224, 179, 90, 0.3); }
+@media (min-width: 768px) { .vtile { width: 2.4rem; height: 2.4rem; } }
 .vtile img { filter: grayscale(1) contrast(1.1); opacity: 0.5; }
 .vtile-color img { filter: none; opacity: 1; }
-.vtile-color { border-color: #e0b35a; box-shadow: 0 0 22px -4px rgba(224, 179, 90, 0.7); }
-.vlens { clip-path: inset(38% 0 38% 0); pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .vtrack { animation: none !important; } }
+.vtile-color { border-color: #e0b35a; box-shadow: 0 0 18px -4px rgba(224, 179, 90, 0.7); }
+.hlens { clip-path: inset(0 38% 0 38%); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .htrack { animation: none; } }
 
 /* Soft glow that follows the pointer over dark sections (desktop only; see CursorGlow). */
 .cursor-glow { position: fixed; left: 0; top: 0; width: 460px; height: 460px; margin: -230px 0 0 -230px; border-radius: 50%; pointer-events: none; z-index: 40; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(circle, rgba(224,179,90, 0.2) 0%, rgba(224,179,90, 0.07) 38%, transparent 68%); will-change: transform; }
@@ -295,6 +293,8 @@ h2.font-display {
   backdrop-filter: blur(20px) saturate(140%);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%);
 }
+.bar-bg::before, .bar-bg::after { transition: opacity 0.45s ease; }
+.bar-clear::before, .bar-clear::after { opacity: 0; }
 .bar-bg::after {
   content: "";
   position: absolute;
@@ -312,15 +312,20 @@ h2.font-display {
 @media (min-width: 768px) { .curtain-top { padding-top: 11rem; } }
 
 /* Hero rings: two thin gold orbits turning slowly around the mark. */
-@keyframes ring-cw { to { transform: rotate(360deg); } }
-@keyframes ring-ccw { to { transform: rotate(-360deg); } }
-.hero-ring-a { animation: ring-cw 80s linear infinite; }
-.hero-ring-b { animation: ring-ccw 120s linear infinite; }
 @keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 .hero-cue { animation: cue 2.4s ease-in-out infinite; }
-@keyframes hero-kenburns { from { transform: scale(1.04); } to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); } }
-.hero-kenburns { animation: hero-kenburns 28s ease-in-out infinite alternate; }
-@media (prefers-reduced-motion: reduce) { .hero-ring-a, .hero-ring-b, .hero-cue, .hero-kenburns { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-cue { animation: none; } }
+
+/* Home hero: dark and still until it wakes (data-awake, set by HeroScroll); the copy leans with the pointer (--px/--py). */
+.hero-glow { opacity: 0; transition: opacity 1.8s ease; }
+[data-awake="1"] .hero-glow { opacity: 1; }
+.hero-copy { opacity: 0.62; transition: opacity 1.4s ease; }
+[data-awake="1"] .hero-copy { opacity: 1; }
+.hero-hint { transition: opacity 0.8s ease; animation: hint-pulse 3s ease-in-out infinite; }
+[data-awake="1"] .hero-hint { opacity: 0; animation: none; }
+@keyframes hint-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+.hero-lean { transform: translate3d(calc(var(--px, 0) * 16px), calc(var(--py, 0) * 10px), 0); will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .hero-lean { transform: none; } .hero-hint { display: none; } }
 
 /* Home hero: pinned under the page that slides over it. --hp (0..1) is set by HeroScroll. */
 .hero-curtain > :not(.hero-dim) { transform: scale(calc(1 - var(--hp, 0) * 0.07)); transform-origin: 50% 35%; }

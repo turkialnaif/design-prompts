@@ -103,8 +103,6 @@ export default function BlogPage() {
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-[22rem] md:max-w-none">
             <Logo3DFollow />
-            <div aria-hidden className="absolute inset-[12%] -z-10 round-keep border border-[#e0b35a]/25 [border-style:dashed]" />
-            <div aria-hidden className="absolute inset-[26%] -z-10 round-keep border border-[#f6e2b3]/15" />
           </div>
         </div>
       </section>

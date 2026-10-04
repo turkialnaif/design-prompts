@@ -215,7 +215,7 @@ export default async function ArticlePage({
               ))}
             </ul>
 
-            <div className="mt-14">
+            <div id="article-end" className="mt-14">
               <AuthorBox attorneySlug="turki-alnayef" variant={article.authorVariant} />
             </div>
 

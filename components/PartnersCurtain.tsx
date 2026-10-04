@@ -2,17 +2,17 @@ import Image from "next/image";
 import { partners, type Partner } from "@/lib/partners";
 
 const copy = {
-  ar: { label: "شركاء النجاح", note: "علامات تعتز بثقتها فينا", count: "شريكًا" },
-  en: { label: "Success Partners", note: "Brands that trust us", count: "partners" },
+  ar: { label: "شركاء النجاح", note: "علامات تعتز بثقتها فينا" },
+  en: { label: "Success Partners", note: "Brands that trust us" },
 };
 
-function Track({ items, dir, dur, color }: { items: Partner[]; dir: "up" | "down"; dur: number; color?: boolean }) {
+function Track({ items, reverse, dur, color }: { items: Partner[]; reverse: boolean; dur: number; color?: boolean }) {
   return (
-    <ul className={`vtrack ${dir === "up" ? "vtrack-up" : "vtrack-down"} flex flex-col items-center gap-2.5`} style={{ animationDuration: `${dur}s` }}>
-      {[0, 1].map((c) =>
+    <ul className={`htrack ${reverse ? "htrack-rev" : ""} flex w-max items-center gap-2`} style={{ animationDuration: `${dur}s` }}>
+      {[0, 1, 2, 3].map((c) =>
         items.map((p, i) => (
           <li key={`${c}-${i}`} className={color ? "vtile vtile-color" : "vtile"}>
-            <Image src={p.src} alt="" width={104} height={104} sizes="56px" loading={c === 0 ? "eager" : "lazy"} className="h-full w-full" />
+            <Image src={p.src} alt="" width={96} height={96} sizes="48px" loading={c === 0 ? "eager" : "lazy"} className="h-full w-full" />
           </li>
         )),
       )}
@@ -20,51 +20,34 @@ function Track({ items, dir, dur, color }: { items: Partner[]; dir: "up" | "down
   );
 }
 
-function Lanes({ n, className = "" }: { n: number; className?: string }) {
-  const lanes = Array.from({ length: n }, (_, i) => partners.filter((_, k) => k % n === i));
+function Lane({ items, reverse, dur }: { items: Partner[]; reverse: boolean; dur: number }) {
   return (
-    <div className={`grid h-full ${className}`} style={{ gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))` }}>
-      {lanes.map((items, i) => {
-        const dir = i % 2 ? "down" : "up";
-        const dur = 30 + ((i * 7) % 23);
-        return (
-          <div key={i} className="relative h-full overflow-hidden">
-            <Track items={items} dir={dir} dur={dur} />
-            <div className="vlens absolute inset-0">
-              <Track items={items} dir={dir} dur={dur} color />
-            </div>
-          </div>
-        );
-      })}
+    <div className="relative overflow-hidden">
+      <Track items={items} reverse={reverse} dur={dur} />
+      <div className="hlens absolute inset-0">
+        <Track items={items} reverse={reverse} dur={dur} color />
+      </div>
     </div>
   );
 }
 
 /**
- * Sits under the footer's call-to-action buttons. A narrow curtain of partner logos falling and
- * rising in vertical lanes: every logo is quiet and monochrome except while it crosses the "lens" —
- * a band across the middle where it lights in full colour and gains a gold edge — so partners are read
- * one after another. The colour layer is a second copy of each lane, clipped to the lens and moving
- * in lock-step. A caption line gives the count.
+ * Sits under the footer's call-to-action buttons, full width like a news ticker: two rows of partner
+ * logos sliding in opposite directions. Every logo is quiet and monochrome except while it crosses the
+ * "lens", a band down the middle where it lights in full colour and gains a gold edge, so partners are read
+ * one after another. The colour layer is a second copy of each row, clipped to the lens and moving in lock-step.
  */
 export default function PartnersCurtain({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
+  const second = [...partners].reverse();
   return (
-    <div role="group" aria-label={`${t.label} — ${partners.length}`} className="mx-auto mt-14 max-w-4xl md:mt-16">
-      <div className="flex items-center gap-4">
-        <span aria-hidden className="h-px flex-1 bg-gradient-to-l from-transparent to-[#e0b35a]/60" />
-        <p className="text-center text-sm font-light text-[#f6e2b3]">
-          {t.label} <span className="mx-2 text-white/30">·</span> <span dir="ltr" className="font-display text-base">{partners.length}</span> <span className="text-white/60">{t.note}</span>
-        </p>
-        <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-transparent to-[#e0b35a]/60" />
-      </div>
-      <div className="curtain relative mt-4 h-[13.5rem] md:h-[12rem]">
-        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,#000_26%,#000_74%,transparent)]">
-          <Lanes n={14} className="max-md:hidden" />
-          <Lanes n={6} className="md:hidden" />
-        </div>
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[38%] h-px bg-gradient-to-r from-transparent via-[#e0b35a]/70 to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-[38%] h-px bg-gradient-to-r from-transparent via-[#e0b35a]/70 to-transparent" />
+    <div role="group" aria-label={`${t.label} — ${partners.length}`} className="mt-14 md:mt-16">
+      <p className="text-center text-sm font-light text-[#f6e2b3]">
+        {t.label} <span className="mx-2 text-white/30">·</span> <span dir="ltr" className="font-display text-base">{partners.length}</span> <span className="text-white/60">{t.note}</span>
+      </p>
+      <div dir="ltr" className="curtain relative mx-[calc(50%-50vw)] mt-5 flex w-screen flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
+        <Lane items={partners} reverse={false} dur={70} />
+        <Lane items={second} reverse dur={85} />
       </div>
     </div>
   );

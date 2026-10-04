@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const tagline = { ar: "القانون وُجد لتنظيم الحياة لا لتعقيدها", en: "Law exists to organise life, not to complicate it" };
+const tagline = { ar: "نبني القرار القانوني قبل أن تحتاجه", en: "We build the legal decision before you need it" };
 
 /** Short branded intro, once per browser session. It is pure CSS timing (see .preloader), so it hides itself and never blocks the page content. */
 // Module scope survives client-side navigations, so coming back to the home page never replays the intro.
