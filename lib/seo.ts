@@ -2,7 +2,7 @@ import { sectors } from "@/lib/sectors";
 import { corePillars, firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
-export const SITE_UPDATED = "2026-10-02";
+export const SITE_UPDATED = "2026-10-04";
 
 export const homeTitle = {
   ar: "مكتب محاماة في الرياض واستشارات قانونية للشركات | تركي النايف وشركاؤه",
