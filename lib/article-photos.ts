@@ -39,6 +39,17 @@ const photos: Record<string, ArticlePhoto> = {
   "financial-reorganization-saudi-arabia": p("b8", "50% 50%", "مخططات وأوراق عمل"),
   "investment-registration-saudi-arabia": p("a2", "50% 40%", "أبراج زجاجية في الرياض"),
   "pre-litigation-commercial-strategy": p("b5", "60% 50%", "أدلة وميزان"),
+  // الدفعة الرابعة
+  "enforcement-arbitral-award-saudi-arabia": p("b3", "60% 50%", "مطرقة ومصافحة"),
+  "annulment-arbitral-award-saudi-arabia": p("a1", "50% 60%", "مطرقة قاضٍ"),
+  "share-purchase-agreement-saudi-arabia": p("b2", "50% 50%", "مراجعة اتفاق بين شريكين"),
+  "asset-purchase-vs-share-purchase-saudi-arabia": p("a3", "60% 55%", "مراجعة مستندات الصفقة"),
+  "minority-shareholder-rights-saudi-arabia": p("a4", "50% 55%", "قاعة اجتماعات مجلس الإدارة"),
+  "partner-exit-buyout-saudi-arabia": p("b1", "50% 45%", "توقيع اتفاق"),
+  "corporate-governance-saudi-arabia": p("b4", "40% 60%", "قاعة اجتماعات"),
+  "corporate-compliance-program-saudi-arabia": p("a7", "50% 55%", "مجلدات قانونية"),
+  "creditor-rights-bankruptcy-saudi-arabia": p("b6", "50% 50%", "ملف مستندات ومطرقة"),
+  "preventive-settlement-saudi-arabia": p("b8", "50% 55%", "مخططات وأوراق عمل"),
 };
 
 export const articlePhoto = (slug: string): ArticlePhoto | undefined => photos[slug];

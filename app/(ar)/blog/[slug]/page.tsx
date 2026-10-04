@@ -126,7 +126,7 @@ export default async function ArticlePage({
       <ReadingProgress minutes={readMinutes} />
       <Logo3DReader />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      {article.faq.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       {/* Hero */}
       <section data-glow className="relative isolate overflow-hidden bg-[#00061d] px-5 pb-24 pt-36 md:px-12 md:pb-32 md:pt-48">
@@ -251,55 +251,57 @@ export default async function ArticlePage({
         </div>
       </section>
 
-      <section className="bg-[#00061d] py-20 text-white md:py-28">
-        <div className="mx-auto max-w-3xl px-5">
-          <Reveal>
-            <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">FAQ</p>
-            <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">أسئلة شائعة</h2>
-          </Reveal>
-          <div className="mt-12 divide-y divide-white/12 border-y border-white/12">
-            {article.faq.map((item) => (
-              <details key={item.question} className="group py-6">
-                <summary className="flex cursor-pointer list-none items-start gap-5 font-display text-xl font-light leading-8 md:text-2xl">
-                  <span className="flex-1">{item.question}</span>
-                  <span aria-hidden className="text-2xl leading-none text-[#f6e2b3] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-4 text-base font-light leading-8 text-white/75">{item.answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-
-        <div className="mx-auto mt-24 max-w-[92rem] px-4 md:px-8">
-          <Reveal>
-            <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">Keep Reading</p>
-            <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">تابع القراءة</h2>
-          </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {related.map((a) => (
-              <ArticlePoster
-                key={a.slug}
-                a={{ slug: a.slug, cluster: a.cluster, clusterLabel: clusterLabels[a.cluster], title: a.h1, index: entryNumber(a.slug) }}
-                size="md"
-                className="min-h-[24rem]"
-                sizesAttr="(min-width: 768px) 33vw, 100vw"
-              />
-            ))}
-          </div>
-
-          {article.relatedLinks.length > 0 && (
-            <ul className="mt-10 flex flex-wrap justify-center gap-3">
-              {article.relatedLinks.map((link) => (
-                <li key={link.href + link.label}>
-                  <Link href={link.href} className="btn btn-ghost chamfer-btn inline-block px-5 py-2.5 text-sm">
-                    {link.label}
-                  </Link>
-                </li>
+      {article.faq.length > 0 && (
+        <section className="bg-[#00061d] py-20 text-white md:py-28">
+          <div className="mx-auto max-w-3xl px-5">
+            <Reveal>
+              <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">FAQ</p>
+              <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">أسئلة شائعة</h2>
+            </Reveal>
+            <div className="mt-12 divide-y divide-white/12 border-y border-white/12">
+              {article.faq.map((item) => (
+                <details key={item.question} className="group py-6">
+                  <summary className="flex cursor-pointer list-none items-start gap-5 font-display text-xl font-light leading-8 md:text-2xl">
+                    <span className="flex-1">{item.question}</span>
+                    <span aria-hidden className="text-2xl leading-none text-[#f6e2b3] transition-transform duration-300 group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-4 text-base font-light leading-8 text-white/75">{item.answer}</p>
+                </details>
               ))}
-            </ul>
-          )}
-        </div>
-      </section>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-24 max-w-[92rem] px-4 md:px-8">
+            <Reveal>
+              <p className="gold-eyebrow text-center !text-[#f6e2b3] text-xs md:text-sm">Keep Reading</p>
+              <h2 className="font-display grad-text mt-4 text-center text-4xl leading-[1.25] sm:text-5xl md:text-6xl">تابع القراءة</h2>
+            </Reveal>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {related.map((a) => (
+                <ArticlePoster
+                  key={a.slug}
+                  a={{ slug: a.slug, cluster: a.cluster, clusterLabel: clusterLabels[a.cluster], title: a.h1, index: entryNumber(a.slug) }}
+                  size="md"
+                  className="min-h-[24rem]"
+                  sizesAttr="(min-width: 768px) 33vw, 100vw"
+                />
+              ))}
+            </div>
+
+            {article.relatedLinks.length > 0 && (
+              <ul className="mt-10 flex flex-wrap justify-center gap-3">
+                {article.relatedLinks.map((link) => (
+                  <li key={link.href + link.label}>
+                    <Link href={link.href} className="btn btn-ghost chamfer-btn inline-block px-5 py-2.5 text-sm">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      )}
 
       <section className="bg-[#f4f5fe] py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-5">
