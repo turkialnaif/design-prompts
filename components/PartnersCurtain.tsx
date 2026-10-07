@@ -12,7 +12,7 @@ function Track({ items, reverse, dur, color }: { items: Partner[]; reverse: bool
       {[0, 1, 2, 3].map((c) =>
         items.map((p, i) => (
           <li key={`${c}-${i}`} className={color ? "vtile vtile-color" : "vtile"}>
-            <Image src={p.src} alt="" width={96} height={96} sizes="48px" loading={c === 0 ? "eager" : "lazy"} className="h-full w-full" />
+            <Image src={p.src} alt="" width={96} height={96} sizes="48px" loading={c === 0 ? "eager" : "lazy"} fetchPriority="low" className="h-full w-full" />
           </li>
         )),
       )}

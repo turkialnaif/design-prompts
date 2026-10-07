@@ -17,6 +17,7 @@ export const fallbackFont = Zain({
   variable: "--font-brand-fallback",
   subsets: ["arabic", "latin"],
   weight: ["400"],
+  preload: false,
 });
 
 /** Hail Elastic: only the blog's hero and article titles (the blog hero, article headings and article cards). */

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { LogoShowcaseStage } from "@/components/logo3d/lazy";
-import { newRig } from "@/components/logo3d/Mark";
+import { newRig } from "@/components/logo3d/rig";
 import { serviceStandard } from "@/lib/site";
 import { serviceStandardEn } from "@/lib/site.en";
 
