@@ -7,7 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
-import { siteJsonLd } from "@/lib/seo";
+import { homeDescription, siteJsonLd } from "@/lib/seo";
 import { firmEn } from "@/lib/site.en";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
     template: `%s | ${firmEn.nameShort}`,
   },
-  description: firmEn.description,
+  description: homeDescription.en,
   alternates: { canonical: "/en", languages: { ar: "/", en: "/en", "x-default": "/" } },
   icons: {
     icon: "/favicon.ico",
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: firmEn.nameShort,
     title: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
-    description: firmEn.description,
+    description: homeDescription.en,
     url: `${firm.website}/en`,
     images: [{ url: "/brand/riyadh-kafd.jpg", width: 1920, height: 1080, alt: firmEn.nameShort }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
-    description: firmEn.description,
+    description: homeDescription.en,
     images: ["/brand/riyadh-kafd.jpg"],
   },
 };

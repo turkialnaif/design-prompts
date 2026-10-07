@@ -10,7 +10,7 @@ export const homeTitle = {
 
 export const homeDescription = {
   ar: "شركة محاماة مهنية في الرياض تقدم الاستشارات القانونية للشركات، العقود، المنازعات التجارية، التحكيم، الحوكمة وإدارة المخاطر القانونية في السعودية.",
-  en: firmEn.description,
+  en: "Riyadh law firm advising companies on contracts, commercial disputes, arbitration, governance, compliance and foreign investment in Saudi Arabia.",
 };
 
 /** Site-wide structured data: the firm as a LegalService (with its catalogue and sectors) plus the WebSite. Rendered once per locale layout. */
