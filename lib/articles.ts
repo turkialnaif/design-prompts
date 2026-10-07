@@ -1,6 +1,7 @@
 import { batch2Articles } from "@/lib/articles-batch2";
 import { batch3Articles } from "@/lib/articles-batch3";
 import { batch4Articles } from "@/lib/articles-batch4";
+import { batch5Articles } from "@/lib/articles-batch5";
 import { individualsArticles } from "@/lib/articles-individuals";
 import type { AuthorBoxVariant } from "@/lib/site";
 
@@ -3877,4 +3878,4 @@ const baseArticles: Article[] = [
   },
 ];
 
-export const articles: Article[] = [...baseArticles, ...individualsArticles, ...batch2Articles, ...batch3Articles, ...batch4Articles];
+export const articles: Article[] = [...baseArticles, ...individualsArticles, ...batch2Articles, ...batch3Articles, ...batch4Articles, ...batch5Articles];

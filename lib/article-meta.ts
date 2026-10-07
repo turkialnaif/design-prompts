@@ -8,6 +8,7 @@ export const audienceLabels: Record<Audience, string> = {
 
 // الجمهور المستهدف لكل مقال — يُراجَع مع كل مقال جديد.
 export const articleAudiences: Record<string, Audience[]> = {
+  "arbitration-vs-litigation-saudi-arabia": ["companies", "institutions"],
   "enforcement-arbitral-award-saudi-arabia": ["companies", "institutions"],
   "annulment-arbitral-award-saudi-arabia": ["companies", "institutions"],
   "share-purchase-agreement-saudi-arabia": ["companies", "institutions"],

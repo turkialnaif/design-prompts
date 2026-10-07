@@ -103,6 +103,7 @@ export const batch2Articles: Article[] = [
     disclaimer: disclaimerGeneral,
     ...ctaCompany,
     relatedLinks: [
+      { label: "التحكيم أم المحكمة في النزاعات التجارية؟", href: "/blog/arbitration-vs-litigation-saudi-arabia" },
       { label: "التقاضي والتحكيم والتسوية", href: "/services/disputes-arbitration" },
       { label: "التسوية أم رفع دعوى تجارية؟", href: "/blog/settlement-vs-litigation-saudi-arabia" },
       { label: "مراجعة العقد التجاري قبل التوقيع", href: "/blog/commercial-contract-review-before-signing" },

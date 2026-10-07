@@ -50,6 +50,8 @@ const photos: Record<string, ArticlePhoto> = {
   "corporate-compliance-program-saudi-arabia": p("a7", "50% 55%", "مجلدات قانونية"),
   "creditor-rights-bankruptcy-saudi-arabia": p("b6", "50% 50%", "ملف مستندات ومطرقة"),
   "preventive-settlement-saudi-arabia": p("b8", "50% 55%", "مخططات وأوراق عمل"),
+  // الدفعة الخامسة
+  "arbitration-vs-litigation-saudi-arabia": p("b3", "50% 50%", "مطرقة ومصافحة تسوية"),
 };
 
 export const articlePhoto = (slug: string): ArticlePhoto | undefined => photos[slug];
