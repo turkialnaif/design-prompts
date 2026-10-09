@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { partners, type Partner } from "@/lib/partners";
 
@@ -40,14 +43,45 @@ function Lane({ items, reverse, dur }: { items: Partner[]; reverse: boolean; dur
 export default function PartnersCurtain({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const second = [...partners].reverse();
+  // The rows hold 512 logo images between them. They are drawn only when the footer is about to be reached, so they
+  // are not in every page's HTML, DOM or first load; the reserved height keeps the footer from jumping when they arrive.
+  const box = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      const id = window.setTimeout(() => setShow(true), 0);
+      return () => window.clearTimeout(id);
+    }
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   return (
     <div role="group" aria-label={`${t.label} — ${partners.length}`} className="mt-14 md:mt-16">
       <p className="px-5 text-center text-sm font-light text-[#f6e2b3]">
         {t.label} <span className="mx-2 text-white/30">·</span> <span dir="ltr" className="font-display text-base">{partners.length}</span> <span className="text-white/60">{t.note}</span>
       </p>
-      <div dir="ltr" className="curtain relative mt-5 flex w-full flex-col gap-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
-        <Lane items={partners} reverse={false} dur={70} />
-        <Lane items={second} reverse dur={85} />
+      <div
+        ref={box}
+        dir="ltr"
+        className="curtain relative mt-5 flex min-h-[5.4rem] w-full flex-col gap-2 overflow-hidden md:min-h-[5.9rem] [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
+      >
+        {show && (
+          <>
+            <Lane items={partners} reverse={false} dur={70} />
+            <Lane items={second} reverse dur={85} />
+          </>
+        )}
       </div>
     </div>
   );

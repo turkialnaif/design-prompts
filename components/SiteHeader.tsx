@@ -23,7 +23,6 @@ const copy = {
     switchLabel: "EN",
     switchLong: "English",
     alt: `${firm.nameShortAr} — ${firm.nameEn}`,
-    adminLong: "دخول إدارة المكتب",
     portalLong: "بوابة العملاء",
   },
   en: {
@@ -40,7 +39,6 @@ const copy = {
     switchLabel: "AR",
     switchLong: "العربية",
     alt: `${firm.nameShortAr} — Turki AlNaif & Partners`,
-    adminLong: "Firm management sign-in",
     portalLong: "Client portal",
   },
 };
@@ -165,7 +163,6 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
           >
             {t.book}
           </a>
-          <a href="/admin/login" className="mt-1 px-3 py-2.5 text-center text-sm text-[#f6e2b3] hover:bg-white/10">{t.adminLong}</a>
           <a href="/portal/login" className="px-3 py-2.5 text-center text-sm text-white/80 hover:bg-white/10">{t.portalLong}</a>
           <Link href={switchHref} className="px-3 py-2.5 text-center text-sm text-white/70 hover:bg-white/10" onClick={() => setOpen(false)}>
             {t.switchLong}

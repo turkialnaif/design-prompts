@@ -28,7 +28,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "2. Data we collect",
     body: [
-      `We only collect data you provide directly through the site's forms: your name, organisation (if any), email address, and the matter type and description when you submit a "Matter Brief", or your email and audience category when you subscribe to legal alerts.`,
+      `We only collect data you provide directly through the site's forms: your name, organisation (if any), email address, mobile number (optional), and the matter type and description when you submit a "Matter Brief", or your email and audience category when you subscribe to legal alerts.`,
       `The site does not use advertising trackers or visitor-behaviour analytics, and does not collect location data or payment information.`,
     ],
   },

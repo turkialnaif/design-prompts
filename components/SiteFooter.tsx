@@ -36,7 +36,6 @@ const copy = {
     matterTypes: corePillars.map((s) => s.title),
     rights: `© ${new Date().getFullYear()} ${firm.nameAr}. جميع الحقوق محفوظة.`,
     license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber} · السجل الموحد ${firm.unifiedNumber} · المملكة العربية السعودية`,
-    admin: "دخول إدارة المكتب",
     portal: "بوابة العملاء",
     source: "footer",
   },
@@ -68,7 +67,6 @@ const copy = {
     matterTypes: corePillars.map((s) => s.titleEn),
     rights: `© ${new Date().getFullYear()} ${firmEn.nameFull}. All rights reserved.`,
     license: `Law Practice Licence No. ${firm.licenseNumber} · Unified No. ${firm.unifiedNumber} · Kingdom of Saudi Arabia`,
-    admin: "Firm sign-in",
     portal: "Client portal",
     source: "footer-en",
   },
@@ -151,8 +149,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
             <p>{t.license}</p>
           </div>
           <p className="shrink-0">
-            <a href="/admin/login" className={linkCls}>{t.admin}</a>
-            <span className="mx-2 text-white/25">|</span>
             <a href="/portal/login" className={linkCls}>{t.portal}</a>
           </p>
         </div>

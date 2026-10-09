@@ -55,6 +55,7 @@ export default async function AttorneyPageEn({
     jobTitle: attorney.role,
     worksFor: { "@type": "Organization", name: firm.nameEn },
     url: `${firm.website}/en/team/${attorney.slug}`,
+    identifier: attorney.slug === "turki-alnayef" ? { "@type": "PropertyValue", name: "Law practice licence number", value: firm.licenseNumber } : undefined,
   };
 
   return (

@@ -335,8 +335,8 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
 /* Home hero: dark and still until it wakes (data-awake, set by HeroScroll); the copy leans with the pointer (--px/--py). */
 .hero-glow { opacity: 0; transition: opacity 1.8s ease; }
 [data-awake="1"] .hero-glow { opacity: 1; }
-.hero-copy { opacity: 0.4; transition: opacity 1.6s ease; }
-/* The headline is dim, as if switched off, while the page sleeps, and comes up to full gold when it wakes. */
+.hero-copy { opacity: 0.62; transition: opacity 1.6s ease; }
+/* The headline is toned down while the page sleeps (still above 4.5:1 on the dark field, so it reads with no input at all) and comes up to full gold when it wakes. */
 .hero-title { display: block; margin: 0; font-weight: 400; }
 .hero-title > span { display: block; }
 .hero-lead {
@@ -350,7 +350,7 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
   -webkit-background-clip: text;
   background-clip: text;
   /* asleep: the same gold, put out */
-  filter: brightness(0.3) saturate(0.55);
+  filter: brightness(0.66) saturate(0.65);
   transition: filter 2.2s ease, font-variation-settings 2.4s cubic-bezier(0.5, 0, 0.2, 1);
 }
 .hero-tail {
@@ -358,7 +358,7 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
   font-size: clamp(0.8rem, 1.7vw, 1.05rem);
   font-weight: 300;
   letter-spacing: 0.06em;
-  color: rgba(246, 226, 179, 0.38);
+  color: rgba(246, 226, 179, 0.62);
   transition: color 1.6s ease 0.6s, letter-spacing 2.2s ease 0.4s;
 }
 [dir="ltr"] .hero-lead { font-size: clamp(2.3rem, 7vw, 4.6rem); line-height: 1.1; letter-spacing: -0.01em; }
@@ -373,7 +373,7 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
 [data-awake="1"] .hero-copy { opacity: 1; }
 .hero-hint { transition: opacity 0.8s ease; animation: hint-pulse 3s ease-in-out infinite; }
 [data-awake="1"] .hero-hint { opacity: 0; animation: none; }
-@keyframes hint-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+@keyframes hint-pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 .hero-lean { transform: translate3d(calc(var(--px, 0) * 16px), calc(var(--py, 0) * 10px), 0); will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .hero-lean { transform: none; } .hero-hint { display: none; } .hero-lead, .hero-tail, .hero-rule { transition: none; } }
 

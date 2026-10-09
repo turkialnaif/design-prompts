@@ -4,6 +4,15 @@ import { firmEn } from "@/lib/site.en";
 
 export const SITE_UPDATED = "2026-10-04";
 
+/**
+ * Search results cut a title at about 60 characters, and the brand suffix of the page template is what would be cut.
+ * A title that fits with the suffix keeps it; a longer one is shown whole, without the suffix.
+ */
+export function fitTitle(title: string, suffix = " | تركي النايف وشركاؤه"): string | { absolute: string } {
+  return title.length + suffix.length <= 60 ? title : { absolute: title };
+}
+
+
 export const homeTitle = {
   ar: "مكتب محاماة في الرياض واستشارات قانونية للشركات | تركي النايف وشركاؤه",
 };

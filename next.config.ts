@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["@electric-sql/pglite", "pg"],
-  images: { qualities: [75, 90] },
+  // optimised images are versioned by their source path, so browsers and the CDN may keep them for a month
+  images: { qualities: [75, 90], minimumCacheTTL: 60 * 60 * 24 * 31 },
   experimental: { serverActions: { bodySizeLimit: "5mb" } },
   async redirects() {
     return [

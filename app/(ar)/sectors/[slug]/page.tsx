@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import SectorPage from "@/components/SectorPage";
 import { sectorBySlug, sectors } from "@/lib/sectors";
@@ -13,10 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const sector = sectorBySlug(slug);
   if (!sector) return {};
   const c = sector.ar;
-  const title = `محاماة واستشارات قانونية لقطاع ${c.title}`;
+  // "لقطاع القطاع الحكومي" would repeat the word: those sector names already begin with "القطاع", so the lam is attached to it instead
+  const title = c.title.startsWith("القطاع") ? `محاماة واستشارات قانونية ل${c.title.slice(1)}` : `محاماة واستشارات قانونية لقطاع ${c.title}`;
   const description = `${c.short} ${firm.nameShortAr} في الرياض.`;
   return {
-    title,
+    title: fitTitle(title),
     description,
     alternates: {
       canonical: `/sectors/${slug}`,

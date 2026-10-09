@@ -37,7 +37,11 @@ export async function generateMetadata({
   const image = hasPhoto ? `/services/${slug}.jpg` : "/brand/riyadh-kafd.jpg";
 
   const copy = serviceCopy[slug];
-  const title = copy?.title ?? entry.title;
+  // Finished pages carry a hand-written title; the rest get "service — legal services in Riyadh" so no title is a bare noun.
+  const generic = `${entry.title} — خدمات قانونية في الرياض`;
+  const title =
+    copy?.title ??
+    (generic.length + ` | ${firm.nameShortAr}`.length <= 60 ? `${generic} | ${firm.nameShortAr}` : generic.length <= 60 ? generic : `${entry.title} — الرياض`);
   const description = copy?.description ?? entry.summary;
 
   return {

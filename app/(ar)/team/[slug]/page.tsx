@@ -54,6 +54,7 @@ export default async function AttorneyPage({
     worksFor: { "@type": "Organization", name: firm.nameShortAr },
     knowsAbout: attorney.practiceAreas.map((p) => p.label),
     url: `${firm.website}/team/${attorney.slug}`,
+    identifier: attorney.slug === "turki-alnayef" ? { "@type": "PropertyValue", name: "رقم رخصة مزاولة المحاماة", value: firm.licenseNumber } : undefined,
   };
 
   return (

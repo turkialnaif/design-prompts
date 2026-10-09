@@ -5,6 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { articles } from "@/lib/articles";
 import { firm } from "@/lib/site";
+import { fitTitle } from "@/lib/seo";
+import { lawLink } from "@/lib/law-links";
 import ArrowButton from "@/components/ArrowButton";
 import ArticleMarkdown, { getArticleHeadings } from "@/components/ArticleMarkdown";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
@@ -50,7 +52,7 @@ export async function generateMetadata({
   if (!article) return {};
 
   return {
-    title: article.seoTitle,
+    title: fitTitle(article.seoTitle),
     description: article.metaDescription,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
@@ -95,8 +97,16 @@ export default async function ArticlePage({
     description: article.metaDescription,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    author: { "@type": "Person", name: "تركي النايف" },
-    publisher: { "@type": "Organization", name: firm.nameShortAr },
+    inLanguage: "ar",
+    image: [`${firm.website}${articlePhoto(article.slug)?.src ?? "/brand/riyadh-kafd.jpg"}`],
+    author: { "@type": "Person", name: "تركي النايف", url: `${firm.website}/team/turki-alnayef` },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${firm.website}/#firm`,
+      name: firm.nameShortAr,
+      url: firm.website,
+      logo: { "@type": "ImageObject", url: `${firm.website}/brand/icon-512.png` },
+    },
     mainEntityOfPage: `${firm.website}/blog/${article.slug}`,
   };
 
@@ -218,9 +228,20 @@ export default async function ArticlePage({
             <div className="frame glass-card mt-8 p-6">
               <h2 className="font-display text-xl font-light text-[#00124a]">مصادر نظامية</h2>
               <ul className="mt-3 space-y-1.5 text-sm leading-7 text-ink-soft/80">
-                {article.sources.map((source) => (
-                  <li key={source}>{source}</li>
-                ))}
+                {article.sources.map((source) => {
+                  const href = lawLink(source);
+                  return (
+                    <li key={source}>
+                      {href ? (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="underline decoration-gold/60 underline-offset-4 hover:text-gold-deep">
+                          {source}
+                        </a>
+                      ) : (
+                        source
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
               <p className="mt-5 border-t border-line pt-4 text-xs leading-6 text-ink-soft/60">{article.disclaimer}</p>
             </div>

@@ -13,6 +13,10 @@ export const briefCopy = {
     name: "الاسم الكامل",
     org: "المنشأة / الشركة",
     email: "البريد الإلكتروني",
+    phone: "رقم الجوال (اختياري)",
+    privacyLead: "نستخدم بياناتك للرد على استفسارك، وفق",
+    privacyLink: "سياسة الخصوصية",
+    privacyHref: "/privacy",
     matterType: "نوع المسألة",
     matterTypeOther: "أخرى",
     description: "وصف مختصر للمسألة",
@@ -32,6 +36,10 @@ export const briefCopy = {
     name: "Full Name",
     org: "Organization / Company",
     email: "Email",
+    phone: "Mobile number (optional)",
+    privacyLead: "We use your details to answer your enquiry, as set out in our",
+    privacyLink: "Privacy Policy",
+    privacyHref: "/en/privacy",
     matterType: "Matter Type",
     matterTypeOther: "Other",
     description: "Brief Description of the Matter",
@@ -76,6 +84,8 @@ export default function MatterBriefForm({
           name: data.get("name"),
           org: data.get("org"),
           email: data.get("email"),
+          phone: data.get("phone"),
+          website: data.get("website"),
           matterType: data.get("matterType"),
           description: data.get("description"),
           locale,
@@ -122,6 +132,10 @@ export default function MatterBriefForm({
         <input id={`${uid}-email`} name="email" type="email" required dir="ltr" className={`${field} text-end`} />
       </div>
       <div>
+        <label htmlFor={`${uid}-phone`} className="text-xs font-semibold text-ink-soft/70">{t.phone}</label>
+        <input id={`${uid}-phone`} name="phone" type="tel" inputMode="tel" autoComplete="tel" dir="ltr" maxLength={30} className={`${field} text-end`} />
+      </div>
+      <div>
         <label htmlFor={`${uid}-matterType`} className="text-xs font-semibold text-ink-soft/70">{t.matterType} *</label>
         <select id={`${uid}-matterType`} name="matterType" required defaultValue="" className={field}>
           <option value="" disabled>
@@ -141,7 +155,22 @@ export default function MatterBriefForm({
         <p className="mt-1.5 text-xs leading-5 text-ink-soft/50">{t.docsNote}</p>
       </div>
 
+      {/* honeypot: people never see or fill this; scripts that fill every field give themselves away */}
+      <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <p className="rounded-lg bg-paper px-3.5 py-3 text-xs font-medium leading-5 text-ink-soft/80">{t.disclaimer}</p>
+      <p className="text-xs leading-5 text-ink-soft/70">
+        {t.privacyLead}{" "}
+        <a href={t.privacyHref} className="font-semibold text-gold-deep underline underline-offset-2">
+          {t.privacyLink}
+        </a>
+        .
+      </p>
 
       {status === "error" && <p className="rounded-lg bg-red-50 px-3.5 py-2.5 text-xs font-medium text-red-700">{t.error}</p>}
 

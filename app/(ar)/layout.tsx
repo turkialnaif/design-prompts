@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import WhatsAppContext from "@/components/WhatsAppContext";
 import Footer from "@/components/Footer";
 import { firm } from "@/lib/site";
 import { homeDescription, homeTitle, siteJsonLd } from "@/lib/seo";
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "ar_SA",
     siteName: firm.nameShortAr,
     title: homeTitle.ar,
     description: homeDescription.ar,
@@ -47,12 +47,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       dir="rtl"
       className={`${brandFont.variable} ${fallbackFont.variable} ${blogFont.variable} h-full antialiased`}
     >
+      <head>
+        <meta property="og:locale" content="ar_SA" />
+        <meta property="og:locale:alternate" content="en_US" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SmoothScroll />
+        <WhatsAppContext />
         <CursorGlow />
         <Header />
         <main className="flex-1">{children}</main>

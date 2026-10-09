@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import SectorPage from "@/components/SectorPage";
 import { sectorBySlug, sectors } from "@/lib/sectors";
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `${c.title} — Legal Services`;
   const description = `${c.short} Turki AlNaif & Partners, Riyadh.`;
   return {
-    title,
+    title: fitTitle(title, " | Turki AlNaif & Partners"),
     description,
     alternates: {
       canonical: `/en/sectors/${slug}`,
