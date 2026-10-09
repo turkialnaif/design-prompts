@@ -55,7 +55,7 @@ export default function HeroStage({
         </div>
       </div>
 
-      <p aria-hidden className="hero-hint pointer-events-none absolute inset-x-0 bottom-6 z-10 text-center text-xs font-light tracking-wide text-[#f6e2b3]/70">
+      <p aria-hidden className="hero-hint pointer-events-none absolute inset-x-0 bottom-6 z-10 text-center text-xs font-light tracking-wide text-[#f6e2b3]">
         <span className="max-md:hidden">{cue}</span>
         <span className="md:hidden">{cueTouch}</span>
       </p>

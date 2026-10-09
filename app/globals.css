@@ -373,7 +373,7 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
 [data-awake="1"] .hero-copy { opacity: 1; }
 .hero-hint { transition: opacity 0.8s ease; animation: hint-pulse 3s ease-in-out infinite; }
 [data-awake="1"] .hero-hint { opacity: 0; animation: none; }
-@keyframes hint-pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes hint-pulse { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
 .hero-lean { transform: translate3d(calc(var(--px, 0) * 16px), calc(var(--py, 0) * 10px), 0); will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .hero-lean { transform: none; } .hero-hint { display: none; } .hero-lead, .hero-tail, .hero-rule { transition: none; } }
 
