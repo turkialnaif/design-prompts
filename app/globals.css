@@ -352,10 +352,16 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
    while a band of light travels along the gold. */
 .hero-lead {
   display: block;
+  white-space: nowrap; /* the name is one line, always: the size below is derived from the width it has */
   font-family: var(--font-brand-raw), var(--font-brand-fallback), system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(2.5rem, 7vw, 5rem);
+  /* The name measures about 8.4em wide once its joins have stretched. On a phone it has the screen less 2.5rem,
+     from lg up it has 46% of the 80rem column. Dividing by 9 keeps a little air even before the face has loaded. */
+  font-size: clamp(1.6rem, calc((100vw - 2.5rem) / 9), 4.4rem);
   line-height: 1.32;
+}
+@media (min-width: 1024px) {
+  .hero-lead { font-size: clamp(2.6rem, calc(min(100vw - 5rem, 80rem) * 0.46 / 9), 4.4rem); }
 }
 .hero-word {
   display: inline-block;
@@ -393,7 +399,10 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
   transition: color 1.6s ease 0.6s, letter-spacing 2.2s ease 0.4s;
 }
 [dir="rtl"] .hero-tail, [dir="rtl"] [data-awake="1"] .hero-tail { letter-spacing: 0; }
-[dir="ltr"] .hero-lead { font-size: clamp(2.3rem, 7vw, 4.6rem); line-height: 1.1; letter-spacing: -0.01em; }
+[dir="ltr"] .hero-lead { font-size: clamp(1.5rem, calc((100vw - 2.5rem) / 11.6), 4.4rem); line-height: 1.1; letter-spacing: -0.01em; }
+@media (min-width: 1024px) {
+  [dir="ltr"] .hero-lead { font-size: clamp(2.4rem, calc(min(100vw - 5rem, 80rem) * 0.46 / 11.6), 4.4rem); }
+}
 [dir="ltr"] .hero-tail { text-transform: uppercase; letter-spacing: 0.3em; }
 [data-awake="1"] .hero-tail { color: rgba(246, 226, 179, 0.9); letter-spacing: 0.12em; }
 [dir="ltr"] [data-awake="1"] .hero-tail { letter-spacing: 0.38em; }
@@ -428,4 +437,23 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
     min-height: 44px;
   }
   [aria-label="محتويات المقال"] a { padding-block: 0.6rem; }
+}
+
+/* Closing call to action: two soft lights drift behind it and a gold hairline travels along its top edge. */
+.cta-aurora { will-change: transform; animation: cta-drift 22s ease-in-out infinite alternate; }
+.cta-aurora-b { animation-duration: 28s; animation-direction: alternate-reverse; }
+@keyframes cta-drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-9%, 7%, 0) scale(1.18); } }
+.cta-sweep { background: linear-gradient(90deg, transparent 0%, transparent 35%, #f6e2b3 50%, transparent 65%, transparent 100%); background-size: 250% 100%; animation: cta-sweep 7s linear infinite; opacity: 0.75; }
+@keyframes cta-sweep { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .cta-aurora, .cta-sweep { animation: none; } }
+
+/* Blog stage (components/BlogScene.tsx): --bp is the page's scroll progress (0 to 1), --bh the first screen's. */
+.blog-ghost-mark { transform: translate3d(0, calc(var(--bp, 0) * -26vh), 0) rotate(calc(var(--bp, 0) * 9deg)); will-change: transform; }
+.blog-orb { transform: translate3d(0, calc(var(--bp, 0) * 78vh), 0); will-change: transform; }
+.blog-rail { height: calc(var(--bp, 0) * 100%); }
+.blog-hero-ghost { transform: translate3d(calc(var(--bh, 0) * -16vw), calc(var(--bh, 0) * 6vh), 0); will-change: transform; }
+.blog-hero-name { transform: translate3d(calc(var(--bh, 0) * 5vw), 0, 0); will-change: transform; }
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .blog-par > :nth-child(3n + 2) { transform: translate3d(0, calc(var(--bp, 0) * -70px), 0); }
+  .blog-par > :nth-child(3n + 3) { transform: translate3d(0, calc(var(--bp, 0) * -34px), 0); }
 }

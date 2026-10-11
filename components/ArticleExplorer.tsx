@@ -129,7 +129,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
       )}
 
       {/* Filter rail — stays under the header while the archive scrolls */}
-      <div id="archive" className="z-30 mt-16 scroll-mt-24 border-y border-white/10 bg-[#00061d]/90 backdrop-blur-xl md:sticky md:top-[4.9rem]">
+      <div id="archive" className="z-30 mt-16 scroll-mt-24 border-y border-white/10 bg-[#000d33]/90 backdrop-blur-xl md:sticky md:top-[4.9rem]">
         <div className="mx-auto flex max-w-[92rem] flex-col gap-4 px-4 py-4 md:px-8">
           <div className="flex items-center gap-4">
             <div data-lenis-prevent className="flex min-w-0 flex-1 gap-6 overflow-x-auto [scrollbar-width:none]">
@@ -189,7 +189,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
 
         {view === "grid" ? (
           <>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="blog-par grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {visible.map((a) => (
                 <ArticlePoster key={a.slug} a={poster(a)} className="h-full" />
               ))}

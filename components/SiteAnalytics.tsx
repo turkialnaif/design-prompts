@@ -3,15 +3,14 @@
 import { useEffect } from "react";
 import { track } from "@vercel/analytics";
 import { Analytics } from "@vercel/analytics/next";
-import ConsentBanner from "@/components/ConsentBanner";
+import GoogleTag from "@/components/GoogleTag";
 import { gtagEvent } from "@/lib/gtag";
 
 /**
  * Visit measurement: Vercel Web Analytics (no cookies, no cross-site tracking, no visitor profile) plus five events
  * for what matters to the firm: a WhatsApp, phone or email button pressed, the profile PDF opened, and a matter brief sent
  * (that last one is sent from the form itself). Events carry only the page path, never anything typed by the visitor.
- * The Google tag (campaign measurement) is separate: ConsentBanner loads it only after the visitor accepts cookies, and the same
- * events are then forwarded to it.
+ * The Google tag (campaign measurement) is separate (GoogleTag) and receives the same events.
  */
 export default function SiteAnalytics() {
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function SiteAnalytics() {
   return (
     <>
       <Analytics />
-      <ConsentBanner />
+      <GoogleTag />
     </>
   );
 }

@@ -50,7 +50,7 @@ export default function Marquee({
             </span>
           ) : ornate ? (
             <span key={i} className="mx-5 inline-flex shrink-0 items-center gap-10 whitespace-nowrap">
-              <span className={`font-ruqaa text-xl font-bold md:text-2xl ${tone === "onLight" ? "text-gold-deep" : "text-[#f6e2b3]"}`}>{item}</span>
+              <span className={`font-blog text-xl font-light md:text-3xl ${tone === "onLight" ? "text-gold-deep" : "text-[#f6e2b3]"}`}>{item}</span>
               <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-gold" />
             </span>
           ) : (

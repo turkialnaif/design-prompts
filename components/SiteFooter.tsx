@@ -1,10 +1,9 @@
 import Image from "next/image";
-import ArrowButton from "@/components/ArrowButton";
-import MatterBriefCTA from "@/components/MatterBriefCTA";
+import ClosingCTA from "@/components/ClosingCTA";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import PartnersCurtain from "@/components/PartnersCurtain";
 import SocialIcons from "@/components/SocialIcons";
-import { corePillars, firm } from "@/lib/site";
+import { firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
 const copy = {
@@ -30,10 +29,6 @@ const copy = {
     ],
     subscribeTitle: "اشترك في التنبيهات القانونية",
     subscribeBody: "رسالة موجزة عند نشر مقال جديد أو صدور تعديل نظامي يهم منشأتك.",
-    ctaTitle: "هل لديك مسألة قانونية تحتاج رأيًا دقيقًا؟",
-    ctaBody: "تواصل معنا وسنحدد معك نطاق العمل والمخرجات منذ البداية.",
-    ctaWhatsapp: "تواصل عبر واتساب",
-    matterTypes: corePillars.map((s) => s.title),
     rights: `© ${new Date().getFullYear()} ${firm.nameAr}. جميع الحقوق محفوظة.`,
     license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber} · السجل الموحد ${firm.unifiedNumber} · المملكة العربية السعودية`,
     portal: "بوابة العملاء",
@@ -61,10 +56,6 @@ const copy = {
     ],
     subscribeTitle: "Legal alerts by email",
     subscribeBody: "A short note when we publish a new article or a regulatory change affects your business.",
-    ctaTitle: "Have a legal matter that needs a precise opinion?",
-    ctaBody: "Get in touch and we'll scope the work and the deliverables from day one.",
-    ctaWhatsapp: "Message on WhatsApp",
-    matterTypes: corePillars.map((s) => s.titleEn),
     rights: `© ${new Date().getFullYear()} ${firmEn.nameFull}. All rights reserved.`,
     license: `Law Practice Licence No. ${firm.licenseNumber} · Unified No. ${firm.unifiedNumber} · Kingdom of Saudi Arabia`,
     portal: "Client portal",
@@ -91,14 +82,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(30,70,200,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(224,179,90,0.14),transparent_70%)]" />
 
       <div className="relative pb-10 pt-28 md:pt-36">
-        <div data-footer-cta className="mx-auto max-w-7xl px-5 text-center">
-          <h2 className="font-display grad-text mx-auto max-w-4xl text-4xl leading-[1.3] sm:text-5xl md:text-6xl">{t.ctaTitle}</h2>
-          <p className="mx-auto mt-6 max-w-xl text-base font-light leading-8 text-white/75 md:text-lg">{t.ctaBody}</p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <ArrowButton href={firm.whatsapp} external ltr={!ar}>{t.ctaWhatsapp}</ArrowButton>
-            <MatterBriefCTA locale={locale} matterTypes={t.matterTypes} tone="onDark" />
-          </div>
-        </div>
+        <ClosingCTA locale={locale} />
 
         <PartnersCurtain locale={locale} />
 
