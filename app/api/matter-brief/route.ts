@@ -113,8 +113,8 @@ export async function POST(request: Request) {
 
   try {
     const { error } = await resend.emails.send({
-      from: `${firm.nameShortAr} <onboarding@resend.dev>`,
-      to: firm.formEmail,
+      from: `${firm.nameShortAr} <${firm.email}>`,
+      to: firm.email,
       replyTo: email,
       subject,
       text,

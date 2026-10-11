@@ -78,4 +78,5 @@ Martindale-Hubbell (ملف مجاني) · Crunchbase · Wikidata (يتطلب م�
 - لا تغيير الاسم أو الهاتف في أي دليل دون تحديث بقية الأدلة.
 
 ## سجل الإرسالات
+- **بريد المكتب على النطاق** — 2026-10-11: الصندوق صار `info@taap.sa` (Microsoft 365). على DNS (Vercel): MX وSPF وAutodiscover وDKIM (selector1/2) وDMARC على `p=none` مع تقارير إلى `info@taap.sa`. النماذج ترسل عبر Resend من `info@taap.sa` بعد توثيق النطاق (سجلات `resend._domainkey` و`send` و`rsend`). موعد تشديد DMARC إلى quarantine ثم reject: بعد نحو أسبوعين من تقارير نظيفة. العنوان `tnz@tnzlaw.com` اسم مستعار على الصندوق نفسه؛ شهادة `tnzlaw.com` منتهية منذ 2026-06-20 وSPF عند GoDaddy لا يشمل Microsoft 365 (يُصلح من GoDaddy).
 - **Martindale-Hubbell** — 2026-10-04: أُرسل طلب إنشاء ملف أساسي عبر نموذج «Request a Change» (نموذج «Submit a Basic Profile» معطّل عندهم: قوائم الدول فارغة وحقل الهاتف بصيغة أمريكية فقط). البريد tnz@tnzlaw.com. الرد المتوقع على البريد؛ قد يطلبون تاريخ الميلاد وتاريخ ترخيص المحاماة (2019) عند التحقق. الملف الأساسي يظهر في الدليل الإلكتروني (يُحدَّث يوميًا بحسب رسالتهم).

@@ -32,7 +32,7 @@ export async function GET(req: Request) {
     if (daysLeft > e.remindDaysBefore || !u.email) continue;
     const when = new Intl.DateTimeFormat("ar-SA-u-nu-latn-ca-gregory", { dateStyle: "full", timeStyle: "short", timeZone: "Asia/Riyadh" }).format(e.startsAt);
     const { error } = await resend.emails.send({
-      from: `${firm.remindEmailFrom} <onboarding@resend.dev>`,
+      from: `${firm.remindEmailFrom} <${firm.email}>`,
       to: u.email,
       subject: `تذكير: ${e.title}`,
       html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.9"><p>${esc(u.fullName)}،</p><p>تذكير بموعد قادم: <strong>${esc(e.title)}</strong></p><p>الموعد: ${esc(when)}</p>${e.location ? `<p>المكان: ${esc(e.location)}</p>` : ""}${m ? `<p>القضية: ${esc(m.number)} — ${esc(m.title)}</p>` : ""}</div>`,
@@ -58,7 +58,7 @@ export async function GET(req: Request) {
   for (const g of byUser.values()) {
     if (!g.email) continue;
     const { error } = await resend.emails.send({
-      from: `${firm.remindEmailFrom} <onboarding@resend.dev>`,
+      from: `${firm.remindEmailFrom} <${firm.email}>`,
       to: g.email,
       subject: "مهام مستحقة أو متأخرة",
       html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.9"><p>${esc(g.name)}، لديك مهام تستحق اليوم أو الغد أو متأخرة:</p><ul>${g.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`,
