@@ -13,6 +13,12 @@ export const firm = {
   phoneDisplay: "966 566 770 888",
   whatsapp: "https://wa.me/966566770888",
   email: "info@taap.sa",
+  /**
+   * Where the site's forms deliver. Mail is sent through Resend's shared test sender (onboarding@resend.dev), which
+   * only delivers to the Resend account owner's own address, so this stays the original address until taap.sa is
+   * verified as a sending domain in Resend. It is an alias of the same mailbox as `email`.
+   */
+  formEmail: "tnz@tnzlaw.com",
   domain: "taap.sa",
   website: "https://taap.sa",
   licenseNumber: "4477",
