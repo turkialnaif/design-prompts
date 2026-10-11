@@ -7,6 +7,13 @@ export const firm = {
   address: "حي الياسمين، الرياض 13326",
   addressEn: "Al Yasmin District, Riyadh 13326",
   plusCode: "RMJ5+P9F",
+  /** Decoded from the Plus Code above (Al Yasmin, Riyadh), to 6 decimals (about 10 cm). */
+  geo: { lat: 24.831813, lng: 46.658422 },
+  /** Opening hours, Riyadh time. Friday is closed. */
+  hours: [
+    { days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:00", closes: "17:00" },
+    { days: ["Saturday"], opens: "10:00", closes: "14:00" },
+  ],
   mapsUrl:
     "https://www.google.com/maps?q=RMJ5+P9F+تاب+للمحاماة+والاستشارات+القانونية،+الياسمين،+الرياض+13326&ftid=0x3e2ee500591ba4a7:0xc96fb1e4ecd7a0e7",
   phone: "+966566770888",

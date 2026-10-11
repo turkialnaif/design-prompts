@@ -48,6 +48,13 @@ export function siteJsonLd(locale: "ar" | "en") {
         addressCountry: "SA",
       },
       hasMap: firm.mapsUrl,
+      geo: { "@type": "GeoCoordinates", latitude: firm.geo.lat, longitude: firm.geo.lng },
+      openingHoursSpecification: firm.hours.map((h) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: h.days,
+        opens: h.opens,
+        closes: h.closes,
+      })),
       areaServed: { "@type": "Country", name: "Saudi Arabia" },
       sameAs: Object.values(firm.social),
       identifier: [

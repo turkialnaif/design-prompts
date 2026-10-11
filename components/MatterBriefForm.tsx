@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 
 export type BriefLocale = "ar" | "en";
 type Status = "idle" | "sending" | "success" | "error";
@@ -93,6 +94,7 @@ export default function MatterBriefForm({
       });
       if (!res.ok) throw new Error("failed");
       setStatus("success");
+      track("matter_brief_sent", { page: location.pathname });
       form.reset();
     } catch {
       setStatus("error");

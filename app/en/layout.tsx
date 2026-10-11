@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppContext from "@/components/WhatsAppContext";
+import SiteAnalytics from "@/components/SiteAnalytics";
 import FooterEn from "@/components/FooterEn";
 import { firm } from "@/lib/site";
 import { homeDescription, siteJsonLd } from "@/lib/seo";
@@ -59,6 +60,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
         />
         <SmoothScroll />
         <WhatsAppContext />
+        <SiteAnalytics />
         <CursorGlow />
         <HeaderEn />
         <main className="flex-1">{children}</main>

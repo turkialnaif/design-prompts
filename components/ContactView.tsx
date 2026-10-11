@@ -26,6 +26,12 @@ const copy = {
       { icon: Mail, label: "البريد الإلكتروني", value: firm.email, href: `mailto:${firm.email}`, ltr: true },
       { icon: Globe, label: "الموقع الإلكتروني", value: firm.domain, href: firm.website, ltr: true, external: true },
     ],
+    hoursTitle: "ساعات العمل",
+    hours: [
+      ["الأحد – الخميس", "٨:٠٠ ص – ٥:٠٠ م"],
+      ["السبت", "١٠:٠٠ ص – ٢:٠٠ م"],
+      ["الجمعة", "مغلق"],
+    ],
     officeTitle: "مقر المكتب",
     name: firm.nameShortAr,
     address: firm.address,
@@ -50,6 +56,12 @@ const copy = {
       { icon: Phone, label: "Phone", value: firm.phoneDisplay, href: `tel:${firm.phone}`, ltr: true },
       { icon: Mail, label: "Email", value: firm.email, href: `mailto:${firm.email}`, ltr: true },
       { icon: Globe, label: "Website", value: firm.domain, href: firm.website, ltr: true, external: true },
+    ],
+    hoursTitle: "Opening hours",
+    hours: [
+      ["Sunday – Thursday", "8:00 AM – 5:00 PM"],
+      ["Saturday", "10:00 AM – 2:00 PM"],
+      ["Friday", "Closed"],
     ],
     officeTitle: "Our office",
     name: firmEn.nameShort,
@@ -150,6 +162,17 @@ export default function ContactView({ locale }: { locale: "ar" | "en" }) {
                 <h3 className="font-display mt-1 text-3xl font-light">{t.name}</h3>
                 <p className="mt-2 text-sm font-light leading-7 text-white/85">{t.address}</p>
                 <p className="mt-1 text-xs text-white/60" dir="ltr">{firm.plusCode}</p>
+                <div className="mt-5 border-t border-white/15 pt-4">
+                  <p className={ar ? "text-sm text-[#f6e2b3]" : "text-xs uppercase tracking-[0.2em] text-[#f6e2b3]"}>{t.hoursTitle}</p>
+                  <dl className="mt-2 space-y-1 text-sm font-light text-white/85">
+                    {t.hours.map(([day, time]) => (
+                      <div key={day} className="flex justify-between gap-4">
+                        <dt>{day}</dt>
+                        <dd>{time}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <ArrowButton href={firm.mapsUrl} external ltr={!ar}>
                     {t.maps}

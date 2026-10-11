@@ -29,7 +29,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "2. Data we collect",
     body: [
       `We only collect data you provide directly through the site's forms: your name, organisation (if any), email address, mobile number (optional), and the matter type and description when you submit a "Matter Brief", or your email and audience category when you subscribe to legal alerts.`,
-      `The site does not use advertising trackers or visitor-behaviour analytics, and does not collect location data or payment information.`,
+      `The site does not use advertising trackers, and does not collect location data or payment information. To measure visits we use aggregate statistics (Vercel Web Analytics) that record which pages are opened and which contact buttons are pressed (WhatsApp, phone, email and sending a form), without cookies, without tracking visitors across sites, without building a profile of them, and without keeping what you type into the forms.`,
     ],
   },
   {
@@ -61,7 +61,7 @@ const sections: { title: string; body: string[] }[] = [
   {
     title: "7. Cookies",
     body: [
-      `Our public website does not use tracking or advertising cookies. Purely functional session cookies are used only within the client portal and the firm's admin dashboard, where they are necessary for secure sign-in and are not used for any other purpose.`,
+      `Our public website does not use tracking or advertising cookies, and its visit measurement does not rely on cookies. Purely functional session cookies are used only within the client portal and the firm's admin dashboard, where they are necessary for secure sign-in and are not used for any other purpose.`,
     ],
   },
   {
