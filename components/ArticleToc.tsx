@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /** Sticky chapter list that follows the reader: the section in view is lit in gold. */
-export default function ArticleToc({ headings }: { headings: { id: string; text: string }[] }) {
+export default function ArticleToc({ headings, locale = "ar" }: { headings: { id: string; text: string }[]; locale?: "ar" | "en" }) {
   const [active, setActive] = useState(headings[0]?.id ?? "");
 
   useEffect(() => {
@@ -20,8 +20,8 @@ export default function ArticleToc({ headings }: { headings: { id: string; text:
   }, [headings]);
 
   return (
-    <nav data-lenis-prevent className="sticky top-28 max-h-[calc(100vh-9rem)] overflow-y-auto pe-2" aria-label="محتويات المقال">
-      <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-gold-deep">محتويات المقال</p>
+    <nav data-lenis-prevent className="sticky top-28 max-h-[calc(100vh-9rem)] overflow-y-auto pe-2" aria-label={locale === "en" ? "Article contents" : "محتويات المقال"}>
+      <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-gold-deep">{locale === "en" ? "Contents" : "محتويات المقال"}</p>
       <ol className="mt-5 border-e border-[#e0b35a]/35 pe-5">
         {headings.map((h) => {
           const on = h.id === active;

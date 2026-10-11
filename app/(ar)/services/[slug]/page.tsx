@@ -15,6 +15,7 @@ import { articles } from "@/lib/articles";
 import { sectors } from "@/lib/sectors";
 import { lineDetails } from "@/lib/line-content";
 import { serviceCopy } from "@/lib/service-copy";
+import { hasEnService } from "@/lib/en/slugs";
 import { serviceExtra } from "@/lib/service-extra";
 import { corePillars, deliverables, firm, lineAxis, matterMethod, specializedLines } from "@/lib/site";
 
@@ -47,7 +48,10 @@ export async function generateMetadata({
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `/services/${slug}` },
+    alternates: {
+      canonical: `/services/${slug}`,
+      ...(hasEnService(slug) ? { languages: { ar: `/services/${slug}`, en: `/en/services/${slug}`, "x-default": `/services/${slug}` } } : {}),
+    },
     openGraph: { title, description, images: [{ url: image }] },
     twitter: { card: "summary_large_image" },
   };

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { articles } from "@/lib/articles";
 import { firm } from "@/lib/site";
 import { fitTitle } from "@/lib/seo";
+import { hasEnArticle } from "@/lib/en/slugs";
 import { lawLink } from "@/lib/law-links";
 import ArrowButton from "@/components/ArrowButton";
 import ArticleMarkdown, { getArticleHeadings } from "@/components/ArticleMarkdown";
@@ -54,7 +55,10 @@ export async function generateMetadata({
   return {
     title: fitTitle(article.seoTitle),
     description: article.metaDescription,
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: {
+      canonical: `/blog/${slug}`,
+      ...(hasEnArticle(slug) ? { languages: { ar: `/blog/${slug}`, en: `/en/blog/${slug}`, "x-default": `/blog/${slug}` } } : {}),
+    },
     openGraph: {
       type: "article",
       publishedTime: article.publishedAt,

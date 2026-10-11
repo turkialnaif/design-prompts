@@ -31,7 +31,7 @@ const copy = {
       { href: "/en", label: "Home" },
       { href: "/en/about", label: "About" },
       { href: "/en/services", label: "Services & Sectors" },
-      { href: "/blog", label: "Legal Insights (Arabic)" },
+      { href: "/en/blog", label: "Legal Insights" },
       { href: "/en/contact", label: "Contact" },
     ],
     book: "Book a Consultation",

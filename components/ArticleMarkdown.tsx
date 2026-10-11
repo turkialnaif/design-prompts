@@ -88,7 +88,8 @@ export function getArticleHeadings(content: string) {
   return parse(content).flatMap((b, i) => (b.kind === "h2" ? [{ id: `section-${i}`, text: b.text }] : []));
 }
 
-export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }: { content: string; inline?: ReactNode; inlineBeforeH2?: number }) {
+export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3, locale = "ar" }: { content: string; inline?: ReactNode; inlineBeforeH2?: number; locale?: "ar" | "en" }) {
+  const en = locale === "en";
   const blocks = parse(content);
   const firstP = blocks.findIndex((b) => b.kind === "p");
   const h2Order = blocks.reduce<number[]>((acc, b, idx) => (b.kind === "h2" ? [...acc, idx] : acc), []);
@@ -121,14 +122,18 @@ export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }:
         }
         if (block.kind === "p") {
           return (
-            <p key={i} className={i === firstP ? "text-2xl font-light leading-[2.05] text-[#00124a] md:text-[1.7rem]" : "text-[1.08rem] font-light leading-[2.2] text-ink-soft md:text-[1.16rem]"}>
+            <p key={i} className={
+                i === firstP
+                  ? `text-2xl font-light text-[#00124a] md:text-[1.7rem] ${en ? "leading-[1.65]" : "leading-[2.05]"}`
+                  : `text-[1.08rem] font-light text-ink-soft md:text-[1.16rem] ${en ? "leading-[1.85]" : "leading-[2.2]"}`
+              }>
               {renderInline(block.text)}
             </p>
           );
         }
         if (block.kind === "ul") {
           return (
-            <ul key={i} className="space-y-3 text-[1.06rem] leading-[2.05] text-ink-soft">
+            <ul key={i} className={`space-y-3 text-[1.06rem] text-ink-soft ${en ? "leading-[1.8]" : "leading-[2.05]"}`}>
               {block.items.map((item, j) => (
                 <li key={j} className="flex gap-3.5">
                   <span aria-hidden className="mt-[0.95rem] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
@@ -140,7 +145,7 @@ export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }:
         }
         if (block.kind === "ol") {
           return (
-            <ol key={i} className="space-y-3.5 text-[1.06rem] leading-[2.05] text-ink-soft">
+            <ol key={i} className={`space-y-3.5 text-[1.06rem] text-ink-soft ${en ? "leading-[1.8]" : "leading-[2.05]"}`}>
               {block.items.map((item, j) => (
                 <li key={j} className="flex gap-4">
                   <span className="font-display mt-1 w-7 shrink-0 text-lg font-extrabold text-gold-deep">{String(j + 1).padStart(2, "0")}</span>
@@ -155,7 +160,7 @@ export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }:
             <aside key={i} className="frame bg-[#00124a] px-6 py-7 text-white md:px-9">
               {block.lines.map((line, j) =>
                 line.startsWith("- ") ? (
-                  <ul key={j} className="list-disc space-y-1.5 pr-5 text-[0.98rem] leading-8 text-white/85">
+                  <ul key={j} className="list-disc space-y-1.5 ps-5 text-[0.98rem] leading-8 text-white/85">
                     <li>{renderInline(line.slice(2))}</li>
                   </ul>
                 ) : (
@@ -175,7 +180,7 @@ export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3 }:
                 <thead>
                   <tr className="bg-[#00124a] text-[#f6e2b3]">
                     {header.map((cell, j) => (
-                      <th key={j} className="p-4 text-right font-bold">
+                      <th key={j} className="p-4 text-start font-bold">
                         {cell}
                       </th>
                     ))}

@@ -54,7 +54,7 @@ const copy = {
     ],
     firmLinks: [
       { href: "/en/team/turki-alnayef", label: "Leadership" },
-      { href: "/blog", label: "Legal Insights (Arabic)" },
+      { href: "/en/blog", label: "Legal Insights" },
       { href: "/en/contact", label: "Contact" },
       { href: "/downloads/company-profile-en.pdf", label: "Company Profile" },
       { href: "/en/privacy", label: "Privacy Policy" },

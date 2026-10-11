@@ -3,6 +3,7 @@ import { articles } from "@/lib/articles";
 import { SITE_UPDATED } from "@/lib/seo";
 import { sectors } from "@/lib/sectors";
 import { attorneys, corePillars, firm, specializedLines } from "@/lib/site";
+import { enArticleSlugs, enServiceSlugs } from "@/lib/en/slugs";
 
 type Entry = MetadataRoute.Sitemap[number];
 
@@ -31,16 +32,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sectorPairs = sectors.flatMap((s) => pair(`/sectors/${s.slug}`, `/en/sectors/${s.slug}`, 0.8));
   const teamPairs = attorneys.flatMap((a) => pair(`/team/${a.slug}`, `/en/team/${a.slug}`, 0.6));
 
-  const services: Entry[] = [...corePillars, ...specializedLines].map((s) => ({
-    url: abs(`/services/${s.slug}`),
-    lastModified: modified,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const enServices = new Set<string>(enServiceSlugs);
+  const services: Entry[] = [...corePillars, ...specializedLines].flatMap((s): Entry[] =>
+    enServices.has(s.slug) ? pair(`/services/${s.slug}`, `/en/services/${s.slug}`, 0.8) : [{ url: abs(`/services/${s.slug}`), lastModified: modified, changeFrequency: "monthly", priority: 0.8 }],
+  );
 
+  const enArticles = new Set<string>(enArticleSlugs);
   const blog: Entry[] = [
-    { url: abs("/blog"), lastModified: modified, changeFrequency: "weekly", priority: 0.8 },
-    ...articles.map((a): Entry => ({ url: abs(`/blog/${a.slug}`), lastModified: new Date(a.updatedAt), changeFrequency: "monthly", priority: 0.7 })),
+    ...pair("/blog", "/en/blog", 0.8),
+    ...articles.flatMap((a): Entry[] => {
+      if (!enArticles.has(a.slug)) return [{ url: abs(`/blog/${a.slug}`), lastModified: new Date(a.updatedAt), changeFrequency: "monthly", priority: 0.7 }];
+      const languages = { ar: abs(`/blog/${a.slug}`), en: abs(`/en/blog/${a.slug}`), "x-default": abs(`/blog/${a.slug}`) };
+      const lastModified = new Date(a.updatedAt);
+      return [
+        { url: abs(`/blog/${a.slug}`), lastModified, changeFrequency: "monthly", priority: 0.7, alternates: { languages } },
+        { url: abs(`/en/blog/${a.slug}`), lastModified, changeFrequency: "monthly", priority: 0.6, alternates: { languages } },
+      ];
+    }),
   ];
 
   return [...staticPairs, ...sectorPairs, ...teamPairs, ...services, ...blog];

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /** A gold line across the top and, once reading has begun, a small pill with the minutes left. */
-export default function ReadingProgress({ minutes = 0 }: { minutes?: number }) {
+export default function ReadingProgress({ minutes = 0, locale = "ar" }: { minutes?: number; locale?: "ar" | "en" }) {
   const [pct, setPct] = useState(0);
 
   useEffect(() => {
@@ -29,7 +29,9 @@ export default function ReadingProgress({ minutes = 0 }: { minutes?: number }) {
             pct > 3 && pct < 97 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           }`}
         >
-          {Math.round(pct)}٪ · {left > 0 ? `متبقٍ ${left} د` : "أنهيت القراءة"}
+          {locale === "en"
+            ? `${Math.round(pct)}% · ${left > 0 ? `${left} min left` : "Finished"}`
+            : `${Math.round(pct)}٪ · ${left > 0 ? `متبقٍ ${left} د` : "أنهيت القراءة"}`}
         </div>
       )}
     </>

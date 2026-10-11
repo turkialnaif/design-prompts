@@ -3,11 +3,35 @@ import type { ServiceCopy } from "@/lib/service-copy";
 import type { ServiceExtra } from "@/lib/service-extra";
 
 type Props = {
-  copy: ServiceCopy;
+  copy: { groups: ServiceCopy["groups"] };
   extra: ServiceExtra;
   links: { href: string; label: string }[];
   /** The page already carries its own FAQ block (and FAQPage schema), so the long-form one is left out. */
   skipFaq?: boolean;
+  locale?: "ar" | "en";
+};
+
+const txt = {
+  ar: {
+    label: "تفاصيل الخدمة",
+    mistakes: "أخطاء شائعة نراها في هذا النوع من الملفات",
+    how: "كيف يسير العمل",
+    need: "ما الذي نحتاجه لنبدأ",
+    needLead: "لا يلزم أن تكتمل الوثائق قبل التواصل معنا، لكن توفر ما يلي يختصر وقت التقييم الأول:",
+    faq: "أسئلة شائعة",
+    more: "اقرأ أيضًا",
+    note: "المعلومات في هذه الصفحة عامة وليست رأيًا قانونيًا في حالة بعينها؛ يختلف الجواب بحسب الوقائع والنظام المنطبق وقت الواقعة.",
+  },
+  en: {
+    label: "Service details",
+    mistakes: "Mistakes we see most often in this kind of matter",
+    how: "How the work runs",
+    need: "What we need to start",
+    needLead: "You do not need every document before you contact us, but having the following shortens the first assessment:",
+    faq: "Frequently asked questions",
+    more: "Read also",
+    note: "The information on this page is general and is not a legal opinion on a specific matter; the answer depends on the facts and on the law in force at the time.",
+  },
 };
 
 const h2 = "font-display !text-2xl !font-light leading-snug text-[#00124a] md:!text-3xl";
@@ -35,16 +59,17 @@ function Group({ group, first }: { group: ServiceCopy["groups"][number]; first: 
   );
 }
 
-export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) {
+export default function ServiceLongform({ copy, extra, links, skipFaq, locale = "ar" }: Props) {
+  const t = txt[locale];
   return (
-    <section className="bg-white py-20 md:py-28" aria-label="تفاصيل الخدمة">
+    <section className="bg-white py-20 md:py-28" aria-label={t.label}>
       <div className="mx-auto max-w-3xl px-5">
         {copy.groups.map((g, i) => (
           <Group key={g.label ?? i} group={g} first={i === 0} />
         ))}
 
         <div className="mt-20 border-t border-[#00124a]/12 pt-16">
-          <h2 className={h2}>أخطاء شائعة نراها في هذا النوع من الملفات</h2>
+          <h2 className={h2}>{t.mistakes}</h2>
           <ul className="mt-6 space-y-5">
             {extra.mistakes.map((m) => (
               <li key={m.t} className="flex gap-4">
@@ -58,7 +83,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
         </div>
 
         <div className="mt-16">
-          <h2 className={h2}>كيف يسير العمل</h2>
+          <h2 className={h2}>{t.how}</h2>
           <ol className="mt-6 divide-y divide-[#00124a]/10 border-y border-[#00124a]/10">
             {extra.process.map((s, i) => (
               <li key={s.t} className="flex gap-5 py-5">
@@ -74,8 +99,8 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
         </div>
 
         <div className="mt-16">
-          <h2 className={h2}>ما الذي نحتاجه لنبدأ</h2>
-          <p className={body}>لا يلزم أن تكتمل الوثائق قبل التواصل معنا، لكن توفر ما يلي يختصر وقت التقييم الأول:</p>
+          <h2 className={h2}>{t.need}</h2>
+          <p className={body}>{t.needLead}</p>
           <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {extra.docs.map((d) => (
               <li key={d} className="flex items-start gap-3 text-base font-light leading-8 text-[#1b2646]">
@@ -88,7 +113,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
 
         {!skipFaq && (
           <div className="mt-16">
-            <h2 className={h2}>أسئلة شائعة</h2>
+            <h2 className={h2}>{t.faq}</h2>
             <div className="mt-6 divide-y divide-[#00124a]/10 border-y border-[#00124a]/10">
               {extra.faq.map((f) => (
                 <details key={f.q} className="group py-5">
@@ -105,7 +130,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
 
         {links.length > 0 && (
           <div className="mt-16">
-            <h2 className={h2}>اقرأ أيضًا</h2>
+            <h2 className={h2}>{t.more}</h2>
             <ul className="mt-6 flex flex-wrap gap-2.5">
               {links.map((l) => (
                 <li key={l.href}>
@@ -122,7 +147,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
         )}
 
         <p className="mt-14 text-xs leading-6 text-[#1b2646]/80">
-          المعلومات في هذه الصفحة عامة وليست رأيًا قانونيًا في حالة بعينها؛ يختلف الجواب بحسب الوقائع والنظام المنطبق وقت الواقعة.
+          {t.note}
         </p>
       </div>
     </section>

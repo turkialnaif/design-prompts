@@ -22,7 +22,25 @@ const rules: [RegExp, string][] = [
   [/^نظام المنافسات والمشتريات الحكومية/, `${BOE}24c563f9-7292-49c8-b0fb-aa9800b999f1/1`],
 ];
 
+/** The same laws, by their English names, for the English pages. */
+const rulesEn: [RegExp, string][] = [
+  [/^Executive Regulations of the Bankruptcy Law/i, `${BOE}a748e485-620c-45c4-8ca8-a9f40166406d/1`],
+  [/^Bankruptcy Law/i, `${BOE}68204119-84f1-4789-8fad-a9ec014c3788/1`],
+  [/^Executive Regulations of the Arbitration Law/i, `${BOE}12752a60-2a4a-4cab-a05d-a9a700f274a5/1`],
+  [/^Arbitration Law/i, `${BOE}5535039e-13da-43f6-8f53-a9a700f26485/1`],
+  [/^(The )?New Enforcement Law/i, "https://www.uqn.gov.sa/decisions-and-regulations/rules-and-regulations/4000869"],
+  [/^Enforcement Law/i, `${BOE}c81ba2f1-1bf1-443b-9b1c-a9a700f27110/1`],
+  [/^Companies Law/i, `${BOE}a8376aea-1bc3-49d4-9027-aed900b555af/1`],
+  [/^(Royal Decree[^,]*, )?Civil Transactions Law/i, `${BOE}655fdb42-8c96-422b-b8c4-b04f0095c94c/1`],
+  [/^(Law of )?Evidence/i, `${BOE}2716057c-c097-4bad-8e1e-ae1400c678d5/1`],
+  [/^Commercial Courts Law/i, `${BOE}38334008-3b70-4c6c-b3af-aba3016a8061/1`],
+  [/^Labor Law/i, `${BOE}08381293-6388-48e2-8ad2-a9a700f2aa94/1`],
+  [/^Judicial Costs Law/i, `${BOE}3e368087-7b31-46e7-8005-ada100b8f703/1`],
+  [/^Electronic Transactions Law/i, `${BOE}6f509360-2c39-4358-ae2a-a9a700f2ed16/1`],
+  [/^Government Tenders and Procurement Law/i, `${BOE}24c563f9-7292-49c8-b0fb-aa9800b999f1/1`],
+];
+
 export function lawLink(source: string): string | undefined {
   const s = source.trim();
-  return rules.find(([re]) => re.test(s))?.[1];
+  return (rules.find(([re]) => re.test(s)) ?? rulesEn.find(([re]) => re.test(s)))?.[1];
 }

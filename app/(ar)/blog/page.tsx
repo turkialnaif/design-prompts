@@ -11,7 +11,7 @@ import { firm } from "@/lib/site";
 export const metadata: Metadata = {
   title: "مقالات قانونية",
   description: `مقالات ومحتوى قانوني من ${firm.nameShortAr} حول قضايا الشركات، العقود، التحكيم، والامتثال في السعودية.`,
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", languages: { ar: "/blog", en: "/en/blog", "x-default": "/blog" } },
   openGraph: {
     title: "مقالات قانونية",
     description: `مقالات ومحتوى قانوني من ${firm.nameShortAr} حول قضايا الشركات، العقود، التحكيم، والامتثال في السعودية.`,
