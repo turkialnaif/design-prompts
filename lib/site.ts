@@ -12,7 +12,7 @@ export const firm = {
   phone: "+966566770888",
   phoneDisplay: "966 566 770 888",
   whatsapp: "https://wa.me/966566770888",
-  email: "tnz@tnzlaw.com",
+  email: "info@taap.sa",
   domain: "taap.sa",
   website: "https://taap.sa",
   licenseNumber: "4477",

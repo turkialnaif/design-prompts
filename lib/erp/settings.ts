@@ -24,7 +24,7 @@ export const FIRM_DEFAULTS: FirmSettings = {
   nameEn: "Turki AlNaif & Partners",
   address: "حي الياسمين، الرياض 13326",
   phone: "966 566 770 888",
-  email: "tnz@tnzlaw.com",
+  email: "info@taap.sa",
   licenseNumber: "4477",
   vatNumber: "",
   iban: "",

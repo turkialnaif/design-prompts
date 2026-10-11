@@ -40,7 +40,7 @@ Hello,
 
 We are Turki AlNaif & Partners, a Riyadh law firm (founded recently; practice areas: commercial contracts, disputes and arbitration, M&A, governance and compliance, insolvency, foreign investment). Could you tell us (1) whether a firm of our size can submit for the Saudi Arabia rankings, (2) the current research calendar and deadline, and (3) whether there is any cost to submit or to be listed in the directory?
 
-Website: https://taap.sa | Tel: +966 56 677 0888 | Email: tnz@tnzlaw.com
+Website: https://taap.sa | Tel: +966 56 677 0888 | Email: info@taap.sa
 
 Thank you,
 Turki AlNaif
