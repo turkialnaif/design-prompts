@@ -8,7 +8,7 @@ import { articlesEn } from "@/lib/en/articles";
 import { enArticleSlugs } from "@/lib/en/slugs";
 
 export const metadata: Metadata = {
-  title: "Legal Insights — Saudi Commercial Law, Arbitration & Investment",
+  title: { absolute: "Legal Insights | Turki AlNaif & Partners" },
   description: "Practical guides from Turki AlNaif & Partners, Riyadh, on commercial arbitration, enforcement, shareholder agreements, due diligence, investment registration and data protection in Saudi Arabia.",
   alternates: { canonical: "/en/blog", languages: { ar: "/blog", en: "/en/blog", "x-default": "/blog" } },
   openGraph: {

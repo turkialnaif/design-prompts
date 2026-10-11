@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import MatterBriefForm, { briefCopy, type BriefLocale } from "@/components/MatterBriefForm";
 
 export default function MatterBriefCTA({
@@ -20,6 +21,20 @@ export default function MatterBriefCTA({
 
   const triggerClasses = tone === "onDark" ? "btn-ghost" : "btn-line";
 
+  // While the sheet is open the page behind it must not scroll, and Escape closes it.
+  useEffect(() => {
+    if (!open) return;
+    const root = document.documentElement;
+    const before = root.style.overflow;
+    root.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      root.style.overflow = before;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
     <>
       <button
@@ -30,20 +45,40 @@ export default function MatterBriefCTA({
         {t.trigger}
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 p-4 backdrop-blur-sm" onClick={() => setOpen(false)}>
+      {open &&
+        /* Rendered on <body>: the home hero scales its content (a transform), and inside a transformed ancestor a
+           "fixed" sheet is positioned against that ancestor instead of the screen, which cut off the form's end on phones. */
+        createPortal(
           <div
-            dir={dir}
-            onClick={(e) => e.stopPropagation()}
-            data-lenis-prevent
-            className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl glass-card p-6 md:p-8"
+            className="fixed inset-0 z-[70] flex items-end justify-center bg-ink/70 backdrop-blur-sm sm:items-center sm:p-4"
+            onClick={() => setOpen(false)}
           >
-            <h2 className="font-display text-xl font-bold text-ink">{t.title}</h2>
-            <p className="mb-6 mt-2 text-sm leading-6 text-ink-soft/80">{t.subtitle}</p>
-            <MatterBriefForm locale={locale} matterTypes={matterTypes} onClose={() => setOpen(false)} />
-          </div>
-        </div>
-      )}
+            <div
+              dir={dir}
+              role="dialog"
+              aria-modal="true"
+              aria-label={t.title}
+              onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent
+              className="max-h-[100dvh] w-full max-w-lg overflow-y-auto overscroll-contain rounded-t-2xl glass-card p-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] [-webkit-overflow-scrolling:touch] sm:max-h-[min(90dvh,48rem)] sm:rounded-2xl sm:p-8"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <h2 className="font-display text-xl font-bold text-ink">{t.title}</h2>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  aria-label={locale === "ar" ? "إغلاق" : "Close"}
+                  className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xl leading-none text-ink-soft hover:bg-black/5"
+                >
+                  <span aria-hidden>×</span>
+                </button>
+              </div>
+              <p className="mb-6 mt-2 text-sm leading-6 text-ink-soft/80">{t.subtitle}</p>
+              <MatterBriefForm locale={locale} matterTypes={matterTypes} onClose={() => setOpen(false)} />
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

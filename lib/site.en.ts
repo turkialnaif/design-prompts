@@ -55,7 +55,7 @@ export const attorneyEn = {
   slug: "turki-alnayef",
   name: "Turki AlNaif",
   role: "Lawyer | Founder & Managing Partner, Turki AlNaif & Partners",
-  seoTitle: "Turki AlNaif | Founder & Managing Partner, Turki AlNaif & Partners",
+  seoTitle: "Turki AlNaif | Founder, Turki AlNaif & Partners",
   metaDescription:
     "Meet Turki AlNaif, founder and managing partner of Turki AlNaif & Partners, and his experience in corporate legal advisory, disputes, arbitration, and commercial matters.",
   bio: [

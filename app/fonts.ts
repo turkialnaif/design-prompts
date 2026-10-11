@@ -33,3 +33,13 @@ export const fallbackFont = Zain({
   weight: ["400"],
   preload: false,
 });
+
+/**
+ * Hail Elastic: the blog's own face, for the blog hero, the blog band on the home page, and article titles and cards only.
+ * Everything else stays on Watad. Watad stays behind it in the stack for any glyph Hail lacks.
+ */
+export const blogFont = localFont({
+  src: [{ path: "./fonts/hail-elastic-light.ttf", weight: "200 900", style: "normal" }],
+  variable: "--font-blog",
+  display: "swap",
+});

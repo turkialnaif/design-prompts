@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Logo3DHero } from "@/components/logo3d/lazy";
 
 /**
@@ -44,7 +44,13 @@ export default function HeroStage({
           <div className="hero-lean w-full text-center lg:w-[46%] lg:text-start">
            <div className="hero-in">
             <h1 aria-label={h1} className="hero-title">
-              <span aria-hidden className="hero-lead">{h1Lead}</span>
+              <span aria-hidden className="hero-lead">
+                {h1Lead.split(" ").map((w, i) => (
+                  <span key={i} className="hero-word" style={{ "--i": i } as CSSProperties}>
+                    {w}
+                  </span>
+                ))}
+              </span>
               <span aria-hidden className="hero-tail">{h1Tail}</span>
             </h1>
             <span aria-hidden className="hero-rule mx-auto mt-7 block h-px w-24 lg:mx-0" />

@@ -65,7 +65,7 @@ export default function BlogBand({ items }: { items: BandItem[] }) {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:min-h-[40rem] lg:grid-cols-[1fr_1.1fr] lg:gap-6">
         <div className="pt-20 text-center lg:py-20 lg:text-start">
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#f6e2b3]">Legal Insights</p>
-          <h2 className="font-display grad-text mt-4 text-4xl leading-[1.25] sm:text-5xl md:text-6xl">مدونتنا القانونية</h2>
+          <h2 className="font-display font-blog grad-text mt-4 text-4xl leading-[1.25] sm:text-5xl md:text-6xl">مدونتنا القانونية</h2>
           <p className="mx-auto mt-4 max-w-md text-lg leading-9 text-white/80 lg:mx-0">بحوث ومقالات نظامية في مختلف المواضيع القانونية، في مكان واحد.</p>
           <div className="mt-9 flex justify-center lg:justify-start">
             <ArrowButton href="/blog">زيارة المدونة</ArrowButton>

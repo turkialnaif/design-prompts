@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { arabicFont, brandFont, fallbackFont } from "../fonts";
+import { arabicFont, blogFont, brandFont, fallbackFont } from "../fonts";
 import HeaderEn from "@/components/HeaderEn";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
@@ -15,7 +15,7 @@ import { firmEn } from "@/lib/site.en";
 export const metadata: Metadata = {
   metadataBase: new URL(firm.website),
   title: {
-    default: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
+    default: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
     template: `%s | ${firmEn.nameShort}`,
   },
   description: homeDescription.en,
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: firmEn.nameShort,
-    title: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
+    title: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
     description: homeDescription.en,
     url: `${firm.website}/en`,
     images: [{ url: "/brand/riyadh-kafd.jpg", width: 1920, height: 1080, alt: firmEn.nameShort }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${firmEn.nameShort} | Corporate & Commercial Lawyers in Riyadh`,
+    title: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
     description: homeDescription.en,
     images: ["/brand/riyadh-kafd.jpg"],
   },
@@ -47,7 +47,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
     <html
       lang="en"
       dir="ltr"
-      className={`${arabicFont.variable} ${brandFont.variable} ${fallbackFont.variable} h-full antialiased`}
+      className={`${arabicFont.variable} ${blogFont.variable} ${brandFont.variable} ${fallbackFont.variable} h-full antialiased`}
     >
       <head>
         <meta property="og:locale" content="en_US" />
@@ -65,7 +65,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
         <HeaderEn />
         <main className="flex-1">{children}</main>
         <FooterEn />
-        <WhatsAppFloat label="Chat on WhatsApp" topLabel="Back to top" />
+        <WhatsAppFloat topLabel="Back to top" />
       </body>
     </html>
   );
