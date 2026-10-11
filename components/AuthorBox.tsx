@@ -23,7 +23,7 @@ export default function AuthorBox({
         >
           {copy.role}
         </Link>
-        <p className="mt-1 text-xs leading-6 text-ink-soft/70">{copy.body}</p>
+        <p className="mt-1 text-xs leading-6 text-ink-soft/80">{copy.body}</p>
       </div>
     </div>
   );

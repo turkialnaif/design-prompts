@@ -119,7 +119,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                   <tr key={e.id}>
                     <Td>
                       <p className="font-semibold">{e.title}</p>
-                      <p className="text-xs text-ink-soft/60">{m ? `${m.number} · ${m.title}` : "بلا قضية"}</p>
+                      <p className="text-xs text-ink-soft/80">{m ? `${m.number} · ${m.title}` : "بلا قضية"}</p>
                     </Td>
                     <Td><Badge tone="gold">{eventKindLabel[e.kind]}</Badge></Td>
                     <Td className="whitespace-nowrap text-xs">{fmtDateTime(e.startsAt)}</Td>
@@ -142,7 +142,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                     <tr key={t.id}>
                       <Td>
                         <p className="font-semibold">{t.title}</p>
-                        <p className="text-xs text-ink-soft/60">{m ? m.number : "عامة"}</p>
+                        <p className="text-xs text-ink-soft/80">{m ? m.number : "عامة"}</p>
                       </Td>
                       <Td><Badge tone={t.priority === "urgent" ? "red" : t.priority === "high" ? "gold" : "gray"}>{priorityLabel[t.priority]}</Badge></Td>
                       <Td className={`whitespace-nowrap text-xs ${late ? "font-bold text-red-700" : ""}`}>

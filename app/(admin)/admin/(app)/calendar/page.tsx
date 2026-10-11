@@ -66,12 +66,12 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
 
       <Card className="mb-6 overflow-x-auto">
         <div className="grid min-w-[42rem] grid-cols-7 gap-px overflow-hidden rounded-xl border border-[#e3ddcb] bg-[#e3ddcb] text-xs">
-          {DAYS.map((n) => <div key={n} className="bg-[#faf7ef] py-2 text-center font-bold text-ink-soft/70">{n}</div>)}
+          {DAYS.map((n) => <div key={n} className="bg-[#faf7ef] py-2 text-center font-bold text-ink-soft/80">{n}</div>)}
           {cells.map((day, i) => (
             <div key={i} className={`min-h-24 bg-white p-1.5 ${day === todayDay ? "ring-2 ring-inset ring-[#d0a751]" : ""}`}>
               {day && (
                 <>
-                  <p className={`mb-1 font-bold ${day === todayDay ? "text-[#a9843c]" : "text-ink-soft/60"}`}>{day}</p>
+                  <p className={`mb-1 font-bold ${day === todayDay ? "text-[#a9843c]" : "text-ink-soft/80"}`}>{day}</p>
                   <div className="space-y-1">
                     {(byDay.get(day) ?? []).slice(0, 3).map(({ e, m }) => (
                       <Link
@@ -83,7 +83,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                         {e.title}
                       </Link>
                     ))}
-                    {(byDay.get(day)?.length ?? 0) > 3 && <p className="text-[10px] text-ink-soft/55">+{(byDay.get(day)?.length ?? 0) - 3} أخرى</p>}
+                    {(byDay.get(day)?.length ?? 0) > 3 && <p className="text-[10px] text-ink-soft/80">+{(byDay.get(day)?.length ?? 0) - 3} أخرى</p>}
                   </div>
                 </>
               )}

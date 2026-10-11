@@ -59,10 +59,10 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
           <Card title="بيانات العميل">
             {canWrite ? <ClientForm action={updateClientAction} id={client.id} defaults={client} submit="حفظ التعديلات" /> : (
               <dl className="grid gap-3 text-sm md:grid-cols-2">
-                <div><dt className="text-xs text-ink-soft/60">الهوية / السجل</dt><dd>{client.identifier ?? "—"}</dd></div>
-                <div><dt className="text-xs text-ink-soft/60">الجوال</dt><dd>{client.phone ?? "—"}</dd></div>
-                <div><dt className="text-xs text-ink-soft/60">البريد</dt><dd>{client.email ?? "—"}</dd></div>
-                <div><dt className="text-xs text-ink-soft/60">المدينة</dt><dd>{client.city ?? "—"}</dd></div>
+                <div><dt className="text-xs text-ink-soft/80">الهوية / السجل</dt><dd>{client.identifier ?? "—"}</dd></div>
+                <div><dt className="text-xs text-ink-soft/80">الجوال</dt><dd>{client.phone ?? "—"}</dd></div>
+                <div><dt className="text-xs text-ink-soft/80">البريد</dt><dd>{client.email ?? "—"}</dd></div>
+                <div><dt className="text-xs text-ink-soft/80">المدينة</dt><dd>{client.city ?? "—"}</dd></div>
               </dl>
             )}
           </Card>
@@ -115,7 +115,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
                 <li key={c.id} className="flex items-start justify-between gap-2 rounded-xl bg-[#faf7ef] p-3 text-sm">
                   <div>
                     <p className="font-semibold">{c.name}</p>
-                    <p className="text-xs text-ink-soft/60">{[c.title, c.phone, c.email].filter(Boolean).join(" · ")}</p>
+                    <p className="text-xs text-ink-soft/80">{[c.title, c.phone, c.email].filter(Boolean).join(" · ")}</p>
                   </div>
                   {canWrite && (
                     <form action={deleteContactAction}>
@@ -143,7 +143,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
               <ul className="mb-4 space-y-2">
                 {portalUsers.map((u) => (
                   <li key={u.id} className="flex items-center justify-between gap-2 rounded-xl bg-[#faf7ef] p-3 text-sm">
-                    <div><p className="font-semibold">{u.fullName}</p><p className="font-mono text-xs text-ink-soft/60">{u.username}</p></div>
+                    <div><p className="font-semibold">{u.fullName}</p><p className="font-mono text-xs text-ink-soft/80">{u.username}</p></div>
                     <form action={togglePortalUser}>
                       <input type="hidden" name="id" value={u.id} /><input type="hidden" name="clientId" value={client.id} />
                       <button className="rounded-lg border border-[#e3ddcb] px-2.5 py-1 text-xs font-semibold">{u.isActive ? "إيقاف" : "تفعيل"}</button>

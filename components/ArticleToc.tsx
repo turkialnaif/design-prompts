@@ -28,7 +28,7 @@ export default function ArticleToc({ headings }: { headings: { id: string; text:
           return (
             <li key={h.id} className="relative py-2">
               <span aria-hidden className={`absolute -end-[1.4rem] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rotate-45 transition-all duration-300 ${on ? "scale-125 bg-gold" : "bg-[#e0b35a]/35"}`} />
-              <a href={`#${h.id}`} className={`flex gap-3 text-sm leading-6 transition-colors ${on ? "font-bold text-ink" : "text-ink-soft/70 hover:text-gold-deep"}`}>
+              <a href={`#${h.id}`} className={`flex gap-3 text-sm leading-6 transition-colors ${on ? "font-bold text-ink" : "text-ink-soft/80 hover:text-gold-deep"}`}>
                 {h.text}
               </a>
             </li>

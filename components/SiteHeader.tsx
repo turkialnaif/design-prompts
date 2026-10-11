@@ -86,7 +86,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-5 whitespace-nowrap xl:gap-8 lg:flex">
+        <nav aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main navigation"} className="hidden items-center gap-5 whitespace-nowrap xl:gap-8 lg:flex">
           {t.nav.map((link) => {
             const active = isActive(link.href);
             return (
@@ -144,7 +144,7 @@ export default function SiteHeader({ locale }: { locale: "ar" | "en" }) {
       </div>
 
       {open && (
-        <nav className="chamfer-lg mx-auto mt-2 flex max-w-7xl flex-col gap-1 bg-[#00124a]/92 px-5 py-4 text-white backdrop-blur-xl" style={{ ["--c" as string]: "18px" }}>
+        <nav aria-label={locale === "ar" ? "قائمة الجوال" : "Mobile menu"} className="chamfer-lg mx-auto mt-2 flex max-w-7xl flex-col gap-1 bg-[#00124a]/92 px-5 py-4 text-white backdrop-blur-xl" style={{ ["--c" as string]: "18px" }}>
           {t.nav.map((link) => (
             <Link
               key={link.href}

@@ -114,7 +114,7 @@ export default function CorporateView({ locale }: { locale: "ar" | "en" }) {
           <div className="mt-14">
             <Numbered items={steps.map((s) => ({ title: s.title, text: s.body }))} />
           </div>
-          <p className="mx-auto mt-14 max-w-lg text-center text-xs leading-6 text-ink-soft/70">{t.note}</p>
+          <p className="mx-auto mt-14 max-w-lg text-center text-xs leading-6 text-ink-soft/80">{t.note}</p>
         </Wrap>
       </Band>
     </div>

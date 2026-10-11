@@ -42,7 +42,7 @@ export default function SocialIcons({
   className?: string;
 }) {
   const iconColor =
-    tone === "onDark" ? "text-white/60 hover:text-gold" : "text-ink-soft/60 hover:text-gold-deep";
+    tone === "onDark" ? "text-white/60 hover:text-gold" : "text-ink-soft/80 hover:text-gold-deep";
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>

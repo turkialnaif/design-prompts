@@ -72,7 +72,7 @@ const copy = {
   },
 };
 
-const linkCls = "inline-block py-1 text-white/75 transition-colors hover:text-[#f6e2b3]";
+const linkCls = "inline-block py-1 text-white/75 transition-colors hover:text-[#f6e2b3] [@media(pointer:coarse)]:py-3";
 
 export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
@@ -119,7 +119,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
               </p>
             </div>
 
-            <nav className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-8 border-t border-white/10 pt-10 md:col-span-4 md:border-t-0 md:pt-0">
+            <nav aria-label={locale === "ar" ? "روابط التذييل" : "Footer links"} className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-8 border-t border-white/10 pt-10 md:col-span-4 md:border-t-0 md:pt-0">
               {[
                 { title: t.exploreTitle, items: t.explore },
                 { title: t.firmTitle, items: t.firmLinks },

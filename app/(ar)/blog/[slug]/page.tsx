@@ -243,7 +243,7 @@ export default async function ArticlePage({
                   );
                 })}
               </ul>
-              <p className="mt-5 border-t border-line pt-4 text-xs leading-6 text-ink-soft/60">{article.disclaimer}</p>
+              <p className="mt-5 border-t border-line pt-4 text-xs leading-6 text-ink-soft/80">{article.disclaimer}</p>
             </div>
           </div>
         </div>

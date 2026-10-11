@@ -27,7 +27,7 @@ export default async function UsersPage() {
               const locked = u.lockedUntil && u.lockedUntil > new Date();
               return (
                 <tr key={u.id}>
-                  <Td><p className="font-semibold">{u.fullName}</p><p className="text-xs text-ink-soft/60">{u.email ?? ""}</p></Td>
+                  <Td><p className="font-semibold">{u.fullName}</p><p className="text-xs text-ink-soft/80">{u.email ?? ""}</p></Td>
                   <Td className="font-mono text-xs" >{u.username}</Td>
                   <Td>
                     <form action={updateUserAction} className="flex items-center gap-1">

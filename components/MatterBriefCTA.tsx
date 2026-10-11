@@ -39,7 +39,7 @@ export default function MatterBriefCTA({
             className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl glass-card p-6 md:p-8"
           >
             <h2 className="font-display text-xl font-bold text-ink">{t.title}</h2>
-            <p className="mb-6 mt-2 text-sm leading-6 text-ink-soft/70">{t.subtitle}</p>
+            <p className="mb-6 mt-2 text-sm leading-6 text-ink-soft/80">{t.subtitle}</p>
             <MatterBriefForm locale={locale} matterTypes={matterTypes} onClose={() => setOpen(false)} />
           </div>
         </div>

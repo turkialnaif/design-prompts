@@ -31,7 +31,7 @@ export default async function PrintInvoice({ params }: { params: Promise<{ id: s
         <div>
           <h1 className="font-display text-2xl font-extrabold text-ink">فاتورة</h1>
           <p className="mt-1 font-mono text-sm">{i.number}</p>
-          <p className="mt-1 text-xs text-ink-soft/70">{invoiceStatusLabel[i.status]}</p>
+          <p className="mt-1 text-xs text-ink-soft/80">{invoiceStatusLabel[i.status]}</p>
         </div>
         <div className="text-end text-sm leading-7">
           <p className="font-display text-lg font-bold">{firm.name}</p>
@@ -41,18 +41,18 @@ export default async function PrintInvoice({ params }: { params: Promise<{ id: s
         </div>
       </div>
       <div className="mt-6 grid grid-cols-2 gap-6 text-sm">
-        <div><p className="text-xs font-bold text-ink-soft/60">فاتورة إلى</p><p className="mt-1 text-base font-bold">{c.name}</p><p>{c.identifier ?? ""}</p><p>{c.address ?? ""}</p></div>
-        <div className="space-y-1"><p><span className="text-ink-soft/60">تاريخ الإصدار:</span> {fmtDate(i.issuedOn)}</p><p><span className="text-ink-soft/60">الاستحقاق:</span> {fmtDate(i.dueOn)}</p>{m && <p><span className="text-ink-soft/60">القضية:</span> {m.number} — {m.title}</p>}</div>
+        <div><p className="text-xs font-bold text-ink-soft/80">فاتورة إلى</p><p className="mt-1 text-base font-bold">{c.name}</p><p>{c.identifier ?? ""}</p><p>{c.address ?? ""}</p></div>
+        <div className="space-y-1"><p><span className="text-ink-soft/80">تاريخ الإصدار:</span> {fmtDate(i.issuedOn)}</p><p><span className="text-ink-soft/80">الاستحقاق:</span> {fmtDate(i.dueOn)}</p>{m && <p><span className="text-ink-soft/80">القضية:</span> {m.number} — {m.title}</p>}</div>
       </div>
       <table className="mt-6 w-full text-sm">
-        <thead><tr className="border-b border-ink/20 text-start text-xs text-ink-soft/70"><th className="py-2 text-start">الوصف</th><th className="text-start">الكمية</th><th className="text-start">السعر</th><th className="text-start">المبلغ</th></tr></thead>
+        <thead><tr className="border-b border-ink/20 text-start text-xs text-ink-soft/80"><th className="py-2 text-start">الوصف</th><th className="text-start">الكمية</th><th className="text-start">السعر</th><th className="text-start">المبلغ</th></tr></thead>
         <tbody>{items.map((it) => <tr key={it.id} className="border-b border-ink/10"><td className="py-2 pe-3">{it.description}</td><td>{it.quantity}</td><td>{money(it.unitPrice)}</td><td>{money(it.amount)}</td></tr>)}</tbody>
       </table>
       <div className="mt-6 ms-auto w-72 space-y-1.5 text-sm">
         <div className="flex justify-between"><span>المجموع</span><span>{money(i.subtotal)}</span></div>
         <div className="flex justify-between"><span>ضريبة القيمة المضافة ({i.vatRate}%)</span><span>{money(i.vatAmount)}</span></div>
         <div className="flex justify-between border-t border-ink/30 pt-2 text-base font-extrabold"><span>الإجمالي</span><span>{money(i.total)}</span></div>
-        <div className="flex justify-between text-ink-soft/70"><span>المدفوع</span><span>{money(paid)}</span></div>
+        <div className="flex justify-between text-ink-soft/80"><span>المدفوع</span><span>{money(paid)}</span></div>
         <div className="flex justify-between font-bold"><span>المتبقي</span><span>{money(Number(i.total) - paid)}</span></div>
       </div>
       {(firm.iban || i.notes) && (

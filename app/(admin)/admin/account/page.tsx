@@ -42,7 +42,7 @@ export default async function Account({ searchParams }: { searchParams: Promise<
               <p className="text-sm leading-7 text-ink-soft/80">امسح الرمز بتطبيق مثل Google Authenticator أو Microsoft Authenticator، ثم أدخل الرمز المكوّن من ٦ أرقام.</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={qr} alt="رمز المصادقة" width={220} height={220} className="rounded-xl border border-[#e3ddcb]" />
-              <p className="text-xs text-ink-soft/60">أو أدخل المفتاح يدويًا: <span dir="ltr" className="font-mono">{secret}</span></p>
+              <p className="text-xs text-ink-soft/80">أو أدخل المفتاح يدويًا: <span dir="ltr" className="font-mono">{secret}</span></p>
               <ConfirmTotpForm />
             </div>
           ) : (

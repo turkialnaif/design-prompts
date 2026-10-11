@@ -4,7 +4,7 @@ import { firm } from "@/lib/site";
 
 export default function WhatsAppFloat({ label, topLabel = "العودة إلى الأعلى" }: { label: string; topLabel?: string }) {
   return (
-    <div className="fixed bottom-5 left-5 z-40 flex items-center gap-3">
+    <aside aria-label={topLabel === "Back to top" ? "Quick actions" : "إجراءات سريعة"} className="fixed bottom-5 left-5 z-40 flex items-center gap-3">
       <a
         href={firm.whatsapp}
         target="_blank"
@@ -18,6 +18,6 @@ export default function WhatsAppFloat({ label, topLabel = "العودة إلى �
         </span>
       </a>
       <HeroSeal label={topLabel} />
-    </div>
+    </aside>
   );
 }

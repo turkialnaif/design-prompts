@@ -57,7 +57,7 @@ export default function Marquee({
             <span
               key={i}
               className={`mx-6 shrink-0 whitespace-nowrap text-sm font-semibold ${
-                tone === "onDark" ? "text-gold/70" : tone === "onLight" ? "text-ink-soft/50" : "text-white/50"
+                tone === "onDark" ? "text-gold/70" : tone === "onLight" ? "text-ink-soft/80" : "text-white/50"
               }`}
             >
               {item}

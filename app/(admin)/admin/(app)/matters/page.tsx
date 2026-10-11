@@ -61,7 +61,7 @@ export default async function MattersPage({ searchParams }: { searchParams: Prom
               {rows.map(({ m, c, lawyer }) => (
                 <tr key={m.id}>
                   <Td className="font-mono text-xs">{m.number}</Td>
-                  <Td><Link href={`/admin/matters/${m.id}`} className="font-semibold hover:text-[#a9843c]">{m.title}</Link><p className="text-xs text-ink-soft/55">{m.practiceArea ?? ""}</p></Td>
+                  <Td><Link href={`/admin/matters/${m.id}`} className="font-semibold hover:text-[#a9843c]">{m.title}</Link><p className="text-xs text-ink-soft/80">{m.practiceArea ?? ""}</p></Td>
                   <Td><Link href={`/admin/clients/${c.id}`} className="hover:text-[#a9843c]">{c.name}</Link></Td>
                   <Td className="text-xs">{lawyer ?? "—"}</Td>
                   <Td className="text-xs">{m.court ?? "—"}</Td>

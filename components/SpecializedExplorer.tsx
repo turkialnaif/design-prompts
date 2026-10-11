@@ -64,7 +64,7 @@ export default function SpecializedExplorer({ items, locale }: { items: LineItem
         })}
       </div>
 
-      {filtered.length === 0 && <p className="mt-8 text-center text-sm text-ink-soft/70">{t.none}</p>}
+      {filtered.length === 0 && <p className="mt-8 text-center text-sm text-ink-soft/80">{t.none}</p>}
 
       {!q && filtered.length > INITIAL && (
         <div className="mt-10 flex justify-center">

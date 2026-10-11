@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { LogoShowcaseStage } from "@/components/logo3d/lazy";
 import { newRig } from "@/components/logo3d/rig";
 import { serviceStandard } from "@/lib/site";
@@ -159,8 +159,8 @@ export default function LogoShowcase({ locale, variant = "principles" }: { local
       ref={section}
       data-glow
       aria-label={t.title}
-      className="relative motion-reduce:!h-auto"
-      style={{ height: `calc(100svh + ${n * 62}svh)` }}
+      className="pin-stage relative motion-reduce:!h-auto"
+      style={{ "--steps": n } as CSSProperties}
     >
       <div className="sticky top-0 h-screen overflow-hidden motion-reduce:static motion-reduce:h-auto">
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,#00061d_0%,#00124a_50%,#00061d_100%)]" />

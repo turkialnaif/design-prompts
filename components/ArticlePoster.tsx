@@ -60,7 +60,11 @@ export default function ArticlePoster({
           <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-[#e0b35a]" />
           {a.clusterLabel}
         </span>
-        <h3 className={`font-blog mt-4 font-light leading-[1.4] text-white ${spread ? "text-3xl md:text-5xl md:leading-[1.3]" : "text-2xl"}`}>{a.title}</h3>
+        {spread ? (
+          <h2 className="font-blog mt-4 text-3xl font-light leading-[1.4] text-white md:text-5xl md:leading-[1.3]">{a.title}</h2>
+        ) : (
+          <h3 className="font-blog mt-4 text-2xl font-light leading-[1.4] text-white">{a.title}</h3>
+        )}
         {a.description && <p className={`mt-4 font-light text-white/70 ${spread ? "text-base leading-8 md:text-lg md:leading-9" : "line-clamp-3 text-sm leading-7"}`}>{a.description}</p>}
         <div className="mt-auto flex items-center justify-between gap-4 pt-7 text-xs text-white/55">
           <span>{[a.date, a.meta].filter(Boolean).join(" · ")}</span>

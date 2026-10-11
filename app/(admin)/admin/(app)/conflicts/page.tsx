@@ -35,7 +35,7 @@ export default async function ConflictsPage({ searchParams }: { searchParams: Pr
               ))}
             </ul>
           )}
-          <p className="mt-4 text-xs text-ink-soft/55">الفحص نصي على الأسماء والهويات المسجَّلة؛ يُستكمل بحكم المحامي المسؤول.</p>
+          <p className="mt-4 text-xs text-ink-soft/80">الفحص نصي على الأسماء والهويات المسجَّلة؛ يُستكمل بحكم المحامي المسؤول.</p>
         </Card>
       )}
       {names.length === 0 && <Empty>أدخل اسمًا لبدء الفحص.</Empty>}

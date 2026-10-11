@@ -82,7 +82,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
           </button>
         </div>
         {status === "error" && <p className="text-xs text-red-700">{isEn ? en.error : "تعذّر الاشتراك، حاول مرة أخرى أو راسلنا مباشرة."}</p>}
-        <p className={`text-[11px] ${onDark ? "text-white/50" : "text-ink-soft/50"}`}>
+        <p className={`text-[11px] ${onDark ? "text-white/50" : "text-ink-soft/80"}`}>
           {isEn ? (
             <>By subscribing you agree to our <Link href="/en/privacy" className="inline-block py-1.5 underline hover:text-[#f6e2b3]">privacy policy</Link>.</>
           ) : (
@@ -141,7 +141,7 @@ export default function NewsletterSignup({ source, compact = false, locale = "ar
             </button>
           </div>
           {status === "error" && <p className="text-xs text-red-700">تعذّر الاشتراك، حاول مرة أخرى أو راسلنا مباشرة.</p>}
-          <p className="text-[11px] text-ink-soft/50">
+          <p className="text-[11px] text-ink-soft/80">
             بالاشتراك فإنك توافق على <Link href="/privacy" className="inline-block py-1.5 underline hover:text-gold-deep">سياسة الخصوصية</Link>.
           </p>
         </form>

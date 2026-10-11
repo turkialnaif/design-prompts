@@ -18,7 +18,7 @@ export default async function PortalAppLayout({ children }: { children: React.Re
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
           <Link href="/portal"><Image src="/brand/logo-lockup.png" alt="" width={163} height={48} className="h-9 w-auto" /></Link>
           <div className="flex items-center gap-4 text-sm">
-            <span className="hidden text-ink-soft/70 sm:inline">{c?.name}</span>
+            <span className="hidden text-ink-soft/80 sm:inline">{c?.name}</span>
             <form action={portalLogoutAction}><button className="rounded-full border border-[#e3ddcb] bg-white px-5 py-2 font-semibold transition hover:border-[#d0a751]">خروج</button></form>
           </div>
         </div>

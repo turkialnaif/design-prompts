@@ -2,27 +2,34 @@ import localFont from "next/font/local";
 import { Zain } from "next/font/google";
 
 /**
- * The site's official face: Zain, variable cut (zain-vf.ttf). It has one weight and one axis, `long` (0–800),
- * which stretches the connecting strokes of Arabic letters; 0 is the compact default, and the home hero
- * animates it. The file is declared for the whole 100–900 range, so bold text renders in this same cut instead
- * of the browser faking a heavier one. Google's Zain stays behind it as a quiet fallback for any glyph it lacks.
+ * The site's Arabic face: Watad (watad.otf), one weight. It is declared for Arabic and its punctuation only (the
+ * unicode-range below), so Latin letters and digits come from the next face in the stack. Because it has no bold
+ * cut, browsers must not synthesise one: globals.css sets `font-synthesis: none` and adds a hairline stroke
+ * where text is meant to be heavier.
  */
+export const arabicFont = localFont({
+  src: [{ path: "./fonts/watad.otf", weight: "100 900", style: "normal" }],
+  variable: "--font-ar",
+  display: "swap",
+  declarations: [
+    {
+      prop: "unicode-range",
+      value: "U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+00AB, U+00BB, U+2013-2014",
+    },
+  ],
+});
+
+/** Latin letters and digits (English pages, and numbers and names inside Arabic text): Zain, variable cut. */
 export const brandFont = localFont({
   src: [{ path: "./fonts/zain-vf.ttf", weight: "100 900", style: "normal" }],
   variable: "--font-brand-raw",
   display: "swap",
 });
 
+/** Google's Zain stays behind both as a quiet fallback for any glyph they lack (arrows, Persian letters). */
 export const fallbackFont = Zain({
   variable: "--font-brand-fallback",
   subsets: ["arabic", "latin"],
   weight: ["400"],
   preload: false,
-});
-
-/** Hail Elastic: only the blog's hero and article titles (the blog hero, article headings and article cards). */
-export const blogFont = localFont({
-  src: [{ path: "./fonts/hail-elastic-light.ttf", weight: "200 900", style: "normal" }],
-  variable: "--font-blog",
-  display: "swap",
 });

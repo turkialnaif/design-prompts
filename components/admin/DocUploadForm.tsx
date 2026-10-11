@@ -88,7 +88,7 @@ export default function DocUploadForm({
       {busy && (
         <div className="md:col-span-4" role="status">
           <div className="h-2 overflow-hidden rounded-full bg-[#e3ddcb]"><div className="h-full bg-[#d0a751] transition-all" style={{ width: `${pct}%` }} /></div>
-          <p className="mt-1 text-xs text-ink-soft/70">{pct < 100 ? `جارٍ التشفير والرفع… ${pct}%` : "جارٍ التحقق من الملف…"}</p>
+          <p className="mt-1 text-xs text-ink-soft/80">{pct < 100 ? `جارٍ التشفير والرفع… ${pct}%` : "جارٍ التحقق من الملف…"}</p>
         </div>
       )}
       {note && <p className={`md:col-span-4 text-sm font-semibold ${note.ok ? "text-emerald-700" : "text-red-700"}`}>{note.text}</p>}

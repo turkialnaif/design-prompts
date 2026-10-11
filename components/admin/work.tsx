@@ -49,7 +49,7 @@ export function EventList({ items, showMatter }: { items: { e: Ev; matterLabel?:
         {items.map(({ e, matterLabel, assignee }) => (
           <tr key={e.id}>
             <Td className="whitespace-nowrap text-xs">{fmtDateTime(e.startsAt)}</Td>
-            <Td><p className="font-semibold">{e.title}</p><p className="text-xs text-ink-soft/60"><Badge tone="gold">{eventKindLabel[e.kind]}</Badge> {e.location ?? ""}</p></Td>
+            <Td><p className="font-semibold">{e.title}</p><p className="text-xs text-ink-soft/80"><Badge tone="gold">{eventKindLabel[e.kind]}</Badge> {e.location ?? ""}</p></Td>
             {showMatter && <Td className="text-xs">{matterLabel ?? "—"}</Td>}
             <Td className="text-xs">{assignee ?? "—"}</Td>
             <Td>
@@ -103,7 +103,7 @@ export function TaskList({ items, showMatter }: { items: { t: Tk; matterLabel?: 
           const late = t.status !== "done" && t.dueOn && t.dueOn < today;
           return (
             <tr key={t.id} className={t.status === "done" ? "opacity-60" : ""}>
-              <Td><p className={`font-semibold ${t.status === "done" ? "line-through" : ""}`}>{t.title}</p>{t.description && <p className="text-xs text-ink-soft/60">{t.description}</p>}</Td>
+              <Td><p className={`font-semibold ${t.status === "done" ? "line-through" : ""}`}>{t.title}</p>{t.description && <p className="text-xs text-ink-soft/80">{t.description}</p>}</Td>
               {showMatter && <Td className="text-xs">{matterLabel ?? "عامة"}</Td>}
               <Td className="text-xs">{assignee ?? "—"}</Td>
               <Td><Badge tone={t.priority === "urgent" ? "red" : t.priority === "high" ? "gold" : "gray"}>{priorityLabel[t.priority]}</Badge></Td>

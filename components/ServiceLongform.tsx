@@ -62,7 +62,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
           <ol className="mt-6 divide-y divide-[#00124a]/10 border-y border-[#00124a]/10">
             {extra.process.map((s, i) => (
               <li key={s.t} className="flex gap-5 py-5">
-                <span className="font-display w-9 shrink-0 text-3xl font-extralight text-[#c99a3c]" dir="ltr">
+                <span className="font-display w-9 shrink-0 text-3xl font-extralight text-[#8a5d0e]" dir="ltr">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="text-base font-light leading-9 text-[#1b2646]">
@@ -94,7 +94,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
                 <details key={f.q} className="group py-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[#00124a]">
                     <span>{f.q}</span>
-                    <span aria-hidden className="text-xl text-[#c99a3c] transition-transform group-open:rotate-45">+</span>
+                    <span aria-hidden className="text-xl text-[#8a5d0e] transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <p className="mt-3 text-base font-light leading-9 text-[#1b2646]">{f.a}</p>
                 </details>
@@ -121,7 +121,7 @@ export default function ServiceLongform({ copy, extra, links, skipFaq }: Props) 
           </div>
         )}
 
-        <p className="mt-14 text-xs leading-6 text-[#1b2646]/55">
+        <p className="mt-14 text-xs leading-6 text-[#1b2646]/80">
           المعلومات في هذه الصفحة عامة وليست رأيًا قانونيًا في حالة بعينها؛ يختلف الجواب بحسب الوقائع والنظام المنطبق وقت الواقعة.
         </p>
       </div>

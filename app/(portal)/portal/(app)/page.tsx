@@ -34,7 +34,7 @@ export default async function PortalHome() {
           <ul className="space-y-2">
             {inv.filter((r) => r.i.status !== "draft").map(({ i, paid }) => (
               <li key={i.id} className="flex items-center justify-between rounded-xl bg-[#faf7ef] p-3 text-sm">
-                <div><p className="font-mono text-xs font-bold">{i.number}</p><p className="text-xs text-ink-soft/60">{fmtDate(i.issuedOn)} · المتبقي {money(Number(i.total) - Number(paid))}</p></div>
+                <div><p className="font-mono text-xs font-bold">{i.number}</p><p className="text-xs text-ink-soft/80">{fmtDate(i.issuedOn)} · المتبقي {money(Number(i.total) - Number(paid))}</p></div>
                 <div className="text-end"><p className="font-bold">{money(i.total)}</p><Badge tone={i.status === "paid" ? "green" : i.status === "void" ? "red" : "gold"}>{invoiceStatusLabel[i.status]}</Badge></div>
               </li>
             ))}
@@ -47,7 +47,7 @@ export default async function PortalHome() {
             {list.map((m) => (
               <li key={m.id}>
                 <Link href={`/portal/matters/${m.id}`} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#e3ddcb] bg-[#faf7ef] p-4 transition hover:border-[#d0a751]">
-                  <div><p className="font-display font-bold">{m.title}</p><p className="mt-0.5 text-xs text-ink-soft/60">{m.number} · فُتحت {fmtDate(m.openedOn)}</p></div>
+                  <div><p className="font-display font-bold">{m.title}</p><p className="mt-0.5 text-xs text-ink-soft/80">{m.number} · فُتحت {fmtDate(m.openedOn)}</p></div>
                   <Badge tone={m.status === "open" ? "green" : "gray"}>{matterStatusLabel[m.status]}</Badge>
                 </Link>
               </li>

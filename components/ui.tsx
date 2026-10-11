@@ -80,7 +80,7 @@ export function RowList({ items, tone = "light", cols = 1 }: { items: { title: s
         const inner = (
           <div className="group relative flex items-start gap-5 overflow-hidden px-3 py-6 md:py-7">
             <span aria-hidden className="absolute inset-0 origin-[100%_50%] scale-x-0 bg-[linear-gradient(to_left,rgba(224,179,90,0.18),rgba(246,226,179,0.14),rgba(224,179,90,0.12))] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-            <span className={`relative pt-2 font-display text-xs tracking-widest ${dark ? "text-white/50" : "text-[#00124a]/45"}`} dir="ltr">{String(i + 1).padStart(2, "0")}</span>
+            <span className={`relative pt-2 font-display text-xs tracking-widest ${dark ? "text-white/50" : "text-[#00124a]/75"}`} dir="ltr">{String(i + 1).padStart(2, "0")}</span>
             <div className="relative flex-1">
               {it.tag && <span className={`mb-1 block text-xs ${dark ? "text-[#f6e2b3]" : "text-[#012696]"}`}>{it.tag}</span>}
               <h3 className={`font-display text-2xl font-light md:text-3xl ${dark ? "text-white" : "text-[#00124a]"}`}>{it.title}</h3>

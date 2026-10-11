@@ -28,7 +28,7 @@ export default async function TemplatesPage({ searchParams }: { searchParams: Pr
         <div className="space-y-6 xl:col-span-2">
           {list.length === 0 && <Empty>لا قوالب بعد.</Empty>}
           {list.map((t) => (
-            <Card key={t.id} title={t.name} actions={<span className="text-xs text-ink-soft/60">{docCategoryLabel[t.category] ?? t.category}</span>}>
+            <Card key={t.id} title={t.name} actions={<span className="text-xs text-ink-soft/80">{docCategoryLabel[t.category] ?? t.category}</span>}>
               <pre className="mb-4 max-h-40 overflow-auto whitespace-pre-wrap rounded-xl bg-[#faf7ef] p-3 text-xs leading-6">{t.body}</pre>
               <div className="flex flex-wrap items-end gap-3">
                 {can(user.role, "docs:write") && (
@@ -65,7 +65,7 @@ export default async function TemplatesPage({ searchParams }: { searchParams: Pr
           )}
           <Card title="المتغيّرات المتاحة">
             <ul className="space-y-1.5 text-xs">
-              {PLACEHOLDERS.map(([k, l]) => <li key={k} className="flex justify-between gap-2"><span className="font-mono" dir="ltr">{k}</span><span className="text-ink-soft/60">{l}</span></li>)}
+              {PLACEHOLDERS.map(([k, l]) => <li key={k} className="flex justify-between gap-2"><span className="font-mono" dir="ltr">{k}</span><span className="text-ink-soft/80">{l}</span></li>)}
             </ul>
           </Card>
         </div>

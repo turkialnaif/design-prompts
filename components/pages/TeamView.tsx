@@ -152,7 +152,7 @@ export default function TeamView({ attorney, locale }: { attorney: Attorney; loc
                 </li>
               ))}
               <li>
-                <Link href={t.servicesHref} className="chamfer-btn inline-block border border-dashed border-[#e0b35a]/60 px-5 py-2.5 text-sm font-light text-ink-soft/70 transition-colors hover:text-[#012696]">
+                <Link href={t.servicesHref} className="chamfer-btn inline-block border border-dashed border-[#e0b35a]/60 px-5 py-2.5 text-sm font-light text-ink-soft/80 transition-colors hover:text-[#012696]">
                   {t.others}
                 </Link>
               </li>

@@ -122,23 +122,23 @@ export default function MatterBriefForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor={`${uid}-name`} className="text-xs font-semibold text-ink-soft/70">{t.name} *</label>
+        <label htmlFor={`${uid}-name`} className="text-xs font-semibold text-ink-soft/80">{t.name} *</label>
         <input id={`${uid}-name`} name="name" type="text" required className={field} />
       </div>
       <div>
-        <label htmlFor={`${uid}-org`} className="text-xs font-semibold text-ink-soft/70">{t.org}</label>
+        <label htmlFor={`${uid}-org`} className="text-xs font-semibold text-ink-soft/80">{t.org}</label>
         <input id={`${uid}-org`} name="org" type="text" className={field} />
       </div>
       <div>
-        <label htmlFor={`${uid}-email`} className="text-xs font-semibold text-ink-soft/70">{t.email} *</label>
+        <label htmlFor={`${uid}-email`} className="text-xs font-semibold text-ink-soft/80">{t.email} *</label>
         <input id={`${uid}-email`} name="email" type="email" required dir="ltr" className={`${field} text-end`} />
       </div>
       <div>
-        <label htmlFor={`${uid}-phone`} className="text-xs font-semibold text-ink-soft/70">{t.phone}</label>
+        <label htmlFor={`${uid}-phone`} className="text-xs font-semibold text-ink-soft/80">{t.phone}</label>
         <input id={`${uid}-phone`} name="phone" type="tel" inputMode="tel" autoComplete="tel" dir="ltr" maxLength={30} className={`${field} text-end`} />
       </div>
       <div>
-        <label htmlFor={`${uid}-matterType`} className="text-xs font-semibold text-ink-soft/70">{t.matterType} *</label>
+        <label htmlFor={`${uid}-matterType`} className="text-xs font-semibold text-ink-soft/80">{t.matterType} *</label>
         <select id={`${uid}-matterType`} name="matterType" required defaultValue="" className={field}>
           <option value="" disabled>
             —
@@ -152,9 +152,9 @@ export default function MatterBriefForm({
         </select>
       </div>
       <div>
-        <label htmlFor={`${uid}-description`} className="text-xs font-semibold text-ink-soft/70">{t.description} *</label>
+        <label htmlFor={`${uid}-description`} className="text-xs font-semibold text-ink-soft/80">{t.description} *</label>
         <textarea id={`${uid}-description`} name="description" required rows={4} className={field} />
-        <p className="mt-1.5 text-xs leading-5 text-ink-soft/50">{t.docsNote}</p>
+        <p className="mt-1.5 text-xs leading-5 text-ink-soft/80">{t.docsNote}</p>
       </div>
 
       {/* honeypot: people never see or fill this; scripts that fill every field give themselves away */}
@@ -166,7 +166,7 @@ export default function MatterBriefForm({
       </div>
 
       <p className="rounded-lg bg-paper px-3.5 py-3 text-xs font-medium leading-5 text-ink-soft/80">{t.disclaimer}</p>
-      <p className="text-xs leading-5 text-ink-soft/70">
+      <p className="text-xs leading-5 text-ink-soft/80">
         {t.privacyLead}{" "}
         <a href={t.privacyHref} className="font-semibold text-gold-deep underline underline-offset-2">
           {t.privacyLink}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { blogFont, brandFont, fallbackFont } from "../fonts";
+import { arabicFont, brandFont, fallbackFont } from "../fonts";
 import Header from "@/components/Header";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ar"
       dir="rtl"
-      className={`${brandFont.variable} ${fallbackFont.variable} ${blogFont.variable} h-full antialiased`}
+      className={`${arabicFont.variable} ${brandFont.variable} ${fallbackFont.variable} h-full antialiased`}
     >
       <head>
         <meta property="og:locale" content="ar_SA" />

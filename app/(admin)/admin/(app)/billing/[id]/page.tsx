@@ -74,7 +74,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
           </Card>
 
           <Card title={`المدفوعات — المتبقي ${money(balance)}`}>
-            {pays.length === 0 ? <p className="text-sm text-ink-soft/60">لا مدفوعات مسجَّلة.</p> : (
+            {pays.length === 0 ? <p className="text-sm text-ink-soft/80">لا مدفوعات مسجَّلة.</p> : (
               <Table>
                 <thead><tr><Th>التاريخ</Th><Th>المبلغ</Th><Th>الطريقة</Th><Th>المرجع</Th></tr></thead>
                 <tbody>{pays.map((p) => <tr key={p.id}><Td className="text-xs">{fmtDate(p.paidOn)}</Td><Td>{money(p.amount)}</Td><Td className="text-xs">{p.method}</Td><Td className="text-xs">{p.reference ?? "—"}</Td></tr>)}</tbody>
@@ -105,9 +105,9 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
               </form>
             ) : (
               <dl className="space-y-2 text-sm">
-                <div className="flex justify-between"><dt className="text-ink-soft/60">صدرت</dt><dd>{fmtDate(i.issuedOn)}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">الاستحقاق</dt><dd>{fmtDate(i.dueOn)}</dd></div>
-                <div><dt className="text-ink-soft/60">ملاحظات</dt><dd className="mt-1 whitespace-pre-wrap">{i.notes ?? "—"}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">صدرت</dt><dd>{fmtDate(i.issuedOn)}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">الاستحقاق</dt><dd>{fmtDate(i.dueOn)}</dd></div>
+                <div><dt className="text-ink-soft/80">ملاحظات</dt><dd className="mt-1 whitespace-pre-wrap">{i.notes ?? "—"}</dd></div>
               </dl>
             )}
           </Card>
@@ -118,7 +118,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
                 {draft && <form action={deleteDraftInvoiceAction}><input type="hidden" name="invoiceId" value={i.id} /><SubmitButton className="!bg-white !text-red-700 border border-red-200 hover:!bg-red-50">حذف المسودة</SubmitButton></form>}
                 {!draft && i.status !== "void" && <form action={voidInvoiceAction}><input type="hidden" name="invoiceId" value={i.id} /><SubmitButton className="!bg-white !text-red-700 border border-red-200 hover:!bg-red-50">إلغاء الفاتورة</SubmitButton></form>}
               </div>
-              <p className="mt-3 text-xs text-ink-soft/55">عند الإصدار يُقفل تعديل البنود. إلغاء الفاتورة يُعيد الوقت والمصروفات إلى «غير مفوتر».</p>
+              <p className="mt-3 text-xs text-ink-soft/80">عند الإصدار يُقفل تعديل البنود. إلغاء الفاتورة يُعيد الوقت والمصروفات إلى «غير مفوتر».</p>
             </Card>
           )}
           <Link href={`/admin/clients/${c.id}`} className="block text-center text-sm font-semibold text-[#a9843c]">ملف العميل ←</Link>

@@ -8,7 +8,7 @@ export function PageHeader({ title, sub, actions }: { title: string; sub?: strin
       <div>
         <span aria-hidden className="mb-3 block h-[3px] w-10 rounded-full bg-[#d0a751]" />
         <h1 className="font-display text-2xl font-bold text-ink md:text-3xl">{title}</h1>
-        {sub && <p className="mt-1 text-sm text-ink-soft/70">{sub}</p>}
+        {sub && <p className="mt-1 text-sm text-ink-soft/80">{sub}</p>}
       </div>
       {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
     </div>
@@ -34,9 +34,9 @@ export function Stat({ label, value, hint, tone = "default" }: { label: string; 
   return (
     <div className="relative overflow-hidden rounded-3xl border border-[#e6dfc9] bg-white/85 p-5 shadow-[0_22px_44px_-32px_rgba(20,30,50,0.4)] backdrop-blur">
       <span aria-hidden className="absolute inset-x-6 top-0 h-[2px] rounded-full bg-[linear-gradient(90deg,transparent,#d0a751,transparent)]" />
-      <p className="text-xs font-semibold text-ink-soft/60">{label}</p>
+      <p className="text-xs font-semibold text-ink-soft/80">{label}</p>
       <p className={`font-display mt-2 text-3xl font-extrabold ${c}`}>{value}</p>
-      {hint && <p className="mt-1 text-xs text-ink-soft/55">{hint}</p>}
+      {hint && <p className="mt-1 text-xs text-ink-soft/80">{hint}</p>}
     </div>
   );
 }
@@ -60,14 +60,14 @@ export function Table({ children }: { children: ReactNode }) {
   );
 }
 export const Th = ({ children, className = "" }: { children?: ReactNode; className?: string }) => (
-  <th className={`border-b border-[#e3ddcb] bg-[#faf7ef] px-3 py-2.5 text-start text-xs font-bold text-ink-soft/70 first:rounded-s-xl last:rounded-e-xl ${className}`}>{children}</th>
+  <th className={`border-b border-[#e3ddcb] bg-[#faf7ef] px-3 py-2.5 text-start text-xs font-bold text-ink-soft/80 first:rounded-s-xl last:rounded-e-xl ${className}`}>{children}</th>
 );
 export const Td = ({ children, className = "", dir }: { children?: ReactNode; className?: string; dir?: "ltr" | "rtl" }) => (
   <td dir={dir} className={`border-b border-[#f0ebdc] px-3 py-3 align-middle ${className}`}>{children}</td>
 );
 
 export function Empty({ children }: { children: ReactNode }) {
-  return <p className="rounded-xl bg-[#faf7ef] px-4 py-8 text-center text-sm text-ink-soft/60">{children}</p>;
+  return <p className="rounded-xl bg-[#faf7ef] px-4 py-8 text-center text-sm text-ink-soft/80">{children}</p>;
 }
 
 export function LinkButton({ href, children, variant = "primary" }: { href: string; children: ReactNode; variant?: "primary" | "ghost" }) {
@@ -89,9 +89,9 @@ export function Field({ label, children, hint, span = 1 }: { label: string; chil
   const s = span === 3 ? "md:col-span-3" : span === 2 ? "md:col-span-2" : "";
   return (
     <div className={s}>
-      <label className="mb-1.5 block text-xs font-bold text-ink-soft/70">{label}</label>
+      <label className="mb-1.5 block text-xs font-bold text-ink-soft/80">{label}</label>
       {children}
-      {hint && <p className="mt-1 text-[11px] text-ink-soft/50">{hint}</p>}
+      {hint && <p className="mt-1 text-[11px] text-ink-soft/80">{hint}</p>}
     </div>
   );
 }

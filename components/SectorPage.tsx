@@ -178,7 +178,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
               </details>
             ))}
           </div>
-          <p className="mt-6 text-xs leading-6 text-ink-soft/70">{t.disclaimer}</p>
+          <p className="mt-6 text-xs leading-6 text-ink-soft/80">{t.disclaimer}</p>
         </div>
       </section>
 

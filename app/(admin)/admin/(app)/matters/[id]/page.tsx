@@ -134,9 +134,9 @@ export default async function MatterPage({
               </form>
               <ul className="space-y-3">
                 {notes.map((n) => (
-                  <li key={n.id} className={`rounded-xl p-3 text-sm ${n.kind === "note" ? "bg-[#faf7ef]" : "bg-slate-50 text-ink-soft/70"}`}>
+                  <li key={n.id} className={`rounded-xl p-3 text-sm ${n.kind === "note" ? "bg-[#faf7ef]" : "bg-slate-50 text-ink-soft/80"}`}>
                     <p className="whitespace-pre-wrap leading-7">{n.body}</p>
-                    <p className="mt-1 text-[11px] text-ink-soft/55">{n.userId ? userName.get(n.userId) ?? "" : "النظام"} · {fmtDateTime(n.createdAt)} {n.visibleToClient && <Badge tone="blue">ظاهرة للعميل</Badge>}</p>
+                    <p className="mt-1 text-[11px] text-ink-soft/80">{n.userId ? userName.get(n.userId) ?? "" : "النظام"} · {fmtDateTime(n.createdAt)} {n.visibleToClient && <Badge tone="blue">ظاهرة للعميل</Badge>}</p>
                   </li>
                 ))}
               </ul>
@@ -146,13 +146,13 @@ export default async function MatterPage({
           <div className="space-y-6">
             <Card title="ملخص">
               <dl className="space-y-2 text-sm">
-                <div className="flex justify-between"><dt className="text-ink-soft/60">العميل</dt><dd><Link href={`/admin/clients/${c.id}`} className="font-semibold hover:text-[#a9843c]">{c.name}</Link></dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">المسؤول</dt><dd>{m.responsibleId ? userName.get(m.responsibleId) : "—"}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">الجهة</dt><dd>{m.court ?? "—"}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">رقم الدعوى</dt><dd className="font-mono text-xs">{m.courtCaseNumber ?? "—"}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">قيمة المطالبة</dt><dd>{m.claimValue ? money(m.claimValue) : "—"}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">الأتعاب</dt><dd>{billingTypeLabel[m.billingType]}{m.fixedFee ? ` · ${money(m.fixedFee)}` : ""}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft/60">فُتحت</dt><dd>{fmtDate(m.openedOn)}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">العميل</dt><dd><Link href={`/admin/clients/${c.id}`} className="font-semibold hover:text-[#a9843c]">{c.name}</Link></dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">المسؤول</dt><dd>{m.responsibleId ? userName.get(m.responsibleId) : "—"}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">الجهة</dt><dd>{m.court ?? "—"}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">رقم الدعوى</dt><dd className="font-mono text-xs">{m.courtCaseNumber ?? "—"}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">قيمة المطالبة</dt><dd>{m.claimValue ? money(m.claimValue) : "—"}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">الأتعاب</dt><dd>{billingTypeLabel[m.billingType]}{m.fixedFee ? ` · ${money(m.fixedFee)}` : ""}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft/80">فُتحت</dt><dd>{fmtDate(m.openedOn)}</dd></div>
               </dl>
             </Card>
 
@@ -161,7 +161,7 @@ export default async function MatterPage({
                 {parties.length === 0 && <Empty>لم تُضف أطراف.</Empty>}
                 {parties.map((p) => (
                   <li key={p.id} className="flex items-start justify-between gap-2 rounded-xl bg-[#faf7ef] p-3 text-sm">
-                    <div><p className="font-semibold">{p.name}</p><p className="text-xs text-ink-soft/60">{partyRoleLabel[p.role]} {p.identifier ? `· ${p.identifier}` : ""}</p></div>
+                    <div><p className="font-semibold">{p.name}</p><p className="text-xs text-ink-soft/80">{partyRoleLabel[p.role]} {p.identifier ? `· ${p.identifier}` : ""}</p></div>
                     {canWrite && <form action={removePartyAction}><input type="hidden" name="id" value={p.id} /><input type="hidden" name="matterId" value={m.id} /><button aria-label="حذف" className="text-red-700"><Trash2 className="h-4 w-4" /></button></form>}
                   </li>
                 ))}
@@ -371,7 +371,7 @@ async function MessagesTab({ matterId, userName, clientName }: { matterId: strin
         {rows.map((r) => (
           <div key={r.id} className={`max-w-2xl rounded-2xl p-3 text-sm ${r.fromKind === "staff" ? "bg-[#12233a] text-white" : "me-auto bg-[#faf7ef]"}`}>
             <p className="whitespace-pre-wrap leading-7">{r.body}</p>
-            <p className={`mt-1 text-[11px] ${r.fromKind === "staff" ? "text-white/60" : "text-ink-soft/55"}`}>{r.fromKind === "staff" ? userName.get(r.fromId) : clientName} · {fmtDateTime(r.createdAt)}</p>
+            <p className={`mt-1 text-[11px] ${r.fromKind === "staff" ? "text-white/60" : "text-ink-soft/80"}`}>{r.fromKind === "staff" ? userName.get(r.fromId) : clientName} · {fmtDateTime(r.createdAt)}</p>
           </div>
         ))}
       </div>

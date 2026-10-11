@@ -265,7 +265,7 @@ export default async function ServicePage({
                 </details>
               ))}
             </div>
-            <p className="mx-auto mt-8 max-w-xl text-center text-xs leading-6 text-ink-soft/55">
+            <p className="mx-auto mt-8 max-w-xl text-center text-xs leading-6 text-ink-soft/80">
               المعلومات أعلاه عامة وليست رأيًا قانونيًا في حالة بعينها؛ يختلف الجواب بحسب الوقائع والنظام المنطبق.
             </p>
           </div>

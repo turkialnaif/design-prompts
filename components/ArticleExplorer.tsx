@@ -135,7 +135,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
             <div data-lenis-prevent className="flex min-w-0 flex-1 gap-6 overflow-x-auto [scrollbar-width:none]">
               {clusterChips.map((c) => (
                 <button key={c.key} type="button" onClick={reset(() => setCluster(c.key))} className={tab(cluster === c.key)}>
-                  {c.label} <span className="text-[11px] opacity-50">{c.count}</span>
+                  {c.label} <span className="text-[11px] opacity-80">{c.count}</span>
                 </button>
               ))}
             </div>
