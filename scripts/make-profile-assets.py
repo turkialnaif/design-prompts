@@ -37,6 +37,8 @@ def recolour_lockup(rgb, out):
 
 recolour_lockup((0, 18, 74), "lockup-navy.png")
 recolour_lockup((216, 174, 85), "lockup-gold.png")
+recolour_lockup((196, 160, 78), "lockup-brass.png")
+recolour_lockup((244, 239, 228), "lockup-bone.png")
 
 city = Image.open(f"{OUT}/city-kafd.jpg").convert("RGBA")
 w, h = city.size

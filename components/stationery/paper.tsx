@@ -1,184 +1,85 @@
-import type { CSSProperties } from "react";
 import { firm } from "@/lib/site";
-import { ADDRESS_AR, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
-import { BLEED, C, Diamond, Face, GhostMark, Mark, MarkField, Thread, WaveBand, disp, foil, foilBg, latin } from "@/components/stationery/parts";
+import { ADDRESS_AR, EMAIL, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
+import { C, Face, Lockup, Mark, Rule, disp, latin, mm } from "@/components/stationery/parts";
 
 type G = { guides?: boolean };
 
-/** The wordmark lockup, pre-coloured (navy or gold) so it prints as a plain image, with no CSS masks. */
-export function Lockup({ mm, fill = C.ink, style }: { mm: number; fill?: string | "foil"; style?: CSSProperties }) {
-  const src = fill === C.ink ? "/brand/profile/lockup-navy.png" : "/brand/profile/lockup-gold.png";
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt="" style={{ width: `${mm}mm`, height: "auto", display: "block", ...style }} />;
-}
-
-/** The thread, upright: it runs the full height of the sheet and leaves through top and bottom. */
-export function VThread({ x, nodes = [], color = C.gold, foilLine = false, ticks = [], stopAt }: { x: number; nodes?: number[]; color?: string; foilLine?: boolean; ticks?: number[]; stopAt?: number }) {
-  // `stopAt` (mm from the top of the trim) ends the thread there, where it meets the footer
-  // the thread is drawn on the full sheet (bleed included) and starts 1 mm beyond its top edge; offsets below are in trim millimetres
-  const ext = stopAt === undefined ? { bottom: `-${BLEED + 1}mm` } : { height: `${stopAt + 2 * BLEED + 1}mm` };
-  return (
-    <div className="absolute" style={{ insetInlineStart: `${x}mm`, top: `-${BLEED + 1}mm`, ...ext, width: "0.25mm", ...(foilLine ? foilBg : { background: color }) }}>
-      {nodes.map((n) => (
-        <Diamond key={n} size={1.5} color={color} style={{ position: "absolute", top: `${n + 2 * BLEED + 1 - 0.75}mm`, insetInlineStart: "-0.62mm", ...(foilLine ? foilBg : {}) }} />
-      ))}
-      {ticks.map((n) => (
-        <span key={n} style={{ position: "absolute", top: `${n + 2 * BLEED + 1}mm`, insetInlineStart: "-1.6mm", width: "3.4mm", height: "0.25mm", background: color }} />
-      ))}
-    </div>
-  );
-}
-
-const PAPER_W = "#fbf9f4";
-
-const FOOT_Y = 276; // where the letterhead's footer begins (mm from the top of the trim)
-
-/** The letterhead's footer: a slim deep-navy band under a gold hairline, a strip of engraved guilloché along its top edge, and the thread arriving at a small gold seal. */
-function LetterFoot() {
-  const H = 297 - FOOT_Y + BLEED;
+/** Functional marks on the left edge: the two third-folds (99, 198 mm) and the filing punch (148.5 mm). They are the only decoration on the page. */
+function FoldTicks() {
   return (
     <>
-      <div className="absolute inset-x-0 overflow-hidden" style={{ bottom: 0, height: `${H}mm`, background: C.deep }}>
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 50% 160% at 100% 0%, rgba(40,84,220,0.3), transparent 70%)" }} />
-        <div className="absolute" style={{ left: 0, top: "1.6mm" }}>
-          <WaveBand w={216} h={3.2} lines={7} wave={11} color="rgba(216,174,85,0.55)" weight={0.07} />
-        </div>
-      </div>
-      <Thread y={BLEED + FOOT_Y} from={BLEED + 16 + 5.6} to="end" foilLine weight={0.35} />
+      {[99, 148.5, 198].map((y) => (
+        <span key={y} className="absolute" style={{ left: 0, top: mm(y), width: mm(y === 148.5 ? 6 : 4), height: "0.25mm", background: C.brassDeep }} />
+      ))}
     </>
   );
 }
 
-/** The seal at the end of the thread: a navy disc ringed in gold, the mark inside. */
-function ThreadSeal({ at = FOOT_Y }: { at?: number }) {
-  const D = 11.2;
-  return (
-    <div className="absolute" style={{ insetInlineStart: `${16 - D / 2}mm`, top: `${at - D / 2}mm`, width: `${D}mm`, height: `${D}mm` }}>
-      <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden>
-        <circle cx="20" cy="20" r="19.6" fill={C.deep} />
-        <circle cx="20" cy="20" r="19" fill="none" stroke="url(#stn-foil)" strokeWidth="1.1" />
-        <circle cx="20" cy="20" r="15.6" fill="none" stroke="rgba(216,174,85,0.5)" strokeWidth="0.35" />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <Mark height={4.2} />
-      </div>
-    </div>
-  );
-}
-
-/**
- * Letterhead, A4. The thread runs down the start edge, its two diamonds at 99 and 198 mm (the third-folds, so the identity is also the
- * fold guide for a DL envelope; a tick at 148.5 mm marks the filing punch), reaches a small gold seal and turns into the footer's hairline.
- */
+/** Letterhead, A4. The lockup, a hairline, and one line of particulars at the foot. */
 export async function Letterhead({ guides }: G) {
-  const grp: CSSProperties = { fontSize: "5.7pt", lineHeight: 1.55, color: "rgba(255,255,255,0.92)" };
+  const small = { fontSize: "5.6pt", lineHeight: 1.6, color: C.navy } as const;
   return (
-    <Face w={210} h={297} bg={PAPER_W} guides={guides} bleed={<><VThread x={BLEED + 16} nodes={[99, 198]} ticks={[148.5]} stopAt={FOOT_Y - 5.6} /><LetterFoot /></>}>
-      <div className="absolute" style={{ top: "13mm", insetInlineStart: "27mm" }}>
-        <Lockup mm={62} />
+    <Face w={210} h={297} bg={C.paper} guides={guides}>
+      <FoldTicks />
+      <div className="absolute" style={{ top: mm(16), right: mm(20) }}>
+        <Lockup mm={60} />
       </div>
-
-      <ThreadSeal />
-
-      <div className="absolute grid" style={{ top: "283.4mm", insetInlineStart: "27mm", insetInlineEnd: "14mm", gridTemplateColumns: "1.15fr 1fr 1fr", columnGap: "7mm", ...grp }}>
-        <div>
-          <p>الدور الأول · مكتب 14 · طريق أبي بكر الصديق الفرعي</p>
-          <p>حي الياسمين · الرياض 13326</p>
-        </div>
-        <div dir="ltr" style={{ ...latin, letterSpacing: "0.05em", textAlign: "start" }}>
-          <p>{PHONE} · info@taap.sa</p>
-          <p>taap.sa</p>
-        </div>
-        <div>
-          <p>رخصة مزاولة المحاماة {firm.licenseNumber}</p>
-          <p>السجل الموحد {firm.unifiedNumber}</p>
+      <div className="absolute" style={{ left: mm(20), right: mm(20), bottom: mm(13) }}>
+        <Rule />
+        <div className="grid" style={{ marginTop: mm(3.2), gridTemplateColumns: "1.2fr 1fr 1fr", columnGap: mm(8), ...small }}>
+          <div>
+            <p style={{ margin: 0 }}>الدور الأول · مكتب 14 · طريق أبي بكر الصديق الفرعي</p>
+            <p style={{ margin: 0 }}>حي الياسمين · الرياض 13326</p>
+          </div>
+          <div dir="ltr" style={{ ...latin, letterSpacing: "0.04em" }}>
+            <p style={{ margin: 0 }}>{PHONE}</p>
+            <p style={{ margin: 0 }}>{EMAIL} · taap.sa</p>
+          </div>
+          <div>
+            <p style={{ margin: 0 }}>رخصة مزاولة المحاماة {firm.licenseNumber}</p>
+            <p style={{ margin: 0 }}>السجل الموحد {firm.unifiedNumber}</p>
+          </div>
         </div>
       </div>
     </Face>
   );
 }
 
-const SLIM_Y = 287; // the continuation page's footer begins here
-
-/** Second and later pages: the thread, the mark, and a slim navy footer that the thread flows into. */
+/** Second and later pages. */
 export function Continuation({ guides }: G) {
   return (
-    <Face
-      w={210}
-      h={297}
-      bg={PAPER_W}
-      guides={guides}
-      bleed={
-        <>
-          <VThread x={BLEED + 16} nodes={[99, 198]} ticks={[148.5]} stopAt={SLIM_Y} />
-          <div className="absolute inset-x-0" style={{ bottom: 0, height: `${297 - SLIM_Y + BLEED}mm`, background: C.deep }} />
-          <Thread y={BLEED + SLIM_Y} from={BLEED + 16} to="end" foilLine weight={0.35} />
-        </>
-      }
-    >
-      <div className="absolute" style={{ top: "13mm", insetInlineStart: "27mm" }}>
-        <Mark height={8.5} fill="flat" />
+    <Face w={210} h={297} bg={C.paper} guides={guides}>
+      <FoldTicks />
+      <div className="absolute" style={{ top: mm(16), right: mm(20) }}>
+        <Mark height={8.6} color={C.navy} />
       </div>
-      <div className="absolute flex items-center justify-between" style={{ bottom: "2.6mm", insetInlineStart: "27mm", insetInlineEnd: "14mm" }}>
-        <span dir="ltr" style={{ ...latin, fontSize: "4.8pt", letterSpacing: "0.3em", color: C.goldBright }}>TURKI ALNAIF &amp; PARTNERS</span>
-        <span dir="ltr" style={{ ...latin, fontSize: "4.8pt", letterSpacing: "0.3em", color: "rgba(255,255,255,0.8)" }}>TAAP.SA</span>
+      <div className="absolute flex items-center justify-between" dir="ltr" style={{ left: mm(20), right: mm(20), bottom: mm(13) }}>
+        <span style={{ ...latin, fontSize: "5pt", letterSpacing: "0.26em", color: C.brassDeep }}>TURKI ALNAIF &amp; PARTNERS</span>
+        <span style={{ ...latin, fontSize: "5pt", letterSpacing: "0.26em", color: C.body }}>TAAP.SA</span>
       </div>
     </Face>
   );
 }
 
-/** DL envelope, front. The thread leaves by the left edge; the return address is a whisper. */
+/** DL envelope, front. */
 export function EnvelopeFront({ guides }: G) {
   return (
-    <Face w={220} h={110} bg={C.paper} guides={guides} bleed={<Thread y={BLEED + 94.5} from={BLEED + 12} nodes={[0, 4.4, 8.8]} />}>
-      <div className="absolute" style={{ top: "11mm", insetInlineStart: "12mm" }}>
-        <Lockup mm={42} />
+    <Face w={220} h={110} bg={C.bone} guides={guides}>
+      <div className="absolute" style={{ top: mm(13), right: mm(14) }}>
+        <Lockup mm={44} />
       </div>
-      <div className="absolute" style={{ top: "82.4mm", insetInlineStart: "12mm" }}>
-        <Mark height={8.4} />
-      </div>
-      <p className="absolute" dir="ltr" style={{ ...latin, top: "98.2mm", insetInlineStart: "12mm", margin: 0, fontSize: "5.2pt", letterSpacing: "0.18em", color: "rgba(44,53,80,0.85)" }}>
-        TAAP.SA · {PHONE}
-      </p>
+      <p className="absolute" dir="ltr" style={{ ...latin, left: mm(14), bottom: mm(11), margin: 0, fontSize: "5pt", letterSpacing: "0.2em", color: C.body }}>TAAP.SA · {PHONE}</p>
     </Face>
   );
 }
 
-/** What the recipient sees when the envelope is opened: deep navy, a quiet field of marks, the thread, one line of promise. */
+/** The inside of the envelope: solid ink and the mark, once. */
 export function EnvelopeLiner({ guides }: G) {
-  const W = 220 + BLEED * 2;
-  const H = 110 + BLEED * 2;
   return (
-    <Face
-      w={220}
-      h={110}
-      bg={C.deep}
-      guides={guides}
-      dir="ltr"
-      bleed={
-        <>
-          <svg className="absolute inset-0" width="100%" height="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden>
-            <defs>
-              <pattern id="liner" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
-                <g transform="translate(6 7) scale(0.036)" fill="rgba(40,84,220,0.2)">
-                  <g transform="translate(-150 -190)">
-                    <rect x="160" y="202" width="398" height="52" />
-                    <rect x="222" y="261" width="274" height="47" />
-                    <polygon points="264,315 320,315 320,455 264,517" />
-                    <polygon points="335,315 387,315 387,415 335,448" />
-                    <polygon points="403,315 450,315 450,400 403,409" />
-                  </g>
-                </g>
-              </pattern>
-            </defs>
-            <rect width={W} height={H} fill="url(#liner)" />
-          </svg>
-          <Thread y={BLEED + 55} from={-4} to="end" foilLine />
-        </>
-      }
-    >
-      <p className="absolute inset-x-0" style={{ top: "36mm", textAlign: "center", fontSize: "9pt", color: "#fff", letterSpacing: 0 }}>مُغلَق بسرية مهنية</p>
-      <p className="absolute inset-x-0" style={{ ...latin, top: "63mm", textAlign: "center", fontSize: "5.6pt", letterSpacing: "0.34em", textTransform: "uppercase", color: C.goldBright }}>Sealed in professional confidence</p>
+    <Face w={220} h={110} bg={C.ink} guides={guides}>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <Mark height={14} />
+      </div>
     </Face>
   );
 }
@@ -186,83 +87,43 @@ export function EnvelopeLiner({ guides }: G) {
 /** Compliments slip, DL. */
 export async function Compliments({ guides }: G) {
   return (
-    <Face w={210} h={99} bg={PAPER_W} guides={guides} bleed={<Thread y={BLEED + 25} from={BLEED + 14} nodes={[0, 4.4, 8.8]} />}>
-      <div className="absolute" style={{ top: "9.5mm", insetInlineStart: "14mm" }}>
-        <Lockup mm={46} />
+    <Face w={210} h={99} bg={C.paper} guides={guides}>
+      <div className="absolute" style={{ top: mm(13), right: mm(16) }}>
+        <Lockup mm={48} />
       </div>
-      <div className="absolute" style={{ bottom: "7mm", insetInlineStart: "14mm", insetInlineEnd: "14mm" }}>
-        <div className="flex items-end justify-between" style={{ fontSize: "6pt", color: C.body }}>
-          <div dir="ltr" style={{ ...latin, letterSpacing: "0.06em", lineHeight: 1.8 }}>
-            <p>
-              {PHONE} · info@taap.sa
-            </p>
-            <p>taap.sa</p>
-          </div>
-          <div style={{ width: "13mm" }}>
-            <Qr url={qrUrl("compliments-slip")} mm={13} pad={0.4} light="transparent" />
-          </div>
+      <div className="absolute flex items-end justify-between" dir="ltr" style={{ left: mm(16), right: mm(16), bottom: mm(11) }}>
+        <div style={{ ...latin, fontSize: "5.8pt", lineHeight: 1.7, letterSpacing: "0.04em", color: C.navy }}>
+          <p style={{ margin: 0 }}>{PHONE}</p>
+          <p style={{ margin: 0 }}>{EMAIL} · taap.sa</p>
         </div>
+        <Qr url={qrUrl("compliments-slip")} size={12} light="transparent" dark={C.navy} pad={0} />
       </div>
     </Face>
   );
 }
 
-/** A5 notepad, a page of ruled paper with the thread as its margin. */
+/** A5 notepad page. */
 export function Notepad({ guides }: G) {
   return (
-    <Face w={148} h={210} bg={PAPER_W} guides={guides} bleed={<VThread x={BLEED + 13} nodes={[42, 98, 154]} />}>
-      <div className="absolute" style={{ top: "11mm", insetInlineStart: "20mm", insetInlineEnd: "10mm" }}>
-        <div className="flex items-end justify-between">
-          <Lockup mm={36} />
-          <p style={{ ...disp(), fontSize: "15pt", lineHeight: 1, color: C.ink }}>ملاحظات</p>
-        </div>
+    <Face w={148} h={210} bg={C.paper} guides={guides}>
+      <div className="absolute" style={{ top: mm(14), right: mm(14) }}>
+        <Lockup mm={34} />
       </div>
-      <div
-        className="absolute"
-        style={{
-          top: "34mm",
-          bottom: "16mm",
-          insetInlineStart: "20mm",
-          insetInlineEnd: "10mm",
-          backgroundImage: `repeating-linear-gradient(to bottom, transparent 0, transparent 7.78mm, rgba(0,18,74,0.18) 7.78mm, rgba(0,18,74,0.18) 8mm)`,
-        }}
-      />
-      <p className="absolute" dir="ltr" style={{ ...latin, bottom: "8mm", insetInlineStart: "20mm", fontSize: "5.2pt", letterSpacing: "0.22em", color: C.goldText }}>
-        TAAP.SA
-      </p>
+      <div className="absolute" style={{ top: mm(38), bottom: mm(18), left: mm(14), right: mm(14), backgroundImage: `repeating-linear-gradient(to bottom, transparent 0, transparent 7.8mm, ${C.hair} 7.8mm, ${C.hair} 8mm)` }} />
+      <p className="absolute" dir="ltr" style={{ ...latin, left: mm(14), bottom: mm(9), margin: 0, fontSize: "4.8pt", letterSpacing: "0.26em", color: C.brassDeep }}>TAAP.SA</p>
     </Face>
   );
 }
 
-/** Seal sticker, 40 mm, die-cut round: closes an envelope or a bound document. */
+/** Seal sticker, 40 mm, die-cut round. */
 export function Seal({ guides }: G) {
   return (
-    <Face w={40} h={40} bg={C.deep} guides={guides} dir="ltr">
-      <svg viewBox="0 0 40 40" className="absolute inset-0" width="100%" height="100%" aria-hidden>
-        <defs>
-          <linearGradient id="seal-foil" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#8a6420" />
-            <stop offset="0.25" stopColor="#d9b25c" />
-            <stop offset="0.45" stopColor="#fff3c6" />
-            <stop offset="0.65" stopColor="#d4a747" />
-            <stop offset="1" stopColor="#a77c2a" />
-          </linearGradient>
-          <path id="seal-ring" d="M 20,20 m -15.2,0 a 15.2,15.2 0 1,1 30.4,0 a 15.2,15.2 0 1,1 -30.4,0" />
-        </defs>
-        <circle cx="20" cy="20" r="18.4" fill="none" stroke="url(#seal-foil)" strokeWidth="0.35" />
-        <circle cx="20" cy="20" r="12.6" fill="none" stroke="url(#seal-foil)" strokeWidth="0.18" />
-        <text fill="url(#seal-foil)" style={{ fontFamily: "var(--font-brand-raw), sans-serif", fontSize: "2.35px", letterSpacing: "0.36px" }}>
-          <textPath href="#seal-ring" startOffset="0">
-            TURKI ALNAIF &amp; PARTNERS ◆ LAWYERS &amp; LEGAL CONSULTANTS ◆
-          </textPath>
-        </text>
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ gap: "1.3mm" }}>
-        <Mark height={8.4} />
-        <p style={{ ...foil, fontSize: "3.6pt", letterSpacing: 0, display: "inline-block", lineHeight: 1.5 }}>تركي النايف وشركاؤه</p>
+    <Face w={40} h={40} bg={C.ink} guides={guides} dir="ltr">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <Mark height={13} />
       </div>
     </Face>
   );
 }
 
-export { GhostMark };
+export { disp };

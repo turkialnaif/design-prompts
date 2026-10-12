@@ -1,89 +1,66 @@
 # Turki AlNaif & Partners — stationery
 
-**The idea: the golden thread.** A single hairline of gold leaves every piece *past its own edge* — the visual form of the line
-«فهمٌ يُسابق الرأْي» (understanding that runs ahead of opinion). Laid side by side, the pieces read as one continuous line; each
-carries three small diamonds (the three columns of the mark, in miniature). Nothing else is decorative.
+**Direction: restraint.** The reference is a black slate panel with thin metal letters: one number above, one name below, nothing else.
+Every piece follows it. Two surfaces (**matte deep ink** `#00061D` and **warm bone** `#F4EFE4` / paper `#FAF7F0`), one metal (**flat brass** `#C4A04E`, and `#8A6D25`
+for small type on bone), the logo, and a great deal of empty space. No frames, patterns, gradients or ornaments.
 
-Each piece also does a job, so the stationery is itself marketing:
+The golden thread, the guilloché and the engraved borders of the earlier versions were removed on purpose.
 
-| Piece | The job it does |
+## What is in the set
+
+| Piece | Notes |
 |---|---|
-| Business card | Side A (Arabic): the name in light on deep navy, the city rising from the foot, the thread leaving through the edge. Side B (English and details): a navy panel with the foil mark and a QR («Send your brief») that opens `taap.sa/contact` tagged `utm_medium=business-card`, so Analytics shows which card brought a visitor. |
-| "Five questions before you sign" card | A leave-behind useful on its own: five questions to ask before signing any contract. The firm is on the back of something the reader keeps. |
-| Appointment card | The practical card handed over at the end of a first call: write the date, and what to bring (ID, contracts, a written summary). |
-| Letterhead | The thread runs down the start edge and ends at a gold seal that turns it into the top edge of a deep-navy footer (the city, the address, the contacts, the licence numbers). Its two diamonds sit at **99 mm and 198 mm** — exactly the third-folds — so the identity doubles as the fold guide for a DL envelope; a short tick at 148.5 mm marks the filing punch. |
-| Envelope (front and liner) | Front: the lockup, a small foil mark at the end of the thread. The inside is deep navy, a field of marks, the thread, and one line: «مُغلَق بسرية مهنية» / *Sealed in professional confidence*. |
-| Compliments slip | Lockup, thread, and a QR tagged `utm_medium=compliments-slip`; the page is left clear for the handwritten note. |
-| A5 notepad | Ruled page; the thread is its margin. |
-| Matter-file folder (flat) | A new idea: the front cover is navy with an engraved border and a guilloché rosette; the two lintels of the mark are **hot-foil gold** and the three columns are **die-cut windows** that show a gold-lined sheet glued inside the front cover, so the closed folder reads as one mark. Inside: the gold lining on one side; on the other an ivory pocket with two slits for cards. Back: the lockup, the address, a QR (`utm_medium=folder`), a guilloché band above and below. |
-| Seal sticker, 40 mm | Closes an envelope or a bound document. |
-
-## The line «فهمٌ يُسابق الرأْي»
-
-It appears on **one** piece only: the billboard, where a single line is exactly what a board is for. Everywhere else it was removed on purpose: a line repeated on every piece stops being read. The logo, the thread and the guilloché carry the identity on the rest.
-
-## The office door sign (next to the corridor door)
-
-Not made yet: it will be designed from the sign you provide, at the same size as the large one now hanging in the building's corridor. Send a photo of the old sign and its measurements.
+| `business-card` | 90 × 55. Side A: ink and the brass lockup, nothing else. Side B: bone, the name in both languages, contacts, address, a small QR («Send your brief», tagged `utm_medium=business-card`). |
+| `questions-card` | «5 questions before you sign»: a leave-behind that is useful on its own. |
+| `appointment-card` | Written on by hand; the back lists what to bring. |
+| `letterhead` | A4. The lockup, one hairline and one line of particulars at the foot. Three small ticks on the left edge mark the third-folds (99 and 198 mm) and the filing punch (148.5 mm); the continuation page carries the mark only. |
+| `envelope` | DL. The inside is solid ink with the mark once. |
+| `compliments` | DL slip, a clear page for the handwritten note. |
+| `notepad` | A5, ruled. |
+| `folder` | Outside: matte soft-touch ink. The mark is a **blind emboss** (no ink or foil: it is felt, and seen in raking light) and the lockup is brass foil. Inside: bone, with a pocket and two slits for the cards. `folder-dieline` is the cutting file for the slits and folds. |
+| `seal` | 40 mm round sticker: ink and the mark. |
+| `office-sign` | The sign beside the corridor door, redesigned from the old white acrylic one on the model of a slate with brass letters: «14 / الدور الأول» and the lockup above; hours, licences and contacts below in Arabic and English, the QR in the middle. **The size (100 × 65 cm) is an estimate from the photograph. Confirm it.** |
+| `entrance-sign` | 40 × 80 cm portrait slate: the number above, the lockup below. No direction is written. |
+| `nameplate` | 220 × 60 mm desk plate. |
+| `reception-wall` | The lockup in brass letters on an ink panel (240 × 90 cm, drawn at 1:10). |
+| `billboard` | 12 × 4 m (1:10). The line «فهمٌ يُسابق الرأْي» as large as the board allows, and the lockup. **The only piece that carries the line.** |
+| `mupi` | City-light panel 120 × 180 cm (1:5). |
+| `roll-up` | 85 × 200 cm (1:5): the six service pillars and a QR; the lowest 25 cm is hidden by the base. |
+| `poster` | A3, the five questions set in type alone. |
+| `badge` | Staff card CR80 portrait (54 × 86). The 24 mm circle is for the photograph. |
+| `lanyard` | 20 × 900 mm. |
+| `notebook` | Hard-cover A5, flat. Ink cloth and the mark in brass foil. |
 
 ## Files
 
-- `print-ready/*.pdf` — for the printer. **Each page = trim size + 3 mm bleed on every side** (the PDF page is the bleed size; the printer trims 3 mm off each side. The files carry no separate TrimBox). Fonts are embedded. One page per face (front, then back).
-- `folder-dieline.pdf` — the cutting file for the folder: magenta = die-cut (the three column windows on the outside; the two card slits inside), cyan dashed = folds. Send it to the finisher with `folder.pdf`.
-- `proofs-with-guides/*-guides.pdf` — the same files with the **trim (cyan)** and a **4 mm safe margin (red dashed)** drawn on. For checking only; never print these.
-- `presentation/board-1…3.png` — the three boards to show the set (1920 × 1200): the stationery, the folder and cards, and the signage and the workplace.
+- `print-ready/*.pdf` — for the printer. **Each page = trim size + 3 mm bleed on every side.** Fonts are embedded. One page per face (front, then back).
+- `proofs-with-guides/*-guides.pdf` — the same with the **trim (cyan)** and a **4 mm safe margin (red)** drawn on. For checking only; never print these.
+- `presentation/board-1…4.png` — the four boards (1920 × 1200).
 
-## Signage and the workplace
-
-| Piece | What it is |
-|---|---|
-| `billboard` | 12 × 4 m (drawn at 1:10). The mark at monumental scale, its longest column landing on the thread; «فهمٌ يُسابق الرأْي» set as large as the board allows; one address: `taap.sa`. No phone number on a billboard: nobody can dial it at 80 km/h. |
-| `mupi` | City-light panel 120 × 180 cm (1:5), with a QR tagged `utm_medium=mupi`. |
-| `roll-up` | 85 × 200 cm (1:5): the six service pillars and a QR. The lowest 25 cm of a roll-up is hidden by its base, so nothing important is placed there. |
-| `poster` | A3 «Five questions before you sign» in giant form (lobby piece and leave-behind). |
-| `entrance-sign` | 600 × 300 mm brushed-gold plate, the text engraved in navy: «المكتب · الدور الأول / مكتب 14» and an arrow. No direction is written. **Check the arrow against the door before it is made**; it can be flipped. |
-| `nameplate` | 220 × 60 mm desk plate. |
-| `reception-wall` | 240 × 90 cm (1:10): the lockup in brass letters on a navy panel. |
-| `badge` | Staff card, CR80 portrait 54 × 86 mm. The 24 mm circle on the front is for the photograph. |
-| `lanyard` | 20 mm × 900 mm. |
-| `notebook` | Hard-cover A5 notebook, flat (back, 10 mm spine, front). |
-
-Large-format pieces are drawn at a reduced scale (noted above). A large-format printer enlarges the vector PDF to full size; there is no raster image in them except the small QR codes (vector) and, on the folder back, the photograph of the city.
-
-## Sizes (trim)
-
-| Piece | Trim | With bleed |
-|---|---|---|
-| Business card, appointment card, "five questions" card | 90 × 55 mm | 96 × 61 mm |
-| Letterhead | 210 × 297 mm (A4) | 216 × 303 mm |
-| Envelope (DL, flat) | 220 × 110 mm | 226 × 116 mm |
-| Compliments slip | 210 × 99 mm | 216 × 105 mm |
-| A5 notepad page | 148 × 210 mm | 154 × 216 mm |
-| Folder, flat (back + 8 mm spine + front), outside and inside | 468 × 320 mm | 474 × 326 mm |
-| Seal | 40 × 40 mm (die-cut round) | 46 × 46 mm |
+Large pieces are drawn at a reduced scale (noted above); a large-format printer enlarges the vector PDF to full size. The QR codes are vector.
 
 ## What to tell the printer
 
-- **Stock:** business cards, appointment and "five questions" cards on **uncoated, warm-white 400–450 gsm** (cotton or a soft-touch laminate on the navy side). Letterhead, notepad and slip on **120 gsm uncoated, bright white** (the file's paper tone is `#FBF9F4`). Folder on 350 gsm, matt lamination.
-- **Hot-foil gold** on: the mark and the "TAAP" wordmark on the navy side of the business card; the thread on navy faces; the seal's rings and ring text; the folder's front mark and spine. In the PDFs the foil areas are drawn as a metallic gradient (to show the intent) or as a flat gold `#D8AE55` (type). **Give the printer one spot colour (Pantone 871 C or their house gold) for all foil**, and ask them to separate it from the PDF.
-- **Navy:** `#00124A` (ink) and `#00061D` (deep). Ask for a navy proof on the real stock: on uncoated paper deep navy is the colour that moves most.
-- **Do not** print the QR in foil; keep it ink on the paper tone (it is).
-- Printed from a screen-RGB PDF: ask the printer to convert to their CMYK profile and show a **hard proof of the navy and the gold** before the run.
+- **Stock:** business cards and small cards on **uncoated, warm-white 400–450 gsm**; the ink side with a **soft-touch laminate**. Letterhead, notepad, slip: **120 gsm uncoated** (paper tone `#FAF7F0`).
+- **Brass foil** on: the lockup on the folder, the notebook's mark, and the business card's lockup if foil is wanted there. In the PDFs brass is the flat colour `#C4A04E`: **give the printer one spot colour (Pantone 871 C or their house brass)** and ask them to separate it.
+- **Blind emboss** (folder front): no ink; the shape is the grey mark drawn in the PDF.
+- **Signs:** brass letters, cut out, **held 3 mm off an ink-painted panel**. The reference is a slate; the identity's ink is a deep navy-black, so ask for a swatch.
+- **Ink:** `#00061D`. On uncoated paper a deep ink moves the most between press and proof: ask for a **hard proof**. Printed from a screen-RGB PDF: ask the printer to convert to their CMYK profile and show the proof before the run.
+- The QR is dark on light (or on a bone tile), never in foil.
 
-## Facts that are on the pieces (change them in `components/stationery/` if they change)
+## Facts on the pieces (change them in `components/stationery/` if they change)
 
-Name, role, phone `+966 56 677 0888`, `info@taap.sa`, `taap.sa`, address (Floor 1, Office 14, Abu Bakr Al Siddiq Branch Road, Al Yasmin, Riyadh 13326), licence no. 4477, unified no. 7030708403, opening hours.
-**The business card carries one person (Turki AlNaif).** For another partner or associate, copy the card component and change the name, role and number; the QR can keep the same tag.
+Name, role, phone `+966 56 677 0888`, `info@taap.sa`, `taap.sa`, address (Floor 1, Office 14, Abu Bakr Al Siddiq Branch Road, Al Yasmin, Riyadh 13326), licence 4477, unified no. 7030708403, hours (Sun – Thu 8 AM – 5 PM, Sat 10 AM – 2 PM, Fri closed).
+**The old office sign said «Saturday to Thursday, 8:00 AM to 8:00 PM»; the new one uses the hours on the website. Confirm which is right.**
+The business card carries one person (Turki AlNaif); copy the component for another partner.
 
 ## Regenerating
 
-Development server running, then print each page from `/stationery/<piece>` (add `?guides=1` for the proof) with headless Chrome:
+With the development server running (`npm run dev`), print each page from `/stationery/<piece>` (`?guides=1` for the proof) with headless Chrome:
 
 ```bash
-npm run dev
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer \
   --print-to-pdf=docs/stationery/print-ready/business-card.pdf http://localhost:3000/stationery/business-card
 ```
 
-Pieces: `business-card`, `questions-card`, `appointment-card`, `letterhead`, `envelope`, `compliments`, `notepad`, `folder`, `folder-dieline`, `seal`, `billboard`, `mupi`, `roll-up`, `poster`, `entrance-sign`, `nameplate`, `reception-wall`, `badge`, `lanyard`, `notebook`.
-`/stationery` shows the two presentation boards. These routes exist **only in development** (they return 404 in production).
+`/stationery` shows the four boards. These routes exist **only in development** (404 in production).

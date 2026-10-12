@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { FolderDieline, FolderInner, FolderOuter } from "@/components/stationery/folder";
 import { Compliments, Continuation, EnvelopeFront, EnvelopeLiner, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
-import { Billboard, BadgeBack, BadgeFront, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
+import { BadgeBack, BadgeFront, Billboard, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, OfficeSign, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
 import { AppointmentBack, AppointmentFront, CardBack, CardFront, QuestionsBack, QuestionsFront } from "@/components/stationery/cards";
 
 /** Print proofs of the stationery. Present in development only: the files for the printer are made from this route and kept in docs/stationery. */
@@ -19,7 +19,8 @@ const pieces: Record<string, { w: number; h: number; faces: (g: boolean) => Reac
   mupi: { w: 240, h: 360, faces: (g) => <Mupi guides={g} /> },
   "roll-up": { w: 170, h: 400, faces: (g) => <RollUp guides={g} /> },
   poster: { w: 297, h: 420, faces: (g) => <Poster guides={g} /> },
-  "entrance-sign": { w: 600, h: 300, faces: (g) => <EntranceSign guides={g} /> },
+  "office-sign": { w: 1000, h: 650, faces: (g) => <OfficeSign guides={g} /> },
+  "entrance-sign": { w: 400, h: 800, faces: (g) => <EntranceSign guides={g} /> },
   nameplate: { w: 220, h: 60, faces: (g) => <NamePlate guides={g} /> },
   "reception-wall": { w: 240, h: 90, faces: (g) => <ReceptionWall guides={g} /> },
   badge: { w: 54, h: 86, faces: (g) => (<><BadgeFront guides={g} /><BadgeBack guides={g} /></>) },
