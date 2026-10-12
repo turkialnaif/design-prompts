@@ -23,3 +23,27 @@ duotone("public/brand/riyadh-kafd.jpg", 1500, "city-kafd.jpg")
 duotone("public/brand/riyadh-skyline.jpg", 1500, "city-skyline.jpg")
 for slug in ["legal-advisory", "corporate-contracts", "disputes-arbitration", "compliance-governance", "technology-data", "enforcement-recovery"]:
     duotone(f"public/services/{slug}.jpg", 900, f"thumb-{slug}.jpg", quality=78)
+
+
+# --- stationery: print-safe recolours of the lockup (flat colour, no CSS masks) and a skyline with its fade baked into the alpha ---
+def recolour_lockup(rgb, out):
+    src = Image.open("public/brand/logo-lockup.png").convert("RGBA")
+    a = src.getchannel("A")
+    solid = Image.new("RGBA", src.size, rgb + (255,))
+    solid.putalpha(a)
+    solid.save(f"{OUT}/{out}", optimize=True)
+    print(out, solid.size)
+
+
+recolour_lockup((0, 18, 74), "lockup-navy.png")
+recolour_lockup((216, 174, 85), "lockup-gold.png")
+
+city = Image.open(f"{OUT}/city-kafd.jpg").convert("RGBA")
+w, h = city.size
+fade = Image.linear_gradient("L").rotate(180).resize((w, h))  # 255 at the top -> 0 at the bottom, flipped below
+fade = fade.transpose(Image.FLIP_TOP_BOTTOM)  # 0 at the top -> 255 at the bottom
+fade = fade.point(lambda v: min(255, int(v * 1.35)))
+city.putalpha(fade)
+city = city.resize((1100, round(1100 * h / w)), Image.LANCZOS)
+city.save(f"{OUT}/city-fade.png", optimize=True)
+print("city-fade.png", city.size, os.path.getsize(f"{OUT}/city-fade.png") // 1024, "KB")
