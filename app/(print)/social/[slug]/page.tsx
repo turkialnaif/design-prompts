@@ -298,7 +298,58 @@ function CityPoster() {
   );
 }
 
-const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920, "dua-flag": 1920, "dua-city": 1920 };
+/**
+ * The depth version. The way a designer sets a headline on a skyline: the word "بلادنا" is placed in the sky BEHIND the two towers, so Al Mamlaka and
+ * Al Faisaliah overlap its letters. Layers, bottom to top: the photograph; the word; a cut-out of the towers (from the same photograph) that covers it;
+ * the grade; then the quiet lines, the glass pane and the signature.
+ */
+function DepthPoster() {
+  const base = data("collage-city.png");
+  const towers = data("towers-fg.png");
+  return (
+    <div dir="rtl" style={{ position: "relative", width: 1080, height: 1920, background: INK, overflow: "hidden", color: "#fff" }}>
+      {/* layer 1: the photograph */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={base} alt="" style={{ position: "absolute", inset: 0, width: 1080, height: 1920, filter: "contrast(1.08) saturate(1.15) brightness(0.98)" }} />
+      <div style={{ position: "absolute", inset: 0, mixBlendMode: "multiply", background: "linear-gradient(180deg, rgba(0,20,84,0.62) 0%, rgba(0,20,84,0.2) 30%, rgba(0,0,0,0) 52%)" }} />
+
+      {/* layer 2: the headline, in the sky */}
+      <div className={cairo.className} style={{ position: "absolute", right: 70, left: 70, top: 176, textAlign: "right", fontWeight: 900, lineHeight: 0.96 }}>
+        <div style={{ fontSize: 170, color: "#fff" }}>اللهم احفظ</div>
+      </div>
+      <div className={plex.className} style={{ position: "absolute", right: 74, left: 74, top: 372, textAlign: "right", fontWeight: 500, fontSize: 38, lineHeight: 1.6, color: "#fff", textShadow: "0 2px 18px rgba(0,6,29,0.8)" }}>
+        وشعبنا، وأحط بلادنا بالأمن والأمان،
+        <span style={{ display: "block" }}>ورد كيد أعدائنا ومن خلفهم ومن يدعمهم</span>
+        <span style={{ display: "block" }}>ومن يرضى بفعلتهم في نحورهم</span>
+      </div>
+      <div className={cairo.className} style={{ position: "absolute", right: 62, top: 540, fontWeight: 900, fontSize: 336, lineHeight: 1.0, color: BRASS, letterSpacing: "-0.015em", whiteSpace: "nowrap" }}>بلادنا</div>
+
+      {/* layer 3: the towers, cut out of the photograph, standing in front of the word */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={towers} alt="" style={{ position: "absolute", inset: 0, width: 1080, height: 1920, filter: "contrast(1.08) saturate(1.15) brightness(0.98)" }} />
+
+      {/* layer 4: the picture's floor, the glass pane, the signature */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1470, bottom: 0, background: "linear-gradient(180deg, rgba(0,6,29,0) 0%, rgba(0,6,29,0.7) 30%, rgba(0,6,29,0.96) 52%, #00061d 66%)" }} />
+      <div style={{ position: "absolute", left: 64, top: 64 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/profile/lockup-bone.png" alt="" style={{ width: 210, height: "auto", display: "block", opacity: 0.95 }} />
+      </div>
+      <div style={{ position: "absolute", left: 70, right: 70, top: 1618, height: 184, borderRadius: 26, overflow: "hidden", boxShadow: "0 30px 70px rgba(0,6,29,0.55)" }}>
+        <div style={{ position: "absolute", inset: 0, backdropFilter: "blur(16px) saturate(1.5)", WebkitBackdropFilter: "blur(16px) saturate(1.5)", background: "linear-gradient(135deg, rgba(255,255,255,0.34), rgba(255,255,255,0.1) 55%, rgba(255,255,255,0.22))" }} />
+        <div style={{ position: "absolute", inset: 0, borderRadius: 26, border: "1.5px solid rgba(255,255,255,0.55)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)" }} />
+        <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 44px", textAlign: "right" }}>
+          <p className={plex.className} style={{ margin: 0, fontSize: 25, fontWeight: 600, color: "#e8c970" }}>النظام الأساسي للحكم · المادة الرابعة والثلاثون</p>
+          <p className={plex.className} style={{ margin: "10px 0 0", fontSize: 38, lineHeight: 1.45, fontWeight: 700, color: "#fff" }}>الدفاع عن العقيدة الإسلامية والمجتمع والوطن واجب على كل مواطن.</p>
+        </div>
+      </div>
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 34, display: "flex", justifyContent: "center" }}>
+        <Signoff />
+      </div>
+    </div>
+  );
+}
+
+const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920, "dua-flag": 1920, "dua-city": 1920, "dua-depth": 1920 };
 
 export function generateStaticParams() {
   return Object.keys(sizes).map((slug) => ({ slug }));
@@ -312,7 +363,7 @@ export default async function SocialPoster({ params }: { params: Promise<{ slug:
   return (
     <main style={{ margin: 0 }}>
       <style>{`nextjs-portal { display: none !important; } html, body { margin: 0; padding: 0; background: ${INK}; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }`}</style>
-      {slug === "dua-city" ? <CityPoster /> : slug === "dua-flag" ? <FlagPoster /> : slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
+      {slug === "dua-depth" ? <DepthPoster /> : slug === "dua-city" ? <CityPoster /> : slug === "dua-flag" ? <FlagPoster /> : slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
     </main>
   );
 }
