@@ -15,12 +15,21 @@ Each piece also does a job, so the stationery is itself marketing:
 | Envelope (front and liner) | Front: the lockup, a small foil mark at the end of the thread. The inside is deep navy, a field of marks, the thread, and one line: «مُغلَق بسرية مهنية» / *Sealed in professional confidence*. |
 | Compliments slip | Lockup, thread, and a QR tagged `utm_medium=compliments-slip`; the page is left clear for the handwritten note. |
 | A5 notepad | Ruled page; the thread is its margin. |
-| Matter-file folder (flat) | Front: the large foil mark and, under the thread, the firm's full lockup in gold. One thread crosses front, spine and back, above the contact panel. Back: the city, the address, a QR tagged `utm_medium=folder`. |
+| Matter-file folder (flat) | A new idea: the front cover is navy with an engraved border and a guilloché rosette; the two lintels of the mark are **hot-foil gold** and the three columns are **die-cut windows** that show a gold-lined sheet glued inside the front cover, so the closed folder reads as one mark. Inside: the gold lining on one side; on the other an ivory pocket with two slits for cards. Back: the lockup, the address, a QR (`utm_medium=folder`), a guilloché band above and below. |
 | Seal sticker, 40 mm | Closes an envelope or a bound document. |
+
+## The line «فهمٌ يُسابق الرأْي»
+
+It appears on **one** piece only: the billboard, where a single line is exactly what a board is for. Everywhere else it was removed on purpose: a line repeated on every piece stops being read. The logo, the thread and the guilloché carry the identity on the rest.
+
+## The office door sign (next to the corridor door)
+
+Not made yet: it will be designed from the sign you provide, at the same size as the large one now hanging in the building's corridor. Send a photo of the old sign and its measurements.
 
 ## Files
 
 - `print-ready/*.pdf` — for the printer. **Each page = trim size + 3 mm bleed on every side** (the PDF page is the bleed size; the printer trims 3 mm off each side. The files carry no separate TrimBox). Fonts are embedded. One page per face (front, then back).
+- `folder-dieline.pdf` — the cutting file for the folder: magenta = die-cut (the three column windows on the outside; the two card slits inside), cyan dashed = folds. Send it to the finisher with `folder.pdf`.
 - `proofs-with-guides/*-guides.pdf` — the same files with the **trim (cyan)** and a **4 mm safe margin (red dashed)** drawn on. For checking only; never print these.
 - `presentation/board-1…3.png` — the three boards to show the set (1920 × 1200): the stationery, the folder and cards, and the signage and the workplace.
 
@@ -32,8 +41,7 @@ Each piece also does a job, so the stationery is itself marketing:
 | `mupi` | City-light panel 120 × 180 cm (1:5), with a QR tagged `utm_medium=mupi`. |
 | `roll-up` | 85 × 200 cm (1:5): the six service pillars and a QR. The lowest 25 cm of a roll-up is hidden by its base, so nothing important is placed there. |
 | `poster` | A3 «Five questions before you sign» in giant form (lobby piece and leave-behind). |
-| `door-plate` | 300 × 100 mm, «مكتب 14 / الدور الأول». |
-| `entrance-sign` | 600 × 300 mm, for the south-facing entrance. **Check the arrow's direction against the door before it is made**; the arrow is a drawn element and can be flipped. |
+| `entrance-sign` | 600 × 300 mm brushed-gold plate, the text engraved in navy: «المكتب · الدور الأول / مكتب 14» and an arrow. No direction is written. **Check the arrow against the door before it is made**; it can be flipped. |
 | `nameplate` | 220 × 60 mm desk plate. |
 | `reception-wall` | 240 × 90 cm (1:10): the lockup in brass letters on a navy panel. |
 | `badge` | Staff card, CR80 portrait 54 × 86 mm. The 24 mm circle on the front is for the photograph. |
@@ -51,7 +59,7 @@ Large-format pieces are drawn at a reduced scale (noted above). A large-format p
 | Envelope (DL, flat) | 220 × 110 mm | 226 × 116 mm |
 | Compliments slip | 210 × 99 mm | 216 × 105 mm |
 | A5 notepad page | 148 × 210 mm | 154 × 216 mm |
-| Folder, flat (front + 8 mm spine + back) | 448 × 310 mm | 454 × 316 mm |
+| Folder, flat (back + 8 mm spine + front), outside and inside | 468 × 320 mm | 474 × 326 mm |
 | Seal | 40 × 40 mm (die-cut round) | 46 × 46 mm |
 
 ## What to tell the printer
@@ -77,5 +85,5 @@ npm run dev
   --print-to-pdf=docs/stationery/print-ready/business-card.pdf http://localhost:3000/stationery/business-card
 ```
 
-Pieces: `business-card`, `questions-card`, `appointment-card`, `letterhead`, `envelope`, `compliments`, `notepad`, `folder`, `seal`, `billboard`, `mupi`, `roll-up`, `poster`, `door-plate`, `entrance-sign`, `nameplate`, `reception-wall`, `badge`, `lanyard`, `notebook`.
+Pieces: `business-card`, `questions-card`, `appointment-card`, `letterhead`, `envelope`, `compliments`, `notepad`, `folder`, `folder-dieline`, `seal`, `billboard`, `mupi`, `roll-up`, `poster`, `entrance-sign`, `nameplate`, `reception-wall`, `badge`, `lanyard`, `notebook`.
 `/stationery` shows the two presentation boards. These routes exist **only in development** (they return 404 in production).

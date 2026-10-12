@@ -202,3 +202,74 @@ export function MarkField({ w, h, tile = 11, size = 3.6, color = "rgba(40,84,220
     </svg>
   );
 }
+
+/** ---------- guilloché: the engraved fine-line pattern of banknotes and share certificates, as plain vector paths ---------- */
+
+const f2 = (n: number) => n.toFixed(2);
+
+/**
+ * A rosette: a family of hypotrochoids with the pen distance stepped from line to line, so the curves weave into the lace-like disc seen
+ * on banknotes. Drawn in a square viewBox of side `size` (the unit is mm); `r` is the outer radius.
+ */
+export function Rosette({ size, lines = 28, r, color = "rgba(216,174,85,0.55)", weight = 0.07, turns = 12, id = "ro", style }: { size: number; lines?: number; r?: number; color?: string; weight?: number; turns?: number; id?: string; style?: CSSProperties }) {
+  const R = r ?? size / 2;
+  // hypotrochoid with a rolling circle 1/turns of the fixed one; the pen sits inside (d<1) or outside (d>1) the rolling circle, and stepping d from
+  // line to line weaves a lace of `turns` petals
+  const rr = 1 / turns;
+  const paths: string[] = [];
+  for (let i = 0; i < lines; i++) {
+    const d = 0.55 + (0.95 * i) / (lines - 1);
+    const pts: string[] = [];
+    const steps = 480;
+    for (let k = 0; k <= steps; k++) {
+      const t = (k / steps) * Math.PI * 2;
+      const x = (1 - rr) * Math.cos(t) + d * rr * Math.cos(((1 - rr) / rr) * t);
+      const y = (1 - rr) * Math.sin(t) - d * rr * Math.sin(((1 - rr) / rr) * t);
+      pts.push(`${f2(size / 2 + x * R * 0.9)},${f2(size / 2 + y * R * 0.9)}`);
+    }
+    paths.push(`M${pts.join("L")}Z`);
+  }
+  return (
+    <svg width={`${size}mm`} height={`${size}mm`} viewBox={`0 0 ${size} ${size}`} style={{ display: "block", overflow: "visible", ...style }} aria-hidden data-id={id}>
+      <path d={paths.join("")} fill="none" stroke={color} strokeWidth={weight} />
+    </svg>
+  );
+}
+
+/** A guilloché band: several phase-shifted sine waves that cross each other, run along a strip of width `w` and height `h` (mm). */
+export function WaveBand({ w, h, lines = 9, wave = 14, color = "rgba(216,174,85,0.7)", weight = 0.08, style }: { w: number; h: number; lines?: number; wave?: number; color?: string; weight?: number; style?: CSSProperties }) {
+  const paths: string[] = [];
+  for (let i = 0; i < lines; i++) {
+    const pts: string[] = [];
+    const ph = (i / lines) * Math.PI * 2;
+    for (let x = 0; x <= w; x += 0.5) {
+      const y = h / 2 + (h / 2 - weight) * Math.sin((x / wave) * Math.PI * 2 + ph) * Math.cos((x / (wave * 5.3)) * Math.PI * 2 + i * 0.4);
+      pts.push(`${f2(x)},${f2(y)}`);
+    }
+    paths.push(`M${pts.join("L")}`);
+  }
+  return (
+    <svg width={`${w}mm`} height={`${h}mm`} viewBox={`0 0 ${w} ${h}`} style={{ display: "block", ...style }} aria-hidden>
+      <path d={paths.join("")} fill="none" stroke={color} strokeWidth={weight} />
+    </svg>
+  );
+}
+
+/** A framed rectangle: two hairlines with the corners cut (chamfered) like an engraved certificate border. */
+export function EngravedFrame({ w, h, inset = 0, gap = 1.1, cut = 3, color = "rgba(216,174,85,0.85)", weight = 0.18, style }: { w: number; h: number; inset?: number; gap?: number; cut?: number; color?: string; weight?: number; style?: CSSProperties }) {
+  const box = (i: number, c: number) => {
+    const x0 = i, y0 = i, x1 = w - i, y1 = h - i;
+    return `M${x0 + c},${y0}L${x1 - c},${y0}L${x1},${y0 + c}L${x1},${y1 - c}L${x1 - c},${y1}L${x0 + c},${y1}L${x0},${y1 - c}L${x0},${y0 + c}Z`;
+  };
+  return (
+    <svg width={`${w}mm`} height={`${h}mm`} viewBox={`0 0 ${w} ${h}`} style={{ display: "block", overflow: "visible", ...style }} aria-hidden>
+      <path d={box(inset, cut)} fill="none" stroke={color} strokeWidth={weight} />
+      <path d={box(inset + gap, Math.max(0, cut - gap * 0.4))} fill="none" stroke={color} strokeWidth={weight * 0.55} />
+    </svg>
+  );
+}
+
+/** Brushed-gold plate colour, used as a background for nameplates, door plates and the folder's inner lining. */
+export const plateBg: CSSProperties = {
+  backgroundImage: "linear-gradient(115deg,#8f6a22 0%,#d9b25c 16%,#f6e2a8 30%,#caa04a 46%,#b88a34 60%,#e6c470 78%,#9a7425 100%)",
+};

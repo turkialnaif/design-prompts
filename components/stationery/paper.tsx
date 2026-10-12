@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { firm } from "@/lib/site";
 import { ADDRESS_AR, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
-import { BLEED, C, Diamond, Face, GhostMark, Mark, MarkField, Thread, disp, foil, foilBg, latin } from "@/components/stationery/parts";
+import { BLEED, C, Diamond, Face, GhostMark, Mark, MarkField, Thread, WaveBand, disp, foil, foilBg, latin } from "@/components/stationery/parts";
 
 type G = { guides?: boolean };
 
@@ -31,36 +31,36 @@ export function VThread({ x, nodes = [], color = C.gold, foilLine = false, ticks
 
 const PAPER_W = "#fbf9f4";
 
-const FOOT_Y = 242; // where the letterhead's footer begins (mm from the top of the trim)
+const FOOT_Y = 276; // where the letterhead's footer begins (mm from the top of the trim)
 
-/** The letterhead's footer: deep navy, the city under glass, and the thread arriving at a gold seal and turning into the footer's edge. */
+/** The letterhead's footer: a slim deep-navy band under a gold hairline, a strip of engraved guilloché along its top edge, and the thread arriving at a small gold seal. */
 function LetterFoot() {
   const H = 297 - FOOT_Y + BLEED;
   return (
     <>
       <div className="absolute inset-x-0 overflow-hidden" style={{ bottom: 0, height: `${H}mm`, background: C.deep }}>
-        {/* the identity as texture: a field of marks that dissolves into solid navy where the text sits, a pool of light behind the seal */}
-        <MarkField w={216} h={297 - FOOT_Y + BLEED} tile={12} size={3.8} id="lf" color="rgba(60,110,235,0.26)" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,6,29,0.0) 0%, rgba(0,6,29,0.62) 38%, #00061d 66%)" }} />
-        <div className="absolute" style={{ right: "-30mm", top: "-34mm", width: "130mm", height: "96mm", background: "radial-gradient(closest-side, rgba(40,84,220,0.4), transparent)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 50% 160% at 100% 0%, rgba(40,84,220,0.3), transparent 70%)" }} />
+        <div className="absolute" style={{ left: 0, top: "1.6mm" }}>
+          <WaveBand w={216} h={3.2} lines={7} wave={11} color="rgba(216,174,85,0.55)" weight={0.07} />
+        </div>
       </div>
-      <Thread y={BLEED + FOOT_Y} from={BLEED + 16 + 8.6} to="end" foilLine weight={0.4} />
+      <Thread y={BLEED + FOOT_Y} from={BLEED + 16 + 5.6} to="end" foilLine weight={0.35} />
     </>
   );
 }
 
 /** The seal at the end of the thread: a navy disc ringed in gold, the mark inside. */
 function ThreadSeal({ at = FOOT_Y }: { at?: number }) {
-  const D = 17.2;
+  const D = 11.2;
   return (
     <div className="absolute" style={{ insetInlineStart: `${16 - D / 2}mm`, top: `${at - D / 2}mm`, width: `${D}mm`, height: `${D}mm` }}>
       <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden>
         <circle cx="20" cy="20" r="19.6" fill={C.deep} />
-        <circle cx="20" cy="20" r="19" fill="none" stroke="url(#stn-foil)" strokeWidth="0.9" />
-        <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(216,174,85,0.55)" strokeWidth="0.3" />
+        <circle cx="20" cy="20" r="19" fill="none" stroke="url(#stn-foil)" strokeWidth="1.1" />
+        <circle cx="20" cy="20" r="15.6" fill="none" stroke="rgba(216,174,85,0.5)" strokeWidth="0.35" />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <Mark height={6.4} />
+        <Mark height={4.2} />
       </div>
     </div>
   );
@@ -68,51 +68,31 @@ function ThreadSeal({ at = FOOT_Y }: { at?: number }) {
 
 /**
  * Letterhead, A4. The thread runs down the start edge, its two diamonds at 99 and 198 mm (the third-folds, so the identity is also the
- * fold guide for a DL envelope; a tick at 148.5 mm marks the filing punch), reaches a gold seal and turns into the edge of the footer.
+ * fold guide for a DL envelope; a tick at 148.5 mm marks the filing punch), reaches a small gold seal and turns into the footer's hairline.
  */
 export async function Letterhead({ guides }: G) {
+  const grp: CSSProperties = { fontSize: "5.7pt", lineHeight: 1.55, color: "rgba(255,255,255,0.92)" };
   return (
-    <Face w={210} h={297} bg={PAPER_W} guides={guides} bleed={<><VThread x={BLEED + 16} nodes={[99, 198]} ticks={[148.5]} stopAt={FOOT_Y - 8.6} /><LetterFoot /></>}>
+    <Face w={210} h={297} bg={PAPER_W} guides={guides} bleed={<><VThread x={BLEED + 16} nodes={[99, 198]} ticks={[148.5]} stopAt={FOOT_Y - 5.6} /><LetterFoot /></>}>
       <div className="absolute" style={{ top: "13mm", insetInlineStart: "27mm" }}>
         <Lockup mm={62} />
       </div>
 
       <ThreadSeal />
 
-      <div className="absolute grid" style={{ top: "270.6mm", insetInlineStart: "34mm", insetInlineEnd: "14mm", gridTemplateColumns: "1.05fr 1fr 1fr", columnGap: "8mm", color: "rgba(255,255,255,0.92)", fontSize: "6.3pt", lineHeight: 1.7 }}>
+      <div className="absolute grid" style={{ top: "283.4mm", insetInlineStart: "27mm", insetInlineEnd: "14mm", gridTemplateColumns: "1.15fr 1fr 1fr", columnGap: "7mm", ...grp }}>
         <div>
-          <p style={{ fontSize: "5.2pt", color: C.goldBright, marginBottom: "0.8mm" }}>المقر</p>
-          {ADDRESS_AR.map((l) => (
-            <p key={l}>{l}</p>
-          ))}
+          <p>الدور الأول · مكتب 14 · طريق أبي بكر الصديق الفرعي</p>
+          <p>حي الياسمين · الرياض 13326</p>
         </div>
-        <div dir="ltr" style={{ ...latin, letterSpacing: "0.06em" }}>
-          <p dir="rtl" style={{ fontFamily: "inherit", fontSize: "5.2pt", color: C.goldBright, marginBottom: "0.8mm", textAlign: "end" }}>التواصل</p>
-          <p className="flex items-center gap-[1.6mm]">
-            <Diamond size={1} color={C.goldBright} />
-            {PHONE}
-          </p>
-          <p className="flex items-center gap-[1.6mm]">
-            <Diamond size={1} color={C.goldBright} />
-            info@taap.sa
-          </p>
-          <p className="flex items-center gap-[1.6mm]">
-            <Diamond size={1} color={C.goldBright} />
-            taap.sa
-          </p>
+        <div dir="ltr" style={{ ...latin, letterSpacing: "0.05em", textAlign: "start" }}>
+          <p>{PHONE} · info@taap.sa</p>
+          <p>taap.sa</p>
         </div>
         <div>
-          <p style={{ fontSize: "5.2pt", color: C.goldBright, marginBottom: "0.8mm" }}>التراخيص</p>
           <p>رخصة مزاولة المحاماة {firm.licenseNumber}</p>
           <p>السجل الموحد {firm.unifiedNumber}</p>
-          <p style={{ color: "rgba(255,255,255,0.7)" }}>الأحد – الخميس ٨ ص – ٥ م</p>
         </div>
-      </div>
-
-      <div className="absolute flex items-center gap-[3mm]" style={{ bottom: "5mm", insetInlineStart: "34mm", insetInlineEnd: "14mm" }}>
-        <span style={{ height: "0.2mm", flex: 1, background: "rgba(216,174,85,0.4)" }} />
-        <span dir="ltr" style={{ ...latin, fontSize: "4.6pt", letterSpacing: "0.34em", color: C.goldBright, whiteSpace: "nowrap" }}>TURKI ALNAIF &amp; PARTNERS · LAWYERS &amp; LEGAL CONSULTANTS · RIYADH</span>
-        <span style={{ height: "0.2mm", flex: 1, background: "rgba(216,174,85,0.4)" }} />
       </div>
     </Face>
   );
@@ -248,71 +228,8 @@ export function Notepad({ guides }: G) {
         }}
       />
       <p className="absolute" dir="ltr" style={{ ...latin, bottom: "8mm", insetInlineStart: "20mm", fontSize: "5.2pt", letterSpacing: "0.22em", color: C.goldText }}>
-        TAAP.SA · UNDERSTANDING THAT RUNS AHEAD OF OPINION
+        TAAP.SA
       </p>
-    </Face>
-  );
-}
-
-/** Presentation folder, flat: front, spine and back as one spread. The thread crosses all three, so the folder is one unbroken line. */
-export async function FolderSpread({ guides }: G) {
-  const PANEL = 220;
-  const SPINE = 8;
-  return (
-    <Face
-      w={PANEL * 2 + SPINE}
-      h={310}
-      bg={C.deep}
-      guides={guides}
-      bleed={
-        <>
-          <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 40% 50% at 25% 32%, rgba(40,84,220,0.34), transparent 70%)` }} />
-          <div className="absolute" style={{ insetInlineStart: `${BLEED + PANEL + SPINE}mm`, insetInlineEnd: 0, bottom: 0, height: "150mm" }}>
-            <img src="/brand/profile/city-fade.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "55% 60%" }} />
-          </div>
-          {/*
-            The front cover: the mark at monumental scale. Its lintels run off both edges of the cover, its three columns hang from them,
-            and the longest column lands its tip exactly on the thread, which crosses the whole spread. The cover is clipped to its own panel.
-          */}
-          <div className="absolute overflow-hidden" style={{ right: 0, top: 0, bottom: 0, width: `${PANEL + BLEED}mm` }}>
-            <div className="absolute" style={{ left: `${(PANEL + BLEED - (215 * 420) / 340) / 2}mm`, top: `${BLEED + 206 - 0.9618 * 215}mm` }}>
-              <Mark height={215} />
-            </div>
-            <div className="absolute inset-x-0" style={{ top: 0, height: "120mm", background: "radial-gradient(ellipse 80% 90% at 50% 0%, rgba(255,243,198,0.10), transparent 70%)" }} />
-          </div>
-          <Thread y={BLEED + 206} from={-4} to="end" nodes={[]} foilLine weight={0.35} />
-        </>
-      }
-    >
-      {/* front */}
-      <div className="absolute" style={{ insetInlineStart: 0, top: 0, width: `${PANEL}mm`, height: "310mm" }}>
-        <div className="absolute" style={{ top: "238mm", insetInlineStart: "22mm" }}>
-          <Lockup mm={170} fill="foil" />
-        </div>
-      </div>
-      {/* spine */}
-      <div className="absolute flex items-center justify-center" style={{ insetInlineStart: `${PANEL}mm`, top: 0, width: `${SPINE}mm`, height: "310mm", background: "rgba(0,18,74,0.55)" }}>
-        <span style={{ writingMode: "vertical-rl", ...latin, ...foil, fontSize: "6.4pt", letterSpacing: "0.34em", textTransform: "uppercase", display: "inline-block" }}>Turki AlNaif &amp; Partners · TAAP</span>
-      </div>
-      {/* back */}
-      <div className="absolute" style={{ insetInlineStart: `${PANEL + SPINE}mm`, top: 0, width: `${PANEL}mm`, height: "310mm" }}>
-        <div className="absolute" style={{ top: "22mm", insetInlineStart: "22mm", insetInlineEnd: "22mm" }}>
-          <p style={{ ...disp(), fontSize: "22pt", lineHeight: 1.3, color: "#fff" }}>فهمٌ يُسابق الرأْي</p>
-          <p dir="ltr" style={{ ...latin, marginTop: "2mm", fontSize: "8pt", letterSpacing: "0.04em", color: C.goldBright }}>Understanding that runs ahead of opinion</p>
-        </div>
-        <div className="absolute" style={{ top: "226mm", insetInline: "14mm", height: "60mm", background: "rgba(0,6,29,0.8)" }} />
-        <div className="absolute" style={{ top: "235mm", insetInlineStart: "22mm", fontSize: "9pt", lineHeight: 2, color: "rgba(255,255,255,0.92)" }}>
-          {ADDRESS_AR.map((l) => (
-            <p key={l}>{l}</p>
-          ))}
-          <p dir="ltr" style={{ ...latin, letterSpacing: "0.06em", color: C.goldBright, marginTop: "2mm" }}>
-            {PHONE} · info@taap.sa
-          </p>
-        </div>
-        <div className="absolute" style={{ top: "235mm", insetInlineEnd: "22mm" }}>
-          <Qr url={qrUrl("folder")} mm={24} />
-        </div>
-      </div>
     </Face>
   );
 }

@@ -1,7 +1,8 @@
+import { FolderInner, FolderOuter } from "@/components/stationery/folder";
 import type { CSSProperties, ReactNode } from "react";
 import { AppointmentBack, AppointmentFront, CardBack, CardFront, QuestionsBack, QuestionsFront } from "@/components/stationery/cards";
-import { BadgeBack, BadgeFront, Billboard, DoorPlate, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
-import { Compliments, EnvelopeFront, EnvelopeLiner, FolderSpread, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
+import { BadgeBack, BadgeFront, Billboard, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
+import { Compliments, EnvelopeFront, EnvelopeLiner, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
 import { C, GhostMark, foilBg } from "@/components/stationery/parts";
 
 /** One piece placed on the board: scaled, turned a few degrees and lifted off the surface by a soft shadow. */
@@ -77,9 +78,12 @@ export async function BoardOne() {
 
 export async function BoardTwo() {
   return (
-    <Surface caption="ملف المسألة وبطاقات التسليم" sub="غلافٌ يعبره الخيط الذهبي من الواجهة إلى الظهر، وبطاقتان تُسلَّمان مع كل استشارة">
-      <Item x={70} y={110} z={1} rot={-1} zoom={0.68}>
-        <FolderSpread />
+    <Surface caption="ملف المسألة وبطاقات التسليم" sub="غلافٌ تُفتح أعمدته نوافذَ على بطانة ذهبية، وبطاقتان تُسلَّمان مع كل استشارة">
+      <Item x={50} y={90} z={1} rot={-0.6} zoom={0.38}>
+        <FolderOuter />
+      </Item>
+      <Item x={50} y={560} z={1} rot={0.6} zoom={0.3}>
+        <FolderInner />
       </Item>
       <Item x={1290} y={110} z={4} rot={-4} zoom={1.2}>
         <QuestionsBack />
@@ -96,7 +100,7 @@ export async function BoardTwo() {
 
 export async function BoardThree() {
   return (
-    <Surface caption="اللوحات والمكتب" sub="لوحة إعلانية ولوحة مدينة ولافتة قائمة وملصق، ثم لوحات المدخل والباب والطاولة وجدار الاستقبال والبطاقة التعريفية">
+    <Surface caption="اللوحات والمكتب" sub="لوحة إعلانية ولوحة مدينة ولافتة قائمة وملصق، ثم لوحة المدخل ولوحة الطاولة وجدار الاستقبال والبطاقة التعريفية">
       <Item x={60} y={70} z={2} rot={0} zoom={0.175}>
         <Billboard />
       </Item>
@@ -112,22 +116,19 @@ export async function BoardThree() {
       <Item x={1130} y={70} z={2} rot={0} zoom={0.44}>
         <ReceptionWall />
       </Item>
-      <Item x={1130} y={250} z={3} rot={-1} zoom={0.34}>
-        <DoorPlate />
-      </Item>
-      <Item x={1590} y={350} z={3} rot={1.5} zoom={0.34}>
-        <NamePlate />
-      </Item>
-      <Item x={1130} y={430} z={4} rot={1} zoom={0.22}>
+      <Item x={1130} y={250} z={4} rot={1} zoom={0.22}>
         <EntranceSign />
       </Item>
-      <Item x={1590} y={60} z={5} rot={-3} zoom={0.72}>
+      <Item x={1590} y={90} z={5} rot={-3} zoom={0.72}>
         <BadgeFront />
       </Item>
-      <Item x={1760} y={80} z={6} rot={3} zoom={0.72}>
+      <Item x={1760} y={110} z={6} rot={3} zoom={0.72}>
         <BadgeBack />
       </Item>
-      <Item x={1130} y={730} z={3} rot={-1} zoom={0.34}>
+      <Item x={1590} y={360} z={3} rot={1.5} zoom={0.34}>
+        <NamePlate />
+      </Item>
+      <Item x={1130} y={520} z={3} rot={-1} zoom={0.34}>
         <Notebook />
       </Item>
       <Item x={60} y={980} z={2} rot={0} zoom={0.19}>

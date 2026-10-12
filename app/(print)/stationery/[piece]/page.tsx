@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { Compliments, Continuation, EnvelopeFront, EnvelopeLiner, FolderSpread, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
-import { Billboard, BadgeBack, BadgeFront, DoorPlate, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
+import { FolderDieline, FolderInner, FolderOuter } from "@/components/stationery/folder";
+import { Compliments, Continuation, EnvelopeFront, EnvelopeLiner, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
+import { Billboard, BadgeBack, BadgeFront, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
 import { AppointmentBack, AppointmentFront, CardBack, CardFront, QuestionsBack, QuestionsFront } from "@/components/stationery/cards";
 
 /** Print proofs of the stationery. Present in development only: the files for the printer are made from this route and kept in docs/stationery. */
@@ -11,13 +12,13 @@ const pieces: Record<string, { w: number; h: number; faces: (g: boolean) => Reac
   envelope: { w: 220, h: 110, faces: (g) => (<><EnvelopeFront guides={g} /><EnvelopeLiner guides={g} /></>) },
   compliments: { w: 210, h: 99, faces: (g) => <Compliments guides={g} /> },
   notepad: { w: 148, h: 210, faces: (g) => <Notepad guides={g} /> },
-  folder: { w: 448, h: 310, faces: (g) => <FolderSpread guides={g} /> },
+  folder: { w: 468, h: 320, faces: (g) => (<><FolderOuter guides={g} /><FolderInner guides={g} /></>) },
+  "folder-dieline": { w: 468, h: 320, faces: (g) => <FolderDieline guides={g} /> },
   seal: { w: 40, h: 40, faces: (g) => <Seal guides={g} /> },
   billboard: { w: 1200, h: 400, faces: (g) => <Billboard guides={g} /> },
   mupi: { w: 240, h: 360, faces: (g) => <Mupi guides={g} /> },
   "roll-up": { w: 170, h: 400, faces: (g) => <RollUp guides={g} /> },
   poster: { w: 297, h: 420, faces: (g) => <Poster guides={g} /> },
-  "door-plate": { w: 300, h: 100, faces: (g) => <DoorPlate guides={g} /> },
   "entrance-sign": { w: 600, h: 300, faces: (g) => <EntranceSign guides={g} /> },
   nameplate: { w: 220, h: 60, faces: (g) => <NamePlate guides={g} /> },
   "reception-wall": { w: 240, h: 90, faces: (g) => <ReceptionWall guides={g} /> },
