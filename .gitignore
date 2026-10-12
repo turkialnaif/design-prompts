@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local data & secrets
 /.data/
+
+# third-party photographs supplied for the social poster
+docs/social/assets/collage*.png
