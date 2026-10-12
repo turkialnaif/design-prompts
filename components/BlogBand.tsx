@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 import { articlePhoto } from "@/lib/article-photos";
-import { blurProps } from "@/lib/blur";
 
 export type BandItem = { slug: string; title: string; description: string; day: string; month: string };
 
@@ -19,8 +18,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
         {photo && (
           <Image
             src={photo.src}
-            {...blurProps(photo.src)}
-            alt=""
+            alt={hidden ? "" : a.title}
             fill
             sizes="264px"
             quality={90}

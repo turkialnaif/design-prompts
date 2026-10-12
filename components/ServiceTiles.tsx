@@ -18,7 +18,7 @@ export default function ServiceTiles({ items, cta }: { items: ServiceTile[]; cta
             <Image
               src={s.photo}
               {...blurProps(s.photo)}
-              alt=""
+              alt={s.title}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="-z-20 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"

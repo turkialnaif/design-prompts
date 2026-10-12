@@ -31,7 +31,7 @@ export default function ServiceAccordion({ items, cta }: { items: ServiceTile[];
             </Link>
             <Image
               src={s.photo}
-              alt=""
+              alt={s.title}
               fill
               sizes="(min-width: 768px) 60vw, 100vw"
               className={`-z-20 object-cover transition-[transform,opacity,filter] duration-[900ms] ease-out ${on ? "scale-100 opacity-100 [filter:none]" : "scale-110 opacity-35 [filter:grayscale(1)]"}`}

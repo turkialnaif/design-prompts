@@ -14,8 +14,13 @@ function Track({ items, reverse, dur, color }: { items: Partner[]; reverse: bool
     <ul className={`htrack ${reverse ? "htrack-rev" : ""} flex w-max items-center gap-2`} style={{ animationDuration: `${dur}s` }}>
       {[0, 1, 2, 3].map((c) =>
         items.map((p, i) => (
-          <li key={`${c}-${i}`} className={color ? "vtile vtile-color" : "vtile"}>
-            <Image src={p.src} alt="" width={96} height={96} sizes="48px" loading={c === 0 ? "eager" : "lazy"} fetchPriority="low" className="h-full w-full" />
+          <li key={`${c}-${i}`} className={color ? "vtile vtile-color" : "vtile"} aria-hidden={c > 0 || color ? true : undefined}>
+            {c === 0 && !color ? (
+              <Image src={p.src} alt={p.name} width={96} height={96} sizes="48px" loading="eager" fetchPriority="low" className="h-full w-full" />
+            ) : (
+              /* the repeated and the coloured copies are only for the sliding loop: drawn as backgrounds, so they are not 500 more images in the page */
+              <span className="vimg" style={{ backgroundImage: `url(${p.src})` }} />
+            )}
           </li>
         )),
       )}

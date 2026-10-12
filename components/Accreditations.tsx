@@ -27,7 +27,7 @@ function Card({ a, locale, index }: { a: Accreditation; locale: "ar" | "en"; ind
       >
         <div className="flex h-14 w-full items-center justify-center rounded-xl bg-white/90 px-3">
           {a.logos?.map((l) => (
-            <Image key={l.src} src={l.src} alt="" width={l.width} height={l.height} className="max-h-9 w-auto max-w-full object-contain" unoptimized={l.src.endsWith(".svg")} />
+            <Image key={l.src} src={l.src} alt={c.title} width={l.width} height={l.height} className="max-h-9 w-auto max-w-full object-contain" unoptimized={l.src.endsWith(".svg")} />
           ))}
         </div>
         <h3 className="font-display mt-3 text-[13px] font-semibold leading-6 text-white">{c.title}</h3>
