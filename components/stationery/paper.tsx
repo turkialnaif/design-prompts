@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { firm } from "@/lib/site";
 import { ADDRESS_AR, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
-import { BLEED, C, Diamond, Face, GhostMark, Mark, Thread, disp, foil, foilBg, latin } from "@/components/stationery/parts";
+import { BLEED, C, Diamond, Face, GhostMark, Mark, MarkField, Thread, disp, foil, foilBg, latin } from "@/components/stationery/parts";
 
 type G = { guides?: boolean };
 
@@ -39,10 +39,10 @@ function LetterFoot() {
   return (
     <>
       <div className="absolute inset-x-0 overflow-hidden" style={{ bottom: 0, height: `${H}mm`, background: C.deep }}>
-        {/* the city hangs under the thread and dissolves into solid navy, where the text sits */}
-        <img src="/brand/profile/city-kafd.jpg" alt="" className="absolute inset-x-0" style={{ top: 0, width: "100%", height: "30mm", objectFit: "cover", objectPosition: "50% 34%", opacity: 0.95 }} />
-        <div className="absolute inset-x-0" style={{ top: 0, height: "31mm", background: "linear-gradient(180deg, rgba(0,6,29,0.05) 0%, rgba(0,6,29,0.5) 50%, #00061d 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 70% at 100% 0%, rgba(40,84,220,0.28), transparent 70%)" }} />
+        {/* the identity as texture: a field of marks that dissolves into solid navy where the text sits, a pool of light behind the seal */}
+        <MarkField w={216} h={297 - FOOT_Y + BLEED} tile={12} size={3.8} id="lf" color="rgba(60,110,235,0.26)" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,6,29,0.0) 0%, rgba(0,6,29,0.62) 38%, #00061d 66%)" }} />
+        <div className="absolute" style={{ right: "-30mm", top: "-34mm", width: "130mm", height: "96mm", background: "radial-gradient(closest-side, rgba(40,84,220,0.4), transparent)" }} />
       </div>
       <Thread y={BLEED + FOOT_Y} from={BLEED + 16 + 8.6} to="end" foilLine weight={0.4} />
     </>
@@ -270,15 +270,22 @@ export async function FolderSpread({ guides }: G) {
           <div className="absolute" style={{ insetInlineStart: `${BLEED + PANEL + SPINE}mm`, insetInlineEnd: 0, bottom: 0, height: "150mm" }}>
             <img src="/brand/profile/city-fade.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "55% 60%" }} />
           </div>
+          {/*
+            The front cover: the mark at monumental scale. Its lintels run off both edges of the cover, its three columns hang from them,
+            and the longest column lands its tip exactly on the thread, which crosses the whole spread. The cover is clipped to its own panel.
+          */}
+          <div className="absolute overflow-hidden" style={{ right: 0, top: 0, bottom: 0, width: `${PANEL + BLEED}mm` }}>
+            <div className="absolute" style={{ left: `${(PANEL + BLEED - (215 * 420) / 340) / 2}mm`, top: `${BLEED + 206 - 0.9618 * 215}mm` }}>
+              <Mark height={215} />
+            </div>
+            <div className="absolute inset-x-0" style={{ top: 0, height: "120mm", background: "radial-gradient(ellipse 80% 90% at 50% 0%, rgba(255,243,198,0.10), transparent 70%)" }} />
+          </div>
           <Thread y={BLEED + 206} from={-4} to="end" nodes={[]} foilLine weight={0.35} />
         </>
       }
     >
       {/* front */}
       <div className="absolute" style={{ insetInlineStart: 0, top: 0, width: `${PANEL}mm`, height: "310mm" }}>
-        <div className="absolute flex justify-center" style={{ top: "42mm", insetInline: 0 }}>
-          <Mark height={118} />
-        </div>
         <div className="absolute" style={{ top: "238mm", insetInlineStart: "22mm" }}>
           <Lockup mm={170} fill="foil" />
         </div>

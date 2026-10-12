@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { AppointmentBack, AppointmentFront, CardBack, CardFront, QuestionsBack, QuestionsFront } from "@/components/stationery/cards";
+import { BadgeBack, BadgeFront, Billboard, DoorPlate, EntranceSign, Lanyard, Mupi, NamePlate, Notebook, Poster, ReceptionWall, RollUp } from "@/components/stationery/outdoor";
 import { Compliments, EnvelopeFront, EnvelopeLiner, FolderSpread, Letterhead, Notepad, Seal } from "@/components/stationery/paper";
 import { C, GhostMark, foilBg } from "@/components/stationery/parts";
 
@@ -88,6 +89,49 @@ export async function BoardTwo() {
       </Item>
       <Item x={1290} y={700} z={6} rot={-2} zoom={1.2}>
         <AppointmentBack />
+      </Item>
+    </Surface>
+  );
+}
+
+export async function BoardThree() {
+  return (
+    <Surface caption="اللوحات والمكتب" sub="لوحة إعلانية ولوحة مدينة ولافتة قائمة وملصق، ثم لوحات المدخل والباب والطاولة وجدار الاستقبال والبطاقة التعريفية">
+      <Item x={60} y={70} z={2} rot={0} zoom={0.175}>
+        <Billboard />
+      </Item>
+      <Item x={60} y={370} z={2} rot={-1.5} zoom={0.4}>
+        <Mupi />
+      </Item>
+      <Item x={440} y={370} z={3} rot={1.5} zoom={0.34}>
+        <RollUp />
+      </Item>
+      <Item x={690} y={340} z={3} rot={-1} zoom={0.35}>
+        <Poster />
+      </Item>
+      <Item x={1130} y={70} z={2} rot={0} zoom={0.44}>
+        <ReceptionWall />
+      </Item>
+      <Item x={1130} y={250} z={3} rot={-1} zoom={0.34}>
+        <DoorPlate />
+      </Item>
+      <Item x={1590} y={350} z={3} rot={1.5} zoom={0.34}>
+        <NamePlate />
+      </Item>
+      <Item x={1130} y={430} z={4} rot={1} zoom={0.22}>
+        <EntranceSign />
+      </Item>
+      <Item x={1590} y={60} z={5} rot={-3} zoom={0.72}>
+        <BadgeFront />
+      </Item>
+      <Item x={1760} y={80} z={6} rot={3} zoom={0.72}>
+        <BadgeBack />
+      </Item>
+      <Item x={1130} y={730} z={3} rot={-1} zoom={0.34}>
+        <Notebook />
+      </Item>
+      <Item x={60} y={980} z={2} rot={0} zoom={0.19}>
+        <Lanyard />
       </Item>
     </Surface>
   );

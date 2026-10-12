@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { BoardOne, BoardTwo } from "@/components/stationery/board";
+import { BoardOne, BoardThree, BoardTwo } from "@/components/stationery/board";
 
 /** The stationery set on a table (development only). Screenshots of these two boards are the presentation of the set. */
 export default async function StationeryBoards() {
@@ -14,6 +14,7 @@ export default async function StationeryBoards() {
       `}</style>
       <BoardOne />
       <BoardTwo />
+      <BoardThree />
     </main>
   );
 }

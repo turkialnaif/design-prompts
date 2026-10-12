@@ -1,6 +1,6 @@
 import QRCode from "qrcode";
 import { firm } from "@/lib/site";
-import { C, Diamond, Face, GhostMark, Mark, Thread, disp, foil, latin } from "@/components/stationery/parts";
+import { C, Diamond, Face, GhostMark, Mark, MarkField, Thread, disp, foil, latin } from "@/components/stationery/parts";
 
 export const PHONE = "+966 56 677 0888";
 export const ADDRESS_AR = ["الدور الأول · مكتب 14", "طريق أبي بكر الصديق الفرعي", "حي الياسمين · الرياض 13326"];
@@ -19,7 +19,7 @@ export async function Qr({ url, mm, dark = C.ink, light = "#f6f1e6", pad = 1.6 }
 type G = { guides?: boolean };
 
 /**
- * Business card, side A (Arabic). Deep navy; the city rises from the foot of the card; the name in light, the title in gold, and the thread
+ * Business card, side A (Arabic). Deep navy; a field of small marks rises from the foot of the card; the name in light, the title in gold, and the thread
  * leaves the card through the opposite edge. Nothing else: the card is meant to be held, and read slowly.
  */
 export function CardFront({ guides }: G) {
@@ -32,7 +32,9 @@ export function CardFront({ guides }: G) {
       bleed={
         <>
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 100% 0%, rgba(40,84,220,0.42), transparent 70%)" }} />
-          <img src="/brand/profile/city-fade.png" alt="" className="absolute" style={{ left: 0, bottom: "-21mm", width: "100%", height: "auto", opacity: 0.9 }} />
+          {/* the identity as texture: a field of small marks, fading into solid navy toward the top, and the thread through it */}
+          <MarkField w={96} h={61} tile={9.5} size={3.2} id="cf" color="rgba(60,110,235,0.30)" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #00061d 0%, #00061d 30%, rgba(0,6,29,0.55) 52%, rgba(0,6,29,0.0) 100%)" }} />
           <Thread y={3 + 29.6} from={-4} to={3 + 8 + 9.4} nodes={[]} foilLine weight={0.3} />
         </>
       }
@@ -40,9 +42,6 @@ export function CardFront({ guides }: G) {
       <div className="absolute" style={{ top: "8.2mm", insetInlineStart: "8mm" }}>
         <p style={{ ...disp(), fontSize: "21pt", lineHeight: 1.12, color: "#fff", margin: 0 }}>تركي النايف</p>
         <p style={{ margin: "1.7mm 0 0", fontSize: "7.2pt", color: C.goldBright, letterSpacing: 0 }}>محامٍ · مؤسس ومدير</p>
-      </div>
-      <div className="absolute" style={{ top: "6.6mm", insetInlineEnd: "8mm" }}>
-        <Mark height={7.6} />
       </div>
       {/* the thread ends in the three diamonds, set on it where it stops */}
       <div className="absolute flex items-center gap-[2.2mm]" style={{ top: "28.9mm", insetInlineEnd: "8mm" }}>

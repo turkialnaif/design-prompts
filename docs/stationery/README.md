@@ -22,7 +22,25 @@ Each piece also does a job, so the stationery is itself marketing:
 
 - `print-ready/*.pdf` — for the printer. **Each page = trim size + 3 mm bleed on every side** (the PDF page is the bleed size; the printer trims 3 mm off each side. The files carry no separate TrimBox). Fonts are embedded. One page per face (front, then back).
 - `proofs-with-guides/*-guides.pdf` — the same files with the **trim (cyan)** and a **4 mm safe margin (red dashed)** drawn on. For checking only; never print these.
-- `presentation/*.png` — the two boards to show the set (1920 × 1200).
+- `presentation/board-1…3.png` — the three boards to show the set (1920 × 1200): the stationery, the folder and cards, and the signage and the workplace.
+
+## Signage and the workplace
+
+| Piece | What it is |
+|---|---|
+| `billboard` | 12 × 4 m (drawn at 1:10). The mark at monumental scale, its longest column landing on the thread; «فهمٌ يُسابق الرأْي» set as large as the board allows; one address: `taap.sa`. No phone number on a billboard: nobody can dial it at 80 km/h. |
+| `mupi` | City-light panel 120 × 180 cm (1:5), with a QR tagged `utm_medium=mupi`. |
+| `roll-up` | 85 × 200 cm (1:5): the six service pillars and a QR. The lowest 25 cm of a roll-up is hidden by its base, so nothing important is placed there. |
+| `poster` | A3 «Five questions before you sign» in giant form (lobby piece and leave-behind). |
+| `door-plate` | 300 × 100 mm, «مكتب 14 / الدور الأول». |
+| `entrance-sign` | 600 × 300 mm, for the south-facing entrance. **Check the arrow's direction against the door before it is made**; the arrow is a drawn element and can be flipped. |
+| `nameplate` | 220 × 60 mm desk plate. |
+| `reception-wall` | 240 × 90 cm (1:10): the lockup in brass letters on a navy panel. |
+| `badge` | Staff card, CR80 portrait 54 × 86 mm. The 24 mm circle on the front is for the photograph. |
+| `lanyard` | 20 mm × 900 mm. |
+| `notebook` | Hard-cover A5 notebook, flat (back, 10 mm spine, front). |
+
+Large-format pieces are drawn at a reduced scale (noted above). A large-format printer enlarges the vector PDF to full size; there is no raster image in them except the small QR codes (vector) and, on the folder back, the photograph of the city.
 
 ## Sizes (trim)
 
@@ -59,5 +77,5 @@ npm run dev
   --print-to-pdf=docs/stationery/print-ready/business-card.pdf http://localhost:3000/stationery/business-card
 ```
 
-Pieces: `business-card`, `questions-card`, `appointment-card`, `letterhead`, `envelope`, `compliments`, `notepad`, `folder`, `seal`.
+Pieces: `business-card`, `questions-card`, `appointment-card`, `letterhead`, `envelope`, `compliments`, `notepad`, `folder`, `seal`, `billboard`, `mupi`, `roll-up`, `poster`, `door-plate`, `entrance-sign`, `nameplate`, `reception-wall`, `badge`, `lanyard`, `notebook`.
 `/stationery` shows the two presentation boards. These routes exist **only in development** (they return 404 in production).

@@ -145,3 +145,60 @@ export function Mark({ height, fill = "foil", style }: { height: number; fill?: 
 export const GhostMark = ({ height, color = "rgba(255,255,255,0.05)", style }: { height: number; color?: string; style?: CSSProperties }) => (
   <Mark height={height} fill={color} style={style} />
 );
+
+/**
+ * The mark drawn as a gold outline over a faint wash of its own colour: architecture rather than logo. Meant to be large and cropped by the
+ * edge of the sheet. `id` keeps the gradients of several marks on one page apart.
+ */
+export function LineMark({ height, id = "lm", stroke = 0.22, wash = "rgba(40,84,220,0.16)", style, unit = "mm" }: { height: number; id?: string; stroke?: number; wash?: string; style?: CSSProperties; unit?: "mm" | "px" }) {
+  const sw = (stroke * 340) / (unit === "mm" ? height : height); // stroke in viewBox units so it reads the same at any size
+  return (
+    <svg viewBox="150 190 420 340" style={{ height: `${height}${unit}`, width: "auto", display: "block", overflow: "visible", ...style }} aria-hidden>
+      <defs>
+        <linearGradient id={`${id}-g`} x1="0" y1="0" x2="1" y2="0.6">
+          <stop offset="0" stopColor="#a77c2a" />
+          <stop offset="0.3" stopColor="#e8c46e" />
+          <stop offset="0.5" stopColor="#fff3c6" />
+          <stop offset="0.75" stopColor="#d4a747" />
+          <stop offset="1" stopColor="#8a6420" />
+        </linearGradient>
+      </defs>
+      <g fill={wash} stroke={`url(#${id}-g)`} strokeWidth={sw} strokeLinejoin="miter">
+        <rect x="160" y="202" width="398" height="52" />
+        <rect x="222" y="261" width="274" height="47" />
+        <polygon points="264,315 320,315 320,455 264,517" />
+        <polygon points="335,315 387,315 387,415 335,448" />
+        <polygon points="403,315 450,315 450,400 403,409" />
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * A brick-laid field of small marks, tone on tone: the identity as texture. Used where a photograph would otherwise go. It is a plain SVG
+ * pattern (vector, no masks); the fade into solid navy is a separate gradient laid over it, which prints reliably.
+ */
+export function MarkField({ w, h, tile = 11, size = 3.6, color = "rgba(40,84,220,0.22)", id = "mf", style }: { w: number; h: number; tile?: number; size?: number; color?: string; id?: string; style?: CSSProperties }) {
+  const k = size / 420; // mark width (420 units) -> `size` mm
+  // Explicit copies of one <symbol>, not an SVG <pattern>: PDF viewers and RIPs render patterns unevenly, plain repeated shapes always print the same.
+  const marks: { x: number; y: number }[] = [];
+  for (let r = 0, y = tile * 0.15; y < h; r++, y += tile / 2) {
+    for (let x = (r % 2 ? tile * 0.7 : tile * 0.2); x < w; x += tile) marks.push({ x, y });
+  }
+  return (
+    <svg className="absolute inset-0" width={`${w}mm`} height={`${h}mm`} viewBox={`0 0 ${w} ${h}`} style={style} aria-hidden>
+      <defs>
+        <g id={id} fill={color} transform={`scale(${k}) translate(-150 -190)`}>
+          <rect x="160" y="202" width="398" height="52" />
+          <rect x="222" y="261" width="274" height="47" />
+          <polygon points="264,315 320,315 320,455 264,517" />
+          <polygon points="335,315 387,315 387,415 335,448" />
+          <polygon points="403,315 450,315 450,400 403,409" />
+        </g>
+      </defs>
+      {marks.map((m, i) => (
+        <use key={i} href={`#${id}`} x={m.x} y={m.y} />
+      ))}
+    </svg>
+  );
+}
