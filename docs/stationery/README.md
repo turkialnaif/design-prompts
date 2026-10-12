@@ -8,14 +8,14 @@ Each piece also does a job, so the stationery is itself marketing:
 
 | Piece | The job it does |
 |---|---|
-| Business card, side B | A QR («Send your brief») that opens `taap.sa/contact` tagged `utm_medium=business-card`, so Analytics shows which card brought a visitor. |
+| Business card | Side A (Arabic): the name in light on deep navy, the city rising from the foot, the thread leaving through the edge. Side B (English and details): a navy panel with the foil mark and a QR («Send your brief») that opens `taap.sa/contact` tagged `utm_medium=business-card`, so Analytics shows which card brought a visitor. |
 | "Five questions before you sign" card | A leave-behind useful on its own: five questions to ask before signing any contract. The firm is on the back of something the reader keeps. |
 | Appointment card | The practical card handed over at the end of a first call: write the date, and what to bring (ID, contracts, a written summary). |
-| Letterhead | The two gold diamonds sit at **99 mm and 198 mm** — exactly the third-folds — so the identity doubles as the fold guide for a DL envelope; a short tick at 148.5 mm marks the filing punch. |
-| Envelope (front and liner) | The inside is deep navy, a field of marks, the thread, and one line: «مُغلَق بسرية مهنية» / *Sealed in professional confidence*. |
-| Compliments slip | QR tagged `utm_medium=compliments-slip`. |
+| Letterhead | The thread runs down the start edge and ends at a gold seal that turns it into the top edge of a deep-navy footer (the city, the address, the contacts, the licence numbers). Its two diamonds sit at **99 mm and 198 mm** — exactly the third-folds — so the identity doubles as the fold guide for a DL envelope; a short tick at 148.5 mm marks the filing punch. |
+| Envelope (front and liner) | Front: the lockup, a small foil mark at the end of the thread. The inside is deep navy, a field of marks, the thread, and one line: «مُغلَق بسرية مهنية» / *Sealed in professional confidence*. |
+| Compliments slip | Lockup, thread, and a QR tagged `utm_medium=compliments-slip`; the page is left clear for the handwritten note. |
 | A5 notepad | Ruled page; the thread is its margin. |
-| Matter-file folder (flat) | One thread crosses front, spine and back. Back: the city, the address, a QR tagged `utm_medium=folder`. |
+| Matter-file folder (flat) | Front: the large foil mark and, under the thread, the firm's full lockup in gold. One thread crosses front, spine and back, above the contact panel. Back: the city, the address, a QR tagged `utm_medium=folder`. |
 | Seal sticker, 40 mm | Closes an envelope or a bound document. |
 
 ## Files

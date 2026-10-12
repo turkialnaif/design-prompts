@@ -1,6 +1,6 @@
 import QRCode from "qrcode";
 import { firm } from "@/lib/site";
-import { C, Diamond, Face, GhostMark, Thread, disp, foil, latin } from "@/components/stationery/parts";
+import { C, Diamond, Face, GhostMark, Mark, Thread, disp, foil, latin } from "@/components/stationery/parts";
 
 export const PHONE = "+966 56 677 0888";
 export const ADDRESS_AR = ["الدور الأول · مكتب 14", "طريق أبي بكر الصديق الفرعي", "حي الياسمين · الرياض 13326"];
@@ -18,93 +18,100 @@ export async function Qr({ url, mm, dark = C.ink, light = "#f6f1e6", pad = 1.6 }
 
 type G = { guides?: boolean };
 
-/** Business card, Arabic side: paper, the name, and the thread leaving the card toward the opposite edge. */
+/**
+ * Business card, side A (Arabic). Deep navy; the city rises from the foot of the card; the name in light, the title in gold, and the thread
+ * leaves the card through the opposite edge. Nothing else: the card is meant to be held, and read slowly.
+ */
 export function CardFront({ guides }: G) {
   return (
     <Face
       w={90}
       h={55}
-      bg={C.paper}
+      bg={C.deep}
       guides={guides}
       bleed={
         <>
-          <Thread y={3 + 24.4} from={3 + 8} nodes={[0, 4.2, 8.4]} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 100% 0%, rgba(40,84,220,0.42), transparent 70%)" }} />
+          <img src="/brand/profile/city-fade.png" alt="" className="absolute" style={{ left: 0, bottom: "-21mm", width: "100%", height: "auto", opacity: 0.9 }} />
+          <Thread y={3 + 29.6} from={-4} to={3 + 8 + 9.4} nodes={[]} foilLine weight={0.3} />
         </>
       }
     >
-      <div className="absolute" style={{ top: "7.6mm", insetInlineStart: "8mm" }}>
-        <p style={{ ...disp(), fontSize: "17.5pt", lineHeight: 1.15, color: C.ink, margin: 0 }}>تركي النايف</p>
-        <p style={{ margin: "1.6mm 0 0", fontSize: "6.8pt", color: C.goldText, letterSpacing: 0 }}>محامٍ · مؤسس ومدير</p>
+      <div className="absolute" style={{ top: "8.2mm", insetInlineStart: "8mm" }}>
+        <p style={{ ...disp(), fontSize: "21pt", lineHeight: 1.12, color: "#fff", margin: 0 }}>تركي النايف</p>
+        <p style={{ margin: "1.7mm 0 0", fontSize: "7.2pt", color: C.goldBright, letterSpacing: 0 }}>محامٍ · مؤسس ومدير</p>
       </div>
-
-      <div className="absolute" style={{ top: "29.2mm", insetInlineStart: "8mm", fontSize: "6.7pt", lineHeight: 1.95, color: C.body }}>
-        {[
-          [PHONE, true],
-          ["info@taap.sa", true],
-          ["taap.sa", true],
-        ].map(([t, ltr]) => (
-          <p key={String(t)} className="flex items-center gap-[1.6mm]" style={{ margin: 0 }}>
-            <Diamond size={1.1} />
-            <span dir={ltr ? "ltr" : undefined} style={{ ...latin, letterSpacing: "0.04em" }}>
-              {t}
-            </span>
-          </p>
-        ))}
+      <div className="absolute" style={{ top: "6.6mm", insetInlineEnd: "8mm" }}>
+        <Mark height={7.6} />
       </div>
-
-      <div className="absolute" style={{ top: "29.2mm", insetInlineEnd: "8mm", fontSize: "5.9pt", lineHeight: 1.85, color: C.body, textAlign: "end" }}>
-        {ADDRESS_AR.map((l) => (
-          <p key={l} style={{ margin: 0 }}>
-            {l}
-          </p>
-        ))}
+      {/* the thread ends in the three diamonds, set on it where it stops */}
+      <div className="absolute flex items-center gap-[2.2mm]" style={{ top: "28.9mm", insetInlineEnd: "8mm" }}>
+        <Diamond size={1.4} color={C.goldBright} />
+        <Diamond size={1.4} color={C.goldBright} />
+        <Diamond size={1.4} color={C.goldBright} />
       </div>
-
-      <p className="absolute" style={{ bottom: "3.6mm", insetInlineStart: "8mm", insetInlineEnd: "8mm", margin: 0, fontSize: "4.7pt", color: "rgba(44,53,80,0.75)", letterSpacing: "0.02em" }}>
-        رخصة مزاولة المحاماة رقم {firm.licenseNumber} · السجل الموحد {firm.unifiedNumber}
-      </p>
     </Face>
   );
 }
 
-/** Business card, English side: deep navy, a tone-on-tone mark, the foil name and the QR. */
+/**
+ * Business card, side B (English and the details). A navy panel at the start carries the foil mark and the QR; the thread leaves the panel
+ * across the ivory, past the name, and out through the edge.
+ */
 export async function CardBack({ guides }: G) {
   return (
     <Face
       w={90}
       h={55}
-      bg={C.deep}
+      bg={C.paper}
       dir="ltr"
       guides={guides}
       bleed={
         <>
-          <div className="absolute" style={{ right: "-14mm", top: "-9mm" }}>
-            <GhostMark height={46} color="rgba(40,84,220,0.14)" />
+          <div className="absolute" style={{ left: 0, top: 0, bottom: 0, width: "29mm", background: C.deep }}>
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 70% at 50% 0%, rgba(40,84,220,0.38), transparent 70%)" }} />
           </div>
-          <Thread y={3 + 24.4} from={3 + 8 + 12} to="end" nodes={[]} foilLine />
+          <Thread y={3 + 21.2} from={29} to="end" foilLine={false} weight={0.3} />
         </>
       }
     >
-      <div className="absolute" style={{ top: "7.4mm", left: "8mm" }}>
-        <p style={{ ...disp(true), ...foil, fontSize: "16pt", lineHeight: 1.25, margin: 0, display: "inline-block", paddingRight: "0.6mm" }}>Turki AlNaif</p>
-        <p style={{ ...latin, margin: "1.6mm 0 0", fontSize: "6.2pt", letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(246,226,179,0.92)" }}>Lawyer · Founding Partner</p>
+      {/* panel */}
+      <div className="absolute flex flex-col items-center" style={{ left: 0, top: 0, width: "26mm", height: "55mm" }}>
+        <div style={{ marginTop: "7.2mm" }}>
+          <Mark height={11.4} />
+        </div>
+        <p style={{ ...latin, margin: "2.4mm 0 0", fontSize: "5.2pt", letterSpacing: "0.5em", color: C.goldBright, paddingLeft: "0.5em" }}>TAAP</p>
+        <div style={{ marginTop: "auto", marginBottom: "5.4mm", background: C.paper, padding: "0.9mm" }}>
+          <Qr url={qrUrl("business-card")} mm={14} light="#f6f1e6" pad={0} />
+        </div>
       </div>
-
-      <div className="absolute" style={{ top: "29.2mm", left: "8mm", ...latin, fontSize: "6.2pt", lineHeight: 1.95, color: "rgba(255,255,255,0.88)", letterSpacing: "0.05em" }}>
-        <p style={{ margin: 0 }}>{PHONE}</p>
-        <p style={{ margin: 0 }}>info@taap.sa</p>
-        <p style={{ margin: 0 }}>taap.sa</p>
-      </div>
-
-      <div className="absolute" style={{ right: "8mm", bottom: "6.5mm" }}>
-        <Qr url={qrUrl("business-card")} mm={13.5} light="#f6f1e6" />
-      </div>
-      <p className="absolute" style={{ ...latin, right: "8mm", bottom: "3.1mm", width: "13.5mm", margin: 0, textAlign: "center", fontSize: "3.6pt", letterSpacing: "0.12em", textTransform: "uppercase", color: C.goldBright, whiteSpace: "nowrap" }}>
+      <p className="absolute" style={{ ...latin, left: 0, width: "26mm", bottom: "2.2mm", margin: 0, textAlign: "center", fontSize: "3.3pt", letterSpacing: "0.26em", textTransform: "uppercase", color: C.goldBright }}>
         Send your brief
       </p>
-      <div className="absolute" style={{ left: "8mm", bottom: "4.4mm" }}>
-        <p style={{ ...latin, margin: 0, fontSize: "4.9pt", letterSpacing: "0.04em", color: "rgba(246,226,179,0.85)" }}>Understanding that runs ahead of opinion</p>
+
+      {/* details */}
+      <div className="absolute" style={{ top: "6.4mm", left: "33mm" }}>
+        <p style={{ ...disp(true), fontSize: "14.5pt", lineHeight: 1.1, color: C.ink, margin: 0 }}>Turki AlNaif</p>
+        <p style={{ ...latin, margin: "1.3mm 0 0", fontSize: "5.1pt", letterSpacing: "0.2em", textTransform: "uppercase", color: C.goldText }}>Lawyer · Founding Partner</p>
       </div>
+      <div className="absolute" style={{ top: "24.4mm", left: "33mm", ...latin, fontSize: "6pt", lineHeight: 1.75, color: C.ink, letterSpacing: "0.05em" }}>
+        {[PHONE, "info@taap.sa", "taap.sa"].map((t) => (
+          <p key={t} className="flex items-center gap-[1.7mm]" style={{ margin: 0 }}>
+            <Diamond size={1} />
+            {t}
+          </p>
+        ))}
+      </div>
+      <div className="absolute" style={{ top: "36mm", left: "33mm", ...latin, fontSize: "5pt", lineHeight: 1.6, color: C.body, letterSpacing: "0.03em" }}>
+        {ADDRESS_EN.map((l) => (
+          <p key={l} style={{ margin: 0 }}>
+            {l}
+          </p>
+        ))}
+      </div>
+      <p className="absolute" dir="ltr" style={{ ...latin, left: "33mm", bottom: "3.4mm", margin: 0, fontSize: "3.9pt", letterSpacing: "0.04em", color: "rgba(44,53,80,0.85)" }}>
+        Licence No. {firm.licenseNumber} · Unified No. {firm.unifiedNumber}
+      </p>
     </Face>
   );
 }
