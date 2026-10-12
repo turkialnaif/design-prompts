@@ -180,7 +180,65 @@ function Agency() {
   );
 }
 
-const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920 };
+/**
+ * The flag version. One photograph is the whole poster: the flag over the figure, the jets above, the monument behind. The lower part of the picture is
+ * deepened into the identity's navy (the black robe simply continues into it) and carries the prayer, the frosted-glass article pane and the signature.
+ */
+function FlagPoster() {
+  const base = data("collage-flag.png");
+  return (
+    <div dir="rtl" style={{ position: "relative", width: 1080, height: 1920, background: INK, overflow: "hidden", color: "#fff" }}>
+      {/* layer 1: the photograph, framed so the flag and the jets sit high and the figure's head sits at the golden line */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={base} alt="" style={{ position: "absolute", left: 0, top: -64, width: 1080, height: 2127, filter: "contrast(1.1) saturate(1.22) brightness(0.9)" }} />
+      {/* layer 2: the grade: a deep navy sky, a warm light on the horizon */}
+      <div style={{ position: "absolute", inset: 0, mixBlendMode: "multiply", background: "linear-gradient(180deg, rgba(0,34,110,0.78) 0%, rgba(0,34,110,0.42) 38%, rgba(30,40,70,0.15) 62%, rgba(0,18,74,0.4) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, mixBlendMode: "soft-light", background: "radial-gradient(ellipse 80% 40% at 55% 62%, rgba(255,214,140,0.55), rgba(0,0,0,0) 70%)" }} />
+      {/* a glow behind the flag so it lifts off the sky */}
+      <div style={{ position: "absolute", left: -120, top: 60, width: 900, height: 700, mixBlendMode: "screen", background: "radial-gradient(closest-side, rgba(60,160,110,0.28), rgba(0,0,0,0))" }} />
+      {/* layer 3: the navy floor that the picture sinks into */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1090, bottom: 0, background: "linear-gradient(180deg, rgba(0,6,29,0) 0%, rgba(0,6,29,0.6) 20%, rgba(0,6,29,0.93) 44%, #00061d 70%)" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1262, height: 2, background: "linear-gradient(90deg, rgba(196,160,78,0), rgba(196,160,78,0.9) 50%, rgba(196,160,78,0))" }} />
+
+      {/* layer 4: the prayer */}
+      <div style={{ position: "absolute", right: 70, left: 70, top: 1286, textAlign: "right" }}>
+        <div className={ruqaa.className} style={{ fontSize: 106, lineHeight: 1.12, fontWeight: 700, color: "#fff", textShadow: "0 3px 22px rgba(0,6,29,0.8)", whiteSpace: "nowrap" }}>
+          اللهم احفظ{" "}
+          <span style={{ background: "linear-gradient(100deg,#9c7a2c 0%,#e8c970 38%,#fff1bf 52%,#d4a747 70%,#b88a34 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", display: "inline-block", paddingBottom: 30, marginBottom: -30, textShadow: "none", filter: "drop-shadow(0 3px 12px rgba(0,6,29,0.7))" }}>بلادنا</span>
+        </div>
+        <p className={plex.className} style={{ margin: "14px 0 0", fontSize: 35, lineHeight: 1.55, fontWeight: 600, color: "#fff" }}>
+          وشعبنا، وأحط بلادنا بالأمن والأمان،
+          <span style={{ display: "block", color: "#e8c970" }}>ورد كيد أعدائنا ومن خلفهم ومن يدعمهم</span><span style={{ display: "block", color: "#e8c970" }}>ومن يرضى بفعلتهم في نحورهم</span>
+        </p>
+      </div>
+
+      {/* layer 5: the pane of glass */}
+      <div style={{ position: "absolute", left: 70, right: 70, top: 1596, height: 184, borderRadius: 26, overflow: "hidden", boxShadow: "0 30px 70px rgba(0,6,29,0.55)" }}>
+        <div style={{ position: "absolute", inset: 0, backdropFilter: "blur(16px) saturate(1.5)", WebkitBackdropFilter: "blur(16px) saturate(1.5)", background: "linear-gradient(135deg, rgba(255,255,255,0.34), rgba(255,255,255,0.1) 55%, rgba(255,255,255,0.22))" }} />
+        <div style={{ position: "absolute", inset: 0, borderRadius: 26, border: "1.5px solid rgba(255,255,255,0.55)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7), inset 0 0 0 1px rgba(196,160,78,0.3)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 70, background: "linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0))" }} />
+        <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 44px", textAlign: "right" }}>
+          <p className={plex.className} style={{ margin: 0, fontSize: 25, fontWeight: 600, color: "#e8c970" }}>النظام الأساسي للحكم · المادة الرابعة والثلاثون</p>
+          <p className={plex.className} style={{ margin: "10px 0 0", fontSize: 38, lineHeight: 1.45, fontWeight: 700, color: "#fff", textShadow: "0 2px 12px rgba(0,6,29,0.5)" }}>الدفاع عن العقيدة الإسلامية والمجتمع والوطن واجب على كل مواطن.</p>
+        </div>
+      </div>
+
+      {/* layer 6: the signature */}
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 40, display: "flex", justifyContent: "center" }}>
+        <Signoff />
+      </div>
+
+      {/* layer 7: grain and vignette */}
+      <svg width="1080" height="1920" style={{ position: "absolute", inset: 0, mixBlendMode: "overlay", opacity: 0.2 }} aria-hidden>
+        <filter id="g2"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
+        <rect width="1080" height="1920" filter="url(#g2)" />
+      </svg>
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 80% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,6,29,0.5) 100%)" }} />
+    </div>
+  );
+}
+
+const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920, "dua-flag": 1920 };
 
 export function generateStaticParams() {
   return Object.keys(sizes).map((slug) => ({ slug }));
@@ -194,7 +252,7 @@ export default async function SocialPoster({ params }: { params: Promise<{ slug:
   return (
     <main style={{ margin: 0 }}>
       <style>{`nextjs-portal { display: none !important; } html, body { margin: 0; padding: 0; background: ${INK}; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }`}</style>
-      {slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
+      {slug === "dua-flag" ? <FlagPoster /> : slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
     </main>
   );
 }
