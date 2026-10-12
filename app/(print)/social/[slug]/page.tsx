@@ -349,7 +349,7 @@ function DepthPoster() {
   );
 }
 
-const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920, "dua-flag": 1920, "dua-city": 1920, "dua-depth": 1920 };
+const sizes: Record<string, number> = { "dua-4x5": 1350, "dua-story": 1920, "dua-agency": 1920, "dua-flag": 1920, "dua-city": 1920, "dua-depth": 1920, signoff: 80 };
 
 export function generateStaticParams() {
   return Object.keys(sizes).map((slug) => ({ slug }));
@@ -362,8 +362,8 @@ export default async function SocialPoster({ params }: { params: Promise<{ slug:
   if (!h) notFound();
   return (
     <main style={{ margin: 0 }}>
-      <style>{`nextjs-portal { display: none !important; } html, body { margin: 0; padding: 0; background: ${INK}; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }`}</style>
-      {slug === "dua-depth" ? <DepthPoster /> : slug === "dua-city" ? <CityPoster /> : slug === "dua-flag" ? <FlagPoster /> : slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
+      <style>{`nextjs-portal { display: none !important; } html, body { margin: 0; padding: 0; background: ${slug === "signoff" ? "transparent" : INK}; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }`}</style>
+      {slug === "signoff" ? <div id="so" style={{ display: "inline-block", padding: 8 }}><Signoff /></div> : slug === "dua-depth" ? <DepthPoster /> : slug === "dua-city" ? <CityPoster /> : slug === "dua-flag" ? <FlagPoster /> : slug === "dua-agency" ? <Agency /> : <Dua h={h} />}
     </main>
   );
 }
