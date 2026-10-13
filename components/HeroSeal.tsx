@@ -18,7 +18,7 @@ export default function HeroSeal({ label }: { label: string }) {
       <span aria-hidden className="seal-glint pointer-events-none absolute inset-0" />
       <Image
         src="/brand/logo-mark.png"
-        alt=""
+        alt="TAAP"
         width={40}
         height={32}
         className="seal-mark h-6 w-auto md:h-7"

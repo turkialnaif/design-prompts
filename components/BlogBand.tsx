@@ -18,7 +18,7 @@ function Card({ a, hidden }: { a: BandItem; hidden?: boolean }) {
         {photo && (
           <Image
             src={photo.src}
-            alt={hidden ? "" : a.title}
+            alt={a.title}
             fill
             sizes="264px"
             quality={90}

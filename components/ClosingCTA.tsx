@@ -56,7 +56,7 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
         <div aria-hidden className="cta-aurora cta-aurora-a pointer-events-none absolute -top-1/3 end-[-10%] -z-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(closest-side,rgba(40,84,220,0.4),transparent)]" />
         <div aria-hidden className="cta-aurora cta-aurora-b pointer-events-none absolute -bottom-1/2 start-[-8%] -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(closest-side,rgba(224,179,90,0.22),transparent)]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-50 [background-image:radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1.2px)] [background-size:30px_30px] [mask-image:radial-gradient(ellipse_80%_80%_at_70%_30%,#000,transparent_75%)]" />
-        <Image src="/brand/logo-mark.png" alt="" width={512} height={420} aria-hidden className="pointer-events-none absolute -bottom-10 start-[-3rem] -z-10 w-72 opacity-[0.06] md:w-[26rem]" />
+        <Image src="/brand/logo-mark.png" alt={ar ? "شعار تركي النايف وشركاؤه" : "Turki Alnaif & Partners mark"} width={512} height={420} aria-hidden className="pointer-events-none absolute -bottom-10 start-[-3rem] -z-10 w-72 opacity-[0.06] md:w-[26rem]" />
         <span aria-hidden className="cta-sweep absolute inset-x-0 top-0 h-px" />
 
         <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14 lg:p-16">

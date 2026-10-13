@@ -77,7 +77,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[34rem]"
         style={{ maskImage: "linear-gradient(to top, black 0%, black 35%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 0%, black 35%, transparent 100%)" }}
       >
-        <Image src="/brand/riyadh-skyline.jpg" alt="" fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.28] [filter:saturate(0.7)_hue-rotate(8deg)]" />
+        <Image src="/brand/riyadh-skyline.jpg" alt={ar ? "أفق مدينة الرياض" : "Riyadh skyline"} fill sizes="100vw" className="object-cover object-[center_62%] opacity-[0.28] [filter:saturate(0.7)_hue-rotate(8deg)]" />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(30,70,200,0.28),transparent_70%),radial-gradient(ellipse_40%_30%_at_90%_100%,rgba(224,179,90,0.14),transparent_70%)]" />
 
