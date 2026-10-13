@@ -76,14 +76,6 @@ export default function BlogPage() {
     <BlogScene label="LEGAL INSIGHTS">
       <section className="relative overflow-hidden px-5 pb-20 pt-32 md:pb-28 md:pt-44">
         <div aria-hidden className="orn absolute inset-x-0 bottom-0" />
-        {/* the same word, drawn in outline, slides the other way as the page is scrolled */}
-        <span
-          aria-hidden
-          className="blog-hero-ghost pointer-events-none absolute end-[-4vw] top-[12%] select-none whitespace-nowrap leading-none text-transparent"
-          style={{ fontFamily: "var(--font-blog-stack)", fontSize: "clamp(9rem, 34vw, 26rem)", WebkitTextStroke: "1.5px rgba(224,179,90,0.22)" }}
-        >
-          المدونة
-        </span>
         <div className="relative mx-auto grid max-w-7xl items-center gap-6 md:grid-cols-[1.25fr_1fr] md:gap-4">
           <div className="text-center md:text-start">
             <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">Legal Research &amp; Insights</p>

@@ -452,7 +452,6 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
 .blog-ghost-mark { transform: translate3d(0, calc(var(--bp, 0) * -26vh), 0) rotate(calc(var(--bp, 0) * 9deg)); will-change: transform; }
 .blog-orb { transform: translate3d(0, calc(var(--bp, 0) * 78vh), 0); will-change: transform; }
 .blog-rail { height: calc(var(--bp, 0) * 100%); }
-.blog-hero-ghost { transform: translate3d(calc(var(--bh, 0) * -16vw), calc(var(--bh, 0) * 6vh), 0); will-change: transform; }
 .blog-hero-name { transform: translate3d(calc(var(--bh, 0) * 5vw), 0, 0); will-change: transform; }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .blog-par > :nth-child(3n + 2) { transform: translate3d(0, calc(var(--bp, 0) * -70px), 0); }

@@ -103,7 +103,7 @@ export default function ArticleMarkdown({ content, inline, inlineBeforeH2 = 3, l
             <div key={i}>
               {inline && h2n === inlineBeforeH2 && <div className="mb-14">{inline}</div>}
               <div className="border-t border-[#e0b35a]/50 pt-10">
-                <span aria-hidden className="font-display block text-6xl font-extralight leading-none text-transparent [-webkit-text-stroke:1px_rgba(201,154,60,0.9)] md:text-7xl" dir="ltr">
+                <span aria-hidden className="glass-number-light font-display block w-fit text-6xl font-light leading-none md:text-7xl" dir="ltr">
                   {String(h2n).padStart(2, "0")}
                 </span>
                 <h2 id={`section-${i}`} className="font-display mt-4 scroll-mt-28 text-3xl font-light leading-[1.45] text-[#00124a] md:text-[2.5rem]">
