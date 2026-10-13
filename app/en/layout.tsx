@@ -8,6 +8,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppContext from "@/components/WhatsAppContext";
 import SiteAnalytics from "@/components/SiteAnalytics";
 import FooterEn from "@/components/FooterEn";
+import FooterSwitch from "@/components/FooterSwitch";
+import BlogFooter from "@/components/BlogFooter";
 import { firm } from "@/lib/site";
 import { homeDescription, siteJsonLd } from "@/lib/seo";
 import { firmEn } from "@/lib/site.en";
@@ -64,7 +66,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
         <CursorGlow />
         <HeaderEn />
         <main className="flex-1">{children}</main>
-        <FooterEn />
+        <FooterSwitch site={<FooterEn />} blog={<BlogFooter locale="en" />} />
         <WhatsAppFloat topLabel="Back to top" />
       </body>
     </html>

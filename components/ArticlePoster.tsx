@@ -36,9 +36,9 @@ export default function ArticlePoster({
   return (
     <Link
       href={`/blog/${a.slug}`}
-      className={`group frame relative flex flex-col overflow-hidden bg-[#00124a] ring-1 ring-white/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(224,179,90,0.35)] ${spread ? "md:flex-row" : ""} ${className}`}
+      className={`group frame relative flex flex-col overflow-hidden bg-[#00061d] ring-1 ring-white/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(224,179,90,0.35)] ${spread ? "md:flex-row" : ""} ${className}`}
     >
-      <div className={`relative shrink-0 overflow-hidden bg-[#00124a] ${spread ? "h-72 md:h-auto md:min-h-[30rem] md:w-[44%]" : "h-56"}`}>
+      <div className={`relative shrink-0 overflow-hidden bg-[#00061d] ${spread ? "h-72 md:h-auto md:min-h-[30rem] md:w-[44%]" : "h-56"}`}>
         {photo && (
           <Image
             src={photo.src}
@@ -52,7 +52,7 @@ export default function ArticlePoster({
             style={{ objectPosition: photo.focus }}
           />
         )}
-        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,6,29,0.15)_0%,rgba(0,6,29,0.1)_50%,rgba(0,18,74,0.85)_100%)]" />
+        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,6,29,0.15)_0%,rgba(0,6,29,0.1)_50%,rgba(0,6,29,0.95)_100%)]" />
       </div>
 
       <div className={`relative flex flex-1 flex-col ${spread ? "p-7 md:p-12" : "p-6"}`}>

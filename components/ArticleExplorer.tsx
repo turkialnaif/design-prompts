@@ -189,7 +189,7 @@ export default function ArticleExplorer({ articles, clusters }: { articles: Arti
 
         {view === "grid" ? (
           <>
-            <div className="blog-par grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {visible.map((a) => (
                 <ArticlePoster key={a.slug} a={poster(a)} className="h-full" />
               ))}

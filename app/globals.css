@@ -448,12 +448,27 @@ html[data-hide-header="1"] .site-header { transform: translateY(-140%); opacity:
 @keyframes cta-sweep { from { background-position: 150% 0; } to { background-position: -50% 0; } }
 @media (prefers-reduced-motion: reduce) { .cta-aurora, .cta-sweep { animation: none; } }
 
-/* Blog stage (components/BlogScene.tsx): --bp is the page's scroll progress (0 to 1), --bh the first screen's. */
-.blog-ghost-mark { transform: translate3d(0, calc(var(--bp, 0) * -26vh), 0) rotate(calc(var(--bp, 0) * 9deg)); will-change: transform; }
-.blog-orb { transform: translate3d(0, calc(var(--bp, 0) * 78vh), 0); will-change: transform; }
-.blog-rail { height: calc(var(--bp, 0) * 100%); }
-.blog-hero-name { transform: translate3d(calc(var(--bh, 0) * 5vw), 0, 0); will-change: transform; }
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .blog-par > :nth-child(3n + 2) { transform: translate3d(0, calc(var(--bp, 0) * -70px), 0); }
-  .blog-par > :nth-child(3n + 3) { transform: translate3d(0, calc(var(--bp, 0) * -34px), 0); }
+/* Blog stage (components/BlogScene.tsx): its moving parts are written by script, so the only style here is the hint for the compositor. */
+.blog-hero-name { will-change: transform; }
+
+/* Blog footer (components/BlogFooter.tsx): everything is drawn once, when the footer first scrolls into view. */
+.bf-item { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, background-color 0.4s, box-shadow 0.5s; }
+.bf.in .bf-item { opacity: 1; transform: none; }
+.bf-rule { transform: scaleX(0); transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.bf.in .bf-rule { transform: scaleX(1); }
+.bf-lintel { transform: scaleX(0.4); opacity: 0; transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s; }
+.bf.in .bf-lintel { transform: none; opacity: 1; }
+.bf-dust { opacity: 0; box-shadow: 0 0 10px 2px rgba(246, 226, 179, 0.55); }
+.bf.in .bf-dust { animation: bf-dust linear infinite; }
+@keyframes bf-dust { 0% { transform: translate3d(0, 0, 0); opacity: 0; } 15% { opacity: 0.8; } 85% { opacity: 0.5; } 100% { transform: translate3d(14px, -260px, 0); opacity: 0; } }
+.bf-shine { background: linear-gradient(105deg, transparent 35%, rgba(246, 226, 179, 0.55) 50%, transparent 65%); background-size: 250% 100%; background-position: 150% 0; mix-blend-mode: soft-light; }
+.bf.in .bf-shine { animation: bf-shine 2.4s 1s ease-out 1 forwards; }
+@keyframes bf-shine { from { background-position: 150% 0; } to { background-position: -60% 0; } }
+.bf-plate { transition-property: opacity, transform, border-color, background-color, box-shadow; }
+.bf.in .bf-plate:hover { transform: translateY(-6px); border-color: rgba(224, 179, 90, 0.75); background-color: rgba(224, 179, 90, 0.08); box-shadow: 0 28px 50px -28px rgba(224, 179, 90, 0.55); }
+.bf-plate-sheen { background: linear-gradient(120deg, transparent 30%, rgba(246, 226, 179, 0.16) 50%, transparent 70%); background-size: 260% 100%; background-position: 140% 0; transition: background-position 1.1s ease; }
+.bf-plate:hover .bf-plate-sheen { background-position: -40% 0; }
+@media (prefers-reduced-motion: reduce) {
+  .bf-item, .bf-rule, .bf-lintel { opacity: 1; transform: none; transition: none; }
+  .bf-shine, .bf-dust { display: none; }
 }

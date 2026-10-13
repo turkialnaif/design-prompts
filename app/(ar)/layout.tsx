@@ -8,6 +8,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppContext from "@/components/WhatsAppContext";
 import SiteAnalytics from "@/components/SiteAnalytics";
 import Footer from "@/components/Footer";
+import FooterSwitch from "@/components/FooterSwitch";
+import BlogFooter from "@/components/BlogFooter";
 import { firm } from "@/lib/site";
 import { homeDescription, homeTitle, siteJsonLd } from "@/lib/seo";
 
@@ -63,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CursorGlow />
         <Header />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <FooterSwitch site={<Footer />} blog={<BlogFooter locale="ar" />} />
         <WhatsAppFloat />
       </body>
     </html>

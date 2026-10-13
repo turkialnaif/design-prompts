@@ -37,9 +37,14 @@ const platforms: { key: keyof typeof icons; label: string; href: string }[] = [
 export default function SocialIcons({
   tone = "onDark",
   className = "",
+  buttonClass,
+  iconSize = 15,
 }: {
   tone?: "onDark" | "onLight";
   className?: string;
+  /** replaces the default round button (for larger or custom treatments) */
+  buttonClass?: string;
+  iconSize?: number;
 }) {
   const iconColor =
     tone === "onDark" ? "text-white/60 hover:text-gold" : "text-ink-soft/80 hover:text-gold-deep";
@@ -53,12 +58,12 @@ export default function SocialIcons({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={p.label}
-          className={`flex h-8 w-8 items-center justify-center rounded-full border border-current/20 transition-colors ${iconColor}`}
+          className={buttonClass ?? `flex h-8 w-8 items-center justify-center rounded-full border border-current/20 transition-colors ${iconColor}`}
         >
           <svg
             viewBox="0 0 24 24"
-            width="15"
-            height="15"
+            width={iconSize}
+            height={iconSize}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
