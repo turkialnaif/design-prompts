@@ -61,7 +61,7 @@ export async function buildIcs(user: typeof users.$inferSelect): Promise<string>
     .select({ e: events, m: matters })
     .from(events)
     .leftJoin(matters, eq(events.matterId, matters.id))
-    .where(and(gte(events.startsAt, from), lt(events.startsAt, to), scope ? sql`(${events.matterId} is null or ${scope})` : undefined))
+    .where(and(eq(events.source, "site"), gte(events.startsAt, from), lt(events.startsAt, to), scope ? sql`(${events.matterId} is null or ${scope})` : undefined))
     .orderBy(asc(events.startsAt))
     .limit(2000);
   const due = await d

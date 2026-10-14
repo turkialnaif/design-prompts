@@ -22,6 +22,13 @@
       "when": 1791947523570,
       "tag": "0002_normal_zaran",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1791953209699,
+      "tag": "0003_many_inertia",
+      "breakpoints": true
     }
   ]
 }

@@ -149,8 +149,11 @@ export const events = pgTable(
     visibleToClient: boolean("visible_to_client").notNull().default(false),
     createdBy: uuid("created_by").references(() => users.id),
     createdAt: createdAt(),
+    /** site = أُنشئ في اللوحة، outlook = مستورد من تقويم Outlook (يخصّ مالكه فقط). */
+    source: text("source").notNull().default("site"),
+    externalUid: text("external_uid"),
   },
-  (t) => [index("events_starts_idx").on(t.startsAt)],
+  (t) => [index("events_starts_idx").on(t.startsAt), uniqueIndex("events_external_uq").on(t.externalUid)],
 );
 
 export const tasks = pgTable(

@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { db } from "@/lib/db";
 import { events, matters, tasks, users } from "@/lib/db/schema";
 import { getFirmSettings } from "@/lib/erp/settings";
+import { syncOutlook } from "@/lib/calendar/outlook";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
   if (!secret || req.headers.get("authorization") !== `Bearer ${secret}`) return new Response("Unauthorized", { status: 401 });
+  await syncOutlook().catch(() => null); // يقرأ تقويم Outlook المربوط إن وُجد
   const key = process.env.RESEND_API_KEY;
   if (!key) return Response.json({ ok: false, error: "no email key" }, { status: 500 });
   const resend = new Resend(key);
@@ -24,7 +26,7 @@ export async function GET(req: Request) {
     .from(events)
     .leftJoin(matters, eq(events.matterId, matters.id))
     .innerJoin(users, eq(events.assigneeId, users.id))
-    .where(and(eq(events.status, "scheduled"), gte(events.startsAt, now), lte(events.startsAt, horizon), or(isNull(events.lastRemindedAt), sql`${events.lastRemindedAt} < ${events.startsAt} - make_interval(days => ${events.remindDaysBefore})`)));
+    .where(and(eq(events.source, "site"), eq(events.status, "scheduled"), gte(events.startsAt, now), lte(events.startsAt, horizon), or(isNull(events.lastRemindedAt), sql`${events.lastRemindedAt} < ${events.startsAt} - make_interval(days => ${events.remindDaysBefore})`)));
 
   let sent = 0;
   for (const { e, m, u } of upcoming) {
