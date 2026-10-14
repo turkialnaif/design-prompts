@@ -19,7 +19,7 @@ export const verifyUnsubscribe = (leadId: string, t: string) => hmac(`unsub:${le
 /** الحجز: رابط تقويم إن وُجد، وإلا واتساب المكتب برسالة جاهزة. */
 export const bookingUrl = (ar: boolean) => process.env.BOOKING_URL || `${WHATSAPP}?text=${encodeURIComponent(ar ? "السلام عليكم، أرسلت موجز مسألتي عبر الموقع وأرغب بتحديد موعد." : "Hello, I sent a matter brief through the website and would like to book a call.")}`;
 
-function shell(ar: boolean, inner: string, foot?: string) {
+export function shell(ar: boolean, inner: string, foot?: string) {
   return `<!doctype html><html lang="${ar ? "ar" : "en"}" dir="${ar ? "rtl" : "ltr"}"><body style="margin:0;background:#f4efe4;padding:24px 12px;font-family:Tahoma,Arial,sans-serif;color:#1f2933">
 <div style="max-width:600px;margin:0 auto;background:#ffffff;border-top:4px solid #c4a04e">
 <div style="background:#00124a;padding:18px 26px;color:#f4efe4;font-size:17px;font-weight:bold">${esc(ar ? firm.nameShortAr : "Turki AlNaif & Partners")}</div>
@@ -28,7 +28,7 @@ function shell(ar: boolean, inner: string, foot?: string) {
 </div></body></html>`;
 }
 
-const btn = (href: string, label: string) => `<p style="margin:22px 0"><a href="${href}" style="display:inline-block;background:#c4a04e;color:#00061d;text-decoration:none;font-weight:bold;padding:12px 26px">${esc(label)}</a></p>`;
+export const btn = (href: string, label: string) => `<p style="margin:22px 0"><a href="${href}" style="display:inline-block;background:#c4a04e;color:#00061d;text-decoration:none;font-weight:bold;padding:12px 26px">${esc(label)}</a></p>`;
 
 export type MailBody = { subject: string; html: string; text?: string; replyTo?: string; unsubscribe?: string };
 export type Mail = MailBody & { to: string | string[] };

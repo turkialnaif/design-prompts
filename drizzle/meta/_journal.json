@@ -15,6 +15,13 @@
       "when": 1791938408103,
       "tag": "0001_burly_hellcat",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791947523570,
+      "tag": "0002_normal_zaran",
+      "breakpoints": true
     }
   ]
 }

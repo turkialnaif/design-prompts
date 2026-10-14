@@ -9,6 +9,7 @@ import type { Staff } from "@/lib/auth/session";
 const ITEMS: (NavItem & { cap?: Cap })[] = [
   { href: "/admin", label: "لوحة التحكم", icon: "dashboard", group: "العمل" },
   { group: "العمل", href: "/admin/leads", label: "الفرص والعملاء المحتملون", icon: "leads", cap: "clients:read" },
+  { group: "العمل", href: "/admin/prospects", label: "الاستقطاب الصادر", icon: "leads", cap: "clients:read" },
   { group: "العمل", href: "/admin/matters", label: "القضايا", icon: "matters", cap: "matters:read" },
   { group: "العمل", href: "/admin/clients", label: "العملاء", icon: "clients", cap: "clients:read" },
   { group: "العمل", href: "/admin/conflicts", label: "فحص التعارض", icon: "conflicts", cap: "clients:read" },

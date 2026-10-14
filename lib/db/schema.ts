@@ -433,3 +433,78 @@ export const suppressions = pgTable("suppressions", {
   reason: text("reason").notNull().default("unsubscribe"),
   createdAt: createdAt(),
 });
+
+// ───────────── الاستقطاب الصادر: منشآت مستهدفة وجهات اتصال وطابور لينكدان ─────────────
+
+export const PROSPECT_STATUSES = ["new", "researching", "contacted", "replied", "meeting", "client", "declined"] as const;
+export type ProspectStatus = (typeof PROSPECT_STATUSES)[number];
+export const LINKEDIN_STATES = ["none", "queued", "sent", "connected", "replied", "skipped"] as const;
+export type LinkedinState = (typeof LINKEDIN_STATES)[number];
+
+export const prospects = pgTable(
+  "prospects",
+  {
+    id: id(),
+    createdAt: createdAt(),
+    list: text("list").notNull().default("khobar-dammam"),
+    rank: integer("rank"),
+    name: text("name").notNull(),
+    nameKey: text("name_key").notNull(),
+    priority: boolean("priority").notNull().default(false),
+    website: text("website"),
+    sector: text("sector"),
+    phone: text("phone"),
+    /** مرتبة التأهيل: 1 أعلاها. القائمة الأصلية بلا مرتبة (null). */
+    tier: integer("tier"),
+    sizeNote: text("size_note"),
+    sourceUrl: text("source_url"),
+    status: text("status").$type<ProspectStatus>().notNull().default("new"),
+    ownerId: uuid("owner_id").references(() => users.id),
+    notes: text("notes"),
+    lastActivityAt: timestamp("last_activity_at", { withTimezone: true }),
+  },
+  (t) => [uniqueIndex("prospects_list_name_uq").on(t.list, t.nameKey), index("prospects_status_idx").on(t.status)],
+);
+
+export const prospectContacts = pgTable(
+  "prospect_contacts",
+  {
+    id: id(),
+    createdAt: createdAt(),
+    prospectId: uuid("prospect_id").notNull().references(() => prospects.id, { onDelete: "cascade" }),
+    fullName: text("full_name"),
+    title: text("title"),
+    email: text("email"),
+    phone: text("phone"),
+    linkedinUrl: text("linkedin_url"),
+    /** كيف وصلنا إلى هذا الشخص: علاقة قائمة، اتصال لينكدان، موقع عام، توصية… */
+    basis: text("basis").notNull().default("manual"),
+    /** نوع القناة: named = بريد باسم شخص، role = وظيفي (legal@، contracts@)، generic = عام (info@)، ir = علاقات مستثمرين. */
+    channel: text("channel").notNull().default("named"),
+    /** يدخل في الإرسال الآلي؟ الاستيراد الواسع لا يفعّله؛ يُفعَّل بالشريحة المختارة فقط. */
+    emailOn: boolean("email_on").notNull().default(true),
+    emailStep: integer("email_step").notNull().default(0),
+    lastEmailAt: timestamp("last_email_at", { withTimezone: true }),
+    replied: boolean("replied").notNull().default(false),
+    bounced: boolean("bounced").notNull().default(false),
+    unsubscribed: boolean("unsubscribed").notNull().default(false),
+    linkedin: text("linkedin").$type<LinkedinState>().notNull().default("none"),
+    linkedinNote: text("linkedin_note"),
+    linkedinAt: timestamp("linkedin_at", { withTimezone: true }),
+  },
+  (t) => [index("prospect_contacts_prospect_idx").on(t.prospectId), index("prospect_contacts_email_idx").on(t.email)],
+);
+
+export const prospectEvents = pgTable(
+  "prospect_events",
+  {
+    id: id(),
+    prospectId: uuid("prospect_id").notNull().references(() => prospects.id, { onDelete: "cascade" }),
+    contactId: uuid("contact_id").references(() => prospectContacts.id, { onDelete: "set null" }),
+    kind: text("kind").notNull(),
+    body: text("body"),
+    actorName: text("actor_name"),
+    createdAt: createdAt(),
+  },
+  (t) => [index("prospect_events_prospect_idx").on(t.prospectId, t.createdAt)],
+);

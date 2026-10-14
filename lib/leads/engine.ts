@@ -17,7 +17,7 @@ export async function logEvent(leadId: string, kind: string, body?: string | nul
 }
 
 /** مقالان من الأبحاث يلائمان المسألة، لتخدم الرسائل الآلية قبل أن تطلب. */
-async function picks(matterType?: string | null, description?: string | null, en = false) {
+export async function picks(matterType?: string | null, description?: string | null, en = false) {
   try {
     const { articles } = await import("@/lib/articles");
     const t = `${matterType ?? ""} ${description ?? ""}`;
