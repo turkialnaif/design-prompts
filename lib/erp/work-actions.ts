@@ -13,6 +13,9 @@ const nul = (s?: string | null) => (s && s.trim().length ? s.trim() : null);
 const back = (matterId: string | null, tab: string) => revalidatePath(matterId ? `/admin/matters/${matterId}` : `/admin/${tab}`);
 
 /* ------------------------------ الجلسات والمواعيد ------------------------------ */
+/** حقل datetime-local يصل بلا منطقة زمنية؛ نفسّره بتوقيت الرياض لا بتوقيت الخادم (UTC على Vercel) وإلا انزاح الموعد ثلاث ساعات. */
+const riyadhDate = (s: string) => new Date(/(?:Z|[+-]\d{2}:?\d{2})$/i.test(s) ? s : `${s}${s.length === 16 ? ":00" : ""}+03:00`);
+
 export async function createEventAction(formData: FormData) {
   const user = await requireStaff("events:write");
   const matterId = nul(String(formData.get("matterId") ?? ""));
@@ -27,7 +30,7 @@ export async function createEventAction(formData: FormData) {
       matterId,
       title,
       kind: String(formData.get("kind") ?? "hearing") as "hearing",
-      startsAt: new Date(startsAt),
+      startsAt: riyadhDate(startsAt),
       location: nul(String(formData.get("location") ?? "")),
       notes: nul(String(formData.get("notes") ?? "")),
       assigneeId: nul(String(formData.get("assigneeId") ?? "")) ?? user.id,
