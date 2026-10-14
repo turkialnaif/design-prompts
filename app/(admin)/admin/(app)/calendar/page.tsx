@@ -9,6 +9,9 @@ import { matterScope } from "@/lib/erp/queries";
 import { Card, PageHeader } from "@/components/admin/ui";
 import { EventForm, EventList } from "@/components/admin/work";
 import { eventKindLabel } from "@/lib/erp/labels";
+import CopyButton from "@/components/admin/CopyButton";
+import { feedToken, feedUrl } from "@/lib/calendar/ics";
+import { rotateFeedAction } from "@/lib/erp/calendar-actions";
 
 export const metadata = { title: "الجلسات والتقويم" };
 
@@ -38,6 +41,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
     .where(and(gte(events.startsAt, start), lt(events.startsAt, end), scope ? sql`(${events.matterId} is null or ${scope})` : undefined))
     .orderBy(asc(events.startsAt));
   const people = await d.select({ id: users.id, fullName: users.fullName }).from(users).where(eq(users.isActive, true));
+  const feed = feedUrl(await feedToken(user.id));
 
   const byDay = new Map<number, typeof rows>();
   for (const r of rows) {
@@ -96,7 +100,24 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
         <Card title="مواعيد الشهر" className="xl:col-span-2">
           <EventList items={rows.map(({ e, m, assignee }) => ({ e, assignee, matterLabel: m ? `${m.number} · ${m.title}` : null }))} showMatter />
         </Card>
-        {can(user.role, "events:write") && <Card title="إضافة موعد"><EventForm people={people} /></Card>}
+        <div className="space-y-6">
+          {can(user.role, "events:write") && <Card title="إضافة موعد"><EventForm people={people} /></Card>}
+          <Card title="ربط التقويم بـ Outlook">
+            <p className="text-sm leading-7 text-ink-soft/90">اشتراك يعرض جلساتك ومواعيدك ومهامك المستحقة في Outlook على الجوال والويب والحاسوب، مع تنبيه قبل الجلسة بساعة وقبلها بعدد الأيام المحدد. يتحدّث تلقائيًا كل ساعة تقريبًا.</p>
+            <p className="mt-3 break-all rounded-xl bg-[#faf7ef] px-3 py-2 text-xs" dir="ltr">{feed}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <CopyButton text={feed} label="انسخ الرابط" />
+              <a href={feed.replace(/^https:/, "webcal:")} className="rounded-xl bg-[#0a66c2] px-4 py-2 text-sm font-bold text-white">افتح في Outlook</a>
+            </div>
+            <ol className="mt-4 list-decimal space-y-1 ps-5 text-xs leading-6 text-ink-soft/90">
+              <li>في Outlook على الويب: التقويم ← إضافة تقويم ← الاشتراك من الويب.</li>
+              <li>الصق الرابط وسمِّ التقويم «الجلسات والمواعيد» ثم استيراد.</li>
+              <li>على الجوال يظهر تلقائيًا بعد دقائق إن كان الحساب نفسه.</li>
+            </ol>
+            <p className="mt-3 text-xs leading-6 text-ink-soft/80">الرابط سرّي: من يملكه يرى مواعيدك. لا تشاركه. وإن تسرّب فجدّده.</p>
+            <form action={rotateFeedAction} className="mt-2"><button className="text-xs font-bold text-red-700 underline">جدّد الرابط وأبطل القديم</button></form>
+          </Card>
+        </div>
       </div>
     </>
   );
