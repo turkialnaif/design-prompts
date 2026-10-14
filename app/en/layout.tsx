@@ -7,6 +7,7 @@ import CursorGlow from "@/components/CursorGlow";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppContext from "@/components/WhatsAppContext";
 import SiteAnalytics from "@/components/SiteAnalytics";
+import Attribution from "@/components/Attribution";
 import FooterEn from "@/components/FooterEn";
 import FooterSwitch from "@/components/FooterSwitch";
 import BlogFooter from "@/components/BlogFooter";
@@ -63,6 +64,7 @@ export default function RootLayoutEn({ children }: LayoutProps<"/en">) {
         <SmoothScroll />
         <WhatsAppContext />
         <SiteAnalytics />
+        <Attribution />
         <CursorGlow />
         <HeaderEn />
         <main className="flex-1">{children}</main>

@@ -343,3 +343,93 @@ export const settings = pgTable("settings", {
   key: text("key").primaryKey(),
   value: jsonb("value").notNull(),
 });
+
+// ───────────── محرك العملاء المحتملين: من الموجز إلى العقد ─────────────
+
+export const LEAD_STAGES = ["new", "contacted", "qualified", "meeting", "proposal", "won", "lost"] as const;
+export type LeadStage = (typeof LEAD_STAGES)[number];
+export type LeadTier = "hot" | "warm" | "cold";
+
+export const leads = pgTable(
+  "leads",
+  {
+    id: id(),
+    createdAt: createdAt(),
+    name: text("name").notNull(),
+    org: text("org"),
+    email: text("email").notNull(),
+    phone: text("phone"),
+    locale: text("locale").notNull().default("ar"),
+    source: text("source").notNull().default("brief"),
+    matterType: text("matter_type"),
+    description: text("description"),
+    score: integer("score").notNull().default(0),
+    tier: text("tier").$type<LeadTier>().notNull().default("cold"),
+    scoreReasons: jsonb("score_reasons"),
+    stage: text("stage").$type<LeadStage>().notNull().default("new"),
+    ownerId: uuid("owner_id").references(() => users.id),
+    estimatedValue: numeric("estimated_value", { precision: 16, scale: 2 }),
+    lostReason: text("lost_reason"),
+    firstContactAt: timestamp("first_contact_at", { withTimezone: true }),
+    lastContactAt: timestamp("last_contact_at", { withTimezone: true }),
+    utm: jsonb("utm"),
+    landingPath: text("landing_path"),
+    referrer: text("referrer"),
+    ackSentAt: timestamp("ack_sent_at", { withTimezone: true }),
+    followupStep: integer("followup_step").notNull().default(0),
+    lastFollowupAt: timestamp("last_followup_at", { withTimezone: true }),
+    unsubscribed: boolean("unsubscribed").notNull().default(false),
+    aiSummary: text("ai_summary"),
+    conflictNote: text("conflict_note"),
+    clientId: uuid("client_id").references(() => clients.id),
+    matterId: uuid("matter_id").references(() => matters.id),
+  },
+  (t) => [index("leads_stage_idx").on(t.stage), index("leads_created_idx").on(t.createdAt), index("leads_email_idx").on(t.email)],
+);
+
+export const leadEvents = pgTable(
+  "lead_events",
+  {
+    id: id(),
+    leadId: uuid("lead_id").notNull().references(() => leads.id, { onDelete: "cascade" }),
+    kind: text("kind").notNull(),
+    body: text("body"),
+    meta: jsonb("meta"),
+    actorName: text("actor_name"),
+    createdAt: createdAt(),
+  },
+  (t) => [index("lead_events_lead_idx").on(t.leadId, t.createdAt)],
+);
+
+export const proposals = pgTable(
+  "proposals",
+  {
+    id: id(),
+    leadId: uuid("lead_id").notNull().references(() => leads.id, { onDelete: "cascade" }),
+    token: text("token").notNull(),
+    title: text("title").notNull(),
+    intro: text("intro"),
+    scope: jsonb("scope").$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+    feeKind: text("fee_kind").$type<"fixed" | "hourly" | "retainer" | "contingency">().notNull().default("fixed"),
+    feeAmount: numeric("fee_amount", { precision: 16, scale: 2 }),
+    feeNote: text("fee_note"),
+    validUntil: date("valid_until"),
+    status: text("status").$type<"draft" | "sent" | "viewed" | "accepted" | "declined">().notNull().default("draft"),
+    sentAt: timestamp("sent_at", { withTimezone: true }),
+    viewedAt: timestamp("viewed_at", { withTimezone: true }),
+    decidedAt: timestamp("decided_at", { withTimezone: true }),
+    acceptName: text("accept_name"),
+    acceptIp: text("accept_ip"),
+    acceptUserAgent: text("accept_user_agent"),
+    contentHash: text("content_hash"),
+    createdBy: uuid("created_by").references(() => users.id),
+    createdAt: createdAt(),
+  },
+  (t) => [uniqueIndex("proposals_token_uq").on(t.token), index("proposals_lead_idx").on(t.leadId)],
+);
+
+export const suppressions = pgTable("suppressions", {
+  email: text("email").primaryKey(),
+  reason: text("reason").notNull().default("unsubscribe"),
+  createdAt: createdAt(),
+});

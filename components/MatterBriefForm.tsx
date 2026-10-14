@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type FormEvent } from "react";
+import { readAttribution } from "@/components/Attribution";
 import { track } from "@vercel/analytics";
 import { gtagEvent } from "@/lib/gtag";
 
@@ -91,6 +92,7 @@ export default function MatterBriefForm({
           matterType: data.get("matterType"),
           description: data.get("description"),
           locale,
+          attribution: readAttribution(),
         }),
       });
       if (!res.ok) throw new Error("failed");

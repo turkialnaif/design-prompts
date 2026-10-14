@@ -4,13 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BarChart3, Briefcase, CalendarDays, CheckSquare, Clock, FileText, FilePenLine, LayoutDashboard, Receipt,
-  ScrollText, Settings, ShieldAlert, Users, UserCog, type LucideIcon,
+  ScrollText, Settings, ShieldAlert, Users, UserCog, Target, type LucideIcon,
 } from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = {
   dashboard: LayoutDashboard, matters: Briefcase, clients: Users, calendar: CalendarDays, tasks: CheckSquare,
   documents: FileText, templates: FilePenLine, time: Clock, billing: Receipt, reports: BarChart3,
-  users: UserCog, settings: Settings, audit: ScrollText, conflicts: ShieldAlert,
+  users: UserCog, settings: Settings, audit: ScrollText, conflicts: ShieldAlert, leads: Target,
 };
 
 export type NavItem = { href: string; label: string; icon: keyof typeof ICONS; group?: string };

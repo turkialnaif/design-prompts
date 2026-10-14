@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/(admin|portal|profile)/:path*",
+        source: "/(admin|portal|profile|p)/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
           { key: "Cache-Control", value: "no-store" },

@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { firm } from "@/lib/site";
+import { dbConfigured } from "@/lib/db";
+import { captureLead } from "@/lib/leads/engine";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_LEN = 4000;
@@ -36,11 +38,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Too many requests." }, { status: 429 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
-  }
-
   let body: {
     name?: string;
     org?: string;
@@ -50,6 +47,7 @@ export async function POST(request: Request) {
     matterType?: string;
     description?: string;
     locale?: "ar" | "en";
+    attribution?: { utm?: Record<string, string>; path?: string; referrer?: string };
   };
   try {
     body = await request.json();
@@ -75,6 +73,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Input too long." }, { status: 400 });
   }
 
+  // the lead engine: score, conflict check, instant reply to the sender, alert to the firm (runs after the response, never blocks or fails it)
+  if (dbConfigured()) {
+    const a = body.attribution;
+    const utm = a?.utm && typeof a.utm === "object" ? Object.fromEntries(Object.entries(a.utm).slice(0, 8).map(([k, v]) => [k.slice(0, 40), String(v).slice(0, 120)])) : undefined;
+    after(() => captureLead({ name, org, email, phone, matterType, description, locale, source: utm?.utm_source || (a?.referrer ? "referral" : "brief"), utm, landingPath: a?.path?.slice(0, 200), referrer: a?.referrer?.slice(0, 200) }));
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
+  }
   const resend = new Resend(apiKey);
 
   const isAr = locale === "ar";
