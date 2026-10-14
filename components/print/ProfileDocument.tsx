@@ -520,7 +520,7 @@ export default async function ProfileDocument({ locale }: { locale: Locale }) {
         <div className="absolute inset-y-0" style={{ [en ? "left" : "right"]: 0, width: "78mm", background: INK }} />
         <div className="absolute" style={{ [en ? "left" : "right"]: "10mm", top: "27mm", width: "58mm" }}>
           <div className="relative overflow-hidden" style={{ width: "58mm", height: "76mm", background: DEEP }}>
-            <img src="/brand/attorney-turki.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+            <img src="/brand/attorney-turki-portrait.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
             <span aria-hidden className="absolute inset-x-0 bottom-0" style={{ height: "1.2mm", background: GOLD_BRIGHT }} />
           </div>
           <h3 style={{ ...display(en), marginTop: "6mm", fontSize: en ? 24 : 30, lineHeight: 1.25, color: "#fff" }}>{attorney.name}</h3>

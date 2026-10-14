@@ -135,7 +135,7 @@ export default function AboutView({ locale }: { locale: "ar" | "en" }) {
           <Reveal>
             <Link href={leaderHref} className="group glass-card mt-12 grid items-center gap-8 rounded-3xl p-6 md:grid-cols-[15rem_1fr] md:p-10">
               <div className="relative mx-auto aspect-[4/5] w-48 overflow-hidden rounded-2xl md:w-full">
-                <Image src="/brand/attorney-turki.jpg" alt={lead.name} fill sizes="240px" className="object-cover object-top" />
+                <Image src="/brand/attorney-turki-portrait.jpg" alt={lead.name} fill sizes="240px" className="object-cover object-top" />
               </div>
               <div className="text-center md:text-start">
                 <h3 className="font-display text-3xl font-light text-[#00124a] md:text-4xl">{lead.name}</h3>

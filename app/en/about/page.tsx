@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us",
     description: `${firmEn.nameShort} — a legal partner connecting professional judgment with business context, in Riyadh, Saudi Arabia.`,
-    images: [{ url: "/brand/attorney-turki.jpg" }],
+    images: [{ url: "/brand/attorney-turki-portrait.jpg" }],
   },
   twitter: { card: "summary_large_image" },
 };

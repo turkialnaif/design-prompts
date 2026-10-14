@@ -19,7 +19,7 @@ export type Attorney = {
   practiceAreas: { label: string; href: string }[];
 };
 
-const photos: Record<string, string> = { "turki-alnayef": "/brand/attorney-turki.jpg" };
+const photos: Record<string, string> = { "turki-alnayef": "/brand/attorney-turki-portrait.jpg" };
 
 const ui = {
   ar: {

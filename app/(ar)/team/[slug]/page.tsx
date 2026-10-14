@@ -5,7 +5,7 @@ import { attorneys, firm } from "@/lib/site";
 
 
 const attorneyPhotos: Record<string, string> = {
-  "turki-alnayef": "/brand/attorney-turki.jpg",
+  "turki-alnayef": "/brand/attorney-turki-portrait.jpg",
 };
 
 export function generateStaticParams() {

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "من نحن",
     description: `${firm.nameAr} — شريك قانوني يربط الحُكم المهني بسياق الأعمال، في الرياض، المملكة العربية السعودية.`,
-    images: [{ url: "/brand/attorney-turki.jpg" }],
+    images: [{ url: "/brand/attorney-turki-portrait.jpg" }],
   },
   twitter: { card: "summary_large_image" },
 };

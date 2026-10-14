@@ -75,7 +75,7 @@ export default function Accreditations({ locale }: { locale: "ar" | "en" }) {
             className="group mx-auto mt-3.5 grid max-w-[58rem] items-center gap-6 rounded-3xl border border-white/35 bg-[linear-gradient(140deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] p-6 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#f6e2b3]/70 md:grid-cols-[11rem_1fr] md:p-7"
           >
             <div className="relative mx-auto aspect-[4/5] w-36 overflow-hidden rounded-2xl ring-1 ring-white/60 md:w-full">
-              <Image src="/brand/attorney-turki.jpg" alt={lead.name} fill sizes="176px" className="object-cover object-top" />
+              <Image src="/brand/attorney-turki-portrait.jpg" alt={lead.name} fill sizes="176px" className="object-cover object-top" />
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#f6e2b3]">{en ? "Leadership" : "القيادة المهنية"}</p>
