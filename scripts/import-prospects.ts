@@ -11,6 +11,7 @@ import { db } from "../lib/db";
 import { prospectContacts, prospects, suppressions } from "../lib/db/schema";
 import { nameKey } from "../lib/prospects/companies";
 import { parseCsv } from "../lib/prospects/csv";
+import { isDeptMailbox, isForeignCountryDomain } from "../lib/prospects/hygiene";
 
 const file = process.argv[2];
 const dry = process.argv.includes("--dry");
@@ -23,6 +24,8 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function channelOf(email: string, type: string): string {
   if (FREE.test(email)) return "free";
+  if (isForeignCountryDomain(email)) return "foreign";
+  if (isDeptMailbox(email)) return "generic";
   if (/مستثمر|مساهم/.test(type)) return "ir";
   if (GENERIC.test(email) || /عام/.test(type)) return "generic";
   if (/وظيفي|قانوني|التزام/.test(type)) return "role";

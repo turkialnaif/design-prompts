@@ -2,10 +2,11 @@ import "server-only";
 import { and, count, desc, eq, gte, inArray, isNotNull, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { prospectContacts, prospectEvents, prospects, suppressions, type ProspectStatus } from "@/lib/db/schema";
-import { send } from "@/lib/leads/emails";
+import { digestMail, send } from "@/lib/leads/emails";
 import { COMPANIES, nameKey } from "@/lib/prospects/companies";
 import { parseCsv } from "@/lib/prospects/csv";
 import { EMAIL_GAPS, outreachMail, regionOf } from "@/lib/prospects/copy";
+import { addressProblem } from "@/lib/prospects/hygiene";
 
 export const statusLabel: Record<ProspectStatus, string> = { new: "جديدة", researching: "قيد البحث", contacted: "تم التواصل", replied: "ردّت", meeting: "اجتماع", client: "عميل", declined: "اعتذرت" };
 export const basisLabel: Record<string, string> = { manual: "إدخال يدوي", own_relationship: "علاقة قائمة", linkedin_connection: "اتصال على لينكدان", public_site: "موقع عام للمنشأة", referral: "توصية", business_card: "بطاقة / لقاء" };
@@ -194,6 +195,13 @@ export async function sendNext(contactId: string, opts: { to?: string; actor?: s
     if (c.emailStep >= EMAIL_GAPS.length) return { ok: false, reason: "اكتملت الرسائل الثلاث" };
     const [s] = await d.select().from(suppressions).where(eq(suppressions.email, c.email)).limit(1);
     if (s) return { ok: false, reason: "البريد في قائمة الإيقاف" };
+    const problem = await addressProblem(c.email);
+    if (problem) {
+      await d.update(prospectContacts).set({ emailOn: false }).where(eq(prospectContacts.id, c.id));
+      const why: Record<string, string> = { dept: "صندوق قسم لا شخص", foreign: "نطاق غير سعودي", no_mail_server: "النطاق بلا خادم بريد" };
+      await logProspect(p.id, "email_skipped", why[problem], c.id);
+      return { ok: false, reason: `${why[problem]}: أُوقف` };
+    }
   }
   const step = test ? 0 : c.emailStep;
   const mail = outreachMail(step, { id: c.id, fullName: c.fullName, title: c.title }, p.name, await readingFor(), regionOf(p.list));
@@ -206,12 +214,37 @@ export async function sendNext(contactId: string, opts: { to?: string; actor?: s
   return { ok: true };
 }
 
+/** مفتاح الأمان: إن ارتدّ أكثر من الحد (5%) من آخر ٤٠ رسالة أُرسلت، يتوقف الإرسال حتى يراجعه الإنسان. يحمي سمعة النطاق وحساب Resend. */
+export async function bounceBreaker() {
+  const limit = Number(process.env.OUTREACH_BOUNCE_LIMIT) || 0.05;
+  if (process.env.OUTREACH_BREAKER_OFF === "1") return { tripped: false, rate: 0, sample: 0, limit };
+  const d = await db();
+  const last = await d.select({ bounced: prospectContacts.bounced }).from(prospectContacts).where(isNotNull(prospectContacts.lastEmailAt)).orderBy(desc(prospectContacts.lastEmailAt)).limit(40);
+  const sample = last.length;
+  const rate = sample ? last.filter((r) => r.bounced).length / sample : 0;
+  return { tripped: sample >= 20 && rate > limit, rate, sample, limit };
+}
+
+async function alertOnce(title: string, rows: string[]) {
+  const d = await db();
+  const [done] = await d.select({ n: count() }).from(prospectEvents).where(and(eq(prospectEvents.kind, "breaker_alert"), gte(prospectEvents.createdAt, startOfDay())));
+  if ((done?.n ?? 0) > 0) return;
+  const [any] = await d.select({ id: prospects.id }).from(prospects).limit(1);
+  if (any) await d.insert(prospectEvents).values({ prospectId: any.id, kind: "breaker_alert", body: title });
+  await send(digestMail(title, rows));
+}
+
 /** المهمة اليومية: تُرسل المستحق فقط، ضمن السقف اليومي، من الأحد إلى الخميس، والمتابعات قبل الجديد. */
 export async function runOutreach(): Promise<{ enabled: boolean; sent: number; skipped?: string }> {
   if (!outreachEnabled()) return { enabled: false, sent: 0, skipped: "OUTREACH_ENABLED ليس 1" };
   const dow = new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "Asia/Riyadh" }).format(new Date());
   if (dow === "Fri" || dow === "Sat") return { enabled: true, sent: 0, skipped: "عطلة نهاية الأسبوع" };
   const d = await db();
+  const brk = await bounceBreaker();
+  if (brk.tripped) {
+    await alertOnce(`⛔ أُوقف الإرسال الآلي: ارتداد ${(brk.rate * 100).toFixed(1)}% من آخر ${brk.sample} رسالة`, [`الحد المسموح ${(brk.limit * 100).toFixed(0)}%.`, "راجع العناوين المرتدة في لوحة الاستقطاب وResend، ثم أعد التفعيل بعد التنظيف (OUTREACH_BREAKER_OFF=1 لتجاوزه عمدًا)."]);
+    return { enabled: true, sent: 0, skipped: `مفتاح الارتداد: ${(brk.rate * 100).toFixed(1)}% من ${brk.sample}` };
+  }
   let room = CAP() - (await sentToday());
   if (room <= 0) return { enabled: true, sent: 0, skipped: "بلغنا السقف اليومي" };
 
