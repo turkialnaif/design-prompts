@@ -8,16 +8,16 @@ import { BONE, BRASS, BRASS_DEEP, INK, NAVY } from "../tips/parts";
  * numbers large, the article it comes from underneath. Every figure was read from the official text (uqn.gov.sa/…/4000869) and checked against
  * a second source; see docs/whatsapp/sources.md. The top 190 px and the bottom 230 px are left clear for WhatsApp's own interface.
  */
-const cairo = Cairo({ subsets: ["arabic"], weight: ["700", "800", "900"], display: "swap" });
+export const cairo = Cairo({ subsets: ["arabic"], weight: ["700", "800", "900"], display: "swap" });
 const plex = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["400", "500", "600", "700"], display: "swap" });
 
 export const W = 1080;
 export const H = 1920;
 export const TOTAL = 10;
-const WARN = "#a63d2b";
-const ar = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
+export const WARN = "#a63d2b";
+export const ar = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
-function Card({ n, kicker, title, source, children }: { n: number; kicker: string; title: ReactNode; source: string; children: ReactNode }) {
+export function Card({ n, kicker, title, source, children, total = TOTAL }: { n: number; kicker: string; title: ReactNode; source: string; children: ReactNode; total?: number }) {
   return (
     <div className={plex.className} dir="rtl" style={{ position: "relative", width: W, height: H, background: BONE, color: NAVY, overflow: "hidden" }}>
       {/* the lintel, as on the firm's other pieces */}
@@ -27,7 +27,7 @@ function Card({ n, kicker, title, source, children }: { n: number; kicker: strin
           <span style={{ width: 16, height: 16, background: BRASS, display: "inline-block" }} />
           {kicker}
         </div>
-        <div style={{ color: "rgba(0,18,74,0.55)", fontWeight: 600 }}>{ar(n)} من {ar(TOTAL)}</div>
+        <div style={{ color: "rgba(0,18,74,0.55)", fontWeight: 600 }}>{ar(n)} من {ar(total)}</div>
       </div>
       <h1 className={cairo.className} style={{ position: "absolute", top: 280, right: 72, left: 72, margin: 0, fontSize: 86, fontWeight: 900, lineHeight: 1.22, textWrap: "balance" as never }}>
         {title}
@@ -45,14 +45,14 @@ function Card({ n, kicker, title, source, children }: { n: number; kicker: strin
   );
 }
 
-const box: React.CSSProperties = { background: "#fffdf7", border: "2px solid rgba(0,18,74,0.14)", padding: "30px 36px" };
-const Tick = ({ color = BRASS_DEEP, x = false }: { color?: string; x?: boolean }) => (
+export const box: React.CSSProperties = { background: "#fffdf7", border: "2px solid rgba(0,18,74,0.14)", padding: "30px 36px" };
+export const Tick = ({ color = BRASS_DEEP, x = false }: { color?: string; x?: boolean }) => (
   <svg width="46" height="46" viewBox="0 0 46 46" style={{ flex: "none", marginTop: 4 }}>
     <rect x="2" y="2" width="42" height="42" fill="none" stroke={color} strokeWidth="4" />
     {x ? <path d="M13 13 L33 33 M33 13 L13 33" stroke={color} strokeWidth="5" strokeLinecap="square" /> : <path d="M11 24 L20 33 L36 13" fill="none" stroke={color} strokeWidth="5" strokeLinecap="square" />}
   </svg>
 );
-function Row({ children, x, color, size = 44 }: { children: ReactNode; x?: boolean; color?: string; size?: number }) {
+export function Row({ children, x, color, size = 44 }: { children: ReactNode; x?: boolean; color?: string; size?: number }) {
   return (
     <div style={{ display: "flex", gap: 26, alignItems: "flex-start", padding: "20px 0", borderTop: "2px solid rgba(0,18,74,0.12)", fontSize: size, lineHeight: 1.5, fontWeight: 500 }}>
       <Tick x={x} color={color} />
@@ -60,7 +60,7 @@ function Row({ children, x, color, size = 44 }: { children: ReactNode; x?: boole
     </div>
   );
 }
-const Big = ({ children, color = BRASS_DEEP, size = 130 }: { children: ReactNode; color?: string; size?: number }) => (
+export const Big = ({ children, color = BRASS_DEEP, size = 130 }: { children: ReactNode; color?: string; size?: number }) => (
   <span className={cairo.className} style={{ fontSize: size, fontWeight: 900, lineHeight: 1, color }}>{children}</span>
 );
 
