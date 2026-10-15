@@ -16,6 +16,9 @@ export const firm = {
   ],
   mapsUrl:
     "https://www.google.com/maps?q=RMJ5+P9F+تاب+للمحاماة+والاستشارات+القانونية،+الياسمين،+الرياض+13326&ftid=0x3e2ee500591ba4a7:0xc96fb1e4ecd7a0e7",
+  /** Google Maps embed of the office listing; the language segment ("1sar") is swapped for English pages. */
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4526.171904392391!2d46.658420400000004!3d24.8318101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee500591ba4a7%3A0xc96fb1e4ecd7a0e7!2z2KrYsdmD2Yog2KfZhNmG2KfZitmBINmI2LTYsdmD2KfYpNmHINmE2YTZhdit2KfZhdin2Kkg2YjYp9mE2KfYs9iq2LTYp9ix2KfYqiDYp9mE2YLYp9mG2YjZhtmK2Kk!5e1!3m2!1sar!2ssa!4v1792047055988!5m2!1sar!2ssa",
   phone: "+966566770888",
   phoneDisplay: "966 566 770 888",
   whatsapp: "https://wa.me/966566770888",

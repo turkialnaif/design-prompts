@@ -173,6 +173,16 @@ export default function ContactView({ locale }: { locale: "ar" | "en" }) {
                     ))}
                   </dl>
                 </div>
+                <div className="relative mt-6 aspect-[16/10] w-full overflow-hidden border border-[#e0b35a]/35 bg-[#00124a]">
+                  <iframe
+                    src={ar ? firm.mapEmbed : firm.mapEmbed.replace(/1sar/g, "1sen")}
+                    title={ar ? "موقع المكتب على خرائط Google" : "Office location on Google Maps"}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="absolute inset-0 h-full w-full border-0 opacity-90 transition duration-500 [filter:invert(0.9)_hue-rotate(180deg)_saturate(0.55)_brightness(0.95)] hover:opacity-100 hover:[filter:none]"
+                  />
+                </div>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <ArrowButton href={firm.mapsUrl} external ltr={!ar}>
                     {t.maps}
