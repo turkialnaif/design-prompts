@@ -1,0 +1,23 @@
+@font-face{font-family:Watad;src:url(watad.otf)}
+@font-face{font-family:Zain;src:url(zain-vf.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#060d15}
+.c{position:relative;width:1080px;height:1080px;overflow:hidden;background:radial-gradient(ellipse 80% 90% at 50% 36%,#1c3554 0%,#0f1e30 48%,#060d15 100%)}
+.sky{position:absolute;inset:0;background:url(riyadh-skyline.jpg) center 62%/cover;opacity:.15;filter:grayscale(1) contrast(1.1);mix-blend-mode:screen}
+.fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,21,.5) 0%,rgba(6,13,21,0) 30%,rgba(6,13,21,0) 55%,rgba(6,13,21,.9) 100%)}
+.glow{position:absolute;left:50%;top:32%;width:900px;height:520px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(224,179,90,.2),rgba(224,179,90,0))}
+.frame{position:absolute;inset:36px;border:1.5px solid rgba(224,179,90,.45)}
+.frame::before{content:"";position:absolute;inset:10px;border:1px solid rgba(224,179,90,.18)}
+.corner{position:absolute;width:22px;height:22px;border:2px solid #e0b35a}
+.tl{top:28px;left:28px;border-right:0;border-bottom:0}.tr{top:28px;right:28px;border-left:0;border-bottom:0}
+.bl{bottom:28px;left:28px;border-right:0;border-top:0}.br{bottom:28px;right:28px;border-left:0;border-top:0}
+.txt{position:absolute;left:0;right:0;top:140px;text-align:center;padding:0 90px}
+.mark{width:96px;height:auto;margin-bottom:30px;filter:drop-shadow(0 6px 22px rgba(224,179,90,.35))}
+.tagp{font-family:Watad,Zain;font-size:34px;color:#e0b35a;letter-spacing:1px;margin-bottom:22px}
+h1{font-family:Watad,Zain;font-weight:400;font-size:86px;line-height:1.25;background:linear-gradient(180deg,#fbeec6 0%,#f0cf86 42%,#d19c3c 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 4px 24px rgba(0,0,0,.45))}
+.div{display:flex;align-items:center;justify-content:center;gap:18px;margin:36px auto 0}
+.div i{display:block;height:1.5px;width:150px;background:linear-gradient(90deg,rgba(224,179,90,0),#e0b35a)}.div i:last-child{background:linear-gradient(270deg,rgba(224,179,90,0),#e0b35a)}
+.div b{display:block;width:12px;height:12px;background:#e0b35a;transform:rotate(45deg)}
+.sum{font-family:Watad,Zain;font-size:40px;line-height:1.7;color:rgba(246,226,179,.9);margin-top:34px}
+.brand{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-family:Watad,Zain;font-size:34px;color:#f6e2b3}
+.en{font-family:Zain;font-size:22px;letter-spacing:7px;margin-top:10px;color:#e0b35a;direction:ltr}

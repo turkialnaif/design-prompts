@@ -33,6 +33,7 @@ export const firm = {
     tiktok: "https://www.tiktok.com/@tapsaudi",
     instagram: "https://www.instagram.com/tnz1/",
     facebook: "https://www.facebook.com/tapsaudi",
+    whatsappChannel: "https://whatsapp.com/channel/0029VbDcu2mEKyZG9VbFcw45",
   },
 };
 
