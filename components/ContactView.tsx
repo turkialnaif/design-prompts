@@ -1,4 +1,4 @@
-import { Clock, Globe, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
+import { CalendarCheck, Clock, Globe, Mail, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 import ArrowButton from "@/components/ArrowButton";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
@@ -16,6 +16,7 @@ const copy = {
     whatsapp: "تواصل عبر واتساب",
     call: "اتصل بنا",
     mail: "راسلنا",
+    book: "احجز مكالمة",
     reply: "نرد خلال يوم عمل واحد",
     formTitle: "أرسل موجز مسألتك",
     formLead: "نراجع الموجز ونرد عليك خلال يوم عمل واحد.",
@@ -47,6 +48,7 @@ const copy = {
     whatsapp: "Message on WhatsApp",
     call: "Call us",
     mail: "Email us",
+    book: "Book a call",
     reply: "We reply within one business day",
     formTitle: "Send your matter brief",
     formLead: "We review the brief and reply within one business day.",
@@ -98,6 +100,13 @@ export default function ContactView({ locale }: { locale: "ar" | "en" }) {
               <Mail className="h-4 w-4 text-[#f6e2b3]" />
               {t.mail}
             </a>
+            {/* shown only when a scheduling link is configured (BOOKING_URL): it must never point at a page that cannot take bookings */}
+            {process.env.BOOKING_URL && (
+              <a href={process.env.BOOKING_URL} target="_blank" rel="noopener noreferrer" className={pill}>
+                <CalendarCheck className="h-4 w-4 text-[#f6e2b3]" />
+                {t.book}
+              </a>
+            )}
           </div>
           <p className="mt-8 inline-flex flex-wrap items-center justify-center gap-5 text-xs font-light text-white/70">
             <span className="inline-flex items-center gap-1.5">
