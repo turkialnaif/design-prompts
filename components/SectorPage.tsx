@@ -6,6 +6,9 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { articles } from "@/lib/articles";
+import { articlesEn } from "@/lib/en/articles";
+import { hasEnArticle, hasEnService } from "@/lib/en/slugs";
+import { sectorArticleSlugs, sectorExtra, sectorServiceSlugs } from "@/lib/sector-extra";
 import { sectors, type Sector } from "@/lib/sectors";
 import { corePillars, firm, specializedLines } from "@/lib/site";
 
@@ -20,6 +23,13 @@ const ui = {
     issuesEyebrow: "Key Legal Matters",
     servicesTitle: "خدمات مرتبطة بالقطاع",
     servicesEyebrow: "Related Services",
+    risksTitle: "مخاطر تستحق الانتباه في هذا القطاع",
+    risksEyebrow: "Watch Points",
+    regTitle: "الجهات التنظيمية ذات الصلة",
+    regEyebrow: "Regulators",
+    contractsTitle: "العقود والمستندات المعتادة",
+    otherLang: "Read this page in English",
+    otherLangHref: "/en/sectors",
     faqTitle: "أسئلة شائعة",
     faqEyebrow: "FAQ",
     readTitle: "مقالات قد تهمك",
@@ -42,6 +52,13 @@ const ui = {
     issuesEyebrow: "Key Legal Matters",
     servicesTitle: "Related services",
     servicesEyebrow: "Related Services",
+    risksTitle: "Watch points in this sector",
+    risksEyebrow: "Watch Points",
+    regTitle: "Relevant regulators",
+    regEyebrow: "Regulators",
+    contractsTitle: "Typical contracts and documents",
+    otherLang: "قراءة هذه الصفحة بالعربية",
+    otherLangHref: "/sectors",
     faqTitle: "Frequently asked questions",
     faqEyebrow: "FAQ",
     readTitle: "Articles worth reading",
@@ -63,8 +80,19 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
   const ar = locale === "ar";
   const c = sector[locale];
   const url = `${firm.website}${t.base}/${sector.slug}`;
-  const services = sector.services.map((s) => all.find((x) => x.slug === s)).filter((x): x is (typeof all)[number] => !!x);
-  const reads = sector.articles.map((s) => articles.find((a) => a.slug === s)).filter((x): x is (typeof articles)[number] => !!x);
+  const services = sectorServiceSlugs(sector.slug).map((s) => all.find((x) => x.slug === s)).filter((x): x is (typeof all)[number] => !!x);
+  const extra = sectorExtra(sector.slug, locale);
+  const faqs = [...c.faqs, ...(extra?.faqs ?? [])];
+  const reads = sectorArticleSlugs(sector.slug)
+    .map((s) => articles.find((a) => a.slug === s))
+    .filter((x): x is (typeof articles)[number] => !!x)
+    .slice(0, 6);
+  const readHref = (slug: string) => (!ar && hasEnArticle(slug) ? `/en/blog/${slug}` : `/blog/${slug}`);
+  const readTitle = (a: (typeof articles)[number]) => (!ar && hasEnArticle(a.slug) ? articlesEn[a.slug as keyof typeof articlesEn].h1 : `${a.h1}${ar ? "" : t.arLabel}`);
+  const serviceHref = (slug: string) => (!ar && hasEnService(slug) ? `/en/services/${slug}` : `/services/${slug}`);
+  const serviceIsEn = (slug: string) => !ar && hasEnService(slug);
+  let no = 1;
+  const nn = () => String(no++).padStart(2, "0");
   const others = sectors.filter((s) => s.slug !== sector.slug).slice(0, 8);
 
   const ld = [
@@ -82,7 +110,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: c.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
   ];
 
@@ -122,7 +150,7 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
       <section className="bg-paper py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
-            <SectionHeading number="01" eyebrow={t.issuesEyebrow} title={t.issuesTitle} tone="onLight" />
+            <SectionHeading number={nn()} eyebrow={t.issuesEyebrow} title={t.issuesTitle} tone="onLight" />
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {c.issues.map((it, i) => (
@@ -138,21 +166,65 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
         </div>
       </section>
 
+      {extra && (
+        <section className="bg-white py-20 md:py-24">
+          <div className="mx-auto max-w-6xl px-5">
+            <Reveal>
+              <SectionHeading number={nn()} eyebrow={t.risksEyebrow} title={t.risksTitle} tone="onLight" />
+            </Reveal>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {extra.risks.map((r) => (
+                <Reveal key={r.t}>
+                  <div className="h-full border-t-2 border-[#e0b35a] bg-paper px-6 py-6">
+                    <h3 className="font-display !text-xl !font-normal leading-8 text-[#00124a]">{r.t}</h3>
+                    <p className="mt-3 text-[15px] font-light leading-8 text-ink-soft">{r.d}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {extra && (
+        <section className="bg-paper py-20 md:py-24">
+          <div className="mx-auto max-w-6xl px-5">
+            <Reveal>
+              <SectionHeading number={nn()} eyebrow={t.regEyebrow} title={t.regTitle} tone="onLight" />
+            </Reveal>
+            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {extra.regulators.map(([n, d]) => (
+                <li key={n} className="glass-card rounded-2xl p-5">
+                  <p className="font-display text-lg font-normal leading-8 text-[#00124a]">{n}</p>
+                  <p className="mt-1 text-sm font-light leading-7 text-ink-soft">{d}</p>
+                </li>
+              ))}
+            </ul>
+            <h3 className="font-display mt-14 !text-2xl !font-normal text-[#00124a]">{t.contractsTitle}</h3>
+            <ul className="mt-5 flex flex-wrap gap-2.5">
+              {extra.contracts.map((x) => (
+                <li key={x} className="border border-[#00124a]/20 bg-white px-4 py-2 text-sm font-light text-[#00124a]">{x}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {services.length > 0 && (
         <section className="bg-white py-20 md:py-24">
           <div className="mx-auto max-w-6xl px-5">
             <Reveal>
-              <SectionHeading number="02" eyebrow={t.servicesEyebrow} title={t.servicesTitle} tone="onLight" />
+              <SectionHeading number={nn()} eyebrow={t.servicesEyebrow} title={t.servicesTitle} tone="onLight" />
             </Reveal>
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services/${s.slug}`}
-                    hrefLang={ar ? undefined : "ar"}
+                    href={serviceHref(s.slug)}
+                    hrefLang={ar || serviceIsEn(s.slug) ? undefined : "ar"}
                     className="group flex h-full items-center justify-between gap-3 border border-[#00124a]/15 bg-white px-5 py-5 transition-colors hover:border-[#e0b35a] hover:bg-[#f4f5fe] chamfer-btn"
                   >
-                    <span className="font-display text-lg font-normal text-[#00124a]">{ar ? s.title : `${s.titleEn}${t.arLabel}`}</span>
+                    <span className="font-display text-lg font-normal text-[#00124a]">{ar ? s.title : `${s.titleEn}${serviceIsEn(s.slug) ? "" : t.arLabel}`}</span>
                     <span aria-hidden className="text-[#012696] transition-transform group-hover:-translate-x-1 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1">{ar ? "←" : "→"}</span>
                   </Link>
                 </li>
@@ -165,10 +237,10 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
       <section className="bg-paper py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
-            <SectionHeading number="03" eyebrow={t.faqEyebrow} title={t.faqTitle} tone="onLight" />
+            <SectionHeading number={nn()} eyebrow={t.faqEyebrow} title={t.faqTitle} tone="onLight" />
           </Reveal>
           <div className="mt-10 divide-y divide-[#00124a]/15 border-y border-[#00124a]/15">
-            {c.faqs.map((f) => (
+            {faqs.map((f) => (
               <details key={f.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-normal text-[#00124a] md:text-2xl">
                   <h3 className="font-display !text-xl !font-normal md:!text-2xl">{f.q}</h3>
@@ -186,14 +258,14 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
         <section className="bg-white py-20 md:py-24">
           <div className="mx-auto max-w-6xl px-5">
             <Reveal>
-              <SectionHeading number="04" eyebrow={t.readEyebrow} title={t.readTitle} tone="onLight" />
+              <SectionHeading number={nn()} eyebrow={t.readEyebrow} title={t.readTitle} tone="onLight" />
             </Reveal>
             <ul className="mt-10 grid gap-4 md:grid-cols-2">
               {reads.map((a) => (
                 <li key={a.slug}>
-                  <Link href={`/blog/${a.slug}`} hrefLang={ar ? undefined : "ar"} className="glass-card block h-full rounded-2xl p-6 transition-transform hover:-translate-y-1">
-                    <h3 className="font-display !text-lg !font-normal leading-8 text-[#00124a]">{a.h1}{t.arLabel}</h3>
-                    <p className="mt-2 line-clamp-2 text-sm font-light leading-7 text-ink-soft">{a.metaDescription}</p>
+                  <Link href={readHref(a.slug)} hrefLang={ar || hasEnArticle(a.slug) ? undefined : "ar"} className="glass-card block h-full rounded-2xl p-6 transition-transform hover:-translate-y-1">
+                    <h3 className="font-display !text-lg !font-normal leading-8 text-[#00124a]">{readTitle(a)}</h3>
+                    <p className="mt-2 line-clamp-2 text-sm font-light leading-7 text-ink-soft">{!ar && hasEnArticle(a.slug) ? articlesEn[a.slug as keyof typeof articlesEn].metaDescription : a.metaDescription}</p>
                   </Link>
                 </li>
               ))}
@@ -225,6 +297,9 @@ export default function SectorPage({ sector, locale }: { sector: Sector; locale:
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href={`${t.otherLangHref}/${sector.slug}`} hrefLang={ar ? "en" : "ar"} className="chamfer-btn inline-block border border-[#e0b35a] px-4 py-2 text-sm font-light text-[#00124a]">{t.otherLang}</Link>
+            </li>
             <li>
               <Link href={t.sectorsHref} className="chamfer-btn inline-block bg-[#00124a] px-4 py-2 text-sm font-normal text-white">{ar ? "كل القطاعات ←" : "All sectors →"}</Link>
             </li>

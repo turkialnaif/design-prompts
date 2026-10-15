@@ -1,3 +1,5 @@
+import RelatedSectors from "@/components/RelatedSectors";
+import { sectorsForArticle } from "@/lib/sector-extra";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -210,6 +212,8 @@ export default async function EnArticlePage({ params }: { params: Promise<{ slug
           </div>
         </section>
       )}
+
+      <RelatedSectors locale="en" items={sectorsForArticle(slug)} alt={{ href: `/blog/${slug}` }} />
 
       <Breadcrumbs
         locale="en"

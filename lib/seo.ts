@@ -2,7 +2,7 @@ import { sectors } from "@/lib/sectors";
 import { corePillars, firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
-export const SITE_UPDATED = "2026-10-04";
+export const SITE_UPDATED = "2026-10-15";
 
 /**
  * Search results cut a title at about 60 characters, and the brand suffix of the page template is what would be cut.

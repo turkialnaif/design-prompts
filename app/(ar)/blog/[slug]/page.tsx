@@ -11,6 +11,8 @@ import { lawLink } from "@/lib/law-links";
 import ArrowButton from "@/components/ArrowButton";
 import ArticleMarkdown, { getArticleHeadings } from "@/components/ArticleMarkdown";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
+import RelatedSectors from "@/components/RelatedSectors";
+import { sectorsForArticle } from "@/lib/sector-extra";
 import ReadingProgress from "@/components/ReadingProgress";
 import ShareBar from "@/components/ShareBar";
 import { newestFirst } from "@/lib/article-index";
@@ -323,6 +325,8 @@ export default async function ArticlePage({
           </div>
         </section>
       )}
+
+      <RelatedSectors locale="ar" items={sectorsForArticle(article.slug)} alt={hasEnArticle(article.slug) ? { href: `/en/blog/${article.slug}` } : undefined} />
 
       <section className="bg-[#f4f5fe] py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-5">

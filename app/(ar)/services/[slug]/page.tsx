@@ -12,7 +12,8 @@ import ServiceLongform from "@/components/ServiceLongform";
 import SectionHeading from "@/components/SectionHeading";
 import TiltCard from "@/components/TiltCard";
 import { articles } from "@/lib/articles";
-import { sectors } from "@/lib/sectors";
+import RelatedSectors from "@/components/RelatedSectors";
+import { sectorsForService } from "@/lib/sector-extra";
 import { lineDetails } from "@/lib/line-content";
 import { serviceCopy } from "@/lib/service-copy";
 import { hasEnService } from "@/lib/en/slugs";
@@ -80,7 +81,7 @@ export default async function ServicePage({
   const relatedArticles = articles
     .filter((a) => keywords.some((k) => `${a.h1} ${a.primaryKeyword}`.includes(k)))
     .slice(0, 3);
-  const relatedSectors = sectors.filter((x) => x.services.includes(slug));
+  const relatedSectors = sectorsForService(slug);
   const detail = line ? lineDetails[line.slug] : undefined;
   const order = [
     pillar ? "scope" : null,
@@ -378,6 +379,8 @@ export default async function ServicePage({
           </div>
         </section>
       )}
+
+      {hasEnService(slug) && <RelatedSectors locale="ar" items={[]} alt={{ href: `/en/services/${slug}` }} />}
 
       {relatedSectors.length > 0 && (
         <section className="bg-white py-16">

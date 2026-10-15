@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import RelatedSectors from "@/components/RelatedSectors";
+import { sectorsForService } from "@/lib/sector-extra";
 import ArrowButton from "@/components/ArrowButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
@@ -83,6 +85,8 @@ export default async function EnServicePage({ params }: { params: Promise<{ slug
       />
 
       <ServiceLongform copy={copy} extra={extra} links={copy.links} locale="en" />
+
+      <RelatedSectors locale="en" items={sectorsForService(slug)} alt={{ href: `/services/${slug}` }} />
     </div>
   );
 }
