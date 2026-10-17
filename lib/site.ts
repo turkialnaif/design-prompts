@@ -29,7 +29,7 @@ export const firm = {
   unifiedNumber: "7030708403",
   social: {
     linkedin: "https://www.linkedin.com/company/tapsaudi/",
-    x: "https://x.com/TAPsaudi",
+    x: "https://x.com/taapsaudi",
     tiktok: "https://www.tiktok.com/@tapsaudi",
     instagram: "https://www.instagram.com/tnz1/",
     facebook: "https://www.facebook.com/tapsaudi",

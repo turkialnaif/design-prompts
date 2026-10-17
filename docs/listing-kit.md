@@ -27,7 +27,7 @@
 
 ## الحسابات القائمة (sameAs)
 
-LinkedIn: https://www.linkedin.com/company/tapsaudi/ · X: https://x.com/TAPsaudi · Instagram: https://www.instagram.com/tnz1/ · TikTok: https://www.tiktok.com/@tapsaudi · Facebook: https://www.facebook.com/tapsaudi
+LinkedIn: https://www.linkedin.com/company/tapsaudi/ · X: https://x.com/taapsaudi · Instagram: https://www.instagram.com/tnz1/ · TikTok: https://www.tiktok.com/@tapsaudi · Facebook: https://www.facebook.com/tapsaudi
 
 ملاحظة: خريطة Google تحمل مدخلًا قائمًا باسم «تاب للمحاماة والاستشارات القانونية» عند الموقع نفسه. يُطالَب بملكيته ويُضبط اسمه، ولا يُنشأ مدخل ثانٍ.
 
