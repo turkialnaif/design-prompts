@@ -4,7 +4,7 @@ from topics import TOPICS
 D='٠١٢٣٤٥٦٧٨٩'
 def ar(n): return ''.join(D[int(c)] for c in str(n))
 os.makedirs('v6c',exist_ok=True)
-THEMES=['navy','teal','graph','burg','forest','navy','teal','graph','burg','forest','navy']
+THEMES=['navy']*11
 COVER=[ # variant, motif html
  ('v1','<div class="glyph" style="font-family:Zain;font-weight:800;font-size:760px;left:-40px;top:170px;direction:ltr">30</div>'),
  ('v2','<div class="glyph" style="font-size:640px;left:0;right:0;text-align:center;top:60px">أو</div>'),
@@ -70,17 +70,23 @@ for i,T in enumerate(TOPICS):
     for j,P in enumerate(T['pages']):
         k=j+2; light=(j==lightk)
         body=hd(k,total)+f'<div class="kick">المعلومة {ar(j+1)} من {ar(3)}</div><div class="t fit" data-max="112">{P["t"]}</div><div class="body">{layout(seq[j],P["items"],P["tip"],(i+j)%3)}</div>'+ft(k,total,'المرجع: '+T['system'].split(' · ')[0])
-        open(f'{base}-p{k}.html','w',encoding='utf-8').write(page(theme if not light else 'light',body))
-    # solutions
+        open(f'{base}-p{k}.html','w',encoding='utf-8').write(page(theme,body))
+    # solutions + contact
     if i%2==0:
-        sc=''.join(f'<div class="card{" hi" if n==1 else ""}"><div class="no">{ar(n)}</div><div class="txt">{s}</div></div>' for n,s in enumerate(T['steps'],1))
+        sc=''.join(f'<div class="card"><div class="no">{ar(n)}</div><div class="txt">{x}</div></div>' for n,x in enumerate(T['steps'],1))
         steps=f'<div class="S1">{sc}</div>'
     else:
-        st=''.join(f'<div class="st"><div class="no">{ar(n)}</div><div class="txt">{s}</div></div>' for n,s in enumerate(T['steps'],1))
+        st=''.join(f'<div class="st"><div class="no">{ar(n)}</div><div class="txt">{x}</div></div>' for n,x in enumerate(T['steps'],1))
         steps=f'<div class="S2">{st}</div>'
-    ctc='ct fill' if i%3==0 else 'ct'
-    sol=hd(5,total)+'<div class="kick">الحل</div><div class="t">خطواتك العملية</div><div class="body">'+steps+f'<div class="nt">{T["note"]}</div><div class="{ctc}"><div><div class="q">تحتاج رأياً في حالتك؟</div><div class="btn" style="display:inline-block">احجز استشارة</div></div><div class="ls"><span>WhatsApp</span> +966 56 677 0888<br><span>Web</span> taap.sa<br><span>Mail</span> info@taap.sa</div></div></div>'+f'<div class="ft">{dots(5,total)}<span>للتوعية العامة، ولا يغني عن استشارة متخصصة</span></div>'
-    open(f'{base}-p5.html','w',encoding='utf-8').write(page(theme,sol))
+    ICON={'cal':'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+          'wa':'<path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z"/>',
+          'mail':'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+          'web':'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'}
+    def tile(ic,lab_,val,cls=''):
+        return f'<div class="tl {cls}"><div class="ic"><svg viewBox="0 0 24 24">{ICON[ic]}</svg></div><div class="tt2"><div class="lb">{lab_}</div><div class="vl2">{val}</div></div></div>'
+    panel=f'''<div class="cp"><div class="cph"><div class="cq">نسمع منك ونرد عليك</div><div class="hrs">الأحد إلى الخميس: <bdi dir="ltr">8:00–17:00</bdi> &nbsp;·&nbsp; السبت: <bdi dir="ltr">10:00–14:00</bdi></div></div><div class="cpb"><div class="qr"><img src="qr-{T["slug"]}.svg"><div class="qc">امسح للحجز</div></div><div class="tiles">{tile("cal","احجز استشارة","اختر موعدك على taap.sa","gold")}{tile("wa","واتساب · اتصال","<bdi dir=ltr>+966&nbsp;56&nbsp;677&nbsp;0888</bdi>")}{tile("mail","البريد","info@taap.sa")}{tile("web","الموقع","taap.sa")}</div></div></div>'''
+    sol=hd(5,total)+'<div class="kick">الحل</div><div class="t">خطواتك العملية</div><div class="body">'+steps+f'<div class="nt">{T["note"]}</div>'+panel+'</div>'+f'<div class="ft">{dots(5,total)}<span>للتوعية العامة، ولا يغني عن استشارة متخصصة</span></div>'
+    open(f'{base}-p5.html','w',encoding='utf-8').write(page(theme,sol,'sol'))
 with open('v6c/manifest.txt','w') as f:
     for i,T in enumerate(TOPICS):
         for k in range(1,6): f.write(f'v6c/{i+1:02d}-{T["slug"]}-p{k}.html|{i+1:02d}-{T["slug"]}|{k}\n')
