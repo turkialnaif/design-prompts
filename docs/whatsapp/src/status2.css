@@ -1,0 +1,35 @@
+@font-face{font-family:Watad;src:url(watad.otf)}
+@font-face{font-family:Zain;src:url(zain-vf.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0a1522}
+.c{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Watad,Zain;color:#14233a}
+.bg{position:absolute;inset:-60px;background:url(riyadh-skyline.jpg) 38% 50%/cover;filter:blur(26px) saturate(.9)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,34,.38) 0%,rgba(10,21,34,.52) 45%,rgba(7,16,26,.9) 100%)}
+.bar{position:absolute;top:178px;left:56px;right:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;font-family:Zain;font-weight:600;font-size:30px;letter-spacing:1px}
+.bar .it{display:flex;align-items:center;gap:14px;direction:ltr}
+.ic{width:56px;height:56px;border-radius:50%;background:#b98a3e;display:flex;align-items:center;justify-content:center}
+.ic svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cta{font-family:Watad;font-size:32px;background:#e6c98f;color:#14233a;padding:12px 32px;border-radius:14px}
+.zone{position:absolute;top:268px;left:56px;right:56px;height:170px}
+.badge{position:absolute;right:0;top:0;background:rgba(10,21,34,.86);border:1.5px solid rgba(224,179,90,.55);border-radius:26px;display:flex;align-items:center;justify-content:center}
+.badge.sm{width:150px;height:166px}
+.badge.sm img{width:96px}
+.badge.full{width:470px;height:150px;top:10px}
+.badge.full img{width:410px}
+.ser{position:absolute;left:0;top:34px;text-align:center}
+.ser .t{display:inline-block;background:#e6c98f;color:#14233a;font-size:34px;padding:10px 26px;border-radius:14px}
+.ser .n{font-family:Zain;font-weight:600;color:#fff;font-size:28px;letter-spacing:6px;margin-top:16px;direction:ltr;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.path{position:absolute;inset:0;pointer-events:none}
+.band{position:absolute;background:#e6c98f;color:#14233a;font-size:76px;line-height:1.5;padding:6px 52px;white-space:nowrap}
+.b1{top:468px;right:0}
+.b2{top:468px;left:0}
+.cards{position:absolute;top:748px;left:48px;right:48px;display:flex;flex-direction:column;gap:26px}
+.card{display:flex;align-items:center;gap:26px;min-height:208px;background:rgba(248,240,222,.95);border-radius:30px;padding:22px 30px;box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.ref{flex:0 0 auto;min-width:118px;text-align:center;font-size:31px;color:#ecc77a;background:#14233a;padding:10px 12px;border-radius:14px}
+.tx{font-size:45px;line-height:1.5;color:#14233a;font-weight:400}
+.dis{position:absolute;left:0;right:0;top:1478px;text-align:center;color:rgba(255,255,255,.82);font-size:25px}
+.ph{position:absolute;overflow:hidden;border-radius:34px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.p1{left:-34px;top:1520px;width:350px;height:430px}
+.p2{left:332px;top:1585px;width:416px;height:380px}
+.p3{left:764px;top:1520px;width:350px;height:430px}
