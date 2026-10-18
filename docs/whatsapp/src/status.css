@@ -1,0 +1,22 @@
+@font-face{font-family:Watad;src:url(watad.otf)}
+@font-face{font-family:Zain;src:url(zain-vf.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#09131f}
+.c{position:relative;width:1080px;height:1920px;background:linear-gradient(180deg,#0f1e31 0%,#0a1522 55%,#07101a 100%);font-family:Watad,Zain;color:#f2e9d0}
+.f1{position:absolute;inset:56px;border:1.5px solid rgba(224,179,90,.55)}
+.f2{position:absolute;inset:72px;border:1px solid rgba(224,179,90,.2)}
+.top{position:absolute;top:150px;left:0;right:0;text-align:center}
+.mark{width:84px;display:block;margin:0 auto 34px}
+.lab{font-size:36px;color:#e0b35a;letter-spacing:1px}
+.num{font-family:Zain;font-size:28px;color:rgba(224,179,90,.7);letter-spacing:6px;margin-top:14px;direction:ltr}
+.body{position:absolute;top:470px;left:130px;right:130px}
+h1{font-weight:400;font-size:84px;line-height:1.35;color:#ecc77a;text-align:center}
+.rule{width:200px;height:2px;background:#e0b35a;margin:54px auto 64px;position:relative}
+.rule:after{content:"";position:absolute;left:50%;top:-5px;width:12px;height:12px;background:#e0b35a;transform:translateX(-50%) rotate(45deg)}
+.pt{display:flex;gap:28px;align-items:flex-start;margin-bottom:54px}
+.pt .ref{flex:0 0 auto;min-width:120px;text-align:center;font-family:Watad,Zain;font-size:30px;color:#0a1522;background:#e0b35a;padding:8px 14px;border-radius:4px;margin-top:10px}
+.pt .tx{font-size:46px;line-height:1.7;color:#f2e9d0}
+.foot{position:absolute;left:0;right:0;bottom:150px;text-align:center}
+.foot .n{font-size:40px;color:#f6e2b3}
+.foot .en{font-family:Zain;font-size:22px;letter-spacing:7px;color:#e0b35a;margin-top:10px;direction:ltr}
+.foot .d{font-size:26px;color:rgba(242,233,208,.55);margin-top:30px}
