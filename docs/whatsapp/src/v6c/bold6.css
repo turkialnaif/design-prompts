@@ -111,3 +111,5 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#0a1522}
 .tt2{min-width:0}.lb{font-size:22px;color:var(--mut);line-height:1.2}.tl.gold .lb{color:rgba(10,21,34,.75)}
 .vl2{font-family:Zain,Watad;font-weight:600;font-size:25px;line-height:1.3;direction:ltr;text-align:right;white-space:nowrap}
 .tl.gold .vl2{font-family:Watad;font-weight:400;font-size:24px;direction:rtl;white-space:normal;line-height:1.25}
+
+.noqr .qr{display:none}.noqr .cpb{min-height:250px}.noqr .tiles{grid-auto-rows:1fr}.noqr .tl{padding:18px 20px}
