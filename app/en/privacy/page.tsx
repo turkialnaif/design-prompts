@@ -29,7 +29,7 @@ const sections: { title: string; body: string[] }[] = [
     title: "2. Data we collect",
     body: [
       `We only collect data you provide directly through the site's forms: your name, organisation (if any), email address, mobile number (optional), and the matter type and description when you submit a "Matter Brief", or your email and audience category when you subscribe to legal alerts.`,
-      `The site does not collect location data or payment information. To measure visits we use aggregate statistics (Vercel Web Analytics) that record which pages are opened and which contact buttons are pressed (WhatsApp, phone, email and sending a form), without cookies, without tracking visitors across sites, without building a profile of them, and without keeping what you type into the forms.`,
+      `The site does not collect location data or payment information. To measure visits we use aggregate statistics (Vercel Web Analytics) that record which pages are opened and which contact buttons are pressed (WhatsApp, phone, email, booking a consultation and sending a form), without cookies, without tracking visitors across sites, without building a profile of them, and without keeping what you type into the forms.`,
       `We also use the Google tag to measure our advertising campaigns and improve the site. It records which pages are opened and which contact buttons are pressed or forms sent, never what you type into the forms, and it sets cookies and identifiers (such as _ga and _gcl). Its data is processed by Google, possibly outside the Kingdom. You can prevent this in your browser settings (block cookies for this site), in the ad settings of your Google account, or with Google's official opt-out add-on for analytics.`,
     ],
   },

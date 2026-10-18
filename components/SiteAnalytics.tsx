@@ -8,7 +8,7 @@ import { gtagEvent } from "@/lib/gtag";
 
 /**
  * Visit measurement: Vercel Web Analytics (no cookies, no cross-site tracking, no visitor profile) plus five events
- * for what matters to the firm: a WhatsApp, phone or email button pressed, the profile PDF opened, and a matter brief sent
+ * for what matters to the firm: a WhatsApp, phone, email or booking button pressed, the profile PDF opened, and a matter brief sent
  * (that last one is sent from the form itself). Events carry only the page path, never anything typed by the visitor.
  * The Google tag (campaign measurement) is separate (GoogleTag) and receives the same events.
  */
@@ -22,6 +22,10 @@ export default function SiteAnalytics() {
       if (href.includes("wa.me/")) {
         track("whatsapp_click", { page });
         gtagEvent("whatsapp_click", { page });
+      } else if (/^https:\/\/meetings[a-z0-9-]*\.hubspot\.com\//i.test(href)) {
+        // the scheduling page (BOOKING_URL) lives on HubSpot's domain, so only the press of the button is visible here, not the booking itself
+        track("booking_click", { page });
+        gtagEvent("booking_click", { page });
       } else if (href.startsWith("tel:")) {
         track("phone_click", { page });
         gtagEvent("phone_click", { page });
