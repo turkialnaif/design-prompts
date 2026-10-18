@@ -1,0 +1,69 @@
+@font-face{font-family:Watad;src:url(watad.otf)}
+@font-face{font-family:Zain;src:url(zain-vf.ttf);font-weight:100 900}
+:root{--navy:#0a1522;--navy2:#0e1d30;--gold:#cfa853;--gold2:#ecc77a;--ivory:#f2e9d0;--line:rgba(207,168,83,.30)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--navy);overflow:hidden}
+.c{position:relative;overflow:hidden;font-family:Watad,Zain;font-weight:400;color:var(--ivory);background:linear-gradient(180deg,var(--navy2) 0%,var(--navy) 60%,#07101a 100%)}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 18% 0%,rgba(207,168,83,.17),transparent 52%)}
+.flutes{position:absolute;left:0;right:0;top:0;background:repeating-linear-gradient(90deg,rgba(207,168,83,.075) 0 2px,transparent 2px 62px);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,transparent 100%)}
+.ghost{position:absolute;opacity:.065}
+.hd{position:absolute;display:flex;align-items:center;justify-content:space-between}
+.hd img.s{display:block}.hd img.f{display:block}
+.ser{text-align:left;direction:ltr}
+.chip{display:inline-block;direction:rtl;border:1.5px solid var(--gold);color:var(--gold2);border-radius:40px;padding:8px 24px;font-size:28px}
+.ser .n{font-family:Zain;font-weight:600;font-size:26px;letter-spacing:7px;color:var(--gold);margin:12px 0 0 6px}
+.hero{position:absolute;font-weight:400}
+.hero .l1{color:var(--ivory);white-space:nowrap;line-height:1.2}
+.hero .l2{color:var(--gold2);white-space:nowrap;line-height:1.3;margin-top:2px}
+.step{position:absolute}
+.step i{display:block;height:5px;background:var(--gold)}
+.step i:first-child{width:236px}.step i:last-child{width:150px;margin-top:8px}
+.rows{position:absolute}
+.row{display:flex;align-items:center;border-bottom:1.5px solid var(--line)}
+.row:first-child{border-top:1.5px solid var(--line)}
+.ref{flex:0 0 176px;text-align:center;font-family:Watad;color:var(--gold2);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;padding-left:20px}
+.ref .k{font-size:25px;color:var(--gold);margin-bottom:6px}
+.ref .v{font-size:76px;white-space:nowrap}.ref .w{font-size:48px}
+.vl{flex:0 0 1.5px;align-self:stretch;margin:30px 0;background:var(--line)}
+.tx{flex:1;padding-right:30px;color:var(--ivory)}
+.info{position:absolute;display:flex}
+.cell{padding:0 28px;border-inline-start:1.5px solid var(--line)}
+.cell:first-child{border-inline-start:0;padding-inline-start:0;flex:1.3}
+.cell:last-child{flex:1.7}
+.cell .k{font-size:24px;color:var(--gold)}
+.cell .v{font-size:32px;color:var(--ivory);margin-top:6px;line-height:1.3}
+.cell .s{font-size:22px;color:rgba(242,233,208,.62);margin-top:2px;white-space:nowrap}
+.cta{position:absolute;display:flex;align-items:center;justify-content:space-between}
+.cta .b{font-size:36px;background:var(--gold);color:var(--navy);padding:14px 44px;border-radius:12px}
+.cta .u{font-family:Zain;font-weight:600;font-size:34px;letter-spacing:3px;color:var(--ivory);direction:ltr}
+
+/* status 1080x1920 */
+.st,.st html{width:1080px;height:1920px}
+.st .flutes{height:980px}
+.st .ghost{width:980px;right:-330px;top:330px}
+.st .hd{top:190px;left:84px;right:84px}
+.st .hd img.s{height:104px}.st .hd img.f{height:128px}
+.st .hero{top:470px;left:84px;right:84px}
+.st .hero .l1{font-size:128px}.st .hero .l2{font-size:84px}
+.st .step{top:806px;right:84px}
+.st .rows{top:862px;left:84px;right:84px}
+.st .row{min-height:190px;padding:10px 0}
+.st .tx{font-size:39px;line-height:1.45}
+.st .info{top:1500px;left:84px;right:84px}
+.st .cta{top:1648px;left:84px;right:84px}
+
+/* post 1080x1350 */
+.po,.po html{width:1080px;height:1350px}
+.po .flutes{height:700px}
+.po .ghost{width:780px;right:-260px;top:130px}
+.po .hd{top:60px;left:72px;right:72px}
+.po .hd img.s{height:92px}.po .hd img.f{height:112px}
+.po .hero{top:190px;left:72px;right:72px}
+.po .hero .l1{font-size:116px}.po .hero .l2{font-size:76px}
+.po .step{top:452px;right:72px}
+.po .rows{top:498px;left:72px;right:72px}
+.po .row{min-height:172px;padding:8px 0}
+.po .ref .v{font-size:66px}.po .ref .w{font-size:42px}
+.po .tx{font-size:35px;line-height:1.42}
+.po .info{top:1060px;left:72px;right:72px}
+.po .cta{top:1200px;left:72px;right:72px}
