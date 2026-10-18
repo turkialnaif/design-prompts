@@ -20,14 +20,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--navy)}
 .step i:first-child{width:236px}
 .step i:last-child{width:150px;margin-top:8px;margin-right:0}
 .rows{position:absolute;top:862px;left:84px;right:84px}
-.row{display:flex;align-items:center;min-height:196px;border-bottom:1.5px solid var(--line)}
+.row{display:flex;align-items:center;min-height:190px;padding:10px 0;border-bottom:1.5px solid var(--line)}
 .row:first-child{border-top:1.5px solid var(--line)}
 .ref{flex:0 0 176px;text-align:center;padding-left:20px;font-family:Watad;color:var(--gold2);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05}
 .ref .k{font-size:26px;color:var(--gold);margin-bottom:6px}
 .ref .v{font-size:78px;white-space:nowrap}
 .ref .w{font-size:50px}
 .vl{flex:0 0 1.5px;align-self:stretch;margin:34px 0;background:var(--line)}
-.tx{flex:1;padding-right:30px;font-size:41px;line-height:1.5;color:var(--ivory)}
+.tx{flex:1;padding-right:30px;font-size:39px;line-height:1.45;color:var(--ivory)}
 .info{position:absolute;top:1500px;left:84px;right:84px;display:flex}
 .cell{flex:1.1;padding:0 26px;border-inline-start:1.5px solid var(--line)}
 .cell:last-child{flex:1.45}
