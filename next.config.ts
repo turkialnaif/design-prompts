@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/sectors", destination: "/services#sectors", permanent: true },
       { source: "/en/sectors", destination: "/en/services#sectors", permanent: true },
+      // short link for the X profile: shows as taap.sa/x and carries the campaign tags. Temporary (307) so the destination can change.
+      { source: "/x", destination: "/?utm_source=x&utm_medium=organic_social&utm_campaign=profile", permanent: false },
       {
         source: "/:path*",
         has: [{ type: "host", value: "tnz-law-website.vercel.app" }],
