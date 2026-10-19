@@ -16,6 +16,9 @@ type Read = { href: string; title: string } | null;
 const first = (n?: string | null) => (n ?? "").trim().split(/\s+/)[0] ?? "";
 const hello = (c: Who) => (c.fullName?.trim() ? `السلام عليكم ورحمة الله وبركاته، ${esc(first(c.fullName))}` : "السلام عليكم ورحمة الله وبركاته،");
 
+/** نظام التنفيذ الجديد (م/237): يبدأ العمل به بعد 180 يومًا من نشره في أم القرى (نحو 28 أكتوبر 2026، من مصادر ثانوية). لا نقول «دخل حيز النفاذ» قبل ذلك. */
+const executionLawInForce = () => Date.now() >= Date.parse("2026-10-28T00:00:00+03:00");
+
 export const regionOf = (list: string) => (list === "riyadh" ? "الرياض" : list === "khobar-dammam" ? "المنطقة الشرقية" : "المملكة");
 
 export function outreachMail(step: number, c: Who, company: string, read: Read, region = "المملكة"): MailBody {
@@ -23,7 +26,7 @@ export function outreachMail(step: number, c: Who, company: string, read: Read, 
   const foot = `وصلتك هذه الرسالة لأن عملك${c.title ? ` بصفة «${esc(c.title)}»` : ""} في ${esc(company)} يقع ضمن ما نخدمه من الشركات في ${region}. إن لم تُرد أن نراسلك فاضغط <a href="${unsub}" style="color:#8a6d25">إيقاف الرسائل</a> وسنتوقف فورًا.<br>`;
   const book = btn(bookingUrl(true), "احجز مكالمة من 15 دقيقة");
   const sign = `<p style="margin-top:22px">مع التقدير،<br><b>${esc(firm.nameShortAr)}</b></p>`;
-  const link = read ? `<p>ولأن نظام التنفيذ الجديد دخل حيز النفاذ، فهذه قراءة موجزة قد تفيدك: <a href="${SITE}${read.href}" style="color:#00124a">${esc(read.title)}</a>.</p>` : "";
+  const link = read ? `<p>ولأن نظام التنفيذ الجديد ${executionLawInForce() ? "دخل حيز النفاذ" : "على وشك أن يدخل حيز النفاذ"}، فهذه قراءة موجزة قد تفيدك: <a href="${SITE}${read.href}" style="color:#00124a">${esc(read.title)}</a>.</p>` : "";
 
   const body: Record<number, [string, string]> = {
     0: [
