@@ -30,7 +30,7 @@ export const firm = {
   social: {
     linkedin: "https://www.linkedin.com/company/tapsaudi/",
     x: "https://x.com/taapsaudi",
-    tiktok: "https://www.tiktok.com/@tapsaudi",
+    tiktok: "https://www.tiktok.com/@taapssa",
     instagram: "https://www.instagram.com/tnz1/",
     facebook: "https://www.facebook.com/tapsaudi",
     whatsappChannel: "https://whatsapp.com/channel/0029VbDcu2mEKyZG9VbFcw45",
