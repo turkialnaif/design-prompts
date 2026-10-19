@@ -2,6 +2,7 @@ import { Mail, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import OpenStatus from "@/components/OpenStatus";
 import { corePillars, firm } from "@/lib/site";
 
@@ -19,11 +20,10 @@ const copy = {
       { t: "نحدد النطاق والمخرجات", d: "نرد خلال يوم عمل واحد باقتراح واضح لما سنقدّمه." },
       { t: "نبدأ العمل", d: "برأي أو صياغة أو تفاوض أو ترافع، بحسب المسألة." },
     ],
-    types: corePillars.map((s) => s.title),
     mail: "راسلنا",
-    from: "جئتَ من مقال؟",
-    fromBody: "أرسل لنا رابطه مع موجز مسألتك، فنبدأ من حيث توقّفت القراءة.",
-    covers: "ما نتولاه",
+    subscribeTitle: "التنبيهات القانونية",
+    subscribeBody: "رسالة موجزة عند نشر مقال جديد أو صدور تعديل نظامي يهم منشأتك.",
+    source: "footer",
     seal: "TURKI ALNAIF & PARTNERS · LAWYERS & LEGAL CONSULTANTS · RIYADH · ",
   },
   en: {
@@ -39,11 +39,10 @@ const copy = {
       { t: "We scope the work", d: "Within one business day, with a clear proposal of what we will deliver." },
       { t: "We begin", d: "An opinion, a draft, a negotiation or a hearing, as the matter requires." },
     ],
-    types: corePillars.map((s) => s.titleEn),
     mail: "Email us",
-    from: "Came from an article?",
-    fromBody: "Send us its link with a short brief and we pick up where the reading stopped.",
-    covers: "What we handle",
+    subscribeTitle: "Legal alerts",
+    subscribeBody: "A short note when we publish a new article or a regulatory change affects your business.",
+    source: "footer-en",
     seal: "TURKI ALNAIF & PARTNERS · LAWYERS & LEGAL CONSULTANTS · RIYADH · ",
   },
 };
@@ -58,6 +57,7 @@ const pill =
 export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
+  const types = corePillars.map((x) => (ar ? x.title : x.titleEn));
   return (
     <div data-footer-cta className="relative mx-auto max-w-7xl px-5">
       {/* the passage: a gold thread comes down out of the blog band above and lands on this panel */}
@@ -92,30 +92,18 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
               <ArrowButton href={firm.whatsapp} external ltr={!ar}>
                 {t.whatsapp}
               </ArrowButton>
-              <MatterBriefCTA locale={locale} matterTypes={t.types} tone="onDark" />
+              <MatterBriefCTA locale={locale} matterTypes={types} tone="onDark" />
               <a href={`tel:${firm.phone}`} className={pill}>
                 <Phone className="h-4 w-4 text-[#f6e2b3]" aria-hidden />
                 {t.call}
               </a>
             </div>
 
-            {/* strategy: the reader of an article is already inside a matter, so say so */}
-            <div className="mx-auto mt-9 flex max-w-xl items-start gap-4 border-s-2 border-[#e0b35a] bg-white/[0.05] px-5 py-4 text-start lg:mx-0">
-              <div>
-                <p className="text-sm font-normal text-[#f6e2b3]">{t.from}</p>
-                <p className="mt-1 text-sm font-light leading-7 text-white/75">{t.fromBody}</p>
-              </div>
-            </div>
-
-            <div className="mt-8 text-center lg:text-start">
-              <p className="text-xs font-light text-white/55">{t.covers}</p>
-              <ul className="mt-3 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-                {t.types.map((x) => (
-                  <li key={x} className="border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-light text-white/80 [clip-path:polygon(0_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]">
-                    {x}
-                  </li>
-                ))}
-              </ul>
+            {/* the alerts box: whoever has just read the blog can stay in touch without opening a matter */}
+            <div className="mx-auto mt-9 max-w-xl border-s-2 border-[#e0b35a] bg-white/[0.05] px-5 py-5 text-start lg:mx-0">
+              <p className="font-blog text-xl font-bold text-[#f6e2b3]">{t.subscribeTitle}</p>
+              <p className="mt-1 mb-4 text-sm font-light leading-7 text-white/75">{t.subscribeBody}</p>
+              <NewsletterSignup source={t.source} compact locale={locale} onDark />
             </div>
 
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-light text-white/70 lg:justify-start">

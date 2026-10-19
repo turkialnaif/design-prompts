@@ -1,10 +1,9 @@
 import { FileBadge2, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import ClosingCTA from "@/components/ClosingCTA";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import PartnersDock from "@/components/PartnersDock";
 import SocialIcons from "@/components/SocialIcons";
-import { corePillars, firm } from "@/lib/site";
+import { firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
 
 const copy = {
@@ -17,13 +16,11 @@ const copy = {
       { href: "/about", label: "من نحن" },
       { href: "/team/turki-alnayef", label: "القيادة المهنية" },
       { href: "/corporate-clients", label: "للشركات" },
+      { href: "/services", label: "الخدمات" },
+      { href: "/services#sectors", label: "القطاعات التي نخدمها" },
       { href: "/blog", label: "مقالات قانونية" },
       { href: "/downloads/company-profile-ar.pdf", label: "الملف التعريفي" },
     ],
-    servicesTitle: "الخدمات",
-    servicesAll: { href: "/services#sectors", label: "القطاعات التي نخدمها" },
-    servicesHref: (slug: string) => `/services#${slug}`,
-    serviceLabel: (s: (typeof corePillars)[number]) => s.title,
     contactTitle: "للتواصل",
     hours: [
       { d: "الأحد – الخميس", h: "٨ صباحًا – ٥ مساءً" },
@@ -31,8 +28,6 @@ const copy = {
       { d: "الجمعة", h: "مغلق" },
     ],
     followTitle: "تابعنا",
-    subscribeTitle: "التنبيهات القانونية",
-    subscribeBody: "رسالة موجزة عند نشر مقال جديد أو صدور تعديل نظامي يهم منشأتك.",
     license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber}`,
     unified: `السجل الموحد ${firm.unifiedNumber}`,
     place: "المملكة العربية السعودية",
@@ -41,7 +36,6 @@ const copy = {
       { href: "/privacy", label: "سياسة الخصوصية" },
       { href: "/portal/login", label: "بوابة العملاء" },
     ],
-    source: "footer",
   },
   en: {
     alt: `${firm.nameShortAr} — ${firmEn.nameShort}`,
@@ -52,13 +46,11 @@ const copy = {
       { href: "/en/about", label: "About" },
       { href: "/en/team/turki-alnayef", label: "Leadership" },
       { href: "/en/corporate-clients", label: "Corporate Clients" },
+      { href: "/en/services", label: "Services" },
+      { href: "/en/services#sectors", label: "Sectors we serve" },
       { href: "/en/blog", label: "Legal Insights" },
       { href: "/downloads/company-profile-en.pdf", label: "Company Profile" },
     ],
-    servicesTitle: "Services",
-    servicesAll: { href: "/en/services#sectors", label: "Sectors we serve" },
-    servicesHref: (slug: string) => `/en/services#${slug}`,
-    serviceLabel: (s: (typeof corePillars)[number]) => s.titleEn,
     contactTitle: "Contact",
     hours: [
       { d: "Sunday – Thursday", h: "8 AM – 5 PM" },
@@ -66,8 +58,6 @@ const copy = {
       { d: "Friday", h: "Closed" },
     ],
     followTitle: "Follow",
-    subscribeTitle: "Legal alerts",
-    subscribeBody: "A short note when we publish a new article or a regulatory change affects your business.",
     license: `Law Practice Licence No. ${firm.licenseNumber}`,
     unified: `Unified No. ${firm.unifiedNumber}`,
     place: "Kingdom of Saudi Arabia",
@@ -76,18 +66,17 @@ const copy = {
       { href: "/en/privacy", label: "Privacy Policy" },
       { href: "/portal/login", label: "Client portal" },
     ],
-    source: "footer-en",
   },
 };
 
 const link = "inline-block py-1 text-[0.95rem] text-white/72 transition-colors hover:text-[#f6e2b3] [@media(pointer:coarse)]:py-2.5";
-const heading = "ft-serif mb-5 flex items-center gap-3 text-2xl font-bold text-[#f6e2b3]";
+const heading = "font-blog mb-5 flex items-center gap-3 text-2xl font-bold text-[#f6e2b3]";
 
 export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
   return (
-    <footer data-glow className="ft-sans relative isolate overflow-hidden bg-[#00061d] text-white">
+    <footer data-glow className="relative isolate overflow-hidden bg-[#00061d] text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[40rem]"
@@ -111,8 +100,9 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
               {/* 1 — who we are, and the credentials that stand behind the name */}
               <div className="grid items-center gap-8 border-b border-white/10 p-7 md:grid-cols-[1.25fr_1fr] md:gap-14 md:p-12">
                 <div className="flex flex-col items-center text-center md:items-start md:text-start">
-                  <Image src="/brand/logo-lockup.png" alt={t.alt} width={163} height={48} className="h-14 w-auto" />
-                  <p className="ft-serif mt-6 max-w-xl text-3xl leading-[1.55] text-white md:text-[2.15rem]">{t.statement}</p>
+                  <Image src="/brand/logo-lockup.png" alt={t.alt} width={816} height={240} className="h-28 w-auto md:h-36" />
+                  <span aria-hidden className="my-6 h-px w-full max-w-[31rem] bg-gradient-to-r from-[#e0b35a] via-[#e0b35a]/50 to-transparent rtl:bg-gradient-to-l" />
+                  <p className="font-blog [text-wrap:balance] max-w-[31rem] text-[1.6rem] font-bold leading-[1.7] sm:text-[1.9rem] text-[#f6e2b3] md:text-[2.2rem]">{t.statement}</p>
                 </div>
                 <ul className="grid gap-3.5 text-[0.95rem]">
                   {[
@@ -130,24 +120,17 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                 </ul>
               </div>
 
-              {/* 2 — four plain columns */}
-              <div className="grid gap-10 p-7 sm:grid-cols-2 md:grid-cols-4 md:gap-8 md:p-12 [&>*]:min-w-0">
+              {/* 2 — the partners, above the columns */}
+              <PartnersDock locale={locale} />
+
+              {/* 3 — three plain columns */}
+              <div className="grid gap-10 p-7 sm:grid-cols-2 md:grid-cols-3 md:gap-8 md:p-12 [&>*]:min-w-0">
                 <nav aria-label={t.officeTitle}>
                   <p className={heading}>{t.officeTitle}</p>
                   <ul>
                     {t.office.map((l) => (
                       <li key={l.href}><a href={l.href} className={link}>{l.label}</a></li>
                     ))}
-                  </ul>
-                </nav>
-
-                <nav aria-label={t.servicesTitle}>
-                  <p className={heading}>{t.servicesTitle}</p>
-                  <ul>
-                    {corePillars.map((s) => (
-                      <li key={s.slug}><a href={t.servicesHref(s.slug)} className={link}>{t.serviceLabel(s)}</a></li>
-                    ))}
-                    <li><a href={t.servicesAll.href} className={`${link} !text-[#e0b35a]`}>{t.servicesAll.label}</a></li>
                   </ul>
                 </nav>
 
@@ -187,15 +170,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                 </div>
               </div>
 
-              {/* 3 — the newsletter, as a quiet band */}
-              <div className="grid items-center gap-6 border-t border-white/10 bg-white/[0.03] p-7 md:grid-cols-[1fr_1.1fr] md:gap-14 md:px-12 md:py-9">
-                <div>
-                  <p className="ft-serif text-2xl font-bold text-[#f6e2b3]">{t.subscribeTitle}</p>
-                  <p className="mt-2 text-[0.95rem] font-light leading-7 text-white/70">{t.subscribeBody}</p>
-                </div>
-                <NewsletterSignup source={t.source} compact locale={locale} onDark />
-              </div>
-
               {/* 4 — the legal line */}
               <div className="flex flex-col items-center gap-3 border-t border-white/10 px-7 py-6 pb-28 text-center text-[0.8rem] leading-6 text-white/55 md:flex-row md:justify-between md:px-12 md:pb-6 md:pe-44 md:text-start">
                 <p>{t.rights}</p>
@@ -209,7 +183,6 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
           </div>
         </div>
 
-        <PartnersDock locale={locale} />
       </div>
     </footer>
   );
