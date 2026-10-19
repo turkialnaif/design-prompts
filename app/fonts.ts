@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Zain } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Zain } from "next/font/google";
 
 /**
  * The site's Arabic face: Watad (watad.otf), one weight. It is declared for Arabic and its punctuation only (the
@@ -41,5 +41,16 @@ export const fallbackFont = Zain({
 export const blogFont = localFont({
   src: [{ path: "./fonts/hail-elastic-light.ttf", weight: "200 900", style: "normal" }],
   variable: "--font-blog",
+  display: "swap",
+});
+
+/**
+ * The footer's body face: IBM Plex Sans Arabic (plain, even, with matching Latin and digits) for the links, contact lines and legal
+ * line. Titles, the firm's statement and the logo block stay on the blog face (Hail Elastic).
+ */
+export const footerSans = IBM_Plex_Sans_Arabic({
+  variable: "--font-footer-sans",
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });

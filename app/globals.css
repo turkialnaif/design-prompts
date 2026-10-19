@@ -489,3 +489,6 @@ a, button { transition-property: color, background-color, border-color, opacity,
 .cta-seal { animation: cta-seal-turn 60s linear infinite; transform-origin: 50% 50%; }
 @keyframes cta-seal-turn { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .cta-seal { animation: none; } }
+
+/* Footer body face */
+.ft-sans { font-family: var(--font-footer-sans), system-ui, sans-serif; font-synthesis: weight; }

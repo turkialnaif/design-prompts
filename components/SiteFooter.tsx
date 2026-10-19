@@ -76,7 +76,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
   return (
-    <footer data-glow className="relative isolate overflow-hidden bg-[#00061d] text-white">
+    <footer data-glow className="ft-sans relative isolate overflow-hidden bg-[#00061d] text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[40rem]"
@@ -100,9 +100,9 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
               {/* 1 — who we are, and the credentials that stand behind the name */}
               <div className="grid items-center gap-8 border-b border-white/10 p-7 md:grid-cols-[1.25fr_1fr] md:gap-14 md:p-12">
                 <div className="flex flex-col items-center text-center md:items-start md:text-start">
-                  <Image src="/brand/logo-lockup.png" alt={t.alt} width={816} height={240} className="h-28 w-auto md:h-36" />
-                  <span aria-hidden className="my-6 h-px w-full max-w-[31rem] bg-gradient-to-r from-[#e0b35a] via-[#e0b35a]/50 to-transparent rtl:bg-gradient-to-l" />
-                  <p className="font-blog [text-wrap:balance] max-w-[31rem] text-[1.6rem] font-bold leading-[1.7] sm:text-[1.9rem] text-[#f6e2b3] md:text-[2.2rem]">{t.statement}</p>
+                  <Image src="/brand/logo-lockup.png" alt={t.alt} width={816} height={240} className="h-24 w-auto md:h-28" />
+                  <span aria-hidden className="my-5 h-px w-full max-w-[24rem] bg-gradient-to-r from-[#e0b35a] via-[#e0b35a]/50 to-transparent rtl:bg-gradient-to-l" />
+                  <p style={{ textWrap: "nowrap" }} className="font-blog text-[clamp(0.74rem,3.3vw,1.1rem)] font-bold leading-[1.6] text-[#f6e2b3]">{t.statement}</p>
                 </div>
                 <ul className="grid gap-3.5 text-[0.95rem]">
                   {[
