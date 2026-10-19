@@ -2,18 +2,30 @@
 @font-face{font-family:Watad;src:url(watad.otf)}
 @font-face{font-family:Zain;src:url(zain-vf.ttf);font-weight:100 900}
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1080px;height:1920px;overflow:hidden;background:#0a1522}
-.c{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(circle at 78% 22%,#16314f 0%,#0a1522 62%);font-family:Watad,Zain;color:#f2e9d0}
-.flutes{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(207,168,83,.07) 0 2px,transparent 2px 62px);-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
-.ghost{position:absolute;width:1300px;left:-130px;top:330px;opacity:.07}
-.mid{position:absolute;left:0;right:0;top:640px;text-align:center}
-.mark{width:230px;display:block;margin:0 auto}
-.n{font-size:112px;line-height:1.2;margin-top:48px;color:#f2e9d0}
-.t{font-size:64px;color:#ecc77a;margin-top:6px}
-.rule{width:220px;height:4px;background:#cfa853;margin:56px auto 40px;position:relative}
-.rule:after{content:"";position:absolute;left:50%;top:-8px;width:20px;height:20px;background:#cfa853;transform:translateX(-50%) rotate(45deg)}
-.en{font-family:Zain;font-weight:600;font-size:34px;letter-spacing:9px;color:#cfa853;direction:ltr}
-.u{font-family:Zain;font-weight:600;font-size:40px;letter-spacing:4px;color:#f2e9d0;margin-top:34px;direction:ltr}
-.frame{position:absolute;inset:60px;border:1.5px solid rgba(207,168,83,.35)}
-</style></head><body><div class="c"><div class="flutes"></div><img class="ghost" src="logo-mark.png"><div class="frame"></div>
-<div class="mid"><img class="mark" src="logo-mark.png"><div class="n">تركي النايف وشركاؤه</div><div class="t">للمحاماة والاستشارات القانونية</div><div class="rule"></div><div class="en">TURKI ALNAIF &amp; PARTNERS</div><div class="u">taap.sa</div></div></div></body></html>
+html,body{width:1080px;height:1920px;overflow:hidden;background:#00061d}
+.c{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(circle at 80% 18%,#0b2a73 0%,#00124a 38%,#00061d 80%);font-family:Zain,Watad;color:#f6e2b3}
+.sky{position:absolute;left:0;right:0;bottom:0;height:760px;background:url(riyadh-skyline.jpg) center 62%/cover;opacity:.2;-webkit-mask-image:linear-gradient(0deg,#000 10%,transparent 100%);mask-image:linear-gradient(0deg,#000 10%,transparent 100%)}
+.frame{position:absolute;inset:56px;border:1.5px solid rgba(224,179,90,.4)}
+.logo{position:absolute;left:110px;width:860px;top:410px}
+.rule{position:absolute;left:50%;top:735px;width:240px;height:4px;background:#e0b35a;transform:translateX(-50%)}
+.rule:after{content:"";position:absolute;left:50%;top:-8px;width:20px;height:20px;background:#e0b35a;transform:translateX(-50%) rotate(45deg)}
+.rows{position:absolute;left:110px;right:110px;top:820px;display:flex;flex-direction:column;gap:26px}
+.row{display:flex;align-items:center;gap:30px;height:118px;padding:0 34px;border:1.5px solid rgba(224,179,90,.55);background:rgba(255,255,255,.05);clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%)}
+.ic{flex:none;width:62px;height:62px;display:flex;align-items:center;justify-content:center;border:1.5px solid #e0b35a}
+.ic svg{width:34px;height:34px;stroke:#e0b35a;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.v{font-size:50px;font-weight:600;color:#fff;line-height:1.1}
+.v.l{direction:ltr;letter-spacing:2px}
+.qr{position:absolute;left:110px;right:110px;top:1330px;display:flex;align-items:center;gap:44px}
+.qr img{width:210px;height:210px;flex:none;border:6px solid #f6ecd2}
+.qt{font-size:42px;font-weight:600;color:#f6e2b3;line-height:1.5}
+.qt small{display:block;font-size:30px;font-weight:400;color:rgba(255,255,255,.7);margin-top:6px}
+</style></head><body><div class="c"><div class="sky"></div><div class="frame"></div>
+<img class="logo" src="logo-lockup.png">
+<div class="rule"></div>
+<div class="rows">
+<div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="v l">+966 566 770 888</span></div>
+<div class="row"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><span class="v l">taap.sa</span></div>
+<div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="v">حي الياسمين، الرياض ١٣٣٢٦</span></div>
+</div>
+<div class="qr"><img src="snap-qr.png"><div class="qt">امسح الرمز لموقع المكتب<small>رخصة مزاولة المحاماة رقم ٤٤٧٧</small></div></div>
+</div></body></html>
