@@ -102,7 +102,12 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                 <div className="flex flex-col items-center text-center md:items-start md:text-start">
                   <Image src="/brand/logo-lockup.png" alt={t.alt} width={816} height={240} className="h-24 w-auto md:h-28" />
                   <span aria-hidden className="my-5 h-px w-full max-w-[24rem] bg-gradient-to-r from-[#e0b35a] via-[#e0b35a]/50 to-transparent rtl:bg-gradient-to-l" />
-                  <p style={{ textWrap: "nowrap" }} className="font-blog text-[clamp(0.74rem,3.3vw,1.1rem)] font-bold leading-[1.6] text-[#f6e2b3]">{t.statement}</p>
+                  <p
+                    style={{ textWrap: ar ? "nowrap" : "balance" }}
+                    className={`font-blog font-bold leading-[1.6] text-[#f6e2b3] ${ar ? "text-[clamp(0.74rem,3.3vw,1.1rem)]" : "max-w-[24rem] text-[1rem] md:text-[1.05rem]"}`}
+                  >
+                    {t.statement}
+                  </p>
                 </div>
                 <ul className="grid gap-3.5 text-[0.95rem]">
                   {[
