@@ -5,8 +5,8 @@ import Image from "next/image";
 import { partners, type Partner } from "@/lib/partners";
 
 const copy = {
-  ar: { label: "شركاء النجاح", note: "علامات تعتز بثقتها فينا" },
-  en: { label: "Success Partners", note: "Brands that trust us" },
+  ar: { label: "شركاء النجاح", title: "علامات تعتز بثقتها فينا", note: "علامة تجارية" },
+  en: { label: "Success Partners", title: "Brands that trust us", note: "brands" },
 };
 
 function Track({ items, reverse, dur, color }: { items: Partner[]; reverse: boolean; dur: number; color?: boolean }) {
@@ -72,14 +72,25 @@ export default function PartnersCurtain({ locale }: { locale: "ar" | "en" }) {
     return () => io.disconnect();
   }, []);
   return (
-    <div role="group" aria-label={`${t.label} — ${partners.length}`} className="mt-14 md:mt-16">
-      <p className="px-5 text-center text-sm font-light text-[#f6e2b3]">
-        {t.label} <span className="mx-2 text-white/30">·</span> <span dir="ltr" className="font-display text-base">{partners.length}</span> <span className="text-white/60">{t.note}</span>
-      </p>
+    <div role="group" aria-label={`${t.label} — ${partners.length}`} className="relative mt-24 md:mt-32">
+      {/* the bridge: a gold thread drops from the call to action above to the title of this section */}
+      <span aria-hidden className="pointer-events-none absolute -top-24 start-1/2 h-24 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#e0b35a]/50 to-[#e0b35a] md:-top-32 md:h-32" />
+      <span aria-hidden className="pointer-events-none absolute -top-1 start-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 bg-[#e0b35a] shadow-[0_0_0_5px_#00061d,0_0_22px_3px_rgba(224,179,90,0.65)]" />
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-5 pt-10 text-center md:flex-row md:items-end md:justify-between md:pt-14 md:text-start">
+        <div>
+          <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{t.label}</p>
+          <h3 className="font-display grad-text mt-3 text-3xl leading-[1.3] md:text-5xl">{t.title}</h3>
+        </div>
+        <p className="flex items-baseline gap-3" dir="ltr">
+          <span className="font-display text-7xl leading-none text-transparent [-webkit-text-stroke:1.4px_#e0b35a] md:text-[9rem]">{partners.length}</span>
+          <span className="pb-2 text-sm font-light uppercase tracking-[0.18em] text-white/55 md:pb-5" dir={locale === "ar" ? "rtl" : "ltr"}>{t.note}</span>
+        </p>
+      </div>
+      <div aria-hidden className="mx-auto mt-6 h-px max-w-7xl bg-gradient-to-r from-transparent via-[#e0b35a]/45 to-transparent" />
       <div
         ref={box}
         dir="ltr"
-        className="curtain relative mt-5 flex min-h-[5.4rem] w-full flex-col gap-2 overflow-hidden md:min-h-[5.9rem] [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
+        className="curtain relative mt-6 flex min-h-[5.4rem] w-full flex-col gap-2 overflow-hidden md:min-h-[5.9rem] [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
       >
         {show && (
           <>

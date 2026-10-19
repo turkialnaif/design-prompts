@@ -1,39 +1,17 @@
+import BrandIcon, { type BrandKey } from "@/components/BrandIcons";
 import { firm } from "@/lib/site";
 
-const icons = {
-  linkedin: (
-    <>
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </>
-  ),
-  x: <path d="M4 4l16 16M20 4L4 20" />,
-  tiktok: (
-    <>
-      <circle cx="9" cy="17" r="3" />
-      <path d="M12 3v14" />
-      <path d="M12 7a5 5 0 0 0 5 5" />
-    </>
-  ),
-  instagram: (
-    <>
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-    </>
-  ),
-  facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
-  whatsappChannel: <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z" />,
-};
+type Platform = { key: string; icon: BrandKey; label: string; labelAr: string; href: string; hover: string };
 
-const platforms: { key: keyof typeof icons; label: string; href: string }[] = [
-  { key: "linkedin", label: "LinkedIn", href: firm.social.linkedin },
-  { key: "x", label: "X", href: firm.social.x },
-  { key: "instagram", label: "Instagram", href: firm.social.instagram },
-  { key: "tiktok", label: "TikTok", href: firm.social.tiktok },
-  { key: "facebook", label: "Facebook", href: firm.social.facebook },
-  { key: "whatsappChannel", label: "WhatsApp Channel", href: firm.social.whatsappChannel },
+/** The brand colour each tile takes on hover; the glyph itself is always the platform's own official mark. */
+const platforms: Platform[] = [
+  { key: "x", icon: "x", label: "X", labelAr: "إكس", href: firm.social.x, hover: "hover:border-white hover:bg-white hover:text-black" },
+  { key: "linkedin", icon: "linkedin", label: "LinkedIn", labelAr: "لينكدإن", href: firm.social.linkedin, hover: "hover:border-[#0a66c2] hover:bg-[#0a66c2] hover:text-white" },
+  { key: "instagram", icon: "instagram", label: "Instagram", labelAr: "إنستغرام", href: firm.social.instagram, hover: "hover:border-transparent hover:bg-[linear-gradient(45deg,#f9a825_0%,#ee2a7b_50%,#6228d7_100%)] hover:text-white" },
+  { key: "tiktok", icon: "tiktok", label: "TikTok", labelAr: "تيك توك", href: firm.social.tiktok, hover: "hover:border-[#25f4ee] hover:bg-black hover:text-white hover:shadow-[3px_3px_0_#fe2c55,-3px_-3px_0_#25f4ee]" },
+  { key: "snapchat", icon: "snapchat", label: "Snapchat", labelAr: "سناب شات", href: firm.social.snapchat, hover: "hover:border-[#fffc00] hover:bg-[#fffc00] hover:text-black" },
+  { key: "facebook", icon: "facebook", label: "Facebook", labelAr: "فيسبوك", href: firm.social.facebook, hover: "hover:border-[#1877f2] hover:bg-[#1877f2] hover:text-white" },
+  { key: "whatsappChannel", icon: "whatsapp", label: "WhatsApp Channel", labelAr: "قناة واتساب", href: firm.social.whatsappChannel, hover: "hover:border-[#25d366] hover:bg-[#25d366] hover:text-white" },
 ];
 
 export default function SocialIcons({
@@ -41,15 +19,44 @@ export default function SocialIcons({
   className = "",
   buttonClass,
   iconSize = 15,
+  variant = "round",
+  locale = "ar",
 }: {
   tone?: "onDark" | "onLight";
   className?: string;
   /** replaces the default round button (for larger or custom treatments) */
   buttonClass?: string;
   iconSize?: number;
+  /** "round": small circles; "tiles": large square tiles that fill with each platform's colour on hover */
+  variant?: "round" | "tiles";
+  locale?: "ar" | "en";
 }) {
   const iconColor =
     tone === "onDark" ? "text-white/60 hover:text-gold" : "text-ink-soft/80 hover:text-gold-deep";
+
+  if (variant === "tiles") {
+    return (
+      <ul className={`flex flex-wrap items-center gap-2 md:flex-nowrap ${className}`}>
+        {platforms.map((p) => {
+          const name = locale === "ar" ? p.labelAr : p.label;
+          return (
+            <li key={p.key}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={p.label}
+                title={name}
+                className={`group relative flex h-12 w-12 items-center justify-center border border-white/15 bg-white/[0.04] text-white/85 transition-all duration-300 [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)] hover:-translate-y-1 ${p.hover}`}
+              >
+                <BrandIcon name={p.icon} size={20} />
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
@@ -62,18 +69,7 @@ export default function SocialIcons({
           aria-label={p.label}
           className={buttonClass ?? `flex h-8 w-8 items-center justify-center rounded-full border border-current/20 transition-colors ${iconColor}`}
         >
-          <svg
-            viewBox="0 0 24 24"
-            width={iconSize}
-            height={iconSize}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            {icons[p.key]}
-          </svg>
+          <BrandIcon name={p.icon} size={iconSize} />
         </a>
       ))}
     </div>

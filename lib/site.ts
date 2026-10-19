@@ -28,11 +28,12 @@ export const firm = {
   licenseNumber: "4477",
   unifiedNumber: "7030708403",
   social: {
-    linkedin: "https://www.linkedin.com/company/tapsaudi/",
+    linkedin: "https://www.linkedin.com/company/taapsaudi/",
     x: "https://x.com/taapsaudi",
-    tiktok: "https://www.tiktok.com/@taapssa",
-    instagram: "https://www.instagram.com/tnz1/",
-    facebook: "https://www.facebook.com/tapsaudi",
+    instagram: "https://www.instagram.com/taapsaudi/",
+    tiktok: "https://www.tiktok.com/@taapssa", // يُغيَّر إلى @taapsaudi بعد 27 أكتوبر 2026 (قيد تيك توك على تغيير الاسم)
+    snapchat: "https://www.snapchat.com/@taapsaudi",
+    facebook: "https://www.facebook.com/taapsaudi",
     whatsappChannel: "https://whatsapp.com/channel/0029VbDcu2mEKyZG9VbFcw45",
   },
 };
