@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Zain } from "next/font/google";
+import { Amiri, IBM_Plex_Sans_Arabic, Zain } from "next/font/google";
 
 /**
  * The site's Arabic face: Watad (watad.otf), one weight. It is declared for Arabic and its punctuation only (the
@@ -41,5 +41,24 @@ export const fallbackFont = Zain({
 export const blogFont = localFont({
   src: [{ path: "./fonts/hail-elastic-light.ttf", weight: "200 900", style: "normal" }],
   variable: "--font-blog",
+  display: "swap",
+});
+
+/**
+ * The footer's own faces, chosen to read as an institution rather than a brand page: Amiri (a classical naskh, the hand of
+ * printed law and the press) for titles and the firm's statement, and IBM Plex Sans Arabic (plain, even, with matching Latin
+ * and digits) for everything else. They are used by the footer only; the rest of the site stays on Watad.
+ */
+export const footerSerif = Amiri({
+  variable: "--font-footer-serif",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+export const footerSans = IBM_Plex_Sans_Arabic({
+  variable: "--font-footer-sans",
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });

@@ -21,6 +21,10 @@ const copy = {
     ],
     types: corePillars.map((s) => s.title),
     mail: "راسلنا",
+    from: "جئتَ من مقال؟",
+    fromBody: "أرسل لنا رابطه مع موجز مسألتك، فنبدأ من حيث توقّفت القراءة.",
+    covers: "ما نتولاه",
+    seal: "TURKI ALNAIF & PARTNERS · LAWYERS & LEGAL CONSULTANTS · RIYADH · ",
   },
   en: {
     eyebrow: "Start your matter",
@@ -37,6 +41,10 @@ const copy = {
     ],
     types: corePillars.map((s) => s.titleEn),
     mail: "Email us",
+    from: "Came from an article?",
+    fromBody: "Send us its link with a short brief and we pick up where the reading stopped.",
+    covers: "What we handle",
+    seal: "TURKI ALNAIF & PARTNERS · LAWYERS & LEGAL CONSULTANTS · RIYADH · ",
   },
 };
 
@@ -51,15 +59,31 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
   const ar = locale === "ar";
   return (
-    <div data-footer-cta className="mx-auto max-w-7xl px-5">
+    <div data-footer-cta className="relative mx-auto max-w-7xl px-5">
+      {/* the passage: a gold thread comes down out of the blog band above and lands on this panel */}
+      <span aria-hidden className="pointer-events-none absolute -top-28 start-1/2 h-28 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#e0b35a]/45 to-[#e0b35a] md:-top-36 md:h-36" />
+      <span aria-hidden className="pointer-events-none absolute -top-1 start-1/2 z-20 h-2.5 w-2.5 -translate-x-1/2 rotate-45 bg-[#e0b35a] shadow-[0_0_0_5px_#00061d,0_0_22px_3px_rgba(224,179,90,0.65)]" />
+
       <div className="cta-stage chamfer-lg relative isolate overflow-hidden border border-white/12 bg-[linear-gradient(120deg,#00164f_0%,#000d33_62%,#00061d_100%)]">
         <div aria-hidden className="cta-aurora cta-aurora-a pointer-events-none absolute -top-1/3 end-[-10%] -z-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(closest-side,rgba(40,84,220,0.4),transparent)]" />
         <div aria-hidden className="cta-aurora cta-aurora-b pointer-events-none absolute -bottom-1/2 start-[-8%] -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(closest-side,rgba(224,179,90,0.22),transparent)]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-50 [background-image:radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1.2px)] [background-size:30px_30px] [mask-image:radial-gradient(ellipse_80%_80%_at_70%_30%,#000,transparent_75%)]" />
-        <Image src="/brand/logo-mark.png" alt={ar ? "شعار تركي النايف وشركاؤه" : "Turki Alnaif & Partners mark"} width={512} height={420} aria-hidden className="pointer-events-none absolute -bottom-10 start-[-3rem] -z-10 w-72 opacity-[0.06] md:w-[26rem]" />
         <span aria-hidden className="cta-sweep absolute inset-x-0 top-0 h-px" />
 
-        <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14 lg:p-16">
+        {/* the seal: the mark inside a slowly turning ring of text, the firm's stamp on the page */}
+        <div aria-hidden className="pointer-events-none absolute -bottom-20 end-[-4rem] -z-10 h-72 w-72 opacity-[0.4] md:-bottom-28 md:end-[-5rem] md:h-[25rem] md:w-[25rem]">
+          <svg viewBox="0 0 200 200" className="cta-seal absolute inset-0 h-full w-full">
+            <defs><path id="sealPath" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0" /></defs>
+            <circle cx="100" cy="100" r="96" fill="none" stroke="#e0b35a" strokeOpacity="0.55" strokeWidth="0.6" />
+            <circle cx="100" cy="100" r="68" fill="none" stroke="#e0b35a" strokeOpacity="0.3" strokeWidth="0.5" strokeDasharray="1 3" />
+            <text fill="#f6e2b3" fontSize="9.2" letterSpacing="2.6" fontFamily="var(--font-brand-raw), sans-serif">
+              <textPath href="#sealPath">{t.seal.repeat(2)}</textPath>
+            </text>
+          </svg>
+          <Image src="/brand/logo-mark.png" alt="" width={512} height={420} className="absolute inset-0 m-auto w-28 md:w-40" />
+        </div>
+
+        <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch lg:gap-14 lg:p-16">
           <div className="text-center lg:text-start">
             <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{t.eyebrow}</p>
             <h2 className="font-display grad-text mt-4 text-4xl leading-[1.3] sm:text-5xl md:text-6xl">{t.title}</h2>
@@ -74,6 +98,26 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
                 {t.call}
               </a>
             </div>
+
+            {/* strategy: the reader of an article is already inside a matter, so say so */}
+            <div className="mx-auto mt-9 flex max-w-xl items-start gap-4 border-s-2 border-[#e0b35a] bg-white/[0.05] px-5 py-4 text-start lg:mx-0">
+              <div>
+                <p className="text-sm font-normal text-[#f6e2b3]">{t.from}</p>
+                <p className="mt-1 text-sm font-light leading-7 text-white/75">{t.fromBody}</p>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center lg:text-start">
+              <p className="text-xs font-light text-white/55">{t.covers}</p>
+              <ul className="mt-3 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                {t.types.map((x) => (
+                  <li key={x} className="border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-light text-white/80 [clip-path:polygon(0_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-light text-white/70 lg:justify-start">
               {t.chips.map((c) => (
                 <li key={c} className="flex items-center gap-2">
@@ -84,16 +128,18 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
             </ul>
           </div>
 
-          <div className="chamfer-lg border border-white/12 bg-white/[0.06] p-6 backdrop-blur-xl md:p-8">
+          <div className="chamfer-lg flex flex-col border border-white/12 bg-white/[0.06] p-6 backdrop-blur-xl md:p-8">
             <OpenStatus locale={locale} />
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#f6e2b3]">{t.stepsTitle}</p>
-            <ol className="mt-5 space-y-6">
+            <ol className="mt-5 flex-1 space-y-7">
               {t.steps.map((s, i) => (
-                <li key={s.t} className="relative flex gap-4">
-                  {i < t.steps.length - 1 && <span aria-hidden className="absolute start-[1.1rem] top-10 -bottom-6 w-px bg-gradient-to-b from-[#e0b35a]/60 to-transparent" />}
-                  <span className="font-display flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#e0b35a]/60 text-sm text-[#f6e2b3]">{i + 1}</span>
+                <li key={s.t} className="relative flex gap-5">
+                  {i < t.steps.length - 1 && <span aria-hidden className="absolute start-[1.5rem] top-14 -bottom-7 w-px bg-gradient-to-b from-[#e0b35a]/70 to-[#e0b35a]/10" />}
+                  <span className="font-display flex h-12 w-12 shrink-0 items-center justify-center border border-[#e0b35a]/70 bg-[#e0b35a]/10 text-xl text-[#f6e2b3] [clip-path:polygon(0_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%)]" dir="ltr">
+                    0{i + 1}
+                  </span>
                   <div>
-                    <p className="text-base font-normal text-white">{s.t}</p>
+                    <p className="text-lg font-normal text-white">{s.t}</p>
                     <p className="mt-1 text-sm font-light leading-7 text-white/70">{s.d}</p>
                   </div>
                 </li>
