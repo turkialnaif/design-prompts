@@ -2,7 +2,7 @@ import { FileBadge2, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import ClosingCTA from "@/components/ClosingCTA";
 import NewsletterSignup from "@/components/NewsletterSignup";
-import PartnersCurtain from "@/components/PartnersCurtain";
+import PartnersDock from "@/components/PartnersDock";
 import SocialIcons from "@/components/SocialIcons";
 import { corePillars, firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
@@ -100,10 +100,10 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
       <div className="relative pt-28 md:pt-36">
         <ClosingCTA locale={locale} />
 
-        <PartnersCurtain locale={locale} />
+        {/* the call to action hands over to the footer's card with a gold thread */}
+        <div aria-hidden className="relative mx-auto h-16 w-px bg-gradient-to-b from-[#e0b35a] to-[#e0b35a]/0 md:h-24" />
 
-        {/* the footer's panel overlaps the lower edge of the partners strip: the logos come out from behind it */}
-        <div className="relative z-10 -mt-12 px-0 md:-mt-16">
+        <div className="relative px-0">
           <div className="mx-auto max-w-7xl px-5">
             <div className="relative overflow-hidden border border-white/10 border-t-[#e0b35a]/70 bg-[#020a22]/95 shadow-[0_-36px_70px_-24px_rgba(0,0,0,0.85)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_calc(100%-44px),calc(100%-44px)_100%,0_100%)]">
               <span aria-hidden className="cta-sweep absolute inset-x-0 top-0 h-[2px]" />
@@ -208,6 +208,8 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
             </div>
           </div>
         </div>
+
+        <PartnersDock locale={locale} />
       </div>
     </footer>
   );
