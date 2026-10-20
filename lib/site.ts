@@ -4,8 +4,10 @@ export const firm = {
   nameEn: "Turki Alnaif & Partners",
   tagline: "شريك قانوني يربط الحُكم المهني بسياق الأعمال",
   city: "الرياض، المملكة العربية السعودية",
-  address: "حي الياسمين، الرياض 13326",
-  addressEn: "Al Yasmin District, Riyadh 13326",
+  /** National Address (Saudi Post), proof issued 9 Sep 2026: short address RAYC7444, building 7444, secondary no. 4338. */
+  address: "7444 شارع أبي بكر الصديق، حي الياسمين، الرياض 13326 - 4338",
+  addressEn: "7444 Abi Bakr Al Siddiq St, Al Yasmin District, Riyadh 13326 - 4338",
+  nationalAddress: { short: "RAYC7444", building: "7444", street: "أبي بكر الصديق", streetEn: "Abi Bakr Al Siddiq", district: "الياسمين", districtEn: "Al Yasmin", secondary: "4338", postal: "13326" },
   plusCode: "RMJ5+P9F",
   /** Decoded from the Plus Code above (Al Yasmin, Riyadh), to 6 decimals (about 10 cm). */
   geo: { lat: 24.831813, lng: 46.658422 },

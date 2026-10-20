@@ -42,7 +42,7 @@ export function siteJsonLd(locale: "ar" | "en") {
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",
-        streetAddress: ar ? firm.address : firm.addressEn,
+        streetAddress: ar ? `${firm.nationalAddress.building} شارع ${firm.nationalAddress.street}، حي ${firm.nationalAddress.district}` : `${firm.nationalAddress.building} ${firm.nationalAddress.streetEn} St, ${firm.nationalAddress.districtEn}`,
         addressLocality: ar ? "الرياض" : "Riyadh",
         postalCode: "13326",
         addressCountry: "SA",
