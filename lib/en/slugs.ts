@@ -25,6 +25,15 @@ export const enServiceSlugs = [
   "criminal-defense",
   "estates-inheritance",
   "personal-status",
+  "negotiable-instruments-debts",
+  "leases-eviction",
+  "property-disputes",
+  "traffic-accidents",
+  "fraud-breach-of-trust",
+  "administrative-grievances",
+  "wills-powers-of-attorney",
+  "cyber-crime",
+  "insurance",
 ] as const;
 
 export const hasEnArticle = (slug: string) => (enArticleSlugs as readonly string[]).includes(slug);

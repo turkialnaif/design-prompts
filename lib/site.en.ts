@@ -16,21 +16,35 @@ export const specializedLineSummaryEn: Record<string, string> = {
   "employment-labor":
     "Labor law for individuals and organizations: employment contracts, termination and entitlements, internal policies, and labor disputes, balancing the employer's obligations with the worker's rights.",
   "criminal-defense":
-    "Defense in criminal cases of every kind and in specialised penal matters, from the investigation stage through trial and appeal.",
+    "Defense in criminal cases of every kind, including drug offences, driving under the influence of alcohol or drugs, assault and specialised penal matters, from the investigation stage through trial and appeal.",
   "estates-inheritance":
     "Estate and inheritance matters in full: identifying heirs and the estate, dividing it by agreement or through the courts, disputes among heirs, and management of estate assets.",
   "personal-status":
-    "Family matters and their disputes: marriage and its effects, separation, maintenance, custody and visitation, guardianship, and the related claims and settlements.",
+    "Personal status matters and their disputes: marriage and its effects, separation, maintenance, custody and visitation, guardianship, and the related claims and settlements.",
+  "negotiable-instruments-debts":
+    "Cheques, promissory notes and bills of exchange, and claiming and enforcing debts, for the creditor and the debtor, from reading the document to claim, settlement and enforcement.",
+  "leases-eviction":
+    "Residential and commercial leases, late rent and eviction, for landlord and tenant, from reviewing the contract to the warning, the claim and enforcement.",
+  "property-disputes":
+    "Property sale contracts, conveyance and transfer of ownership, and disputes over ownership, boundaries, handover and defects, from checking the title deed to the claim.",
+  "traffic-accidents":
+    "Determining responsibility for traffic accidents, claiming compensation and dealing with insurers, and objecting to traffic violations.",
+  "fraud-breach-of-trust":
+    "Fraud and breach of trust cases for the victim and the accused: documenting the incident, the complaint, claiming recovery, and defense at investigation and trial.",
+  "administrative-grievances":
+    "Administrative decisions and grievances against them, claims before the administrative judiciary, disputes with government bodies and disputes of public employees.",
+  "wills-powers-of-attorney":
+    "Drafting and documenting wills and powers of attorney, their scope and revocation, and handling disputes over wills and holding agents to account.",
   franchise:
     "The legal side of franchise relationships — drafting and reviewing franchise agreements, representing franchisors or franchisees, and resolving disputes between them.",
   "intellectual-property": "Protecting trademarks, copyright, and an organization's intangible assets.",
   "family-business":
     "Family governance, ownership structuring, and management succession across generations, within a clear legal framework.",
-  "cyber-crime": "Legal follow-up on cybercrime incidents and attacks on data and systems.",
+  "cyber-crime": "Legal follow-up on cybercrime, defamation, insult and blackmail, and attacks on accounts, data and systems, for the victim and for the accused.",
   "government-contracts": "Contracting with government entities, tenders, and procurement, from bid through to execution.",
   "banking-islamic-finance": "The legal side of financing agreements, banking facilities, and Islamic finance structures, from structuring through security and documentation.",
   "capital-markets": "Regulatory requirements for share offerings and the issuance of sukuk and bonds, and the obligations tied to the Capital Market Authority.",
-  "insurance": "Insurance policies, claims, the regulatory aspects of insurance activity, and the disputes that arise from them.",
+  "insurance": "Insurance policies and policyholders' claims, individuals and businesses alike, the regulatory aspects of insurance activity, and the disputes that arise from them.",
   "mergers-acquisitions": "The legal side of merger and acquisition transactions, from due diligence through drafting and closing.",
   "tax-zakat": "The legal side of zakat, tax, and customs obligations, including assessments and objections before the competent authorities.",
   "listed-company-governance": "Governance frameworks and regulatory obligations for joint-stock companies, and the responsibilities of the board and its committees.",

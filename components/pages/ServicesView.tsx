@@ -1,9 +1,10 @@
+import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
 import ServiceTiles from "@/components/ServiceTiles";
 import SpecializedExplorer from "@/components/SpecializedExplorer";
-import { Band, BandHead, HeroHead, RowList, StatTile, Wrap } from "@/components/ui";
+import { Band, BandHead, HeroHead, StatTile, Wrap } from "@/components/ui";
 import WhoWeServe from "@/components/WhoWeServe";
 import { pillarTiles, totalServices } from "@/lib/service-tiles";
 import { sectors } from "@/lib/sectors";
@@ -22,7 +23,7 @@ const ui = {
     ],
     book: "احجز استشارة أولية",
     core: { number: "01", eyebrow: "Core Pillars", title: "المحاور الأساسية" },
-    individuals: { number: "02", eyebrow: "Services for Individuals", title: "خدمات الأفراد", lead: "الدفاع الجنائي، والتركات والمواريث، والأحوال الشخصية، وقانون العمل للعاملين وأصحاب العمل." },
+    individuals: { number: "02", eyebrow: "Services for Individuals", title: "خدمات الأفراد", lead: "الدفاع الجنائي والتركات والأحوال الشخصية وقانون العمل والديون والعقار والمنازعات مع الجهات الحكومية وغيرها." },
     individualsLink: "صفحة خدمات الأفراد",
     lines: { number: "03", eyebrow: "Specialized Practice Lines", title: "خطوط ممارسة متخصصة" },
     cta: "تفاصيل الخدمة ←",
@@ -38,7 +39,7 @@ const ui = {
     ],
     book: "Book an Initial Consultation",
     core: { number: "01", eyebrow: "Core Pillars", title: "Core Pillars" },
-    individuals: { number: "02", eyebrow: "Services for Individuals", title: "Services for Individuals", lead: "Criminal defense, estates and inheritance, personal status, and labor law for workers and employers." },
+    individuals: { number: "02", eyebrow: "Services for Individuals", title: "Services for Individuals", lead: "Criminal defense, estates, personal status, labor law, debts, property, disputes with government bodies and more." },
     individualsLink: "Services for individuals",
     lines: { number: "03", eyebrow: "Specialized Practice Lines", title: "Specialised Practice Lines" },
     cta: "Service details →",
@@ -80,17 +81,18 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
       <Band tone="dark" id="individuals">
         <Wrap max="5xl">
           <BandHead {...t.individuals} tone="onDark" />
-          <div className="mt-14">
-            <RowList
-              tone="dark"
-              items={individualLines.map((l) => ({
-                title: ar ? l.title : l.titleEn,
-                tag: ar ? l.titleEn : l.title,
-                text: ar ? l.summary : specializedLineSummaryEn[l.slug],
-                href: `${prefix}/services/${l.slug}`,
-              }))}
-            />
-          </div>
+          <ul className="mt-14 flex flex-wrap justify-center gap-3">
+            {individualLines.map((l) => (
+              <li key={l.slug}>
+                <Link
+                  href={`${prefix}/services/${l.slug}`}
+                  className="chamfer-btn inline-block border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white/90 transition-colors hover:border-[#e0b35a] hover:text-[#f6e2b3]"
+                >
+                  {ar ? l.title : l.titleEn}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <div className="mt-10 text-center">
             <ArrowButton href={`${prefix}/individuals`} ltr={!ar}>{t.individualsLink}</ArrowButton>
           </div>

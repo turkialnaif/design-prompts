@@ -8,16 +8,16 @@ export const firm = {
   address: "7444 شارع أبي بكر الصديق، حي الياسمين، الرياض 13326 - 4338",
   addressEn: "7444 Abi Bakr Al Siddiq St, Al Yasmin District, Riyadh 13326 - 4338",
   nationalAddress: { short: "RAYC7444", building: "7444", street: "أبي بكر الصديق", streetEn: "Abi Bakr Al Siddiq", district: "الياسمين", districtEn: "Al Yasmin", secondary: "4338", postal: "13326" },
-  plusCode: "RMJ5+P9F",
-  /** Decoded from the Plus Code above (Al Yasmin, Riyadh), to 6 decimals (about 10 cm). */
-  geo: { lat: 24.831813, lng: 46.658422 },
+  plusCode: "RMJ5+Q8",
+  /** The office pin on Google Maps (24.8319728, 46.6583334), to 6 decimals (about 10 cm). */
+  geo: { lat: 24.831973, lng: 46.658333 },
   /** Opening hours, Riyadh time. Friday is closed. */
   hours: [
     { days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:00", closes: "17:00" },
     { days: ["Saturday"], opens: "10:00", closes: "14:00" },
   ],
   mapsUrl:
-    "https://www.google.com/maps?q=RMJ5+P9F+تاب+للمحاماة+والاستشارات+القانونية،+الياسمين،+الرياض+13326&ftid=0x3e2ee500591ba4a7:0xc96fb1e4ecd7a0e7",
+    "https://www.google.com/maps?q=RMJ5+Q8+تاب+للمحاماة+والاستشارات+القانونية،+الياسمين،+الرياض+13326&ftid=0x3e2ee500591ba4a7:0xc96fb1e4ecd7a0e7",
   /** Google Maps embed of the office listing; the language segment ("1sar") is swapped for English pages. */
   mapEmbed:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4526.171904392391!2d46.658420400000004!3d24.8318101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee500591ba4a7%3A0xc96fb1e4ecd7a0e7!2z2KrYsdmD2Yog2KfZhNmG2KfZitmBINmI2LTYsdmD2KfYpNmHINmE2YTZhdit2KfZhdin2Kkg2YjYp9mE2KfYs9iq2LTYp9ix2KfYqiDYp9mE2YLYp9mG2YjZhtmK2Kk!5e1!3m2!1sar!2ssa!4v1792047055988!5m2!1sar!2ssa",
@@ -271,7 +271,7 @@ export const specializedLines: SpecializedLine[] = [
     title: "الدفاع الجنائي",
     titleEn: "Criminal Defense",
     summary:
-      "الدفاع في القضايا الجنائية بمختلف أنواعها والقضايا الجزائية المتخصصة، من مرحلة الاستدلال والتحقيق إلى المحاكمة والاعتراض على الأحكام.",
+      "الدفاع في القضايا الجنائية بمختلف أنواعها، ومنها المخدرات والقيادة تحت تأثير الكحول والمخدرات والاعتداء والقضايا الجزائية المتخصصة، من الاستدلال والتحقيق إلى المحاكمة والاعتراض على الأحكام.",
   },
   {
     slug: "estates-inheritance",
@@ -283,9 +283,58 @@ export const specializedLines: SpecializedLine[] = [
   {
     slug: "personal-status",
     title: "الأحوال الشخصية",
-    titleEn: "Personal Status & Family Law",
+    titleEn: "Personal Status",
     summary:
       "مسائل الأسرة ومنازعاتها: الزواج وآثاره، والفرقة، والنفقة، والحضانة والزيارة، والولاية، وما يتصل بها من دعاوى وتسويات.",
+  },
+  {
+    slug: "negotiable-instruments-debts",
+    title: "الشيكات والسندات والمطالبة بالديون",
+    titleEn: "Cheques, Notes & Debt Claims",
+    summary:
+      "الشيكات والسندات لأمر والكمبيالات، والمطالبة بالديون وتنفيذها، للدائن وللمدين، من قراءة المستند إلى المطالبة والتسوية والتنفيذ.",
+  },
+  {
+    slug: "leases-eviction",
+    title: "الإيجار والإخلاء",
+    titleEn: "Leases & Eviction",
+    summary:
+      "عقود الإيجار السكنية والتجارية والتأخر عن الأجرة والإخلاء، للمؤجر وللمستأجر، من مراجعة العقد إلى الإنذار والدعوى والتنفيذ.",
+  },
+  {
+    slug: "property-disputes",
+    title: "النزاعات العقارية والبيع والإفراغ",
+    titleEn: "Property Disputes & Conveyance",
+    summary:
+      "عقود بيع العقار والإفراغ ونقل الملكية، ونزاعات الملكية والحدود والتسليم وعيوب المبيع، من فحص الصك إلى الدعوى.",
+  },
+  {
+    slug: "traffic-accidents",
+    title: "حوادث السير والمخالفات المرورية",
+    titleEn: "Traffic Accidents & Compensation",
+    summary:
+      "تحديد المسؤولية عن حوادث السير والمطالبة بالتعويض والتعامل مع شركات التأمين، والاعتراض على المخالفات المرورية.",
+  },
+  {
+    slug: "fraud-breach-of-trust",
+    title: "الاحتيال وخيانة الأمانة",
+    titleEn: "Fraud & Breach of Trust",
+    summary:
+      "قضايا الاحتيال وخيانة الأمانة للمتضرر وللمتهم: توثيق الواقعة والشكوى والمطالبة بالاسترداد والدفاع في التحقيق والمحاكمة.",
+  },
+  {
+    slug: "administrative-grievances",
+    title: "التظلمات الإدارية والمنازعات الحكومية",
+    titleEn: "Administrative Grievances & Government Disputes",
+    summary:
+      "القرارات الإدارية والتظلم منها، والدعاوى أمام القضاء الإداري، والمنازعات مع الجهات الحكومية ومنازعات الموظفين العموميين.",
+  },
+  {
+    slug: "wills-powers-of-attorney",
+    title: "الوصايا والوكالات",
+    titleEn: "Wills & Powers of Attorney",
+    summary:
+      "صياغة الوصايا والوكالات وتوثيقها ونطاقها وإلغاؤها، ومعالجة منازعات الوصايا ومساءلة الوكلاء.",
   },
   {
     slug: "franchise",
@@ -309,9 +358,10 @@ export const specializedLines: SpecializedLine[] = [
   },
   {
     slug: "cyber-crime",
-    title: "الجرائم المعلوماتية",
-    titleEn: "Cyber Crime",
-    summary: "المتابعة القانونية لوقائع الجرائم المعلوماتية والاعتداء على البيانات والأنظمة.",
+    title: "الجرائم المعلوماتية والسب والقذف والابتزاز",
+    titleEn: "Cybercrime, Defamation & Blackmail",
+    summary:
+      "المتابعة القانونية لوقائع الجرائم المعلوماتية والسب والقذف والابتزاز والاعتداء على الحسابات والبيانات والأنظمة، للمتضرر وللمتهم.",
   },
   {
     slug: "government-contracts",
@@ -338,7 +388,7 @@ export const specializedLines: SpecializedLine[] = [
     title: "التأمين",
     titleEn: "Insurance",
     summary:
-      "وثائق التأمين والمطالبات والجوانب التنظيمية لنشاط التأمين، وما ينشأ عنها من منازعات.",
+      "وثائق التأمين ومطالبات المؤمَّن لهم من أفراد ومنشآت، والجوانب التنظيمية لنشاط التأمين، وما ينشأ عنها من منازعات.",
   },
   {
     slug: "mergers-acquisitions",
@@ -581,8 +631,16 @@ export const attorneys: Attorney[] = [
   },
 ];
 
-/** The services offered to individuals, in the order the individuals page and the services page show them. Each is a specialised line with its own page. */
-export const individualServiceSlugs = ["criminal-defense", "estates-inheritance", "personal-status", "employment-labor"] as const;
+/** The services offered to individuals, grouped as the individuals page shows them. Each slug is a specialised line with its own page. */
+export const individualGroups = [
+  { id: "criminal", ar: "القضايا الجنائية والجرائم", en: "Criminal matters", slugs: ["criminal-defense", "cyber-crime", "fraud-breach-of-trust", "traffic-accidents"] },
+  { id: "family", ar: "الأحوال الشخصية والتركات", en: "Personal status & estates", slugs: ["personal-status", "estates-inheritance", "wills-powers-of-attorney"] },
+  { id: "money", ar: "الديون والعقار والتأمين", en: "Debts, property & insurance", slugs: ["negotiable-instruments-debts", "leases-eviction", "property-disputes", "insurance"] },
+  { id: "work", ar: "العمل والجهات الحكومية", en: "Work & government", slugs: ["employment-labor", "administrative-grievances"] },
+] as const;
+
+/** Every individuals' service, in the order of the groups above. */
+export const individualServiceSlugs: string[] = individualGroups.flatMap((g) => [...g.slugs]);
 
 export type AuthorBoxVariant = "default" | "arbitration" | "franchise" | "individuals";
 
@@ -612,6 +670,13 @@ export const lineAxis: Record<string, string> = {
   "criminal-defense": "disputes-arbitration",
   "estates-inheritance": "disputes-arbitration",
   "personal-status": "disputes-arbitration",
+  "negotiable-instruments-debts": "enforcement-recovery",
+  "leases-eviction": "disputes-arbitration",
+  "property-disputes": "disputes-arbitration",
+  "traffic-accidents": "disputes-arbitration",
+  "fraud-breach-of-trust": "disputes-arbitration",
+  "administrative-grievances": "disputes-arbitration",
+  "wills-powers-of-attorney": "legal-advisory",
   franchise: "corporate-contracts",
   "intellectual-property": "corporate-contracts",
   "family-business": "corporate-contracts",

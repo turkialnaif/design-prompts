@@ -5,24 +5,11 @@ import PageHero from "@/components/PageHero";
 import { Band, BandHead, HeroHead, Numbered, RowList, Wrap } from "@/components/ui";
 import { articles } from "@/lib/articles";
 import { individualsJsonLd } from "@/lib/seo";
-import { firm, individualServiceSlugs, specializedLines } from "@/lib/site";
+import { firm, individualGroups, individualServiceSlugs, specializedLines } from "@/lib/site";
+import { specializedLineSummaryEn } from "@/lib/site.en";
 
-const lines = individualServiceSlugs.map((slug) => specializedLines.find((l) => l.slug === slug)!);
-
-const blurb = {
-  ar: {
-    "criminal-defense": "الدفاع في القضايا الجنائية بجميع أنواعها وفي القضايا الجزائية المتخصصة، من الاستدلال والتحقيق إلى المحاكمة والاعتراض على الحكم.",
-    "estates-inheritance": "قضايا التركات والمواريث كلها: حصر الورثة والتركة، وقسمتها بالتراضي أو قضاءً، ومنازعات الورثة وإدارة الأصول أثناء الخلاف.",
-    "personal-status": "مسائل الأسرة ومنازعاتها: الزواج وآثاره، والفرقة، والنفقة، والحضانة والزيارة، والولاية، بتسوية ودية حيث أمكنت ودعوى حيث لزمت.",
-    "employment-labor": "قانون العمل للعاملين وأصحاب العمل: مراجعة العقود، وإنهاء العلاقة والمستحقات، والتحقيق والجزاءات، والمنازعات العمالية.",
-  },
-  en: {
-    "criminal-defense": "Defense in criminal cases of every kind and in specialised penal matters, from the inquiry and investigation through trial and appeal.",
-    "estates-inheritance": "Estate and inheritance matters in full: identifying heirs and the estate, dividing it by agreement or through the courts, heirs' disputes and managing assets during a dispute.",
-    "personal-status": "Family matters and their disputes: marriage and its effects, separation, maintenance, custody and visitation, guardianship; amicable settlement where possible, a claim where needed.",
-    "employment-labor": "Labor law for workers and employers: reviewing contracts, termination and entitlements, investigations and penalties, and labor disputes.",
-  },
-} as const;
+const line = (slug: string) => specializedLines.find((l) => l.slug === slug)!;
+const lines = individualServiceSlugs.map(line);
 
 /** Individuals' articles that already exist on the site, with an English gloss for the English page (the articles themselves are Arabic). */
 const reading: { slug: string; en: string }[] = [
@@ -50,9 +37,9 @@ const ui = {
   ar: {
     eyebrow: "Services for Individuals",
     title: "خدمات الأفراد",
-    lead: "نقدّم للأفراد والأسر خدمات قانونية في أربعة مجالات: الدفاع الجنائي، والتركات والمواريث، والأحوال الشخصية، وقانون العمل، إلى جانب خدماتنا للشركات.",
+    lead: "نقدّم للأفراد خدمات قانونية في القضايا الجنائية والتركات والأحوال الشخصية وقانون العمل والديون والعقار والمنازعات مع الجهات الحكومية، إلى جانب خدماتنا للشركات.",
     book: "احجز استشارة أولية",
-    services: { number: "01", eyebrow: "What We Handle", title: "ما نتولاه للأفراد", lead: "لكل مجال صفحة تشرح نطاق العمل وكيف نسير فيه وما نحتاجه لنبدأ." },
+    services: { number: "01", eyebrow: "What We Handle", title: "ما نتولاه للأفراد", lead: "لكل خدمة صفحة تشرح نطاق العمل وكيف نسير فيه وما نحتاجه لنبدأ." },
     how: { number: "02", eyebrow: "Getting Started", title: "كيف تبدأ" },
     read: { number: "03", eyebrow: "Before You Consult", title: "اقرأ قبل أن تستشير", lead: "مقالات تعريفية عامة تعين على فهم المسألة قبل اللقاء الأول." },
     tag: "مقال",
@@ -63,9 +50,9 @@ const ui = {
   en: {
     eyebrow: "Services for Individuals",
     title: "Services for Individuals",
-    lead: "Legal services for individuals and families in four areas: criminal defense, estates and inheritance, personal status, and labor law, alongside our services for companies.",
+    lead: "Legal services for individuals in criminal matters, estates, personal status, labor law, debts, property and disputes with government bodies, alongside our services for companies.",
     book: "Book an Initial Consultation",
-    services: { number: "01", eyebrow: "What We Handle", title: "What we handle for individuals", lead: "Each area has its own page on the scope of work, how we proceed, and what we need to start." },
+    services: { number: "01", eyebrow: "What We Handle", title: "What we handle for individuals", lead: "Each service has its own page on the scope of work, how we proceed, and what we need to start." },
     how: { number: "02", eyebrow: "Getting Started", title: "How to start" },
     read: { number: "03", eyebrow: "Before You Consult", title: "Read before you consult", lead: "General explanatory articles (in Arabic) to help you understand the matter before a first meeting." },
     tag: "Article in Arabic",
@@ -97,19 +84,37 @@ export default function IndividualsView({ locale }: { locale: "ar" | "en" }) {
       </PageHero>
 
       <Band tone="white">
-        <Wrap max="5xl">
+        <Wrap max="6xl">
           <BandHead {...t.services} />
-          <div className="mt-14">
-            <RowList
-              items={lines.map((l) => ({
-                title: ar ? l.title : l.titleEn,
-                tag: ar ? l.titleEn : l.title,
-                text: blurb[locale][l.slug as keyof (typeof blurb)["ar"]],
-                href: `${prefix}/services/${l.slug}`,
-              }))}
-            />
+          <div className="mt-14 space-y-14">
+            {individualGroups.map((g) => (
+              <div key={g.id}>
+                <h3 className="font-display flex items-center gap-3 text-2xl font-light text-[#00124a]">
+                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rotate-45 bg-[#e0b35a]" />
+                  {ar ? g.ar : g.en}
+                </h3>
+                <ul className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {g.slugs.map((slug) => {
+                    const l = line(slug);
+                    return (
+                      <li key={slug}>
+                        <Link
+                          href={`${prefix}/services/${slug}`}
+                          className="group glass-card flex h-full flex-col items-center rounded-2xl p-6 text-center transition-transform duration-300 hover:-translate-y-1"
+                        >
+                          <h4 className="font-display text-lg font-bold text-ink">{ar ? l.title : l.titleEn}</h4>
+                          <p className="gold-eyebrow mt-1 text-[11px]">{ar ? l.titleEn : l.title}</p>
+                          <p className="mt-3 text-sm leading-7 text-ink-soft/80">{ar ? l.summary : specializedLineSummaryEn[slug]}</p>
+                          <span className="mt-auto inline-block pt-4 text-sm font-semibold text-gold-deep">{t.cta} {ar ? "←" : "→"}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
           </div>
-          <p className="mt-10 text-center text-sm font-light text-ink-soft">
+          <p className="mt-12 text-center text-sm font-light text-ink-soft">
             {t.corp.text}{" "}
             <Link href={t.corp.href} className="font-semibold text-gold-deep hover:underline">{t.corp.link}</Link>
           </p>

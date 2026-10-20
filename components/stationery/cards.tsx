@@ -132,7 +132,7 @@ export function AppointmentBack({ guides }: G) {
           <p key={l} style={{ margin: 0 }}>{l}</p>
         ))}
       </div>
-      <p className="absolute" dir="ltr" style={{ ...latin, right: mm(9), bottom: mm(8), margin: 0, fontSize: "5.4pt", letterSpacing: "0.1em", color: C.brass }}>RMJ5+P9F</p>
+      <p className="absolute" dir="ltr" style={{ ...latin, right: mm(9), bottom: mm(8), margin: 0, fontSize: "5.4pt", letterSpacing: "0.1em", color: C.brass }}>RMJ5+Q8</p>
     </Face>
   );
 }

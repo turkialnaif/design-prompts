@@ -748,7 +748,14 @@ export const serviceCopyEn: Record<(typeof enServiceSlugs)[number], ServiceCopyE
           {
             "h": "Our scope",
             "p": [
-              "We handle defense in criminal cases of every kind, and in specialised penal matters including cybercrime and economic cases and the investigations connected with them, each of which has its own page on this site."
+              "We handle defense in criminal cases of every kind, and in specialised penal matters including cybercrime and economic cases and the investigations connected with them."
+            ]
+          },
+          {
+            "h": "Specialised criminal branches",
+            "p": [
+              "Alongside general criminal cases we handle specialised branches, including drug and psychotropic substance cases, driving under the influence of alcohol or drugs, assault and harm cases, defamation, insult and blackmail, fraud and breach of trust, and cybercrime and economic crime.",
+              "Each branch has its own nature in accusation, proof and procedure, so we read the file according to its branch and do not treat cases on a single pattern. Cybercrime, and fraud and breach of trust, each have their own page on this site."
             ]
           },
           {
@@ -910,9 +917,9 @@ export const serviceCopyEn: Record<(typeof enServiceSlugs)[number], ServiceCopyE
     ]
   },
   "personal-status": {
-    "title": "Personal Status & Family Lawyer in Riyadh",
+    "title": "Personal Status Lawyer in Riyadh",
     "description": "Personal status legal services in Riyadh: family matters and their disputes, from marriage and separation to maintenance, custody, visitation and guardianship, handled with discretion.",
-    "h1": "Personal status and family lawyer in Riyadh: family matters and disputes",
+    "h1": "Personal status lawyer in Riyadh: family matters and disputes",
     "groups": [
       {
         "label": null,
@@ -978,6 +985,732 @@ export const serviceCopyEn: Record<(typeof enServiceSlugs)[number], ServiceCopyE
       {
         "href": "/en/services/disputes-arbitration",
         "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "negotiable-instruments-debts": {
+    "title": "Cheques, Notes & Debt Claims Lawyer in Riyadh",
+    "description": "Legal services on cheques, promissory notes, bills of exchange, debt claims and enforcement in Riyadh: reading the instrument and documents, routes of claim, and follow-up of enforcement.",
+    "h1": "Cheques, promissory notes and debts lawyer in Riyadh: from claim to enforcement",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Debt, cheque and promissory note lawyer in Riyadh for creditors and debtors",
+          "A documented debt can lose its time between demand, claim and enforcement if its documents are not read correctly from the start. We work with the creditor on choosing the route that suits the document, and with the debtor on examining the debt, the defenses and a suitable settlement."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When a debtor is late paying a debt evidenced by a cheque, promissory note, bill of exchange, contract or correspondence; when a cheque is returned; when you are being pursued on an instrument you believe is not due or is defective; and when you want to enforce a judgment or an instrument."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle cheques, promissory notes and bills of exchange, and claims for debts whether evidenced by a commercial instrument, a contract or correspondence, together with enforcement procedures, for the creditor or the debtor as the case may be."
+            ]
+          },
+          {
+            "h": "Reading the instrument and documents",
+            "p": [
+              "We begin by examining the instrument, its particulars, what evidences the debt, and the sequence of dates and correspondence. The route that suits a commercial instrument may not suit a debt evidenced by correspondence, and it varies with the type of instrument and its terms."
+            ]
+          },
+          {
+            "h": "For the creditor",
+            "p": [
+              "We prepare the amicable demand and the warning, file the claim or request enforcement as the law allows for your document, and follow enforcement against the debtor's assets. Actual recovery depends on the debtor's capacity and assets, so we assess that early."
+            ]
+          },
+          {
+            "h": "For the debtor",
+            "p": [
+              "We review the validity and amount of the debt and the defenses available, negotiate a settlement or rescheduling that we document in clear terms, and follow objections at the enforcement stage where the law permits."
+            ]
+          },
+          {
+            "h": "Settlement and rescheduling",
+            "p": [
+              "Many debts end in settlement. We document it so as to protect the creditor's right and make clear to the debtor what is owed and what follows from default."
+            ]
+          },
+          {
+            "h": "The limits of what we offer",
+            "p": [
+              "No lawyer can promise an outcome or the recovery of a sum; that depends on the documents and on the debtor. We give a frank reading of the position and disciplined management of the procedures."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading of the debt documents, a warning or amicable demand, a statement of claim or response memorandum, a settlement or rescheduling agreement, and follow-up of enforcement."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the cheque, note or contract and whatever correspondence and statements you hold, with what you know of the debtor. That is enough for us to assess the position and propose a route."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/blog/claim-outstanding-debt-saudi-arabia",
+        "label": "How to claim a documented debt (Arabic)"
+      },
+      {
+        "href": "/en/services/enforcement-recovery",
+        "label": "Enforcement & Recovery"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "leases-eviction": {
+    "title": "Lease & Eviction Lawyer in Riyadh | Late Rent",
+    "description": "Legal services on leases, eviction and late rent in Riyadh for landlords and tenants: contract review, warnings, claims, proceedings and enforcement.",
+    "h1": "Lease and eviction lawyer in Riyadh: tenancy contracts and late rent",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Lease and eviction lawyer in Riyadh for landlords and tenants",
+          "A tenancy begins with a contract and usually ends with a handover, with rent, maintenance and renewal in between. Most disputes come from an unclear contract or from lateness that was never documented. We work with both sides on structuring the relationship before a dispute and handling it when it arises."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When signing a residential or commercial lease; when a tenant is late with rent; when a landlord wants to evict or a tenant wants to challenge eviction; and when there is a disagreement over renewal, termination, maintenance or return of the deposit."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle residential and commercial leases: reviewing and drafting them, late rent, eviction, renewal and termination, maintenance and defects, and recovery of the deposit, for the landlord or the tenant."
+            ]
+          },
+          {
+            "h": "The contract and its documentation",
+            "p": [
+              "We review the term, rent, payment method, renewal, termination, maintenance and each side's rights before signing, and explain the accepted way of documenting the contract, since documentation makes proof easier in a dispute."
+            ]
+          },
+          {
+            "h": "For the landlord",
+            "p": [
+              "We prepare the warning to pay or vacate, claim the arrears, file the eviction claim as the law and the contract allow, and follow enforcement."
+            ]
+          },
+          {
+            "h": "For the tenant",
+            "p": [
+              "We review the ground for the demand to vacate or pay and whether it rests on the contract and the law, explain your rights on term, maintenance and deposit, and represent you in settlement and in the claim."
+            ]
+          },
+          {
+            "h": "Settlement",
+            "p": [
+              "Many lease disputes are resolved by a written agreement on rescheduling the rent or on a date to vacate. We document it so as to protect both sides."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: an opinion on a lease or its renewal, a drafted contract, a warning, a claim, eviction or response memorandum, representation in the proceedings, and follow-up of enforcement."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the lease and whatever receipts, correspondence and warnings you hold. That is enough to assess the position and set the next step."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/services/real-estate-construction",
+        "label": "Real Estate & Construction (Arabic)"
+      },
+      {
+        "href": "/en/services/property-disputes",
+        "label": "Property Disputes, Sales & Conveyance"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "property-disputes": {
+    "title": "Property Disputes & Conveyance Lawyer in Riyadh",
+    "description": "Legal services on property disputes, sale contracts and conveyance in Riyadh: title checks, drafting the sale contract, and disputes over ownership, handover and transfer.",
+    "h1": "Property disputes lawyer in Riyadh: sale contracts, conveyance and ownership",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Property lawyer in Riyadh for sale contracts, conveyance and ownership disputes",
+          "Real estate is often the most valuable thing an individual owns, and the flaws in its contract appear only at transfer or in a dispute. Before a deal we check and draft it; after a dispute we assess the suitable route."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When buying or selling property; when the other side refuses to transfer title; when handover is delayed, a defect appears or a competing claim to ownership is made; on a dispute over boundaries or entitlement; and in a joint property venture."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle property sale contracts, deposits and instalments, conveyance and transfer of ownership, disputes over ownership, boundaries and entitlement, delay in handover or transfer, defects in the property sold, and joint property ventures."
+            ]
+          },
+          {
+            "h": "Before buying",
+            "p": [
+              "We check the title deed, the seller's capacity and any mortgage, restriction or obligation on the property, then draft the sale contract to set out the price, instalments, date of transfer and the effect of default. Checking before signing is easier than curing afterwards."
+            ]
+          },
+          {
+            "h": "When the seller refuses to transfer",
+            "p": [
+              "We set out the options: a warning and a demand to complete the sale, or rescission with a claim for compensation and refund, depending on the contract and the facts, and we represent you in settlement and in the claim."
+            ]
+          },
+          {
+            "h": "Ownership and boundary disputes",
+            "p": [
+              "We read the deeds, plans and related documents, prepare the claim or the response and organise the evidence. Some disputes need technical expertise, and we say so early."
+            ]
+          },
+          {
+            "h": "Settlement",
+            "p": [
+              "Many property disputes are resolved by a written settlement on a date of transfer or an agreed compensation. We document it to protect both sides."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a legal check memorandum on the property, a drafted or reviewed sale contract, a warning, a statement of claim or response memorandum, representation in the proceedings, and follow-up of enforcement."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the title deed, the sale contract or its draft, and whatever correspondence and receipts you hold. That is enough to assess the position and set the next step."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/services/real-estate-construction",
+        "label": "Real Estate & Construction (Arabic)"
+      },
+      {
+        "href": "/en/services/leases-eviction",
+        "label": "Leases & Eviction"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "traffic-accidents": {
+    "title": "Traffic Accident & Violations Lawyer in Riyadh",
+    "description": "Legal services on traffic accidents, traffic violations and compensation in Riyadh: determining responsibility, the accident file, claiming compensation, and dealing with insurers.",
+    "h1": "Traffic accident lawyer in Riyadh: responsibility, compensation and violations",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Traffic accident, violations and compensation lawyer in Riyadh",
+          "After a road accident questions pile up: who is responsible, who bears the harm, and how is compensation assessed? The answers depend on what evidence was kept in the first days. We help you read the incident and assess your rights and the route."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "After an accident with injury or damage; when responsibility is disputed; when an insurer refuses or delays; when you face a traffic violation you believe is wrong; and where a death or serious injury results from an accident."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle determining responsibility for the accident, reading the accident report and the incident file, claiming compensation for bodily and material harm, dealing with the insurer, and traffic violations and objections to them."
+            ]
+          },
+          {
+            "h": "Straight after the accident",
+            "p": [
+              "Keep the accident report, photographs, witnesses' names and whatever shows the injury and treatment, and do not sign an acknowledgment or waiver before reading it. What is signed in the first hours is hard to retract."
+            ]
+          },
+          {
+            "h": "Responsibility and compensation",
+            "p": [
+              "We read the accident report and its circumstances and identify the responsible parties, then explain the possible heads of compensation: the injury and treatment, the resulting time off work, and damage to the vehicle. It is assessed on the facts and the evidence, and no sum is assumed in advance."
+            ]
+          },
+          {
+            "h": "Dealing with the insurer",
+            "p": [
+              "We review the policy and the insurer's position, prepare the claim with its documents, negotiate or object where it is refused or reduced, and represent you before the competent body."
+            ]
+          },
+          {
+            "h": "Traffic violations",
+            "p": [
+              "We review the violation, its basis and facts, explain the route to object and prepare the objection, mindful of the periods the law sets."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading of the accident file and an assessment of responsibility, a claim for compensation, an objection to the insurer's position, an objection to a violation, and representation before the competent body."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the accident report, photographs, what shows injury or damage, and the insurance policy if there is one. That is enough to assess the position."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/insurance",
+        "label": "Insurance"
+      },
+      {
+        "href": "/en/services/criminal-defense",
+        "label": "Criminal Defense"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "fraud-breach-of-trust": {
+    "title": "Fraud & Breach of Trust Lawyer in Riyadh",
+    "description": "Legal services in fraud and breach of trust cases in Riyadh for victims and accused: documenting the incident, the complaint, claiming recovery, and defense at investigation and trial.",
+    "h1": "Fraud and breach of trust lawyer in Riyadh: complaint, defense and recovery",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Fraud and breach of trust lawyer in Riyadh for victims and the accused",
+          "A lot of money is lost because its owner trusted someone who did not deserve it: a transfer with nothing in return, a trust not returned, an investment promise not kept. The owner is left unsure between a criminal complaint and a civil claim, and the accused faces a description that may not fit what happened. We read the incident first and then decide the route."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When money is lost through deception, misappropriation of a trust or a transfer for nothing; when you are accused of any of these; and when you want to recover money handed to someone for a particular purpose and not returned."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle fraud and breach of trust cases for the victim and for the accused, including those involving funds, partnerships, powers of attorney and transfers, together with any civil claim for recovery."
+            ]
+          },
+          {
+            "h": "A crime or a civil dispute?",
+            "p": [
+              "Not every financial incident is a crime; it may be a breach of contract. How the incident is characterised decides the competent body, the route and the evidence needed, so we characterise it properly before any step."
+            ]
+          },
+          {
+            "h": "For the victim",
+            "p": [
+              "We document the incident and the evidence, such as transfers, correspondence and contracts, prepare and follow the complaint, and consider a civil claim to recover the money, assessing what can actually be recovered."
+            ]
+          },
+          {
+            "h": "For the accused",
+            "p": [
+              "We read what is alleged and its evidence, prepare the defense, including denying the act or the intent or having it properly characterised, represent you at investigation and trial, and consider settlement and waiver where the law allows."
+            ]
+          },
+          {
+            "h": "The limits of what we offer",
+            "p": [
+              "We promise no outcome and no recovery of any sum; the result depends on the evidence, the facts and the law."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading and characterisation of the incident, documentation of the evidence, drafting of the complaint or defense memorandum, a claim for recovery, and representation before the competent bodies."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the transfers, contracts, correspondence and the sequence of facts, and say whether you are the victim or the accused. Do not delete anything before we have reviewed it with you."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/criminal-defense",
+        "label": "Criminal Defense"
+      },
+      {
+        "href": "/services/white-collar-aml",
+        "label": "White-Collar Crime & AML (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/negotiable-instruments-debts",
+        "label": "Cheques, Notes & Debt Claims"
+      }
+    ]
+  },
+  "administrative-grievances": {
+    "title": "Administrative Grievances & Government Disputes Lawyer",
+    "description": "Legal services on administrative grievances and disputes with government bodies in Riyadh: administrative decisions, grievances, claims before the administrative judiciary, and employee disputes.",
+    "h1": "Administrative grievances lawyer in Riyadh: decisions and disputes with government bodies",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Administrative grievances and government disputes lawyer in Riyadh",
+          "An administrative decision directly affects an individual or an organization: a refused licence, a penalty, a termination of service, a failure to act. The way to challenge it has a route and time limits, and delay in either can lose the right. So we read the decision first and then set the route."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When an administrative decision is issued that you believe breaches the law; when a request or licence is refused; when a penalty is imposed or a public employee's service is terminated; when a body fails to do what it must; and in a contractual dispute with a government body."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle administrative grievances, disputes with government bodies, claims before the administrative judiciary, disputes of public employees, and related claims."
+            ]
+          },
+          {
+            "h": "The grievance before the body",
+            "p": [
+              "In many administrative claims a grievance to the body that issued the decision comes before the claim, and the grievance and the claim have time limits set by law whose lapse may lose the right. We therefore advise bringing the decision to us as soon as it is notified."
+            ]
+          },
+          {
+            "h": "The claim before the administrative judiciary",
+            "p": [
+              "We read the decision, its reasons and the documents, prepare the statement of claim and the pleas, represent you before the competent court, and follow what comes after judgment."
+            ]
+          },
+          {
+            "h": "The government employee",
+            "p": [
+              "We review decisions on public employment such as discipline, termination and entitlements, and explain the options, the route and the time limits."
+            ]
+          },
+          {
+            "h": "Contracts with government bodies",
+            "p": [
+              "A contractual dispute with a government body has its own nature and terms, and the contracts of organizations with government have a separate page."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading of the decision and the route to challenge it, a grievance memorandum, a statement of claim or response memorandum, and representation before the body and the court."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the decision, what shows the date it was notified, and earlier correspondence. That is enough to assess the position, and it is best done as soon as you are notified."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/services/government-contracts",
+        "label": "Government Contracts (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      },
+      {
+        "href": "/en/services/employment-labor",
+        "label": "Employment & Labor"
+      }
+    ]
+  },
+  "wills-powers-of-attorney": {
+    "title": "Wills & Powers of Attorney Lawyer in Riyadh",
+    "description": "Legal services on wills and powers of attorney in Riyadh: drafting and documenting a will, setting the scope of a power of attorney and revoking it, and disputes over wills and powers.",
+    "h1": "Wills and powers of attorney lawyer in Riyadh: drafting, documentation and disputes",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Wills and powers of attorney lawyer in Riyadh for drafting and documentation",
+          "A will and a power of attorney are two short papers that can carry large consequences: distributing money after death, or authorising wide dealings in life. Vagueness or misuse usually leads to a dispute. We draft and document them clearly and handle disputes over them."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When you want to write or amend a will; when you need a power of attorney for a specific or general dealing; when you want to revoke a power; and when there is a dispute over a will or a suspicion that a power was misused."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We draft and document wills, review existing wills, draft powers of attorney, their scope and their revocation, and handle disputes over wills and powers."
+            ]
+          },
+          {
+            "h": "The will",
+            "p": [
+              "We identify the purpose, the beneficiary and the subject of the bequest, draft the will consistently with the religious and legal rules, explain how to document it with the competent body, and its effect on the estate and its relation to the heirs' rights."
+            ]
+          },
+          {
+            "h": "The power of attorney",
+            "p": [
+              "The wider the power, the wider its risks. We set the authority, term and purpose precisely, and explain how to revoke it and notify the agent and the bodies concerned so its effects do not remain."
+            ]
+          },
+          {
+            "h": "Disputes",
+            "p": [
+              "We handle objections to a will, disputes over its interpretation and execution, and holding an agent to account where a power was misused, and prepare the necessary memoranda."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a will or a review of one, a power of attorney with defined authority, a revocation procedure, and a claim or response memorandum."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Tell us the purpose and send the existing will or power if there is one. That is enough to set the drafting or the route."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/estates-inheritance",
+        "label": "Estates & Inheritance"
+      },
+      {
+        "href": "/blog/heirs-dispute-estate-division-saudi-arabia",
+        "label": "When heirs disagree on dividing an estate (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/personal-status",
+        "label": "Personal Status"
+      }
+    ]
+  },
+  "cyber-crime": {
+    "title": "Cybercrime Lawyer in Riyadh | Complaints & Defense",
+    "description": "Legal representation in cybercrime in Riyadh: complaints about blackmail, defamation, electronic fraud and hacking, defense when accused, and preserving digital evidence.",
+    "h1": "Cybercrime lawyer in Riyadh: complaint, defense and digital evidence",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Cybercrime, defamation and blackmail lawyer in Riyadh for victims and the accused",
+          "A cybercrime is committed in minutes and leaves a digital trace that can disappear quickly. So the route depends on speed and on how well evidence is preserved, whether you are the victim of blackmail, defamation, hacking or fraud, or accused of a digital act. We represent either side as the case requires, and we serve organizations in hacking and leak incidents."
+        ],
+        "sections": [
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle cybercrime complaints and defense: blackmail and online defamation, insult, electronic fraud, unauthorised access to accounts and systems, and the related claims for compensation."
+            ]
+          },
+          {
+            "h": "For the victim: what to do first",
+            "p": [
+              "Preserve the evidence before any step: screenshots of messages, accounts, links and dates. Do not delete chats or reply in a way that alters the evidence. We then assess the incident, decide where and how the complaint is made, follow it through, and may bring a claim for compensation."
+            ]
+          },
+          {
+            "h": "For the accused",
+            "p": [
+              "When you are summoned or accused of a digital act, we review what is alleged, the evidence and how it was obtained, prepare the defense, and represent you at investigation and before the court. Careful drafting of a reply can change how the incident is characterised."
+            ]
+          },
+          {
+            "h": "Digital evidence",
+            "p": [
+              "Proof rests on digital evidence: logs, data, images and messages. We help document evidence in a way that preserves its value, and challenge the other side's evidence where its source or integrity is flawed."
+            ]
+          },
+          {
+            "h": "Incidents at organizations",
+            "p": [
+              "On a breach or data leak we work with your technical team on containment, documentation and assessing the impact, identify notification duties, and bring the complaint against the perpetrator where known. Data protection has its own page."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: documentation of the evidence, drafting and following a complaint, a defense memorandum, representation at investigation and trial, a claim for compensation, and a legal plan for an organization's incident."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send what evidence you have (images, links and dates) and a summary of the incident, and say whether you are the victim or the accused. Do not delete anything before we review it with you."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/criminal-defense",
+        "label": "Criminal Defense"
+      },
+      {
+        "href": "/services/personal-data-protection",
+        "label": "Personal Data Protection (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "insurance": {
+    "title": "Insurance Lawyer in Riyadh | Policies & Claims",
+    "description": "Legal services on insurance in Riyadh: reviewing policies, claims and exclusions, motor and medical cover, and disputes with insurers for policyholders and insurers.",
+    "h1": "Insurance lawyer in Riyadh: policies, claims and disputes",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Insurance lawyer in Riyadh for policyholders, individuals and businesses",
+          "An insurance policy is a conditional promise, and most disputes turn on the conditions: is the event covered, does an exclusion apply, was it notified on time, did the policyholder disclose all they had to? We serve policyholders, whether individuals or companies, in claiming their rights, and insurers and intermediaries in compliance and defense."
+        ],
+        "sections": [
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle reviewing policies before purchase, claims and refused or reduced claims, motor and medical insurance disputes, and insurance in commercial and construction contracts."
+            ]
+          },
+          {
+            "h": "Reviewing the policy",
+            "p": [
+              "We review the scope of cover, exclusions, the excess, limits of compensation, notification conditions and the policyholder's duties. An ambiguous phrase in the policy can change the fate of a large claim."
+            ]
+          },
+          {
+            "h": "Claiming compensation",
+            "p": [
+              "When an event occurs we arrange notification and documentation as the policy requires and prepare the claim with its documents: the event, the loss, the technical report and the basis of cover. If the claim is refused or reduced, we analyse the reason and bring the objection or the claim."
+            ]
+          },
+          {
+            "h": "Exclusions, notification and disclosure",
+            "p": [
+              "Claims are most often refused for late notification, non-disclosure of a material fact when the policy was taken out, or an exclusion. We examine whether the exclusion really applies and whether the conditions to rely on it are met."
+            ]
+          },
+          {
+            "h": "Compulsory and medical insurance",
+            "p": [
+              "Motor and medical insurance carry mandatory rules and competent bodies. We serve those affected and organizations in claims under these types and in an organization's duty to insure its workers."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a report on the scope and exclusions of the policy, a claim prepared with its documents, a memorandum objecting to a refusal, negotiation with the insurer, and representation before the competent body."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the policy, what happened and whatever decision or correspondence came from the insurer. We can then tell whether there is a right and what is needed to prove it."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/traffic-accidents",
+        "label": "Traffic Accidents & Compensation"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      },
+      {
+        "href": "/en/services/corporate-contracts",
+        "label": "Corporate, Contracts & Transactions"
       }
     ]
   },
@@ -1597,7 +2330,7 @@ export const serviceExtraEn: Record<(typeof enServiceSlugs)[number], ServiceExtr
     "faq": [
       {
         "q": "Do you handle specialised criminal matters?",
-        "a": "Yes, including cybercrime and economic cases, each of which has its own page on this site."
+        "a": "Yes, including drug offences, driving under the influence of alcohol or drugs, assault, cybercrime and economic cases, some of which have their own page on this site."
       },
       {
         "q": "Can I consult you before going to an investigation?",
@@ -1744,6 +2477,609 @@ export const serviceExtraEn: Record<(typeof enServiceSlugs)[number], ServiceExtr
       {
         "q": "What should I bring to the first meeting?",
         "a": "The documents connected with the matter, with the sequence of facts as you know them."
+      }
+    ]
+  },
+  "negotiable-instruments-debts": {
+    "mistakes": [
+      {
+        "t": "Delay in claiming",
+        "d": "Time can weaken the position and make the debtor and their assets harder to trace, so review the case early."
+      },
+      {
+        "t": "Relying on oral promises to pay",
+        "d": "An oral promise proves nothing; a written acknowledgment or documented agreement is better."
+      },
+      {
+        "t": "Losing or marking the original",
+        "d": "The original cheque or note is the document of the right; keep it and do not write on it."
+      },
+      {
+        "t": "Accepting rescheduling without careful drafting",
+        "d": "Rescheduling with no clear terms does not say what follows a missed instalment."
+      },
+      {
+        "t": "Using one approach for every debt",
+        "d": "Each document has its own route; what works for an instrument may not work for a debt evidenced by a contract or messages."
+      }
+    ],
+    "process": [
+      {
+        "t": "Read the documents",
+        "d": "We examine the instrument and what evidences the debt."
+      },
+      {
+        "t": "Choose the route",
+        "d": "Amicable demand, claim or enforcement depending on the document."
+      },
+      {
+        "t": "Act",
+        "d": "We prepare and follow the warning, claim or objection."
+      },
+      {
+        "t": "Enforce or settle",
+        "d": "We follow recovery or document the settlement."
+      }
+    ],
+    "docs": [
+      "The original cheque, promissory note or bill of exchange",
+      "The contract, invoices or statements connected to the debt",
+      "Correspondence and acknowledgments",
+      "What you know of the debtor and their assets",
+      "Any earlier claim or decision"
+    ],
+    "faq": [
+      {
+        "q": "Do you act for creditors and for debtors?",
+        "a": "Yes, though not for both sides of the same debt; we check for conflicts of interest before accepting."
+      },
+      {
+        "q": "Do I need the original?",
+        "a": "Usually the original is the document of the right, so keep it safe and bring it with you."
+      },
+      {
+        "q": "Can it be settled without a claim?",
+        "a": "Often, through a warning and a documented agreement, and we assess that case by case."
+      },
+      {
+        "q": "Do you guarantee recovery of the debt?",
+        "a": "No. Recovery depends on the documents and on the debtor's capacity, and we assess that frankly before we start."
+      }
+    ]
+  },
+  "leases-eviction": {
+    "mistakes": [
+      {
+        "t": "An unwritten or undocumented lease",
+        "d": "Rent, term and conditions are hard to prove in a dispute."
+      },
+      {
+        "t": "Accepting rent without a receipt",
+        "d": "Lack of proof of payment or receipt opens an avoidable dispute."
+      },
+      {
+        "t": "Tolerating late payment with no warning",
+        "d": "Undocumented tolerance can weaken the landlord's later claim."
+      },
+      {
+        "t": "Leaving maintenance requests unwritten",
+        "d": "A written request proves the other side knew."
+      },
+      {
+        "t": "Evicting outside the legal route",
+        "d": "Forcing eviction without proper procedure can open a new dispute and bring liability on whoever did it."
+      }
+    ],
+    "process": [
+      {
+        "t": "Review the contract and facts",
+        "d": "We read the lease, correspondence and receipts."
+      },
+      {
+        "t": "Set out the options",
+        "d": "Settlement, warning or claim."
+      },
+      {
+        "t": "Act",
+        "d": "We prepare the warning, claim or response."
+      },
+      {
+        "t": "Enforce",
+        "d": "We follow eviction or recovery."
+      }
+    ],
+    "docs": [
+      "The lease and its annexes",
+      "Rent receipts and account statements",
+      "Warnings and correspondence",
+      "The title deed or what shows the landlord's capacity",
+      "Photographs of the condition of the premises"
+    ],
+    "faq": [
+      {
+        "q": "Do you act for landlords and tenants?",
+        "a": "Yes, though not for both sides of the same tenancy; we check for conflicts of interest before accepting."
+      },
+      {
+        "q": "What should I do when a tenant is late?",
+        "a": "We start with documentation and a warning, then assess a claim or eviction according to the contract."
+      },
+      {
+        "q": "Can a landlord evict directly?",
+        "a": "Eviction has a legal route, and we advise against any other."
+      },
+      {
+        "q": "How do I recover the deposit?",
+        "a": "Under the contract and the condition of the premises at handover; we review this and manage the claim."
+      }
+    ]
+  },
+  "property-disputes": {
+    "mistakes": [
+      {
+        "t": "Paying before checking the title",
+        "d": "Early payments without verifying ownership expose the buyer to risks that are hard to cure."
+      },
+      {
+        "t": "A sale contract with no clear date of transfer",
+        "d": "Without a date and the effect of delay, the buyer has no leverage when transfer is late."
+      },
+      {
+        "t": "Relying on oral promises",
+        "d": "A promise to transfer or that the property is free of obligations must be in writing."
+      },
+      {
+        "t": "Overlooking a mortgage or restriction",
+        "d": "It may prevent transfer or change the value of the deal."
+      },
+      {
+        "t": "Delay in objecting to a defect",
+        "d": "A defect not reported in time may weaken the claim."
+      }
+    ],
+    "process": [
+      {
+        "t": "Check and read",
+        "d": "We read the deed, the contract and correspondence."
+      },
+      {
+        "t": "Choose the route",
+        "d": "Settlement, warning or claim."
+      },
+      {
+        "t": "Draft or act",
+        "d": "We draft the contract or prepare the claim and response."
+      },
+      {
+        "t": "Enforce",
+        "d": "We follow transfer or enforcement of the judgment."
+      }
+    ],
+    "docs": [
+      "The title deed or what shows ownership",
+      "The sale contract or draft and its annexes",
+      "Payment receipts and transfers",
+      "Correspondence with the other side",
+      "Plans or technical reports, if any"
+    ],
+    "faq": [
+      {
+        "q": "Should I check the property before paying a deposit?",
+        "a": "Preferably yes; an early check reveals the deed and any restrictions before you commit."
+      },
+      {
+        "q": "What if the seller refuses to transfer?",
+        "a": "We assess the contract and facts and propose a demand to complete or rescission with compensation."
+      },
+      {
+        "q": "Do you handle property contracts for companies?",
+        "a": "Yes, and the real estate and construction work for companies has its own page."
+      },
+      {
+        "q": "Can the dispute be resolved without a claim?",
+        "a": "Often, by written settlement, and we assess each case."
+      }
+    ]
+  },
+  "traffic-accidents": {
+    "mistakes": [
+      {
+        "t": "Signing an acknowledgment or waiver early",
+        "d": "It may limit the right to claim later."
+      },
+      {
+        "t": "Not documenting the injury and treatment",
+        "d": "Medical reports are the basis for assessing compensation."
+      },
+      {
+        "t": "Repairing the vehicle before documenting",
+        "d": "It can lose evidence of the damage."
+      },
+      {
+        "t": "Delay in objecting to a violation",
+        "d": "Objections have statutory periods, and missing them loses the chance."
+      },
+      {
+        "t": "Accepting compensation without understanding its elements",
+        "d": "It may be less than you are owed, so review it before accepting."
+      }
+    ],
+    "process": [
+      {
+        "t": "Gather the evidence",
+        "d": "We organise the report, photographs and medical reports."
+      },
+      {
+        "t": "Assess responsibility and rights",
+        "d": "We explain your position and the heads of compensation."
+      },
+      {
+        "t": "Claim",
+        "d": "Against the other party or the insurer or before the competent body."
+      },
+      {
+        "t": "Follow up",
+        "d": "We follow recovery or the objection."
+      }
+    ],
+    "docs": [
+      "The accident report",
+      "Photographs of the accident and vehicles",
+      "Medical reports and invoices",
+      "The insurance policy",
+      "The violation or traffic notice, if any"
+    ],
+    "faq": [
+      {
+        "q": "What should I do after an accident?",
+        "a": "Keep the report, photographs and witness details, document the injury, and do not sign an acknowledgment before review."
+      },
+      {
+        "q": "Can I claim compensation for an injury?",
+        "a": "You may have a right depending on responsibility and evidence, and we assess it after reading the file."
+      },
+      {
+        "q": "Do you handle objections to violations?",
+        "a": "Yes, according to the route and periods the law sets."
+      },
+      {
+        "q": "What if the insurer refuses?",
+        "a": "We review the policy and the reason for refusal and assess an objection or a claim."
+      }
+    ]
+  },
+  "fraud-breach-of-trust": {
+    "mistakes": [
+      {
+        "t": "Deleting chats or receipts",
+        "d": "They are the basis of proof, and deleting them may lose the right."
+      },
+      {
+        "t": "Handing over money with no document",
+        "d": "An oral handover makes it hard to prove the trust and its purpose."
+      },
+      {
+        "t": "Contacting the other side in a way that harms the evidence",
+        "d": "Messages may be used against you or change the characterisation."
+      },
+      {
+        "t": "Choosing the route before characterising the incident",
+        "d": "A complaint in the wrong place or a claim at the wrong time wastes time."
+      },
+      {
+        "t": "Accepting a settlement without careful drafting",
+        "d": "It may waive the right or leave an effect that only appears later."
+      }
+    ],
+    "process": [
+      {
+        "t": "Read the incident",
+        "d": "We understand the facts and review the evidence."
+      },
+      {
+        "t": "Characterise it",
+        "d": "We determine whether it is a crime or a civil dispute."
+      },
+      {
+        "t": "Act",
+        "d": "Complaint, defense or claim."
+      },
+      {
+        "t": "Follow up",
+        "d": "We follow the investigation, claim or recovery."
+      }
+    ],
+    "docs": [
+      "Transfers and account statements",
+      "Contracts or powers of attorney",
+      "Correspondence and chats",
+      "Any notice or summons",
+      "The sequence of facts with dates"
+    ],
+    "faq": [
+      {
+        "q": "Do you act for victims and for the accused?",
+        "a": "Yes, though not for both sides of the same incident."
+      },
+      {
+        "q": "Should I file a criminal complaint or a civil claim?",
+        "a": "It depends on how the incident is characterised, which we assess after reading the evidence."
+      },
+      {
+        "q": "Do you guarantee recovery of the money?",
+        "a": "No. The outcome depends on the evidence and the facts."
+      },
+      {
+        "q": "Can I settle?",
+        "a": "The law may allow settlement or waiver in some cases, and we explain what applies to yours."
+      }
+    ]
+  },
+  "administrative-grievances": {
+    "mistakes": [
+      {
+        "t": "Delay in bringing the decision",
+        "d": "The statutory periods for a grievance or claim may run out."
+      },
+      {
+        "t": "Not recording the date of notification",
+        "d": "Periods on which the right may depend run from that date."
+      },
+      {
+        "t": "Writing to the body without keeping the correspondence",
+        "d": "The correspondence is part of the proof."
+      },
+      {
+        "t": "A general objection",
+        "d": "An objection must identify the decision and why it is unlawful."
+      },
+      {
+        "t": "Skipping a required grievance before the claim",
+        "d": "It may expose the claim to dismissal on form."
+      }
+    ],
+    "process": [
+      {
+        "t": "Read the decision",
+        "d": "We understand it, its reasons and the date it was notified."
+      },
+      {
+        "t": "Choose the route",
+        "d": "Grievance, claim or settlement."
+      },
+      {
+        "t": "Draft",
+        "d": "We prepare the grievance or claim."
+      },
+      {
+        "t": "Follow up",
+        "d": "We follow before the body and the court."
+      }
+    ],
+    "docs": [
+      "The administrative decision under challenge",
+      "What shows the date of notification",
+      "The earlier request and correspondence",
+      "The contract or licence connected to the matter",
+      "Any earlier grievance"
+    ],
+    "faq": [
+      {
+        "q": "Do I file a grievance with the body before a claim?",
+        "a": "In many cases it is required, and we explain what applies to yours."
+      },
+      {
+        "q": "Do you handle disputes of government employees?",
+        "a": "Yes, depending on the type of decision and its route."
+      },
+      {
+        "q": "Do you serve organizations too?",
+        "a": "Yes; organizations deal with administrative decisions such as licences and penalties, and have other services on this site."
+      },
+      {
+        "q": "What matters most after I am notified of the decision?",
+        "a": "Keep the decision and the date you were notified and bring it to us quickly."
+      }
+    ]
+  },
+  "wills-powers-of-attorney": {
+    "mistakes": [
+      {
+        "t": "A general, unspecific will",
+        "d": "Vagueness about what is left or to whom opens a dispute."
+      },
+      {
+        "t": "A general power of attorney with no time limit",
+        "d": "It may remain in force after the need has gone."
+      },
+      {
+        "t": "Not notifying the agent and bodies of revocation",
+        "d": "The agent may still be able to act."
+      },
+      {
+        "t": "A will that ignores the heirs' rights",
+        "d": "It may be challenged for breaching the rules."
+      },
+      {
+        "t": "Keeping a single undocumented copy",
+        "d": "The original may be lost or doubted."
+      }
+    ],
+    "process": [
+      {
+        "t": "Understand the purpose",
+        "d": "We establish what you want and what the law allows."
+      },
+      {
+        "t": "Draft",
+        "d": "We draft the will or power precisely."
+      },
+      {
+        "t": "Document",
+        "d": "We explain how to document it and follow it up."
+      },
+      {
+        "t": "Review",
+        "d": "We review it when circumstances change."
+      }
+    ],
+    "docs": [
+      "Your identification and related documents",
+      "The existing will or power",
+      "A statement of the assets or dealings intended",
+      "Details of the beneficiary or agent",
+      "Any existing dispute or correspondence"
+    ],
+    "faq": [
+      {
+        "q": "Must a will be documented?",
+        "a": "Documentation makes it easier to prove and carry out, and we explain how according to the case."
+      },
+      {
+        "q": "Can a will be amended?",
+        "a": "Yes, according to the rules, and we review the effect of an amendment on the heirs."
+      },
+      {
+        "q": "How do I revoke a power of attorney?",
+        "a": "By a revocation procedure and notifying the agent and the bodies that deal with them under it."
+      },
+      {
+        "q": "What if an agent misuses the power?",
+        "a": "We assess the facts and explain the options from a claim to a complaint."
+      }
+    ]
+  },
+  "cyber-crime": {
+    "mistakes": [
+      {
+        "t": "Deleting messages or accounts",
+        "d": "It destroys the trace that proves the incident."
+      },
+      {
+        "t": "Replying to a blackmailer or paying",
+        "d": "It often prolongs the blackmail and may change the evidence."
+      },
+      {
+        "t": "Screenshots with no dates or links",
+        "d": "Evidence loses weight if its source and time are unclear."
+      },
+      {
+        "t": "Delay in reporting",
+        "d": "Accounts and records can disappear or be altered."
+      },
+      {
+        "t": "Answering an accusation without reading it",
+        "d": "A careless reply can change the characterisation of the incident."
+      }
+    ],
+    "process": [
+      {
+        "t": "Preserve",
+        "d": "We document the evidence in a form that holds up."
+      },
+      {
+        "t": "Assess",
+        "d": "We characterise the incident and choose the route."
+      },
+      {
+        "t": "Act",
+        "d": "Complaint, defense or claim."
+      },
+      {
+        "t": "Follow up",
+        "d": "We follow the investigation and the proceedings."
+      }
+    ],
+    "docs": [
+      "Images of messages, accounts and links with dates",
+      "The account details involved",
+      "Any summons or notice",
+      "Transfers or related financial records",
+      "A short account of the incident"
+    ],
+    "faq": [
+      {
+        "q": "I have been hacked. What is the first step?",
+        "a": "Preserve digital evidence and do not tamper with devices or records, then seek quick legal advice before reporting."
+      },
+      {
+        "q": "Can online blackmail be dealt with legally?",
+        "a": "Yes, by reporting to the competent body and following the procedures with the evidence documented."
+      },
+      {
+        "q": "Do you act for the accused too?",
+        "a": "Yes, as the case requires, though never for both sides of the same incident."
+      },
+      {
+        "q": "Do you handle defamation and insult?",
+        "a": "Yes, whether bringing the complaint or defending against it."
+      }
+    ]
+  },
+  "insurance": {
+    "mistakes": [
+      {
+        "t": "Buying a policy without reading the exclusions",
+        "d": "The exclusions are where claims are most often lost."
+      },
+      {
+        "t": "Late notification",
+        "d": "Many policies require notice within a set time, and delay can be relied on against you."
+      },
+      {
+        "t": "Incomplete disclosure when taking out the policy",
+        "d": "Leaving out a material fact can give the insurer a ground for refusal."
+      },
+      {
+        "t": "Accepting a refusal without examination",
+        "d": "A refusal based on a general phrase may not stand."
+      },
+      {
+        "t": "Settling before understanding the loss",
+        "d": "A quick settlement may close a claim for less than it is worth."
+      }
+    ],
+    "process": [
+      {
+        "t": "Read the policy",
+        "d": "Scope, exclusions and conditions."
+      },
+      {
+        "t": "Document the event",
+        "d": "Notification, report and loss."
+      },
+      {
+        "t": "Claim or object",
+        "d": "A claim with its documents or an objection to the decision."
+      },
+      {
+        "t": "Negotiate or proceed",
+        "d": "Settlement with the insurer or a claim before the competent body."
+      }
+    ],
+    "docs": [
+      "The insurance policy and schedule",
+      "What shows the event and the loss",
+      "Reports (medical, technical, accident)",
+      "Notices and the insurer's correspondence",
+      "Invoices and supporting documents"
+    ],
+    "faq": [
+      {
+        "q": "What should I do if my insurance claim is refused?",
+        "a": "We review the policy, the reason for refusal and the documents, then assess an objection or a claim."
+      },
+      {
+        "q": "Should I review a policy before buying it?",
+        "a": "Review reveals exclusions, limits of cover and notification conditions before they become a ground for dispute."
+      },
+      {
+        "q": "Do you serve individuals and companies?",
+        "a": "Yes, policyholders of both kinds, and insurers and intermediaries."
+      },
+      {
+        "q": "Is insurance required in construction contracts?",
+        "a": "Many contracts require it; we review its terms and its effect on liability."
       }
     ]
   },
