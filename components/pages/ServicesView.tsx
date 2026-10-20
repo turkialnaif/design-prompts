@@ -3,11 +3,11 @@ import MatterBriefCTA from "@/components/MatterBriefCTA";
 import PageHero from "@/components/PageHero";
 import ServiceTiles from "@/components/ServiceTiles";
 import SpecializedExplorer from "@/components/SpecializedExplorer";
-import { Band, BandHead, HeroHead, StatTile, Wrap } from "@/components/ui";
+import { Band, BandHead, HeroHead, RowList, StatTile, Wrap } from "@/components/ui";
 import WhoWeServe from "@/components/WhoWeServe";
 import { pillarTiles, totalServices } from "@/lib/service-tiles";
 import { sectors } from "@/lib/sectors";
-import { corePillars, firm, specializedLines } from "@/lib/site";
+import { corePillars, firm, individualServiceSlugs, specializedLines } from "@/lib/site";
 import { specializedLineSummaryEn } from "@/lib/site.en";
 
 const ui = {
@@ -22,7 +22,9 @@ const ui = {
     ],
     book: "احجز استشارة أولية",
     core: { number: "01", eyebrow: "Core Pillars", title: "المحاور الأساسية" },
-    lines: { number: "02", eyebrow: "Specialized Practice Lines", title: "خطوط ممارسة متخصصة" },
+    individuals: { number: "02", eyebrow: "Services for Individuals", title: "خدمات الأفراد", lead: "الدفاع الجنائي، والتركات والمواريث، والأحوال الشخصية، وقانون العمل للعاملين وأصحاب العمل." },
+    individualsLink: "صفحة خدمات الأفراد",
+    lines: { number: "03", eyebrow: "Specialized Practice Lines", title: "خطوط ممارسة متخصصة" },
     cta: "تفاصيل الخدمة ←",
   },
   en: {
@@ -36,14 +38,20 @@ const ui = {
     ],
     book: "Book an Initial Consultation",
     core: { number: "01", eyebrow: "Core Pillars", title: "Core Pillars" },
-    lines: { number: "02", eyebrow: "Specialized Practice Lines", title: "Specialised Practice Lines" },
+    individuals: { number: "02", eyebrow: "Services for Individuals", title: "Services for Individuals", lead: "Criminal defense, estates and inheritance, personal status, and labor law for workers and employers." },
+    individualsLink: "Services for individuals",
+    lines: { number: "03", eyebrow: "Specialized Practice Lines", title: "Specialised Practice Lines" },
     cta: "Service details →",
   },
 };
 
+const individualSet = new Set<string>(individualServiceSlugs);
+
 export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
   const t = ui[locale];
   const ar = locale === "ar";
+  const prefix = ar ? "" : "/en";
+  const individualLines = individualServiceSlugs.map((slug) => specializedLines.find((l) => l.slug === slug)!);
   return (
     <div>
       <PageHero>
@@ -69,13 +77,33 @@ export default function ServicesView({ locale }: { locale: "ar" | "en" }) {
         </Wrap>
       </Band>
 
+      <Band tone="dark" id="individuals">
+        <Wrap max="5xl">
+          <BandHead {...t.individuals} tone="onDark" />
+          <div className="mt-14">
+            <RowList
+              tone="dark"
+              items={individualLines.map((l) => ({
+                title: ar ? l.title : l.titleEn,
+                tag: ar ? l.titleEn : l.title,
+                text: ar ? l.summary : specializedLineSummaryEn[l.slug],
+                href: `${prefix}/services/${l.slug}`,
+              }))}
+            />
+          </div>
+          <div className="mt-10 text-center">
+            <ArrowButton href={`${prefix}/individuals`} ltr={!ar}>{t.individualsLink}</ArrowButton>
+          </div>
+        </Wrap>
+      </Band>
+
       <Band tone="tint">
         <Wrap>
           <BandHead {...t.lines} />
           <div className="mt-14">
             <SpecializedExplorer
               locale={locale}
-              items={specializedLines.map((l) =>
+              items={specializedLines.filter((l) => !individualSet.has(l.slug)).map((l) =>
                 ar
                   ? { slug: l.slug, title: l.title, subtitle: l.titleEn, summary: l.summary, href: `/services/${l.slug}` }
                   : { slug: l.slug, title: l.titleEn, subtitle: l.title, summary: specializedLineSummaryEn[l.slug] ?? "" },

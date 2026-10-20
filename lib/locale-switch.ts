@@ -1,6 +1,6 @@
 import { hasEnArticle, hasEnService } from "@/lib/en/slugs";
 
-const SAME = ["/about", "/services", "/contact", "/corporate-clients", "/privacy", "/blog"];
+const SAME = ["/about", "/services", "/contact", "/corporate-clients", "/individuals", "/privacy", "/blog"];
 
 /** Arabic path -> its English counterpart when one exists, otherwise the English home. */
 export function arToEnHref(pathname: string): string {

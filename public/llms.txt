@@ -1,11 +1,12 @@
 # Turki AlNaif & Partners — تركي النايف وشركاؤه للمحاماة والاستشارات القانونية
 
-> Riyadh-based law firm and legal consultancy (licence no. 4477). Bilingual Arabic/English website. Services: advisory and legal opinions, contracts and transactions, litigation/arbitration/settlement, compliance and governance, digital/data law, enforcement and recovery.
+> Riyadh-based law firm and legal consultancy (licence no. 4477). Bilingual Arabic/English website. Services for companies: advisory and legal opinions, contracts and transactions, litigation/arbitration/settlement, compliance and governance, digital/data law, enforcement and recovery. Services for individuals: criminal defense, estates and inheritance, personal status (family law), and labor law.
 
 ## Key pages
 - [Home (Arabic)](https://taap.sa/)
 - [Home (English)](https://taap.sa/en)
 - [Services and sectors](https://taap.sa/services) / [English](https://taap.sa/en/services)
+- [Services for individuals](https://taap.sa/individuals) / [English](https://taap.sa/en/individuals)
 - [About](https://taap.sa/about) / [English](https://taap.sa/en/about)
 - [Legal articles (Arabic)](https://taap.sa/blog)
 - [Contact](https://taap.sa/contact) / [English](https://taap.sa/en/contact)

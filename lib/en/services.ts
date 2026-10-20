@@ -644,7 +644,343 @@ export const serviceCopyEn: Record<(typeof enServiceSlugs)[number], ServiceCopyE
         "label": "Disputes & Arbitration"
       }
     ]
-  }
+  },
+  "employment-labor": {
+    "title": "Employment Lawyer in Riyadh | Contracts & Labor Disputes",
+    "description": "Labor law services for individuals and organizations in Riyadh: employment contracts, termination and entitlements, investigations and penalties, and labor disputes.",
+    "h1": "Employment lawyer in Riyadh: contracts, termination and labor disputes",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Employment lawyer in Riyadh for workers and employers",
+          "An employment relationship starts with a contract and ends with a settlement, and in between small decisions accumulate: a penalty, a transfer, a warning, a change in pay. Most labor disputes are decided by what was documented in those decisions, not by what either side intended. We work with individuals and organizations on structuring the relationship before a disagreement and on handling it when it arises."
+        ],
+        "sections": [
+          {
+            "h": "Our scope",
+            "p": [
+              "We provide labor law services to individuals and to organizations: employment contracts, internal work regulations, HR policies, termination and entitlements, investigations and penalties, and disputes before the competent bodies. These matters are governed by the Labor Law and its regulations."
+            ]
+          },
+          {
+            "h": "For workers",
+            "p": [
+              "We review an employment contract before it is signed, read a termination or penalty decision if there is one, explain the likely entitlements and the routes available, and review a release before it is signed, because a release may contain a waiver whose effect is only felt later. We represent the worker in a claim, in amicable settlement, and before the body competent for labor disputes."
+            ]
+          },
+          {
+            "h": "For employers",
+            "p": [
+              "We draft employment contracts to the type of role, the term, probation, pay and its components, confidentiality and non-competition, and we prepare work regulations suited to the organization's activity. A regulation that is approved and made available to staff protects the employer when a penalty or termination is challenged."
+            ]
+          },
+          {
+            "h": "Termination and entitlements",
+            "p": [
+              "The way a relationship ends (expiry of term, termination by the employer for a legitimate reason, termination without a legitimate reason, or resignation) determines the entitlements that follow: end-of-service award, leave and compensation. We review the position before the decision is taken, not after, because a mistake in characterising the termination can cost either side more than expected."
+            ]
+          },
+          {
+            "h": "Investigations and penalties",
+            "p": [
+              "Before a penalty or a dismissal for a legitimate reason, we check whether the violation is covered by the regulation, whether the investigation was run properly and the worker was given a chance to respond, and whether the penalty is proportionate and imposed in time. We draft investigation memoranda, warnings and penalty decisions, and we review them equally for the worker who has been penalised."
+            ]
+          },
+          {
+            "h": "Labor disputes",
+            "p": [
+              "These usually begin with an amicable settlement stage, followed by a claim before the labor court. We represent the worker or the organization in settlement and in the claim, and prepare the file: the contract, statements, correspondence, attendance records and entitlements paid. The more orderly the records, the shorter and cheaper the dispute."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope and on whether you are a worker or an employer: an opinion on an employment contract or its termination, a drafted contract or regulation, templates for warnings, investigations and penalties, a claim or response memorandum, and representation in settlement and in the claim."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the employment contract, the termination or penalty decision if there is one, any claim you have received, and the salary and term details. That is enough to assess the position and set the next step."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/blog/employer-terminate-employment-without-reason-saudi-arabia",
+        "label": "Can an employer end an employment contract without a reason? (Arabic)"
+      },
+      {
+        "href": "/blog/end-of-employment-entitlements-saudi-arabia",
+        "label": "What am I owed when my employment ends? (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "criminal-defense": {
+    "title": "Criminal Defense Lawyer in Riyadh | Criminal Cases",
+    "description": "Criminal defense services in Riyadh: defense in criminal cases of every kind and in specialised penal matters, from the investigation stage through trial and appeal.",
+    "h1": "Criminal defense lawyer in Riyadh: defense in criminal cases",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Criminal defense lawyer in Riyadh for criminal cases of every kind",
+          "In a criminal case the most important decisions are taken in the first days: what is said at the investigation, what is signed, how the case file is read. So we start by understanding the facts and the documents of the case before any step is taken, and we build the defense on what is in the file, not on a first impression."
+        ],
+        "sections": [
+          {
+            "h": "When do you need a criminal defense lawyer?",
+            "p": [
+              "When you are summoned for investigation or learn of a complaint or report, on arrest or detention, when you are served with a statement of claim or a hearing date, and when a judgment is issued that you want to study and challenge. The earlier we are contacted, the wider the range of what can be done."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle defense in criminal cases of every kind, and in specialised penal matters including cybercrime and economic cases and the investigations connected with them, each of which has its own page on this site."
+            ]
+          },
+          {
+            "h": "The inquiry and investigation stage",
+            "p": [
+              "We read what is alleged against you and what the inquiry record contains, prepare you for what you will be asked, and follow the procedures with the competent authority. The law allows an accused person to be assisted by a lawyer in the proceedings, and we arrange attendance according to what each stage permits."
+            ]
+          },
+          {
+            "h": "Trial",
+            "p": [
+              "We read the statement of claim and the evidence submitted, prepare formal and substantive defenses and defense memoranda, and plead before the competent court. Our work rests on analysing the evidence, its consistency, and how it fits the legal characterisation of the act."
+            ]
+          },
+          {
+            "h": "Challenging a judgment",
+            "p": [
+              "We study the judgment and its reasons, identify what can be challenged, and prepare the appeal memorandum within the periods set by law. Delay in having a judgment read is one of the things that narrows options most, so we recommend bringing it to us as soon as it is received."
+            ]
+          },
+          {
+            "h": "Settlement and the private right",
+            "p": [
+              "In some cases a private right of an injured person is attached to the act, and settlement or waiver may have an effect depending on the law and the type of case. We explain what the law permits in your case and how it is documented properly."
+            ]
+          },
+          {
+            "h": "Confidentiality of the file",
+            "p": [
+              "What you tell us stays confidential and is shared only as far as professional need requires, and before accepting any engagement we check for conflicts of interest."
+            ]
+          },
+          {
+            "h": "The limits of what we offer",
+            "p": [
+              "No lawyer can promise an outcome; the outcome of a case depends on its facts, its evidence and the applicable law. What we offer is a frank assessment of the position, disciplined management of the procedures, and a defense built on the file."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading of the case file and its documents, a defense memorandum, pleading before the court, an appeal memorandum, and follow-up of procedures before the competent authorities."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send what you have: a summons, notice, statement of claim, decision or judgment, with the sequence of facts as you know them. That is enough for us to assess the position and set the next step."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/services/cyber-crime",
+        "label": "Cyber Crime (Arabic)"
+      },
+      {
+        "href": "/services/white-collar-aml",
+        "label": "White-Collar Crime & AML (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "estates-inheritance": {
+    "title": "Estates & Inheritance Lawyer in Riyadh | Estate Division",
+    "description": "Estate and inheritance legal services in Riyadh: identifying heirs and the estate, dividing it by agreement or through the courts, disputes among heirs, and management of estate assets.",
+    "h1": "Estates and inheritance lawyer in Riyadh: estate division and heirs' disputes",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Estates and inheritance lawyer in Riyadh for every kind of estate matter",
+          "A dispute over an estate combines money and kinship, and drags on if it is not handled clearly. What is needed first is to know who the heirs are, what the estate comprises and what it owes, and then to choose the route of division that suits the parties and the assets."
+        ],
+        "sections": [
+          {
+            "h": "When do you need this work?",
+            "p": [
+              "When a person dies leaving several heirs, when there is disagreement over dividing the estate or over who the heirs or the assets are, when an heir deals with estate property or withholds its documents, when a minor is among the heirs, and when real estate or a company forms part of the estate."
+            ]
+          },
+          {
+            "h": "Our scope",
+            "p": [
+              "We handle estate and inheritance matters in full: identifying the heirs and the estate, dividing it by agreement or through the courts, disputes among heirs, management of estate assets during a dispute, and the debts, rights and documents connected with them."
+            ]
+          },
+          {
+            "h": "Identifying the heirs and the estate",
+            "p": [
+              "We begin by determining the heirs and listing the estate's assets and obligations, including debts and rights. Any disagreement over who the heirs are or what the assets are is resolved before moving to division."
+            ]
+          },
+          {
+            "h": "Division by agreement",
+            "p": [
+              "If the heirs agree to divide by consent, it is faster and cheaper, provided the agreement is documented in clear terms. We draft the division agreement and review the effect of each term on each heir."
+            ]
+          },
+          {
+            "h": "Judicial division and disputes among heirs",
+            "p": [
+              "Where agreement is not possible, judicial division is an orderly route, and it may take a time that varies with the complexity of the assets. We prepare the claim or the response and follow the procedures, and we represent the heir in claims connected with the estate."
+            ]
+          },
+          {
+            "h": "Estates with real estate or a company",
+            "p": [
+              "Who manages the asset during the dispute has to be considered, and a written agreement on management is preferable. A jointly held asset may not be dealt with without the consent of the other heirs or the permission of the competent authority, and an independent valuation may be needed before division or sale."
+            ]
+          },
+          {
+            "h": "Minors and absent heirs",
+            "p": [
+              "They are subject to special rules on guardianship and permission, and division or dealing with their share cannot proceed without meeting them. We explain what is required before any step."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: a reading of the estate file and its assets, a division agreement, a statement of claim or a response memorandum, representation before the competent authority, and follow-up of enforcement."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send what shows the death and the kinship, what you know of the estate's assets and debts, and any agreement or correspondence between the heirs. That is enough for us to assess the position and propose a route."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/blog/heirs-dispute-estate-division-saudi-arabia",
+        "label": "What to do when heirs disagree on dividing an estate (Arabic)"
+      },
+      {
+        "href": "/services/family-business",
+        "label": "Family Business (Arabic)"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
+  "personal-status": {
+    "title": "Personal Status & Family Lawyer in Riyadh",
+    "description": "Personal status legal services in Riyadh: family matters and their disputes, from marriage and separation to maintenance, custody, visitation and guardianship, handled with discretion.",
+    "h1": "Personal status and family lawyer in Riyadh: family matters and disputes",
+    "groups": [
+      {
+        "label": null,
+        "intro": [
+          "# Personal status lawyer in Riyadh for family matters and their disputes",
+          "Family matters differ from others: they involve lasting relationships, children, and a sensitivity that a long adversarial process does not tolerate. So we consider each matter with a view to what serves the parties, looking for an amicable settlement where one is possible and taking on the claim or the defense where it is needed."
+        ],
+        "sections": [
+          {
+            "h": "Our scope",
+            "p": [
+              "We provide advice and representation in personal status matters and their disputes in full, including marriage and its effects, separation and what follows from it, maintenance, custody and visitation, guardianship, and the related claims and settlements."
+            ]
+          },
+          {
+            "h": "Amicable settlement first",
+            "p": [
+              "Many family matters can be resolved by a written agreement that sets out rights and obligations and is documented properly, which is usually cheaper for the parties and better for the relationship. We prepare settlement agreements and review the effect of each term."
+            ]
+          },
+          {
+            "h": "Claims and defense",
+            "p": [
+              "Where settlement does not work, we prepare the statement of claim or the response, organise the documents and evidence, represent our client before the competent court, and follow challenges to judgments in line with the law."
+            ]
+          },
+          {
+            "h": "Enforcing judgments",
+            "p": [
+              "A judgment does not take full effect until it is enforced. We follow enforcement of personal status judgments before the competent authorities, and any difficulties that arise in enforcement."
+            ]
+          },
+          {
+            "h": "Privacy and confidentiality",
+            "p": [
+              "Family matters are among the most sensitive. What you tell us stays confidential and is shared only as far as professional need requires."
+            ]
+          },
+          {
+            "h": "What you receive",
+            "p": [
+              "Depending on scope: an opinion on the matter and its route, a statement of claim or response memorandum, a settlement agreement, representation before the court, and follow-up of enforcement."
+            ]
+          },
+          {
+            "h": "Next step",
+            "p": [
+              "Send the documents connected with the matter, such as the marriage contract, earlier judgments or correspondence, with the sequence of facts as you know them. That is enough for us to assess the position and propose a route."
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "href": "/en/services/estates-inheritance",
+        "label": "Estates & Inheritance"
+      },
+      {
+        "href": "/en/individuals",
+        "label": "Services for individuals"
+      },
+      {
+        "href": "/en/services/disputes-arbitration",
+        "label": "Disputes, Arbitration & Settlement"
+      }
+    ]
+  },
 };
 
 export const serviceExtraEn: Record<(typeof enServiceSlugs)[number], ServiceExtraEn> = {
@@ -1142,5 +1478,273 @@ export const serviceExtraEn: Record<(typeof enServiceSlugs)[number], ServiceExtr
         "a": "We check for conflicts before accepting any instruction, and what you disclose to us remains confidential."
       }
     ]
-  }
+  },
+  "employment-labor": {
+    "mistakes": [
+      {
+        "t": "An employment contract that does not match reality",
+        "d": "Terms that do not reflect what actually happens make proof difficult in a dispute, whether you are a worker or an employer."
+      },
+      {
+        "t": "Signing a release without reading it",
+        "d": "A release containing a general waiver may give up rights not yet counted, and its effect is only felt when someone tries to go back on it."
+      },
+      {
+        "t": "Dismissal without a documented investigation",
+        "d": "Ending the relationship without proper procedure may turn it into termination without a legitimate reason."
+      },
+      {
+        "t": "An internal regulation that was never approved",
+        "d": "Penalties applied without a regulation made available to staff are open to challenge."
+      },
+      {
+        "t": "Incomplete records of entitlements",
+        "d": "Lacking proof that entitlements were paid weakens the position however sound the right."
+      }
+    ],
+    "process": [
+      {
+        "t": "Review the current position",
+        "d": "We examine the contract, regulation, records and decisions issued."
+      },
+      {
+        "t": "Set out the options",
+        "d": "We explain the options and what follows from each."
+      },
+      {
+        "t": "Draft or act",
+        "d": "We draft the contract or prepare the claim, or the termination and investigation."
+      },
+      {
+        "t": "Settlement or claim",
+        "d": "We represent you in settlement or before the labor court."
+      }
+    ],
+    "docs": [
+      "The employment contract and its annexes",
+      "The work regulation, if any",
+      "Salary statements and entitlements",
+      "The termination or penalty decision and any warnings",
+      "Correspondence about the claim"
+    ],
+    "faq": [
+      {
+        "q": "Do you act for workers or for employers?",
+        "a": "For both, though not for both sides of the same matter; we check for conflicts of interest before accepting any engagement."
+      },
+      {
+        "q": "What is the first step on receiving a termination decision?",
+        "a": "Ask for the decision in writing, keep the contract, statements and correspondence, and do not sign a release before it has been reviewed."
+      },
+      {
+        "q": "Does my organization need a work regulation?",
+        "a": "The rules apply to organizations depending on their circumstances, and the regulation is the basis for disciplinary penalties. We review your organization's position."
+      },
+      {
+        "q": "Can an employment contract be changed by one party alone?",
+        "a": "It depends on the type of change. Some material changes need the other party's consent, and we review the intended change before it is applied."
+      }
+    ]
+  },
+  "criminal-defense": {
+    "mistakes": [
+      {
+        "t": "Giving statements before understanding the position",
+        "d": "What is said at the inquiry and investigation stays in the file and is hard to change later."
+      },
+      {
+        "t": "Signing a record that was not read carefully",
+        "d": "A signature confirms the record, so it must be read in full and anything that does not match what you said must be corrected."
+      },
+      {
+        "t": "Missing time limits",
+        "d": "Challenges to judgments have statutory periods, and missing them narrows the options."
+      },
+      {
+        "t": "Withholding facts from the lawyer",
+        "d": "A defense is built on what the lawyer knows; undisclosed facts may surface in the file and surprise everyone."
+      },
+      {
+        "t": "Relying on what others say about how a case will end",
+        "d": "Each case has its own file and evidence, and what happened in one case is no yardstick for another."
+      }
+    ],
+    "process": [
+      {
+        "t": "Listen and read the file",
+        "d": "We understand the facts and read the papers issued."
+      },
+      {
+        "t": "Assess the position",
+        "d": "We explain the likely legal characterisation, the options and the risks."
+      },
+      {
+        "t": "Defend",
+        "d": "We attend the procedures, prepare defenses and memoranda, and plead."
+      },
+      {
+        "t": "Challenge and follow up",
+        "d": "We study the judgment, prepare the appeal and follow what comes after."
+      }
+    ],
+    "docs": [
+      "The summons, notice or statement of claim",
+      "The inquiry or investigation record, if any",
+      "Decisions and judgments issued",
+      "Correspondence and documents connected with the act",
+      "Your identification and contact details"
+    ],
+    "faq": [
+      {
+        "q": "Do you handle specialised criminal matters?",
+        "a": "Yes, including cybercrime and economic cases, each of which has its own page on this site."
+      },
+      {
+        "q": "Can I consult you before going to an investigation?",
+        "a": "Yes, and it is better to do so: we read the summons and explain what is needed before you attend."
+      },
+      {
+        "q": "Do you promise a particular outcome?",
+        "a": "No. The outcome of a case depends on its facts, evidence and the law. We assess the position frankly and manage the procedures diligently."
+      },
+      {
+        "q": "Is what I tell you kept confidential?",
+        "a": "Yes. Confidentiality of what you tell us is a principle of our work, and it is shared only as far as professional need requires."
+      }
+    ]
+  },
+  "estates-inheritance": {
+    "mistakes": [
+      {
+        "t": "Dealing with estate property before division",
+        "d": "Any dealing without the consent of the other heirs or the permission of the competent authority can open a new dispute."
+      },
+      {
+        "t": "Withholding asset documents",
+        "d": "Keeping title deeds or accounts from the other heirs deepens the disagreement and prolongs it."
+      },
+      {
+        "t": "Signing a waiver without understanding its effect",
+        "d": "Waiving a share or a right may be final, so its effect must be understood before signing."
+      },
+      {
+        "t": "Leaving assets without an agreed manager",
+        "d": "A rented property or a running company needs someone to manage it during the dispute, or everyone loses."
+      },
+      {
+        "t": "Overlooking the estate's obligations",
+        "d": "The deceased's debts and third-party rights are part of the estate, and overlooking them disrupts the division."
+      }
+    ],
+    "process": [
+      {
+        "t": "Identify",
+        "d": "We determine the heirs and the estate's assets and obligations."
+      },
+      {
+        "t": "Choose the route",
+        "d": "We weigh with the heirs the cost of amicable and judicial division and what the assets call for."
+      },
+      {
+        "t": "Agreement or claim",
+        "d": "We draft the division agreement or prepare the claim and response."
+      },
+      {
+        "t": "Enforcement",
+        "d": "We follow the division and transfer of assets through to completion."
+      }
+    ],
+    "docs": [
+      "What shows the death and the kinship",
+      "Title deeds and documents connected with the assets",
+      "Account statements and known debts and obligations",
+      "Company and share documents, if any",
+      "Any agreement or correspondence between the heirs"
+    ],
+    "faq": [
+      {
+        "q": "Can I sell my share before division?",
+        "a": "It depends on the nature of the asset and the rights of the other heirs, and the position is reviewed before any step."
+      },
+      {
+        "q": "What if one of the heirs is a minor?",
+        "a": "Special rules on guardianship and permission apply, and division or dealing with the share cannot proceed without meeting them."
+      },
+      {
+        "q": "How long does division take?",
+        "a": "It varies with the agreement reached and the complexity of the assets."
+      },
+      {
+        "q": "Do you handle estates that include companies?",
+        "a": "Yes, and we consider the management of the company during the dispute and the link between the estate and the company's constitution and its partners."
+      }
+    ]
+  },
+  "personal-status": {
+    "mistakes": [
+      {
+        "t": "An oral agreement on a core matter",
+        "d": "An unwritten agreement on maintenance, custody or visitation is hard to prove in a dispute."
+      },
+      {
+        "t": "Signing a waiver or acknowledgment before understanding its effect",
+        "d": "It may have a lasting effect, so it should be reviewed before signing."
+      },
+      {
+        "t": "Drawing children into the dispute",
+        "d": "It harms the children first and does not help anyone's legal position."
+      },
+      {
+        "t": "Neglecting documents and correspondence",
+        "d": "Documents and correspondence are what proof is later built on."
+      },
+      {
+        "t": "Delaying advice",
+        "d": "Some matters become harder with delay, and many are settled by early agreement."
+      }
+    ],
+    "process": [
+      {
+        "t": "Listen and understand",
+        "d": "We understand the facts, your goal and your priorities."
+      },
+      {
+        "t": "Assess the route",
+        "d": "We explain settlement and claim, and what follows from each."
+      },
+      {
+        "t": "Draft or file",
+        "d": "We draft the settlement agreement or prepare the claim and response."
+      },
+      {
+        "t": "Enforce and follow up",
+        "d": "We follow enforcement of the agreement or judgment."
+      }
+    ],
+    "docs": [
+      "The marriage contract and related papers",
+      "Earlier judgments or agreements",
+      "Documents and identification for the children",
+      "Correspondence connected with the matter",
+      "Any documents on maintenance or income"
+    ],
+    "faq": [
+      {
+        "q": "Do you handle all personal status matters?",
+        "a": "Yes. We advise and represent in family matters and their disputes, and assess each case on its facts."
+      },
+      {
+        "q": "Can the matter be resolved without a claim?",
+        "a": "That may be possible through amicable settlement and a written agreement."
+      },
+      {
+        "q": "Are family matters treated confidentially?",
+        "a": "Yes. Confidentiality of what you tell us is a principle of our work."
+      },
+      {
+        "q": "What should I bring to the first meeting?",
+        "a": "The documents connected with the matter, with the sequence of facts as you know them."
+      }
+    ]
+  },
 };

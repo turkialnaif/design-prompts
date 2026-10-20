@@ -18,7 +18,7 @@ import { lineDetails } from "@/lib/line-content";
 import { serviceCopy } from "@/lib/service-copy";
 import { hasEnService } from "@/lib/en/slugs";
 import { serviceExtra } from "@/lib/service-extra";
-import { corePillars, deliverables, firm, lineAxis, matterMethod, specializedLines } from "@/lib/site";
+import { corePillars, deliverables, firm, individualServiceSlugs, lineAxis, matterMethod, specializedLines } from "@/lib/site";
 
 export function generateStaticParams() {
   return [...corePillars, ...specializedLines].map((s) => ({ slug: s.slug }));
@@ -72,7 +72,10 @@ export default async function ServicePage({
 
   const axis = line ? corePillars.find((p) => p.slug === lineAxis[line.slug]) : undefined;
   const axisLines = pillar ? specializedLines.filter((l) => lineAxis[l.slug] === pillar.slug) : [];
-  const siblings = axis ? specializedLines.filter((l) => l.slug !== slug && lineAxis[l.slug] === axis.slug) : [];
+  const isIndividual = (individualServiceSlugs as readonly string[]).includes(slug);
+  const siblings = isIndividual
+    ? specializedLines.filter((l) => l.slug !== slug && (individualServiceSlugs as readonly string[]).includes(l.slug))
+    : axis ? specializedLines.filter((l) => l.slug !== slug && lineAxis[l.slug] === axis.slug) : [];
   const related = pillar
     ? corePillars.filter((s) => s.slug !== slug)
     : (siblings.length ? siblings : specializedLines.filter((s) => s.slug !== slug)).slice(0, 8);
@@ -121,6 +124,7 @@ export default async function ServicePage({
   const labelFor = (href: string) => {
     const [, kind, key] = href.split("/");
     if (kind === "blog") return articles.find((a) => a.slug === key)?.h1;
+    if (kind === "individuals") return "خدمات الأفراد";
     return [...corePillars, ...specializedLines].find((x) => x.slug === key)?.title;
   };
   const readMore = (copy?.links ?? []).flatMap((href) => {
@@ -142,6 +146,14 @@ export default async function ServicePage({
               <span className="border border-white/25 bg-white/10 mb-5 inline-block chamfer-btn px-4 py-1 text-xs font-semibold text-[#f6e2b3]">
                 {pillar.stage}
               </span>
+            )}
+            {isIndividual && (
+              <Link
+                href="/individuals"
+                className="border border-white/25 bg-white/10 mb-5 ms-2 inline-block chamfer-btn px-4 py-2 text-xs font-semibold text-[#f6e2b3]"
+              >
+                ضمن خدمات الأفراد
+              </Link>
             )}
             {axis && (
               <Link

@@ -18,7 +18,7 @@ import { firmEn } from "@/lib/site.en";
 export const metadata: Metadata = {
   metadataBase: new URL(firm.website),
   title: {
-    default: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
+    default: `${firmEn.nameShort} | Riyadh Law Firm for Companies & Individuals`,
     template: `%s | ${firmEn.nameShort}`,
   },
   description: homeDescription.en,
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: firmEn.nameShort,
-    title: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
+    title: `${firmEn.nameShort} | Riyadh Law Firm for Companies & Individuals`,
     description: homeDescription.en,
     url: `${firm.website}/en`,
     images: [{ url: "/brand/riyadh-kafd.jpg", width: 1920, height: 1080, alt: firmEn.nameShort }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${firmEn.nameShort} | Riyadh Commercial Law Firm`,
+    title: `${firmEn.nameShort} | Riyadh Law Firm for Companies & Individuals`,
     description: homeDescription.en,
     images: ["/brand/riyadh-kafd.jpg"],
   },

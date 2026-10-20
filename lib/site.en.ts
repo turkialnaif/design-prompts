@@ -14,7 +14,13 @@ export const specializedLineSummaryEn: Record<string, string> = {
   "real-estate-construction":
     "The legal side of real-estate transactions and construction contracts, from documentation through to managing the relationship between developer, contractor, and owner.",
   "employment-labor":
-    "Employment contracts, internal policies, and labor disputes, balancing an organization's obligations with the rights of all parties.",
+    "Labor law for individuals and organizations: employment contracts, termination and entitlements, internal policies, and labor disputes, balancing the employer's obligations with the worker's rights.",
+  "criminal-defense":
+    "Defense in criminal cases of every kind and in specialised penal matters, from the investigation stage through trial and appeal.",
+  "estates-inheritance":
+    "Estate and inheritance matters in full: identifying heirs and the estate, dividing it by agreement or through the courts, disputes among heirs, and management of estate assets.",
+  "personal-status":
+    "Family matters and their disputes: marriage and its effects, separation, maintenance, custody and visitation, guardianship, and the related claims and settlements.",
   franchise:
     "The legal side of franchise relationships — drafting and reviewing franchise agreements, representing franchisors or franchisees, and resolving disputes between them.",
   "intellectual-property": "Protecting trademarks, copyright, and an organization's intangible assets.",

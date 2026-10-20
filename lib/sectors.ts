@@ -716,7 +716,7 @@ export const sectors: Sector[] = [
   },
   {
     slug: "family-businesses",
-    services: ["family-business", "corporate-contracts", "disputes-arbitration", "mergers-acquisitions"],
+    services: ["family-business", "estates-inheritance", "corporate-contracts", "disputes-arbitration", "mergers-acquisitions"],
     articles: ["shareholders-agreement-saudi-arabia", "shareholder-partner-disputes-saudi-arabia", "heirs-dispute-estate-division-saudi-arabia", "director-manager-liability-saudi-arabia"],
     ar: {
       title: "الشركات العائلية",

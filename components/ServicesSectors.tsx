@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import SectorList from "@/components/SectorList";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import { homeServiceTiles } from "@/lib/service-tiles";
+import { individualServiceSlugs, specializedLines } from "@/lib/site";
 import Link from "next/link";
 
 const copy = {
@@ -12,6 +13,10 @@ const copy = {
     lead: "ثماني ركائز لخدماتنا القانونية، وعشرون قطاعًا نخدمها. اختر الخدمة لتقرأ تفاصيلها، أو القطاع لتعرف مسائله القانونية.",
     servicesLabel: "خدماتنا",
     sectorsLabel: "القطاعات التي نخدمها",
+    individualsLabel: "خدمات الأفراد",
+    individualsLead: "ونخدم الأفراد والأسر كذلك:",
+    individualsAll: "كل خدمات الأفراد ←",
+    individualsHref: "/individuals",
     cta: "تفاصيل الخدمة ←",
     all: "كل الخدمات والقطاعات",
     allHref: "/services",
@@ -22,6 +27,10 @@ const copy = {
     lead: "Eight pillars of legal service and twenty sectors we serve. Pick a service for its detail, or a sector for its legal matters.",
     servicesLabel: "Our services",
     sectorsLabel: "Sectors we serve",
+    individualsLabel: "Services for individuals",
+    individualsLead: "We also serve individuals and families:",
+    individualsAll: "All services for individuals →",
+    individualsHref: "/en/individuals",
     cta: "Service details →",
     all: "All services & sectors",
     allHref: "/en/services",
@@ -31,6 +40,9 @@ const copy = {
 /** One light section on the home page: the eight service panels that open like a fan, then the twenty sectors beneath them. */
 export default function ServicesSectors({ locale }: { locale: "ar" | "en" }) {
   const t = copy[locale];
+  const ar = locale === "ar";
+  const prefix = ar ? "" : "/en";
+  const individualLines = individualServiceSlugs.map((slug) => specializedLines.find((l) => l.slug === slug)!);
   return (
     <section id="services" className="relative scroll-mt-24 bg-white py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5">
@@ -46,6 +58,26 @@ export default function ServicesSectors({ locale }: { locale: "ar" | "en" }) {
             {t.servicesLabel}
           </p>
           <ServiceAccordion items={homeServiceTiles(locale)} cta={t.cta} />
+        </div>
+
+        <div className="mt-16 md:mt-20">
+          <p className="mb-5 flex items-center gap-3 text-sm text-[#012696]">
+            <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-[#e0b35a]" />
+            {t.individualsLabel}
+          </p>
+          <p className="text-base font-light leading-8 text-ink-soft">{t.individualsLead}</p>
+          <ul className="mt-5 flex flex-wrap gap-3">
+            {individualLines.map((l) => (
+              <li key={l.slug}>
+                <Link href={`${prefix}/services/${l.slug}`} className="glass-card chamfer-btn inline-block px-5 py-2.5 text-sm font-semibold text-ink-soft transition-transform duration-300 hover:-translate-y-0.5 hover:text-gold-deep">
+                  {ar ? l.title : l.titleEn}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href={t.individualsHref} className="inline-block px-3 py-2.5 text-sm font-semibold text-gold-deep hover:underline">{t.individualsAll}</Link>
+            </li>
+          </ul>
         </div>
 
         <div className="mt-20 md:mt-28">

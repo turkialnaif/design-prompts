@@ -21,6 +21,10 @@ export const enServiceSlugs = [
   "foreign-investment",
   "enforcement-recovery",
   "legal-advisory",
+  "employment-labor",
+  "criminal-defense",
+  "estates-inheritance",
+  "personal-status",
 ] as const;
 
 export const hasEnArticle = (slug: string) => (enArticleSlugs as readonly string[]).includes(slug);

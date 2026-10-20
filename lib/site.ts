@@ -264,7 +264,28 @@ export const specializedLines: SpecializedLine[] = [
     title: "العمل والتوظيف",
     titleEn: "Employment & Labor",
     summary:
-      "عقود العمل والسياسات الداخلية والمنازعات العمالية، بما يوازن بين التزامات المنشأة وحقوق الأطراف.",
+      "قانون العمل للأفراد والمنشآت: عقود العمل وإنهاء العلاقة والمستحقات والسياسات الداخلية والمنازعات العمالية، بما يوازن بين التزامات صاحب العمل وحقوق العامل.",
+  },
+  {
+    slug: "criminal-defense",
+    title: "الدفاع الجنائي",
+    titleEn: "Criminal Defense",
+    summary:
+      "الدفاع في القضايا الجنائية بمختلف أنواعها والقضايا الجزائية المتخصصة، من مرحلة الاستدلال والتحقيق إلى المحاكمة والاعتراض على الأحكام.",
+  },
+  {
+    slug: "estates-inheritance",
+    title: "التركات والمواريث",
+    titleEn: "Estates & Inheritance",
+    summary:
+      "قضايا التركات والمواريث كلها: حصر الورثة والتركة، وقسمتها بالتراضي أو قضاءً، والمنازعات بين الورثة، وإدارة أصول التركة.",
+  },
+  {
+    slug: "personal-status",
+    title: "الأحوال الشخصية",
+    titleEn: "Personal Status & Family Law",
+    summary:
+      "مسائل الأسرة ومنازعاتها: الزواج وآثاره، والفرقة، والنفقة، والحضانة والزيارة، والولاية، وما يتصل بها من دعاوى وتسويات.",
   },
   {
     slug: "franchise",
@@ -560,6 +581,9 @@ export const attorneys: Attorney[] = [
   },
 ];
 
+/** The services offered to individuals, in the order the individuals page and the services page show them. Each is a specialised line with its own page. */
+export const individualServiceSlugs = ["criminal-defense", "estates-inheritance", "personal-status", "employment-labor"] as const;
+
 export type AuthorBoxVariant = "default" | "arbitration" | "franchise" | "individuals";
 
 export const authorBoxCopy: Record<AuthorBoxVariant, { role: string; body: string }> = {
@@ -585,6 +609,9 @@ export const authorBoxCopy: Record<AuthorBoxVariant, { role: string; body: strin
 export const lineAxis: Record<string, string> = {
   "real-estate-construction": "corporate-contracts",
   "employment-labor": "corporate-contracts",
+  "criminal-defense": "disputes-arbitration",
+  "estates-inheritance": "disputes-arbitration",
+  "personal-status": "disputes-arbitration",
   franchise: "corporate-contracts",
   "intellectual-property": "corporate-contracts",
   "family-business": "corporate-contracts",
