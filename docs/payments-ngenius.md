@@ -14,11 +14,14 @@
 | المتغير | من أين |
 |---|---|
 | `NGENIUS_API_KEY` | بوابة N-Genius: Settings → Integrations → Merchant Service accounts |
-| `NGENIUS_OUTLET_REF` | Settings → Organisational Hierarchy → Outlet → Reference |
+| `NGENIUS_OUTLET_REF` | **مضبوط في Vercel (22 أكتوبر 2026)**: مرجع الفرع (Outlet) من Settings → Organisational hierarchy |
 | `CRON_SECRET` | موجود أصلًا (يستعمله باقي الكرون) |
 
 دخول البوابة: `info@taap.sa` (أُرسل بريد لإعادة تعيين كلمة المرور). لا تُوضع المفاتيح في الشيفرة ولا في المحادثة.
 قبل الإطلاق للعموم تطلب الشبكة التحقق من «Readiness checklist» في البوابة، ويمكن إرسال أرقام طلبات تجريبية إليها للتحقق (920017697).
+
+## قنوات الدفع المفعّلة في البوابة (تحقق 22 أكتوبر 2026)
+VISA وMADA وMASTERCARD، عملة SAR، قناة Ecom، المعالج Saudi Payments، MID 301288900002، إضافة إلى محفظتين (Wallets).
 
 ## اختبار بعد ضبط المتغيرين
 أصدر فاتورة صغيرة (مثلاً ١ ريال) لعميل تجريبي، افتح رابط الدفع، أتمم الدفع ببطاقتك، وتأكد من ظهور الدفعة وتحول الفاتورة إلى «مدفوعة»، ثم أرسل رقم الطلب إلى الشبكة للتحقق.
