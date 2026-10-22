@@ -1,5 +1,5 @@
 import { firm } from "@/lib/site";
-import { ADDRESS_AR, EMAIL, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
+import { EMAIL, PHONE, Qr, qrUrl } from "@/components/stationery/cards";
 import { C, Face, Lockup, Mark, Rule, disp, latin, mm } from "@/components/stationery/parts";
 
 type G = { guides?: boolean };

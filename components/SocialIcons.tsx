@@ -84,7 +84,7 @@ export default function SocialIcons({
   }
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       {platforms.map((p) => (
         <a
           key={p.key}

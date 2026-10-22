@@ -104,7 +104,7 @@ export default function BlogFooter({ locale }: { locale: "ar" | "en" }) {
         <div className="bf-item mt-12 flex justify-center" style={{ transitionDelay: "450ms" }}>
           <SocialIcons
             tone="onDark"
-            className="!gap-4"
+            className="!gap-4 justify-center"
             iconSize={22}
             buttonClass="flex h-14 w-14 items-center justify-center rounded-full border border-[#e0b35a]/45 text-[#f6e2b3] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#e0b35a] hover:bg-[#e0b35a] hover:text-[#00061d] hover:shadow-[0_14px_30px_-10px_rgba(224,179,90,0.8)]"
           />

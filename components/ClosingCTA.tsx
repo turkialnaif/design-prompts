@@ -72,7 +72,7 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
 
         <div className="relative p-7 md:p-12 lg:p-14">
           {/* 1 — the invitation (7 columns) beside the first three steps (5 columns); both stretch to one height */}
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12 [&>*]:min-w-0">
             <div className="flex flex-col text-center lg:col-span-7 lg:justify-center lg:text-start">
               <div>
                 <p className="gold-eyebrow !text-[#f6e2b3] text-xs md:text-sm">{t.eyebrow}</p>
@@ -145,7 +145,7 @@ export default function ClosingCTA({ locale }: { locale: "ar" | "en" }) {
           </div>
 
           {/* 2 — the legal alerts: a full-width strip, text on one side and the form on the other (same 12-column grid) */}
-          <div className="mt-10 grid items-center gap-6 border-t border-white/12 pt-9 lg:mt-12 lg:grid-cols-12 lg:gap-12">
+          <div className="mt-10 grid items-center gap-6 border-t border-white/12 pt-9 lg:mt-12 lg:grid-cols-12 lg:gap-12 [&>*]:min-w-0">
             <div className="text-center lg:col-span-5 lg:text-start">
               <p className="font-blog text-2xl font-bold text-[#f6e2b3]">{t.subscribeTitle}</p>
               <p className="mx-auto mt-2 max-w-md text-sm font-light leading-7 text-white/75 lg:mx-0">{t.subscribeBody}</p>

@@ -492,3 +492,10 @@ a, button { transition-property: color, background-color, border-color, opacity,
 
 /* Footer body face */
 .ft-sans { font-family: var(--font-footer-sans), system-ui, sans-serif; font-synthesis: weight; }
+
+/* Wide and ultra-wide screens: the whole interface is built in rem, so growing the root size scales type, spacing and the
+   max-width containers together. Without it a 1920px or 2560px monitor shows a narrow 1280px column in a sea of empty navy. */
+@media (min-width: 1760px) { html { font-size: 112.5%; } }
+@media (min-width: 2200px) { html { font-size: 131.25%; } }
+@media (min-width: 2800px) { html { font-size: 156.25%; } }
+@media (min-width: 3500px) { html { font-size: 200%; } }
