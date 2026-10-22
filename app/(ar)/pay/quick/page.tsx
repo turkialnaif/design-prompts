@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function PayQuickPage({ searchParams }: { searchParams: Promise<{ e?: string; amount?: string; purpose?: string }> }) {
-  const { e, amount, purpose } = await searchParams;
-  return <PayQuick locale="ar" error={e} amount={amount} purpose={purpose} />;
+export default async function PayQuickPage({ searchParams }: { searchParams: Promise<{ e?: string; amount?: string; purpose?: string; name?: string; phone?: string }> }) {
+  const { e, amount, purpose, name, phone } = await searchParams;
+  return <PayQuick locale="ar" error={e} amount={amount} purpose={purpose} name={name} phone={phone} />;
 }

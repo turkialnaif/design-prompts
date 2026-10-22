@@ -248,7 +248,7 @@ const quick = {
   },
 };
 
-export function PayQuick({ locale: l, error, amount, purpose }: { locale: L; error?: string; amount?: string; purpose?: string }) {
+export function PayQuick({ locale: l, error, amount, purpose, name, phone }: { locale: L; error?: string; amount?: string; purpose?: string; name?: string; phone?: string }) {
   const t = copy[l];
   const q = quick[l];
   const msg = error && q.err[error];
@@ -270,11 +270,11 @@ export function PayQuick({ locale: l, error, amount, purpose }: { locale: L; err
               <input type="hidden" name="locale" value={l} />
               <label className="block text-sm font-medium text-[#00124a]">
                 {q.name}
-                <input name="name" required maxLength={80} autoComplete="name" className={`mt-2 ${input}`} />
+                <input name="name" required maxLength={80} autoComplete="name" defaultValue={name} className={`mt-2 ${input}`} />
               </label>
               <label className="block text-sm font-medium text-[#00124a]">
                 {q.phone}
-                <input name="phone" dir="ltr" inputMode="tel" autoComplete="tel" className={`mt-2 ${input}`} />
+                <input name="phone" dir="ltr" inputMode="tel" autoComplete="tel" defaultValue={phone} className={`mt-2 ${input}`} />
               </label>
               <label className="block text-sm font-medium text-[#00124a]">
                 {q.purpose}

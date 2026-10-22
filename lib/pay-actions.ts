@@ -82,7 +82,7 @@ export async function quickPayAction(formData: FormData) {
   const purpose = String(formData.get("purpose") ?? "").trim().slice(0, 120);
   const raw = String(formData.get("amount") ?? "").replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).replace(",", ".");
   const amount = Math.round(Number(raw) * 100) / 100;
-  const q = (e: string) => `${base}?e=${e}&amount=${encodeURIComponent(raw)}&purpose=${encodeURIComponent(purpose)}`;
+  const q = (e: string) => `${base}?e=${e}&amount=${encodeURIComponent(raw)}&purpose=${encodeURIComponent(purpose)}&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`;
   if (name.length < 2 || purpose.length < 2) redirect(q("format"));
   if (!Number.isFinite(amount) || amount < 1 || amount > 100000) redirect(q("amount"));
   if (!paymentsEnabled()) redirect(q("off"));

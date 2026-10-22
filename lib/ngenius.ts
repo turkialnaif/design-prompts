@@ -55,29 +55,35 @@ export async function createOrder(opts: {
   data: Record<string, string>;
 }): Promise<CreatedOrder> {
   const token = await accessToken();
-  const body = {
-    action: "SALE",
+  const body = (action: string) => ({
+    action,
     amount: { currencyCode: "SAR", value: Math.round(opts.amountSar * 100) },
     merchantOrderReference: opts.merchantOrderReference,
     language: opts.language,
     ...(opts.email ? { emailAddress: opts.email } : {}),
     merchantAttributes: { redirectUrl: opts.redirectUrl, cancelUrl: opts.cancelUrl, skipConfirmationPage: true },
     merchantDefinedData: opts.data,
-  };
-  const res = await fetch(`${BASE}/transactions/outlets/${outlet()}/orders`, {
-    method: "POST",
-    headers: ni(token),
-    body: JSON.stringify(body),
-    cache: "no-store",
   });
-  if (!res.ok) {
-    console.error("ngenius order", res.status, (await res.text()).slice(0, 400));
-    throw new Error(`ngenius order ${res.status}`);
+  // the outlet decides which single-step action it allows: SALE where available, PURCHASE otherwise (never AUTH, which needs a manual capture)
+  let last = 0;
+  for (const action of ["SALE", "PURCHASE"]) {
+    const res = await fetch(`${BASE}/transactions/outlets/${outlet()}/orders`, {
+      method: "POST",
+      headers: ni(token),
+      body: JSON.stringify(body(action)),
+      cache: "no-store",
+    });
+    if (res.ok) {
+      const j = (await res.json()) as { reference?: string; _links?: { payment?: { href?: string } } };
+      const payUrl = j._links?.payment?.href;
+      if (!j.reference || !payUrl) throw new Error("ngenius order malformed");
+      return { reference: j.reference, payUrl };
+    }
+    last = res.status;
+    console.error("ngenius order", action, res.status, (await res.text()).slice(0, 400));
+    if (res.status !== 422) break;
   }
-  const j = (await res.json()) as { reference?: string; _links?: { payment?: { href?: string } } };
-  const payUrl = j._links?.payment?.href;
-  if (!j.reference || !payUrl) throw new Error("ngenius order malformed");
-  return { reference: j.reference, payUrl };
+  throw new Error(`ngenius order ${last}`);
 }
 
 export type OrderResult = {
