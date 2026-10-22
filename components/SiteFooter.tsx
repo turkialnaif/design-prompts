@@ -2,6 +2,7 @@ import { FileBadge2, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import ClosingCTA from "@/components/ClosingCTA";
 import PartnersDock from "@/components/PartnersDock";
+import PaymentMethods from "@/components/PaymentMethods";
 import SocialIcons from "@/components/SocialIcons";
 import { firm } from "@/lib/site";
 import { firmEn } from "@/lib/site.en";
@@ -18,6 +19,7 @@ const copy = {
       { href: "/corporate-clients", label: "للشركات" },
       { href: "/individuals", label: "للأفراد" },
       { href: "/services", label: "الخدمات" },
+      { href: "/pay", label: "الدفع الإلكتروني" },
       { href: "/services#sectors", label: "القطاعات التي نخدمها" },
       { href: "/blog", label: "مقالات قانونية" },
       { href: "/downloads/company-profile-ar.pdf", label: "الملف التعريفي" },
@@ -29,6 +31,7 @@ const copy = {
       { d: "الجمعة", h: "مغلق" },
     ],
     followTitle: "تابعنا",
+    payNote: "دفع آمن عبر شبكة العالمية (Network International). لا نحفظ بيانات بطاقتك.",
     license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber}`,
     unified: `السجل الموحد ${firm.unifiedNumber}`,
     place: "المملكة العربية السعودية",
@@ -49,6 +52,7 @@ const copy = {
       { href: "/en/corporate-clients", label: "Corporate Clients" },
       { href: "/en/individuals", label: "Individuals" },
       { href: "/en/services", label: "Services" },
+      { href: "/en/pay", label: "Online payment" },
       { href: "/en/services#sectors", label: "Sectors we serve" },
       { href: "/en/blog", label: "Legal Insights" },
       { href: "/downloads/company-profile-en.pdf", label: "Company Profile" },
@@ -60,6 +64,7 @@ const copy = {
       { d: "Friday", h: "Closed" },
     ],
     followTitle: "Follow",
+    payNote: "Secure payment by Network International. We never store your card details.",
     license: `Law Practice Licence No. ${firm.licenseNumber}`,
     unified: `Unified No. ${firm.unifiedNumber}`,
     place: "Kingdom of Saudi Arabia",
@@ -177,7 +182,13 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                 </div>
               </div>
 
-              {/* 4 — the legal line */}
+              {/* 4 — accepted payment methods */}
+              <div className="flex flex-col items-center gap-3 border-t border-white/10 px-7 py-5 text-center md:flex-row md:justify-between md:px-12 md:text-start">
+                <PaymentMethods locale={locale} />
+                <p className="text-[0.8rem] leading-6 text-white/55">{t.payNote}</p>
+              </div>
+
+              {/* 5 — the legal line */}
               <div className="flex flex-col items-center gap-3 border-t border-white/10 px-7 py-6 pb-28 text-center text-[0.8rem] leading-6 text-white/55 md:flex-row md:justify-between md:px-12 md:pb-6 md:pe-44 md:text-start">
                 <p>{t.rights}</p>
                 <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1">

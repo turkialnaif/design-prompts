@@ -121,6 +121,12 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
               <p className="mt-3 text-xs text-ink-soft/80">عند الإصدار يُقفل تعديل البنود. إلغاء الفاتورة يُعيد الوقت والمصروفات إلى «غير مفوتر».</p>
             </Card>
           )}
+          {!draft && i.status !== "void" && i.status !== "paid" && (
+            <Card title="رابط الدفع الإلكتروني">
+              <p className="break-all text-xs" dir="ltr"><a href={`/pay/${i.id}`} target="_blank" rel="noopener noreferrer" className="underline">{`https://taap.sa/pay/${i.id}`}</a></p>
+              <p className="mt-2 text-xs text-ink-soft/80">أرسله للعميل: يدفع المستحق ببطاقة فيزا أو ماستركارد أو مدى، وتُسجَّل الدفعة تلقائيًا وتتحدث حالة الفاتورة. أو يدخل العميل رقم الفاتورة وآخر ٤ أرقام من جواله في taap.sa/pay.</p>
+            </Card>
+          )}
           <Link href={`/admin/clients/${c.id}`} className="block text-center text-sm font-semibold text-[#a9843c]">ملف العميل ←</Link>
         </div>
       </div>
