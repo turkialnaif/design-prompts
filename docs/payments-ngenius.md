@@ -33,3 +33,8 @@ VISA وMADA وMASTERCARD، عملة SAR، قناة Ecom، المعالج Saudi P
 
 ## Apple Pay وSamsung Pay
 شعاراهما ظاهران في الموقع بطلب المالك (22 أكتوبر 2026)، لكن **تفعيلهما على الحساب لم يتم**: في بوابة N-Genius (Settings → Organisational hierarchy → Payment channels → Wallets) يظهر أن Apple Pay يحتاج إعدادًا (شهادة CSR في بوابة مطوري Apple) وSamsung Pay بشهادة موروثة. الصفحة المستضافة تعرض المحفظة تلقائيًا بعد تفعيلها من الشبكة (920017697). لا تغيير في الشيفرة.
+
+## الشعارات الرسمية (22 أكتوبر 2026)
+- **Apple Pay:** الملف الرسمي من Apple (`developer.apple.com/apple-pay/marketing/Apple-Pay-Mark.zip`، SVG، دون تعديل) مركّب في `public/payments/apple-pay.svg`. شروط Apple: يُستعمل الملف كما هو ولا يُرسم بديل عنه، ويُعرض عند الترويج لـ Apple Pay كوسيلة دفع فقط.
+- **Visa وMastercard:** التنزيل الرسمي (brand.visa.com، brand.mastercard.com) يشترط الموافقة على شروط الاستخدام قبل التحميل، ولم أوافق نيابةً عن المكتب. الملفان الحاليان مؤقتان إلى أن يُنزَّلا رسميًا (SVG بألوان كاملة للخلفيات الفاتحة).
+- **mada وSamsung Pay:** لا رابط تنزيل عام وجدتُه. المصدر الصحيح: Saudi Payments/البنك المُحصِّل (Network International) لمدى، وSamsung Developers لـ Samsung Pay. الملفان الحاليان مؤقتان.

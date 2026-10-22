@@ -20,7 +20,7 @@ export default function PaymentMethods({ locale, label = true, className = "" }:
       <ul className="flex items-center gap-2">
         {methods.map((m) => (
           <li key={m.alt}>
-            <Image src={m.src} alt={m.alt} width={52} height={33} unoptimized className="h-8 w-auto rounded-[5px]" />
+            <Image src={m.src} alt={m.alt} width={52} height={33} unoptimized className="h-8 w-auto" />
           </li>
         ))}
       </ul>
