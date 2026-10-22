@@ -32,9 +32,13 @@ const copy = {
     ],
     followTitle: "تابعنا",
     payNote: "دفع آمن عبر شبكة العالمية (Network International). لا نحفظ بيانات بطاقتك.",
-    license: `رخصة مزاولة المحاماة رقم ${firm.licenseNumber}`,
-    unified: `السجل الموحد ${firm.unifiedNumber}`,
-    place: "المملكة العربية السعودية",
+    facts: [
+      { k: "license", label: "رخصة مزاولة المحاماة", value: firm.licenseNumber },
+      { k: "unified", label: "السجل الموحد", value: firm.unifiedNumber },
+      { k: "place", label: "المقر", value: "الرياض، المملكة العربية السعودية" },
+    ],
+    payTitle: "الدفع الإلكتروني",
+    payLink: "ادفع فاتورتك",
     rights: `© ${new Date().getFullYear()} ${firm.nameAr}. جميع الحقوق محفوظة.`,
     legal: [
       { href: "/privacy", label: "سياسة الخصوصية" },
@@ -65,9 +69,13 @@ const copy = {
     ],
     followTitle: "Follow",
     payNote: "Secure payment by Network International. We never store your card details.",
-    license: `Law Practice Licence No. ${firm.licenseNumber}`,
-    unified: `Unified No. ${firm.unifiedNumber}`,
-    place: "Kingdom of Saudi Arabia",
+    facts: [
+      { k: "license", label: "Law Practice Licence", value: firm.licenseNumber },
+      { k: "unified", label: "Unified No.", value: firm.unifiedNumber },
+      { k: "place", label: "Office", value: "Riyadh, Saudi Arabia" },
+    ],
+    payTitle: "Online payment",
+    payLink: "Pay your invoice",
     rights: `© ${new Date().getFullYear()} ${firmEn.nameFull}. All rights reserved.`,
     legal: [
       { href: "/en/privacy", label: "Privacy Policy" },
@@ -104,9 +112,9 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
             <div className="relative overflow-hidden border border-white/10 border-t-[#e0b35a]/70 bg-[#020a22]/95 shadow-[0_-36px_70px_-24px_rgba(0,0,0,0.85)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_calc(100%-44px),calc(100%-44px)_100%,0_100%)]">
               <span aria-hidden className="cta-sweep absolute inset-x-0 top-0 h-[2px]" />
 
-              {/* 1 — who we are, and the credentials that stand behind the name */}
-              <div className="grid items-center gap-8 border-b border-white/10 p-7 md:grid-cols-[1.25fr_1fr] md:gap-14 md:p-12">
-                <div className="flex flex-col items-center text-center md:items-start md:text-start">
+              {/* 1 — who we are (5 columns) and the three facts that stand behind the name (7 columns) */}
+              <div className="grid items-center gap-8 border-b border-white/10 p-7 md:grid-cols-12 md:gap-10 md:p-12">
+                <div className="flex flex-col items-center text-center md:col-span-5 md:items-start md:text-start">
                   <Image src="/brand/logo-lockup.png" alt={t.alt} width={816} height={240} className="h-24 w-auto md:h-28" />
                   <span aria-hidden className="my-5 h-px w-full max-w-[24rem] bg-gradient-to-r from-[#e0b35a] via-[#e0b35a]/50 to-transparent rtl:bg-gradient-to-l" />
                   <p
@@ -116,37 +124,39 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                     {t.statement}
                   </p>
                 </div>
-                <ul className="grid gap-3.5 text-[0.95rem]">
-                  {[
-                    { Icon: ShieldCheck, text: t.license },
-                    { Icon: FileBadge2, text: t.unified },
-                    { Icon: MapPin, text: t.place },
-                  ].map(({ Icon, text }) => (
-                    <li key={text} className="flex items-center gap-4 border-b border-white/8 pb-3.5 last:border-0 last:pb-0">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#e0b35a]/55 text-[#e0b35a]">
-                        <Icon className="h-[1.15rem] w-[1.15rem]" aria-hidden />
-                      </span>
-                      <span className="font-medium text-white/90">{text}</span>
-                    </li>
-                  ))}
+                <ul className="grid gap-3 sm:grid-cols-3 md:col-span-7">
+                  {t.facts.map(({ k, label, value }) => {
+                    const Icon = k === "license" ? ShieldCheck : k === "unified" ? FileBadge2 : MapPin;
+                    return (
+                      <li key={k} className="flex items-center gap-4 border border-white/10 bg-white/[0.03] p-4 sm:flex-col sm:items-start sm:gap-3 sm:p-5">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#e0b35a]/55 text-[#e0b35a]">
+                          <Icon className="h-[1.15rem] w-[1.15rem]" aria-hidden />
+                        </span>
+                        <span>
+                          <span className="block text-[0.8rem] text-white/60">{label}</span>
+                          <span className={`mt-1 block font-medium text-white/95 ${k === "place" ? "text-[0.95rem] leading-6" : `text-xl tracking-wide ${ar ? "text-right" : ""}`}`} dir={k === "place" ? undefined : "ltr"}>{value}</span>
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
-              {/* 2 — the partners, above the columns */}
+              {/* 2 — the partners */}
               <PartnersDock locale={locale} />
 
-              {/* 3 — three plain columns */}
-              <div className="grid gap-10 p-7 sm:grid-cols-2 md:grid-cols-3 md:gap-8 md:p-12 [&>*]:min-w-0">
-                <nav aria-label={t.officeTitle}>
+              {/* 3 — three columns on the same 12-column grid: the office (3), how to reach us (5), follow and pay (4) */}
+              <div className="grid gap-10 p-7 md:grid-cols-2 md:gap-x-10 md:p-12 lg:grid-cols-12 [&>*]:min-w-0">
+                <nav aria-label={t.officeTitle} className="lg:col-span-3">
                   <p className={heading}>{t.officeTitle}</p>
-                  <ul>
+                  <ul className="grid grid-cols-2 gap-x-6 lg:grid-cols-1">
                     {t.office.map((l) => (
                       <li key={l.href}><a href={l.href} className={link}>{l.label}</a></li>
                     ))}
                   </ul>
                 </nav>
 
-                <div>
+                <div className="lg:col-span-5">
                   <p className={heading}>{t.contactTitle}</p>
                   <a href={firm.mapsUrl} target="_blank" rel="noopener noreferrer" className={`${link} flex items-start gap-3 leading-7`}>
                     <MapPin className="mt-1.5 h-4 w-4 shrink-0 text-[#e0b35a]" aria-hidden />
@@ -162,7 +172,7 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                       {firm.email}
                     </a>
                   </div>
-                  <dl className="mt-4 space-y-1.5 border-t border-white/10 pt-4 text-[0.88rem]">
+                  <dl className="mt-5 space-y-2 border border-white/10 bg-white/[0.03] px-5 py-4 text-[0.88rem]">
                     {t.hours.map((h) => (
                       <div key={h.d} className="flex items-baseline justify-between gap-4">
                         <dt className="text-white/60">{h.d}</dt>
@@ -172,23 +182,26 @@ export default function SiteFooter({ locale }: { locale: "ar" | "en" }) {
                   </dl>
                 </div>
 
-                <div>
+                <div className="md:col-span-2 lg:col-span-4">
                   <p className={heading}>{t.followTitle}</p>
                   <SocialIcons variant="plain" locale={locale} iconSize={22} className="!gap-x-4" />
-                  <p className="mt-6 flex items-center gap-3" dir="ltr">
+                  <p className="mt-5 flex items-center gap-3" dir="ltr">
                     <span aria-hidden className="h-px w-8 bg-[#e0b35a]/70" />
                     <span className="text-lg font-medium tracking-wide text-[#f6e2b3]">@taapsaudi</span>
                   </p>
+
+                  <div className="mt-7 border-t border-white/10 pt-6">
+                    <p className="text-sm font-semibold text-[#f6e2b3]">{t.payTitle}</p>
+                    <PaymentMethods locale={locale} label={false} className="mt-3" />
+                    <p className="mt-3 text-[0.8rem] leading-6 text-white/55">{t.payNote}</p>
+                    <a href={ar ? "/pay" : "/en/pay"} className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm text-[#f6e2b3] underline-offset-4 hover:underline">
+                      {t.payLink}
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              {/* 4 — accepted payment methods */}
-              <div className="flex flex-col items-center gap-3 border-t border-white/10 px-7 py-5 text-center md:flex-row md:justify-between md:px-12 md:text-start">
-                <PaymentMethods locale={locale} />
-                <p className="text-[0.8rem] leading-6 text-white/55">{t.payNote}</p>
-              </div>
-
-              {/* 5 — the legal line */}
+              {/* 4 — the legal line */}
               <div className="flex flex-col items-center gap-3 border-t border-white/10 px-7 py-6 pb-28 text-center text-[0.8rem] leading-6 text-white/55 md:flex-row md:justify-between md:px-12 md:pb-6 md:pe-44 md:text-start">
                 <p>{t.rights}</p>
                 <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
