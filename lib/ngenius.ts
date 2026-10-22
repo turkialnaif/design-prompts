@@ -27,7 +27,10 @@ async function accessToken(): Promise<string> {
     },
     cache: "no-store",
   });
-  if (!res.ok) throw new Error(`ngenius token ${res.status}`);
+  if (!res.ok) {
+    console.error("ngenius token", res.status, (await res.text()).slice(0, 300));
+    throw new Error(`ngenius token ${res.status}`);
+  }
   const j = (await res.json()) as { access_token?: string };
   if (!j.access_token) throw new Error("ngenius token missing");
   return j.access_token;
@@ -67,7 +70,10 @@ export async function createOrder(opts: {
     body: JSON.stringify(body),
     cache: "no-store",
   });
-  if (!res.ok) throw new Error(`ngenius order ${res.status}`);
+  if (!res.ok) {
+    console.error("ngenius order", res.status, (await res.text()).slice(0, 400));
+    throw new Error(`ngenius order ${res.status}`);
+  }
   const j = (await res.json()) as { reference?: string; _links?: { payment?: { href?: string } } };
   const payUrl = j._links?.payment?.href;
   if (!j.reference || !payUrl) throw new Error("ngenius order malformed");
@@ -91,7 +97,10 @@ export async function getOrder(reference: string): Promise<OrderResult> {
   if (!/^[0-9a-f-]{20,64}$/i.test(reference)) throw new Error("bad order reference");
   const token = await accessToken();
   const res = await fetch(`${BASE}/transactions/outlets/${outlet()}/orders/${reference}`, { headers: ni(token), cache: "no-store" });
-  if (!res.ok) throw new Error(`ngenius get ${res.status}`);
+  if (!res.ok) {
+    console.error("ngenius get", res.status, (await res.text()).slice(0, 300));
+    throw new Error(`ngenius get ${res.status}`);
+  }
   const j = (await res.json()) as {
     reference: string;
     amount?: { currencyCode?: string; value?: number };
