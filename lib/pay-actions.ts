@@ -72,3 +72,35 @@ export async function startPaymentAction(formData: FormData) {
   }
   redirect(url!);
 }
+
+/** Pay an amount without an invoice (consultation fee, retainer…): name, optional mobile, purpose and amount. */
+export async function quickPayAction(formData: FormData) {
+  const locale = String(formData.get("locale")) === "en" ? "en" : "ar";
+  const base = `${prefix(locale)}/quick`;
+  const name = String(formData.get("name") ?? "").trim().slice(0, 80);
+  const phone = digits(String(formData.get("phone") ?? "")).slice(0, 15);
+  const purpose = String(formData.get("purpose") ?? "").trim().slice(0, 120);
+  const raw = String(formData.get("amount") ?? "").replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).replace(",", ".");
+  const amount = Math.round(Number(raw) * 100) / 100;
+  const q = (e: string) => `${base}?e=${e}&amount=${encodeURIComponent(raw)}&purpose=${encodeURIComponent(purpose)}`;
+  if (name.length < 2 || purpose.length < 2) redirect(q("format"));
+  if (!Number.isFinite(amount) || amount < 1 || amount > 100000) redirect(q("amount"));
+  if (!paymentsEnabled()) redirect(q("off"));
+  if (await throttled()) redirect(q("slow"));
+  let url: string;
+  try {
+    const order = await createOrder({
+      amountSar: amount,
+      merchantOrderReference: `WEB-${Date.now().toString(36)}`.toUpperCase(),
+      redirectUrl: `${firm.website}${prefix(locale)}/result`,
+      cancelUrl: `${firm.website}${base}`,
+      language: locale,
+      data: { kind: "quick", payer: name, phone, purpose },
+    });
+    url = order.payUrl;
+    await audit({ kind: "client", name: "بوابة الدفع الإلكتروني" }, "payment_order", "quick", order.reference, { reference: order.reference, amount, payer: name, phone, purpose }).catch(() => undefined);
+  } catch {
+    redirect(q("gateway"));
+  }
+  redirect(url!);
+}

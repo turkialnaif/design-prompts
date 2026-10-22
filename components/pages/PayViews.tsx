@@ -2,7 +2,7 @@ import { CheckCircle2, CircleAlert, Lock, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import PaymentMethods from "@/components/PaymentMethods";
 import { Band, HeroHead } from "@/components/ui";
-import { lookupInvoiceAction, startPaymentAction } from "@/lib/pay-actions";
+import { lookupInvoiceAction, quickPayAction, startPaymentAction } from "@/lib/pay-actions";
 import { canPay, type PayableInvoice } from "@/lib/pay";
 import { firm } from "@/lib/site";
 
@@ -143,6 +143,7 @@ export function PayLookup({ locale: l, error }: { locale: L; error?: string }) {
               <Lock className="mt-1 h-3.5 w-3.5 shrink-0 text-[#c9a24a]" aria-hidden />
               {t.securedBy}
             </p>
+            <p className="mt-4 text-xs"><a href={`${pre(l)}/quick`} className="underline">{l === "ar" ? "ادفع مبلغًا دون فاتورة" : "Pay an amount without an invoice"}</a></p>
           </div>
         </div>
       </Band>
@@ -219,3 +220,83 @@ export function PayResult({ locale: l, ok, number, amount, invoiceId }: { locale
   );
 }
 
+
+const quick = {
+  ar: {
+    title: "ادفع مبلغًا للمكتب",
+    lead: "لدفع أتعاب استشارة أو دفعة متفق عليها دون فاتورة: اكتب بياناتك والمبلغ، ثم تُحوَّل إلى صفحة الدفع الآمنة.",
+    name: "الاسم",
+    phone: "الجوال (اختياري)",
+    purpose: "الغرض من الدفعة",
+    purposeHint: "مثال: أتعاب استشارة قانونية",
+    amount: "المبلغ (ر.س)",
+    go: "متابعة إلى الدفع",
+    invoice: "عندك فاتورة؟ ادفعها من هنا",
+    err: { format: "اكتب اسمك والغرض من الدفعة.", amount: "المبلغ يجب أن يكون بين ١ و١٠٠٬٠٠٠ ريال.", off: "الدفع الإلكتروني قيد التفعيل حاليًا. تواصل معنا للدفع بالتحويل البنكي.", gateway: "تعذّر الاتصال ببوابة الدفع الآن. حاول بعد دقائق أو تواصل معنا.", slow: "محاولات كثيرة. حاول بعد قليل أو تواصل معنا." } as Record<string, string>,
+  },
+  en: {
+    title: "Pay the firm an amount",
+    lead: "To pay a consultation fee or an agreed amount without an invoice: enter your details and the amount, then you are sent to the secure payment page.",
+    name: "Name",
+    phone: "Mobile (optional)",
+    purpose: "What the payment is for",
+    purposeHint: "e.g. legal consultation fee",
+    amount: "Amount (SAR)",
+    go: "Continue to payment",
+    invoice: "Have an invoice? Pay it here",
+    err: { format: "Please enter your name and what the payment is for.", amount: "The amount must be between 1 and 100,000 SAR.", off: "Online payment is being activated. Please contact us to pay by bank transfer.", gateway: "The payment gateway is unreachable right now. Please try again in a few minutes or contact us.", slow: "Too many attempts. Please try again shortly or contact us." } as Record<string, string>,
+  },
+};
+
+export function PayQuick({ locale: l, error, amount, purpose }: { locale: L; error?: string; amount?: string; purpose?: string }) {
+  const t = copy[l];
+  const q = quick[l];
+  const msg = error && q.err[error];
+  return (
+    <div>
+      <style>{"[data-footer-cta]{display:none}"}</style>
+      <PageHero>
+        <HeroHead eyebrow={t.eyebrow} title={q.title} lead={q.lead}>
+          <div className="mt-8 flex justify-center">
+            <PaymentMethods locale={l} />
+          </div>
+        </HeroHead>
+      </PageHero>
+      <Band tone="tint">
+        <div className="mx-auto max-w-xl px-5">
+          <div className="glass-card rounded-3xl p-7 md:p-10">
+            {msg && <Notice text={msg} />}
+            <form action={quickPayAction} className="space-y-5">
+              <input type="hidden" name="locale" value={l} />
+              <label className="block text-sm font-medium text-[#00124a]">
+                {q.name}
+                <input name="name" required maxLength={80} autoComplete="name" className={`mt-2 ${input}`} />
+              </label>
+              <label className="block text-sm font-medium text-[#00124a]">
+                {q.phone}
+                <input name="phone" dir="ltr" inputMode="tel" autoComplete="tel" className={`mt-2 ${input}`} />
+              </label>
+              <label className="block text-sm font-medium text-[#00124a]">
+                {q.purpose}
+                <input name="purpose" required maxLength={120} defaultValue={purpose} placeholder={q.purposeHint} className={`mt-2 ${input}`} />
+              </label>
+              <label className="block text-sm font-medium text-[#00124a]">
+                {q.amount}
+                <input name="amount" required dir="ltr" inputMode="decimal" defaultValue={amount} placeholder="0.00" className={`mt-2 ${input}`} />
+              </label>
+              <button type="submit" className="chamfer-btn inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#00124a] px-6 py-3 text-base text-white transition-colors hover:bg-[#001b6b]">
+                <Lock className="h-4 w-4 text-[#f6e2b3]" aria-hidden />
+                {q.go}
+              </button>
+            </form>
+            <p className="mt-6 flex items-start gap-2 text-xs leading-6 text-ink-soft">
+              <ShieldCheck className="mt-1 h-3.5 w-3.5 shrink-0 text-[#c9a24a]" aria-hidden />
+              {t.securedBy}
+            </p>
+            <p className="mt-4 text-xs"><a href={pre(l)} className="underline">{q.invoice}</a></p>
+          </div>
+        </div>
+      </Band>
+    </div>
+  );
+}

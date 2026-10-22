@@ -1,7 +1,7 @@
 import "server-only";
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { clients, invoices, payments } from "@/lib/db/schema";
+import { auditLog, clients, invoices, payments } from "@/lib/db/schema";
 import { audit } from "@/lib/audit";
 import { getOrder } from "@/lib/ngenius";
 
@@ -57,6 +57,13 @@ export async function settleOrder(reference: string): Promise<{ ok: boolean; inv
   const order = await getOrder(reference);
   const invoiceId = order.data.invoiceId && isUuid(order.data.invoiceId) ? order.data.invoiceId : null;
   const base = { invoiceId, number: order.data.invoiceNumber ?? null, amount: order.amountSar, state: order.state };
+  if (order.paid && !invoiceId && order.data.kind === "quick" && order.currency === "SAR") {
+    // a payment made without an invoice: kept in the audit log once, the gateway portal holds the full record
+    const d0 = await db();
+    const [seen] = await d0.select({ id: auditLog.id }).from(auditLog).where(and(eq(auditLog.action, "payment_quick_paid"), eq(auditLog.entityId, reference))).limit(1);
+    if (!seen) await audit({ kind: "client", name: "بوابة الدفع الإلكتروني" }, "payment_quick_paid", "quick", reference, { amount: order.amountSar, payer: order.data.payer, phone: order.data.phone, purpose: order.data.purpose, paymentId: order.paymentId });
+    return { ok: true, invoiceId: null, number: null, amount: order.amountSar, state: order.state };
+  }
   if (!order.paid || !invoiceId || order.currency !== "SAR") return { ok: false, ...base };
 
   const d = await db();
