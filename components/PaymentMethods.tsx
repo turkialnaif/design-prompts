@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const methods = [
-  { src: "/payments/visa.svg", alt: "Visa" },
-  { src: "/payments/mastercard.svg", alt: "Mastercard" },
-  { src: "/payments/mada.svg", alt: "mada" },
+  { src: "/payments/visa.png", alt: "Visa" },
+  { src: "/payments/mastercard.png", alt: "Mastercard" },
+  { src: "/payments/mada.png", alt: "mada" },
   { src: "/payments/apple-pay.svg", alt: "Apple Pay" },
-  { src: "/payments/samsung-pay.svg", alt: "Samsung Pay" },
+  { src: "/payments/samsung-pay.png", alt: "Samsung Pay" },
 ];
 
 /**
